@@ -1,0 +1,689 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的小窝装修案例</title>
+<meta name="keywords" content="我的小窝装修案例" />
+<meta name="description" content="我的小窝装修案例" /> 
+<!--<script src="__PUBLIC__/home/js/mobile.js" type="text/javascript"></script>-->
+<link href="__PUBLIC__/home/css/style.css" type="text/css" rel="Stylesheet" />
+<script src="__PUBLIC__/home/js/jquery.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/js/jquery.cookies.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/js/common.js" type="text/javascript"></script>
+ 
+<style type="text/css">
+	
+</style>
+<script type="text/javascript">
+$(function () {
+    
+   // $("#nav_anli").addClass("current");
+   // do_banner1();
+    //alert(getQueryString('fengge')); 
+    init_param();
+    
+//    //呼叫
+//    $("#call_btn").click(function() {  
+//	var mobile = $("#calltel1_keyword").val();
+//	if(mobile ==""){
+//	    alert("请输入有效号码再点击呼叫！")
+//	    return;
+//	}
+//	$("#call_a").attr("href","tel:"+mobile);
+//	$("#call_a").click();  
+//    }); 
+
+})
+function init_param(){
+    var fengge = "{$fengge}";
+    var jushi = "{$jushi}";
+    var shejishi = "{$shejishi}"; 
+    var mianji = "{$mianji}"; 
+//    alert(fengge+";"+jushi+";"+shejishi);
+    if(parseInt(fengge)>0){  
+	$(".fengge_"+fengge+"").siblings().find("a").removeClass("current");
+	$(".fengge_"+fengge+"").find("a").addClass("current");
+    }else{ 
+	$(".fengge_0").siblings().find("a").removeClass("current");
+	$(".fengge_0").find("a").addClass("current");
+    }
+    if(parseInt(jushi)>0){  
+	$(".jushi_"+jushi+"").siblings().find("a").removeClass("current");
+	$(".jushi_"+jushi+"").find("a").addClass("current");
+    }else{ 
+	$(".jushi_0").siblings().find("a").removeClass("current");
+	$(".jushi_0").find("a").addClass("current");
+    }
+    if(parseInt(mianji)>0){  
+	$(".mianji_"+mianji+"").siblings().find("a").removeClass("current");
+	$(".mianji_"+mianji+"").find("a").addClass("current");
+    }else{ 
+	$(".mianji_0").siblings().find("a").removeClass("current");
+	$(".mianji_0").find("a").addClass("current");
+    }
+}
+
+function getQueryString(name) { 
+var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+var r = window.location.search.substr(1).match(reg); 
+if (r != null) return unescape(r[2]); return null; 
+} 
+
+var is_last=false;
+var loading=false;
+var page=2;
+var first =true;
+//更新条件重新查询数据
+function query_search(type,id){
+    if(type=='1'){  
+	$(".anlisearch_fengge li a").removeClass("current"); 
+	if(parseInt(id)>0){
+	    $("#fengge"+"_inp").val(id);
+	    $(".anlisearch_fengge .fengge_"+id+" a").addClass("current");
+	}else if(id==0){
+	    $("#fengge"+"_inp").val("");
+	    $(".anlisearch_fengge .fengge_0 a").addClass("current");
+	}
+    }
+    if(type=='2'){
+	$(".anlisearch_jushi  li a").removeClass("current");
+	if(parseInt(id)>0){
+	    $("#jushi"+"_inp").val(id);
+	    $(".anlisearch_jushi .jushi_"+id+"").addClass("current");
+	}else if(id==0){
+	    $("#jushi"+"_inp").val("");
+	    $(".anlisearch_jushi .jushi_0 a").addClass("current");
+	}
+    }
+    if(type=='3'){
+	$(".anlisearch_mianji li a").removeClass("current"); 
+	if(parseInt(id)>0){
+	    $("#mianji"+"_inp").val(id);
+	    $(".anlisearch_mianji .mianji_"+id+"").addClass("current");
+	}else if(id==0){
+	    $("#mianji"+"_inp").val("");
+	    $(".anlisearch_mianji .mianji_0 a").addClass("current");
+	}	
+    }
+    if(type=='1' || type=='2' || type=='3'){
+	$("#query1_keyword").val("");
+    }
+    //异步重新查询数据:1风格，2居室；3设计师；5关键词；4加载更多
+    if(type=='1' || type=='2' || type=='3' || type=='5'){
+	page = 1; 
+    }
+    
+    //20170815修改为直接跳转，分页查询
+    if(true){
+	var turl ="http://"+document.domain+"/index.php/home/anli/index/"; 
+	var condition="";
+	if($("#fengge"+"_inp").val()!=""){
+	    condition = condition + "fengge/"+$("#fengge_inp").val()+"/";
+	}
+	if($("#jushi"+"_inp").val()!=""){
+	    condition = condition + "jushi/"+$("#jushi_inp").val()+"/";
+	}
+	if($("#mianji"+"_inp").val()!=""){
+	    condition = condition + "mianji/"+$("#mianji_inp").val()+"/";
+	}
+	if($("#query1_keyword").val()!=""){
+	    condition = condition + "keyword/"+$("#query1_keyword").val()+"/";
+	}
+	location.href=turl+condition;
+    }
+    return;    
+    
+    var turl ="http://"+document.domain+"/index.php/home/anli/ajaxGetAnli/p/"+page;
+    $.ajax({
+	url:turl,
+	type : 'POST',
+	dataType : "json",
+	cache:false,
+	data : {
+		'fengge' : $("#fengge_inp").val(),
+		'jushi' : $("#jushi_inp").val(),
+		'shejishi' : $("#shejishi_inp").val(), 
+		'keyword' : $("#query1_keyword").val()
+	},
+	success:function(result){
+	    var total = 0;
+	    if(result.is_last=="1"){
+		is_last ="1";		
+		$("#more").html('已加载全部');
+	    }else{
+		is_last ="0";
+		$("#more").html('加载更多');
+	    }
+	    var htmlstr="";
+	    if(result.code=='0'){
+		total = result.total;
+//		alert(result.data.length);
+//		//拼装html添加到html末尾
+		for(var item=0;item<result.data.length;item++){  
+		    htmlstr =htmlstr+'<li key="'+result.data[item].id+'">';
+		    htmlstr =htmlstr+'	    <div class="div1">';
+		    htmlstr =htmlstr+'				<a href="/index.php/home/anli/detail/aid/'+result.data[item].id+'" target="_blank">';
+			if(result.data[item].picpath !="" && result.data[item].picpath !=null && result.data[item].picpath !=undefined){
+		    htmlstr =htmlstr+'				    <img src="'+result.data[item].picpath+'" width="100%" height="100%" alt="'+result.data[item].title+'装修案例" /></a>';
+			}else{
+		    htmlstr =htmlstr+'				    <img src="'+result.data[item].litpic+'" width="100%" height="100%" alt="'+result.data[item].title+'装修案例" /></a>';
+			} 
+		    htmlstr =htmlstr+'			    </div>';
+		    htmlstr =htmlstr+'			    <div class="div2">';
+		    htmlstr =htmlstr+'				<p class="style1"><b><a href="/index.php/home/anli/detail/aid/'+result.data[item].id+'" target="_blank">'+result.data[item].dtitle+'</a></b></p>';
+		    htmlstr =htmlstr+'				<p class="style2">设计师：<b><a href="/index.php/home/shejishi/detail/sno/'+result.data[item].shejishi+'" target="_blank">'+result.data[item].shejishiname+'</a></b></p>';
+		    htmlstr =htmlstr+'				<p class="style3">户型：<b>'+result.data[item].jushiname+'</b></p>';
+		    htmlstr =htmlstr+'				<p class="style4">面积：<b>'+result.data[item].mianji+'平米</b></p>';
+		    htmlstr =htmlstr+'				<p class="style5">风格：<b>'+result.data[item].fenggename+'</b></p>';
+		    htmlstr =htmlstr+'				<p class="style6">造价：<b>'+result.data[item].zaojia+'万</b></p>';
+		    htmlstr =htmlstr+'				<p class="style7">主材配置：<b>'+result.data[item].zhucai+'</b></p>';
+		    htmlstr =htmlstr+'				<p class="style8"><b><a href="/index.php/home/anli/detail/aid/'+result.data[item].id+'" target="_blank">查看详情<img src="__PUBLIC__/home/images/logo_detail.png"></img></a></b></p>';			     
+		    htmlstr =htmlstr+'			    </div> ';
+		    htmlstr =htmlstr+'			</li> ';
+		    
+//					    mySwiper.appendSlide('<div class="swiper-slide"><img alt="'+result.banner1[item].title+'" src="'+result.banner1[item].logo_url+'" style="width:100%;"></div>');
+		} 
+//		$("#accordion").css("dispaly","block");
+//		$("#main").append(result.data);
+//		    do_msg(); 
+		page++; 
+		loading=false;		    
+	    }else if(result.code=='10001'){  
+	    }
+	    //如果不是加载更多，则直接替换，否则需要进行追加操作
+	    if(type!="4"){
+		$("#anlilist ul").html(htmlstr);
+		$("#query_count span").html("共"+total+"套大宅装修设计案例");
+	    }else{  
+		$("#anlilist ul").append(htmlstr); 
+	    }
+    }});
+    
+}
+
+//点击加载更多，追加数据
+function load_more(){
+    if($("#more").html()=='加载更多'){
+	//异步查询数据，如果有结果则追加到末尾 
+	query_search('4',-1);
+    }else{
+	alert("您好，已经加载全部结果，请重新选择条件查询或刷新页面！");
+    }
+} 
+//综合关键词搜索
+function keyword_search(){ 
+    if($("#query1_keyword").val()==''){
+	 alert("请输入有效案例名称、楼盘名称、设计师名字信息")
+	    return;
+    }
+    //情况查询其它条件
+    $("#fengge"+"_inp").val("");
+    $("#jushi"+"_inp").val("");
+    $("#mianji"+"_inp").val("");
+    query_search('5',-1);
+} 
+
+//刷新页面
+function search_new(type,page){ 
+    //判断是分类还是关键词搜索
+    if(type=='1'){
+	//情况查询其它条件
+	$("#fengge"+"_inp").val("");
+	$("#jushi"+"_inp").val("");
+	$("#shejishi"+"_inp").val(""); 
+    }else{
+	$("#query1_keyword").val("");
+    } 
+    if(parseInt(page)>0){}else{
+	page=1;
+    }
+    var turl ="http://"+document.domain+"/index.php/home/anli/index/"; 
+    var condition="";
+    if($("#fengge"+"_inp").val()!=""){
+	condition = condition + "fengge/"+$("#fengge_inp").val()+"/";
+    }
+    if($("#jushi"+"_inp").val()!=""){
+	condition = condition + "jushi/"+$("#jushi_inp").val()+"/";
+    }
+    if($("#mianji"+"_inp").val()!=""){
+	condition = condition + "mianji/"+$("#mianji_inp").val()+"/";
+    }
+    if($("#query1_keyword").val()!=""){
+	condition = condition + "keyword/"+$("#query1_keyword").val()+"/";
+    }
+    location.href=turl+condition;
+} 
+ 
+
+</script>
+</head>
+<body class="p_list_anli">
+    
+    <?php include ("./Application/Home/View/default/Common/topnav.html"); ?> 
+    <?php include ("./Application/Home/View/default/Common/header.html"); ?> 
+    
+<style type="text/css">
+	.li_{
+		width: 33.33%;
+	    float: left;
+	    text-align: center;
+	    font-size: 12px;
+	    margin-top: 25px;
+	}
+	.li_ a.current span{background: #183078; padding: 3px 4px 3px 4px;border-radius: 3px;color: #fff;}
+	.li_ a:hover{text-decoration: none;cursor: pointer;} 	
+	.bottomBtn{
+		overflow: hidden;
+		width: 23%; 
+		float: left; 
+		text-align: center; 
+		margin: 1%;
+		background: #fff;
+		height: 70%;
+	}
+	
+	.li_yinying_anli:hover,.li_yinying_anli.current {
+		box-shadow:0px 0px 2px 3px #cac6c6;
+	}
+	
+	
+    .homeBanner {
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      max-height: 600px;
+    }
+    .homeBanner li{display: none;}
+    .homeBanner li.active{display: block;}
+    .homeBanner a{   
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-decoration: none;
+	outline: 0 none;
+    }
+    .homeBanner a img{ width: 100%; height: 440px;}
+    .homeBanner .Number {
+      bottom: 18px; 
+	height: 50px;
+	margin-top: -50px;
+	text-align: center;
+    }
+    .homeBanner .Number span.current {
+	background-image: url(/Public/home/images/yuan2_1.png);
+	background-size: 80%;
+	background-position: 50%;
+	background-repeat: no-repeat;
+    }
+
+   .homeBanner .Number span {
+	height: 16px;
+	width: 16px;
+	/*background: #666666;*/ 
+	border: solid 1px #fff;
+	margin: 7px 7px 0 7px;
+	border-radius: 8px;
+	display: inline-block;
+    }
+    .homeBanner .houmePrev {
+      position: absolute;
+      display: block;
+      left: 10%;
+      top: 40%;
+      z-index: 10;
+      width: 60px;
+      height: 60px;
+      background: url(/Public/home/images/logo_pre.png) no-repeat left center;
+    }
+    .homeBanner .houmeNext {
+      position: absolute;
+      display: block;
+      right: 10%;
+      top: 40%;
+      z-index: 10;
+      width: 60px;
+      height: 60px;
+      background: url(/Public/home/images/logo_next.png) no-repeat right center;
+    }
+    .homeBanner .homeBanneraAbout {
+      position: absolute;
+      margin: 0 auto;
+      border-radius: 6px;
+      left: 0;
+      right: 0; 
+      top:420px;
+      height: 125px;
+      width: 59%;
+      z-index: 10;
+      background: rgba(51, 51, 51, 0.9);
+      padding: 18px 40px 0;
+    }
+    .homeBanner .homeBanneraAbout div {
+      overflow: hidden;
+      color: #fff;
+      line-height: 22px;
+      margin-bottom: 15px;
+    }
+    .homeBanner .homeBanneraAbout div h2 {
+      float: left;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 22px;
+    }
+    .homeBanner .homeBanneraAbout div span {
+      float: left;
+      font-size: 14px;
+      background: url(../img/index/banner_1.jpg) no-repeat left center;
+      padding-left: 6px;
+      margin-left: 9px;
+    }
+    .homeBanner .homeBanneraAbout input {
+      display: block;
+      float: left;
+      border: none;
+      font-size: 14px;
+      border-radius: 4px;
+      padding: 0 1%;
+      height: 50px;
+      margin-right: 0.5%;
+      font-family: 微软雅黑;
+    }
+    .homeBanner .homeBanneraAbout input.name {
+      width: 30%;
+    }
+    .homeBanner .homeBanneraAbout input.tel {
+      width: 40%;
+    }
+    .homeBanner .homeBanneraAbout input.button {
+      background-color: #183078 !important;
+      color: #fff;
+      text-align: center;
+      font-size: 18px;
+      margin-right: 0 !important;
+      cursor: pointer;
+      width: 25%;
+    }
+    .banner .Number span.hover {
+	background-color: #fff !important;
+	filter: alpha(opacity=100);
+	-moz-opacity: 1;
+	-khtml-opacity: 1;
+	opacity: 1;
+	width: 30px;
+    }
+    .banner .Number span {
+	overflow: hidden;
+	cursor: pointer;
+	filter: alpha(opacity=30);
+	-moz-opacity: 0.3;
+	-khtml-opacity: 0.3;
+	opacity: 0.3;
+	background: #333;
+	display: inline-block;
+	height: 2px;
+	width: 20px;
+	margin: 0 5px;
+    }  
+
+    /*图片全景*/
+    
+.iVRWrap{}
+.iVRWrap .indexTit{padding-top:120px}
+.vr_img_box{overflow:hidden}
+.vr_img_left_box{width:100%;height:100%;position:relative;margin:0 0 12px 0}
+.vr_img_left_img{width:100%;height:100%;position:relative}
+#container-img-1 .psv-canvas{width: 100%;height: 490px;} 
+.vr_img_right_box{}
+.psv-hud{cursor:pointer !important}
+.vr_img_bottom{float:left;width:32%;height:250px;position:relative;margin:0 2% 12px 0}
+.container-img{width:100%;height:250px;position:relative}
+.vr_state_img{display:block;width:120px;height:35px;position:absolute;top:30px;right:30px}
+.vr_case_summery{z-index:21;text-align:center;width:100%;background:rgba(0,0,0,0.5);bottom:0;left:0;position:absolute;line-height:40px;font-size:16px;color:#fff;transition:height 0.5s;-moz-transition:height 0.5s;-webkit-transition:height 0.5s;-o-transition:height 0.5s}
+.vr_img_bottom_right{overflow:hidden;margin-right:0}
+.vr_link{display:block;color:#fff}
+.vr_link span{padding:0 5px}
+.iVRWrap .iView{margin-top:20px} 
+span em{font-style: normal;}
+ 
+/*@media screen and (max-width: 1451px) { 
+    .vr_img_left_box{height:350px;}
+    .vr_img_left_img{height:350px;}
+    #container-img-1 .psv-canvas{height: 350px;}
+        
+    .vr_img_bottom{height:200px;}
+    .container-img{height:200px;}
+}*/
+	
+</style>
+
+<div> 
+	<div id="" class="hearderBanner" style="height: 470px; width: 100%;background:url(__PUBLIC__/home/images/anli/anli_bg.jpg) no-repeat left center;background-size: 100% 100%;">
+	    <div style="width:1200px;margin: 0 auto;"> 
+		<div id="" style="position: absolute; height: 440px; width:340px; background: #FFFAFA; margin-top: 30px; margin-left: 0;">
+			<div id="" class="anlisearch_fengge" style="position: absolute;width: 100%;height: 147px;background-color: #fff;">
+				<div id="" class="div_list1" style="float: left; height: 100%;width: 23.5%;text-align: center;" >
+					<p style="margin-top: 55px;">装修</p>
+					<p>风格</p>
+				</div>
+				<div id="" style="float: left;height: 100%; width: 76.5%; ">
+					<ul  style="margin: ;"> 
+					    <li class="li_ div_list2 fengge_0"><a href="javascript:query_search('1',0)" key="" class=""><span>不限</span></a></li>					   
+					    <volist name="anlifengges" id="avo">
+						<li class="li_ fengge_{$avo.evalue}"><a href="javascript:query_search('1',{$avo.evalue})" key="{$avo.evalue}"><span>{$avo.ename}</span></a></li>
+					    </volist>
+<!--					    <li class="li_"><a href="javascript:query_search('1',500)" key="500"><span>欧式</span></a></li>
+						<li class="li_">现代简约</li>
+						<li class="li_">田园</li>
+						<li class="li_">地中海</li>
+						<li class="li_">中式</li>
+						<li class="li_">美式</li>
+						<li class="li_">新古典</li>-->
+						
+					</ul>
+				</div>
+			</div>
+			<div id="" class="anlisearch_jushi" style="position: absolute;width: 100%;height: 147px; margin-top: 147px; background-color: #fff;">
+			    <div id="" style="float: left; height: 100%;width: 23.5%;text-align: center;" >
+				<p style="margin-top: 55px;">居室</p>
+				<p>类型</p>
+			    </div>
+			    <div id="" style="float: left;height: 100%; width: 76.5%; ">
+				    <ul style="margin: ;">
+					<li class="li_ jushi_0"><a href="javascript:query_search('2',0)" key="" class=""><span>不限</span></a></li>				   
+					    <volist name="jushis" id="jvo">
+						<li class="li_ jushi_{$jvo.evalue}"><a href="javascript:query_search('2',{$jvo.evalue})" key="{$jvo.evalue}"><span>{$jvo.ename}</span></a></li>
+					    </volist>
+<!--					    <li class="li_">一居室</li>
+					    <li class="li_">二居室</li>
+					    <li class="li_">三居室</li>
+					    <li class="li_">四居室</li>
+					    <li class="li_">平层</li>
+					    <li class="li_">复式楼</li>
+					    <li class="li_">别墅</li>-->
+				    </ul>
+			    </div>
+			</div>
+			<div id="anlisearch_mianji" class="anlisearch_mianji" style="position: absolute;width: 100%;height: 145.5px;margin-top: 294px; background-color: #fff;">
+			    <div id="" style="float: left; height: 100%;width: 23.5%;text-align: center;" >
+				<p style="margin-top: 55px;">面积</p>
+				<p>大小</p>
+			    </div>
+			    <div id="" style="float: left;height: 100%; width: 76.5%; ">
+				    <ul style="margin: ;">
+					    <li class="li_ mianji_0"><a href="javascript:query_search('3',0)" key="" class=""><span>不限</span></a></li>
+					    <li class="li_ mianji_1"><a href="javascript:query_search('3',1)" key=""><span>90以下</span></a></li>
+					    <li class="li_ mianji_2"><a href="javascript:query_search('3',2)" key=""><span>90-100</span></a></li>
+					    <li class="li_ mianji_3"><a href="javascript:query_search('3',3)" key=""><span>100-110</span></a></li>
+					    <li class="li_ mianji_4"><a href="javascript:query_search('3',4)" key=""><span>110-120</span></a></li>
+					    <li class="li_ mianji_5"><a href="javascript:query_search('3',5)" key=""><span>120-130</span></a></li>
+					    <li class="li_ mianji_6"><a href="javascript:query_search('3',6)" key=""><span>130-140</span></a></li>
+					    <li class="li_ mianji_7"><a href="javascript:query_search('3',7)" key=""><span>140以上</span></a></li>
+
+				    </ul>
+			    </div>
+			</div>
+		</div>
+		<link rel="stylesheet" type="text/css" href="/Public/css/photo-sphere-viewer.min.css">
+		<script type="text/javascript" src="/Public/js/three.min.js"></script>
+		<script type="text/javascript" src="/Public/js/D.min.js"></script>
+		<script type="text/javascript" src="/Public/js/doT.min.js"></script>
+		<script type="text/javascript" src="/Public/js/uevent.min.js"></script>
+		<script type="text/javascript" src="/Public/js/photo-sphere-viewer.min.js"></script>
+		<div id="" class="" style="position: absolute; height: 440px; width: 850px; background: #FFB6C1; margin-top: 30px;margin-left: 340px;">
+			<div class="homeBanner"> 
+    				 <div class="vr_img_left_box">
+				    <div class="vr_img_left_img" id="container-img-1">
+					<div class="psv-container">
+					    <div class="psv-loader-container" style="display: none;">
+						<div class="psv-loader">
+						    <canvas class="psv-loader-canvas" width="150" height="150"></canvas>
+						    <div class="psv-loader-text" style="max-width: 99px; max-height: 99px;">Loading...</div>				
+						</div>				    
+					    </div>
+					    <div class="psv-navbar psv-navbar--open" style="display: none;"></div>
+					    <div class="psv-hud" style="cursor: move;">
+						<svg class="psv-hud-svg-container"></svg>
+						<div class="psv-tooltip" style="top: -1000px; left: -1000px;">
+						    <div class="psv-tooltip-arrow"></div>
+						    <div class="psv-tooltip-content"></div>				    
+						</div>			    
+					    </div>
+					    <div class="psv-panel">
+						<div class="psv-panel-resizer"></div>
+						<div class="psv-panel-close-button"></div>
+						<div class="psv-panel-content"></div>			    
+					    </div>
+					    <div class="psv-canvas-container" style="opacity: 1;">
+						<canvas class="psv-canvas" style="width: 100%;"></canvas>
+					    </div>
+					</div>
+				    </div>
+				    <!--<img class="vr_state_img" src="__PUBLIC__/home/images/720/vr_active_play.png">-->
+				    <div class="vr_case_summery height1" style="z-index:1">
+					<span>自建别墅<em>&nbsp;|&nbsp;260㎡</em><em>&nbsp;|&nbsp;地中海</em></span>
+				    </div>
+				</div>
+			</div>
+		</div>
+			<script>
+			$(function(){
+				//全景图上
+			    try {
+				var viewer1 = PhotoSphereViewer({
+				    container:'container-img-1',
+				    panorama:'/Public/home/images/720/dsvr01.jpg',
+				    autoload:true,
+				    allow_scroll_to_zoom:false,
+				    navbar:false,
+				    allow_user_interactions:false,
+						//min_fov:90,
+						//max_fov:90,
+				    anim_speed:'1rpm'
+				}); 
+				var li = $("#container-img-1 .psv-container");
+			//	alert(li.length);
+				if(li.length==2){
+				   $("#container-img-1 .psv-container").eq(0).hide();
+				} 
+			    }catch (e){
+				console.log('no support ie');
+				$('#container-img-1').css({
+				    backgroundColor:'rgba(15,150,8,0.5)',
+				    backgroundSize:'cover',
+				    backgroundPosition:'center center'
+				}) 
+			    }
+
+			});
+			</script>
+	    </div>
+	</div>
+    </div>
+
+    <div id="main" class="main" style="margin-top:0;padding-top: 10px;background: #f5f5f5;">
+        <div id="position">
+	    <div class="div1"> 您所在的位置：<a href='/' target="_blank" style="color:#999999;">首页</a> &gt; <a href='/index.php/home/anli/' target="_blank" style="color:#333333;">装修案例</a>
+	    </div>
+	    <div class='div2'>
+		<div class='tabs tabs1 current'>装修案例<br><hr></hr></div>
+		<a href="/index.php/home/quanjin/" target="_blank"><div class='tabs tabs2'>全景案例<br><hr></hr></div></a>
+	    </div>
+	</div>
+	
+	<input type='hidden' id='fengge_inp' name='fengge_inp' value='{$fengge}'></input>
+	<input type='hidden' id='jushi_inp' name='jushi_inp' value='{$jushi}'></input>
+	<input type='hidden' id='shejishi_inp' name='shejishi_inp' value='{$shejishi}'></input>
+	<input type='hidden' id='mianji_inp' name='mianji_inp' value='{$mianji}'></input>
+	<input type="hidden"  placeholder="输入案例名称、楼盘名称、设计师名字" id="query1_keyword" value="{$keyword}" />
+	
+	<div id="abox1">	    
+            <div id="anlilist">
+                <ul>
+		    <volist name="lists_anli1" id="vo">
+			<li key="{$vo.id}" class="li_yinying_anli">
+			    <div class="div1">
+				<a href="{$html_path_pc}anli/{$vo.id}.html" target="_blank">				    
+				    <if condition="$vo['picpath'] neq ''">
+					    <img src="{$vo.picpath}" width="100%" height="100%" style="max-height: 400px;" alt="{$vo.title}装修案例" />
+					<else/> 
+					    <img src="{$vo.litpic}" width="100%" height="100%" style="max-height: 400px;" alt="{$vo.title}装修案例" />
+				    </if> 
+				</a>
+			    </div>
+			    <div class="div2">
+				<a href="/q/" target="_blank"><div id="" style=" float: right; margin-top: 20px; margin-right: 20px; height: 50px;width: 50px; background-color: #183078;color:#fff;">
+				    <div style="width: 70%; margin: 15% 0 0 15%; text-align: center; font-size: 14px;font-weight: 500;">预约设计</div></div></a>
+				<p class="style1">
+				    <b><a href="{$html_path_pc}anli/{$vo.id}.html" target="_blank" style="font-size: 18px;color: #333333;font-weight: 0;">{$vo.dtitle}</a></b>&nbsp;&nbsp;{$vo.shejishiname}
+<!--				    <a href="/q/" style="text-decoration: none;" target="_blank"><span>预约设计<img src="__PUBLIC__/images/right02.png"></img></span></a>
+-->				                    
+				</p>
+				
+				<!--<p class="style2">设计师：<b><a href="/index.php/home/shejishi/detail/aid/{$vo.sno}" target="_blank">{$vo.shejishiname}</a></b></p>-->
+				<p class="style3"><b style="font-size: 12px;color:#999999;">{$vo.fenggename}|{$vo.mianji}平米|{$vo.jushiname}
+					<if condition="$vo['fangshiname'] neq ''">|{$vo.fangshiname}</if>
+					</b></p>
+				<!--<p class="style4">面积：<b>{$vo.mianji}平米</b></p>
+				<p class="style5">风格：<b>{$vo.fenggename}</b></p>
+				<p class="style6">造价：<b>{$vo.zaojia}万</b></p>
+				<p class="style7">主材配置：<b>{$vo.zhucai}</b></p>-->
+				<!--<p class="style8" style="display: none;"><b><a href="/index.php/home/anli/detail/aid/{$vo.id}" target="_blank">查看详情<img src="__PUBLIC__/home/images/logo_detail.png"></img></a></b></p>-->			     
+			    </div> 
+			</li>
+		    </volist>
+		</ul>
+            </div> 
+	    <div class="page_home">
+		{$_page}
+	    </div>
+	    <script>
+		function pagego(){
+		    var paget = $("#gop").val();
+		    var pagep = decodeURI($("#goval").val());
+//		    alert(pagep+"/"+paget);
+		    if(parseInt(paget)>0){
+			var turl = pagep.replace("[PAGE]",paget);
+			location.href=turl;
+		    }else{
+			alert("请输入有效页码!");
+			return; 
+		    }
+		}
+	    </script> 
+	    
+        </div> 
+	
+	</div>
+    
+<?php include ("./Application/Home/View/default/Common/bottomnav.html"); ?> 
+<?php include ("./Application/Home/View/default/Common/footer.html"); ?> 
+     
+</body>
+</html>   
+
+<script type="text/javascript">
+$(function(){
+});
+</script> 
+<script src="__PUBLIC__/home/js/footer.js" type="text/javascript"></script>
+<script src="/public/home/js/count.js" type="text/javascript"></script> 

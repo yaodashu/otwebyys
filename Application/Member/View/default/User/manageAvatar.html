@@ -1,0 +1,24 @@
+<extend name="Base/Common"/>
+<block name="title_part">修改头像</block>
+<block name="head_style">
+    <link href="__STATIC__/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="__STATIC__/member/css/css.css" rel="stylesheet" type="text/css" />
+</block>
+<block name="head_script">
+    <script type="text/javascript" src="__STATIC__/jquery.iframe-transport.js" ></script>
+</block>
+<block name="body_content">
+    <div class="mybox_page">
+        <include file="Public/mymenu_box"/>
+        <div class="homepage_box">
+            <div class="line_mybox home_inforh">
+                <div class="my_title">
+                    <h3>修改头像</h3>
+                </div>
+                <include file="User/changeavataronchange"/>
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</block>

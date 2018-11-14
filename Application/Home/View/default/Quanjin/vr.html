@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>我的小窝案例VR全景</title>  
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="format-detection" content="telephone=no,address=no,email=no">
+  <meta name="renderer" content="webkit">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="robots" content="all">
+  <link rel="shortcut icon" href="http://www.dasn.com.cn/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="/Public/Home/720vr/panoPageV2.6a7b25d5948eaa14d679.css">
+  <script src="/Public/Home/720vr/hm.js"></script>
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?08a05dadf3e5b6d1c99fc4d862897e31";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <style>
+    @-ms-viewport { width:device-width; }
+    @media only screen and (min-device-width:800px) { html { overflow:hidden; } }
+    html { height:100%; }
+    body { height:100%; overflow:hidden; margin:0; padding:0; }
+  </style>
+<style type="text/css">
+    /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+    html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+    body{margin:0}
+    article,aside,footer,header,nav,section{display:block}
+    h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}
+    figure{margin:1em 40px}
+    hr{box-sizing:content-box;height:0;overflow:visible}
+    pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}
+    a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}
+    b,strong{font-weight:inherit;font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}
+    dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}
+    audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}
+    button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}
+    button,select{text-transform:none} 
+    input[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}
+    [type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}
+    fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+    legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}
+    progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}
+    [type=checkbox],[type=radio]{box-sizing:border-box;padding:0}
+    [type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}
+    [type=search]{outline-offset:-2px}::-webkit-file-upload-button{font:inherit}
+    details,menu{display:block}summary{display:list-item}canvas{display:inline-block}[hidden],template{display:none}
+</style>
+<style type="text/css">
+    :focus{outline:0!important}
+    body,html{font-family:PingFangSC-Regular,Microsoft YaHei,Hiragino Sans GB,tahoma,Arial,\\5B8B\4F53,STHeiti,WenQuanYi Micro Hei,SimSun,sans-serif}
+    body{margin:0;font-size:14px;line-height:1;color:#333;word-wrap:break-word}body,html{height:100%;background-color:#000}button,input,select,textarea{font-family:inherit;font-size:inherit;line-height:inherit}img{border:0}svg:not(:root){overflow:hidden}
+    button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}
+    button,html input[type=button],input[type=reset],input[type=submit]{cursor:pointer}button[disabled],html input[disabled]{cursor:default}
+    button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0;cursor:pointer}
+    textarea{overflow:auto;resize:none;color:#333;padding:10px;border:1px solid #e9e9e9;transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out}optgroup{font-weight:700}a{color:inherit;text-decoration:none}a:focus{outline:thin dotted;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}ol,ul{padding-left:0;list-style:none}ol,p,ul{margin:0}
+    input[type=password],input[type=text]{appearance:none;padding-left:8px;padding-right:8px;color:#333;border:1px solid #e9e9e9;transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out}
+    input[type=password]:focus,input[type=text]:focus,textarea:focus{border-color:#a0bdfe;box-shadow:0 0 3px 0 #427afb}.list-inline{font-size:0}.list-inline li{display:inline-block;font-size:14px}.ellipsis{white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.link{color:#4a90e2}.ReactModal__Body--open{overflow:hidden}.container{width:1180px;margin:0 auto}
+    .modal-title{font-size:20px;font-weight:400;line-height:60px;margin-top:0;margin-bottom:0;border-radius:6px 6px 0 0;border-bottom:1px solid #d8d8d8;padding-left:20px}.modal-foot,.modal-title{height:60px;background:#f3f3f3}.modal-foot{border-radius:0 0 6px 6px;text-align:center;border-top:1px solid #d8d8d8;padding-top:12px}.tether-element{z-index:100000000000}.modal-open{overflow:hidden}body .__react_component_tooltip{font-size:14px;border-radius:5px;padding:6px 10px;border:2px solid #babdc7}body .__react_component_tooltip:after{display:none}body .__react_component_tooltip.type-dark{background-color:rgba(0,0,0,.7)}body .__react_component_tooltip.show{opacity:1}
+</style>
+<style id="react-tooltip">
+    .__react_component_tooltip{border-radius:3px;display:inline-block;font-size:13px;left:-999em;opacity:0;padding:8px 21px;position:fixed;pointer-events:none;transition:opacity 0.3s ease-out;top:-999em;visibility:hidden;z-index:999}.__react_component_tooltip:before,.__react_component_tooltip:after{content:"";width:0;height:0;position:absolute}.__react_component_tooltip.show{opacity:0.9;margin-top:0px;margin-left:0px;visibility:visible}.__react_component_tooltip.type-dark{color:#fff;background-color:#222}.__react_component_tooltip.type-dark.place-top:after{border-top-color:#222;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-dark.place-bottom:after{border-bottom-color:#222;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-dark.place-left:after{border-left-color:#222;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-dark.place-right:after{border-right-color:#222;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-dark.border{border:1px solid #fff}.__react_component_tooltip.type-dark.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-dark.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-dark.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-dark.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-success{color:#fff;background-color:#8DC572}.__react_component_tooltip.type-success.place-top:after{border-top-color:#8DC572;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-success.place-bottom:after{border-bottom-color:#8DC572;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-success.place-left:after{border-left-color:#8DC572;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-success.place-right:after{border-right-color:#8DC572;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-success.border{border:1px solid #fff}.__react_component_tooltip.type-success.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-success.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-success.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-success.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-warning{color:#fff;background-color:#F0AD4E}.__react_component_tooltip.type-warning.place-top:after{border-top-color:#F0AD4E;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-warning.place-bottom:after{border-bottom-color:#F0AD4E;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-warning.place-left:after{border-left-color:#F0AD4E;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-warning.place-right:after{border-right-color:#F0AD4E;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-warning.border{border:1px solid #fff}.__react_component_tooltip.type-warning.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-warning.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-warning.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-warning.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-error{color:#fff;background-color:#BE6464}.__react_component_tooltip.type-error.place-top:after{border-top-color:#BE6464;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-error.place-bottom:after{border-bottom-color:#BE6464;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-error.place-left:after{border-left-color:#BE6464;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-error.place-right:after{border-right-color:#BE6464;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-error.border{border:1px solid #fff}.__react_component_tooltip.type-error.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-error.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-error.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-error.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-info{color:#fff;background-color:#337AB7}.__react_component_tooltip.type-info.place-top:after{border-top-color:#337AB7;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-info.place-bottom:after{border-bottom-color:#337AB7;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-info.place-left:after{border-left-color:#337AB7;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-info.place-right:after{border-right-color:#337AB7;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-info.border{border:1px solid #fff}.__react_component_tooltip.type-info.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-info.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-info.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-info.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-light{color:#222;background-color:#fff}.__react_component_tooltip.type-light.place-top:after{border-top-color:#fff;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-light.place-bottom:after{border-bottom-color:#fff;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-light.place-left:after{border-left-color:#fff;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-light.place-right:after{border-right-color:#fff;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-light.border{border:1px solid #222}.__react_component_tooltip.type-light.border.place-top:before{border-top:8px solid #222}.__react_component_tooltip.type-light.border.place-bottom:before{border-bottom:8px solid #222}.__react_component_tooltip.type-light.border.place-left:before{border-left:8px solid #222}.__react_component_tooltip.type-light.border.place-right:before{border-right:8px solid #222}.__react_component_tooltip.place-top{margin-top:-10px}.__react_component_tooltip.place-top:before{border-left:10px solid transparent;border-right:10px solid transparent;bottom:-8px;left:50%;margin-left:-10px}.__react_component_tooltip.place-top:after{border-left:8px solid transparent;border-right:8px solid transparent;bottom:-6px;left:50%;margin-left:-8px}.__react_component_tooltip.place-bottom{margin-top:10px}.__react_component_tooltip.place-bottom:before{border-left:10px solid transparent;border-right:10px solid transparent;top:-8px;left:50%;margin-left:-10px}.__react_component_tooltip.place-bottom:after{border-left:8px solid transparent;border-right:8px solid transparent;top:-6px;left:50%;margin-left:-8px}.__react_component_tooltip.place-left{margin-left:-10px}.__react_component_tooltip.place-left:before{border-top:6px solid transparent;border-bottom:6px solid transparent;right:-8px;top:50%;margin-top:-5px}.__react_component_tooltip.place-left:after{border-top:5px solid transparent;border-bottom:5px solid transparent;right:-6px;top:50%;margin-top:-4px}.__react_component_tooltip.place-right{margin-left:10px}.__react_component_tooltip.place-right:before{border-top:6px solid transparent;border-bottom:6px solid transparent;left:-8px;top:50%;margin-top:-5px}.__react_component_tooltip.place-right:after{border-top:5px solid transparent;border-bottom:5px solid transparent;left:-6px;top:50%;margin-top:-4px}.__react_component_tooltip .multi-line{display:block;padding:2px 0px;text-align:center}
+</style>
+</head>
+<body style="">
+  <div id="app">
+      <div>
+	  <div id="panoContainer" class="PanoContainer_pano_1UeCWj">
+	      <div id="krpanoSWFObject" tabindex="-1" style="position: relative; overflow: hidden; line-height: normal; font-weight: normal; font-style: normal; outline: 0px; background: rgb(0, 0, 0); width: 100%; height: 100%;">
+		  <div style="position: absolute; left: 0px; top: 0px; width: 1366px; height: 623px; overflow: hidden; user-select: none; touch-action: none; -webkit-tap-highlight-color: transparent; cursor: default;">
+		      <div style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; overflow: hidden; pointer-events: none;">
+			  <canvas width="1366" height="623" style="position: absolute; left: 0px; top: 0px; width: 1366px; height: 623px;"></canvas>
+		      </div>
+		      <div style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; overflow: hidden; user-select: none; transform-style: preserve-3d;">
+			  <div style="display: none; position: absolute; z-index: 3091; overflow: visible; opacity: 1; cursor: pointer; pointer-events: auto;"></div>
+			  <div style="position: absolute; z-index: 3011; overflow: visible; opacity: 1; background: none; cursor: default; pointer-events: none; border-style: solid; border-color: rgb(0, 0, 0); border-width: 0px; border-radius: 0px; width: 1366px; height: 623px; transform: translateZ(1e+12px) translate(0px, 0px) translate(-683px, -311.5px) rotate(0deg) translate(683px, 311.5px);">
+			      <div style="position: absolute; z-index: 3011; overflow: visible; opacity: 1; cursor: default; pointer-events: none; background: none; border-style: solid; border-color: rgb(0, 0, 0); border-width: 0px; border-radius: 0px; width: 1366px; height: 623px; transform: translateZ(1e+12px) translate(0px, 0px) translate(683px, -311.5px) rotate(0deg) translate(-683px, 311.5px);"></div>
+			 </div>
+			  <div style="display: none; position: absolute; z-index: 3001; overflow: visible; opacity: 1; cursor: default; pointer-events: none;"></div>
+			  <div style="position: absolute; z-index: 3001; overflow: visible; opacity: 1; cursor: pointer; pointer-events: auto; background: none; width: 0px; height: 0px; transform: translateZ(1e+12px) translate(0px, 0px) translate(0px, 0px) rotate(0deg) translate(0px, 0px);"></div>
+			  <div style="display: none; position: absolute; z-index: 3001; overflow: visible; opacity: 0; color: rgb(0, 0, 0); text-size-adjust: none; pointer-events: auto; background: none; cursor: pointer; width: 128px; height: 38px; transform: translateZ(1e+12px) translate(619px, 24px) translate(0px, -19px) rotate(0deg) translate(0px, 19px);">
+			      <div style="position: absolute; top: 0px; left: 0px; transform-origin: 0px 0px 0px; transform: scale(1); width: 100%; height: 100%; font-size: 12px; font-family: Arial; line-height: normal; pointer-events: none; visibility: visible;">
+				  <div style="position: absolute; white-space: nowrap; background-color: rgba(45, 62, 80, 0.8); border-radius: 1px; box-shadow: rgba(48, 38, 27, 0.4) 0px 0px 8px;">
+				      <div style="margin:6px 10px 6px 10px;color:#FFFFFF; font-family:Arial; color:#FFFFFF;font-size:20px;">退出VR模式</div>					  
+				  </div>				      
+			      </div>				  
+			  </div>
+			  <div style="display: none; position: absolute; z-index: 3001; overflow: visible; opacity: 0; color: rgb(0, 0, 0); text-size-adjust: none; pointer-events: auto; background: none; cursor: pointer; width: 128px; height: 38px; transform: translateZ(1e+12px) translate(619px, 561px) translate(0px, 19px) rotate(0deg) translate(0px, -19px);">
+			      <div style="position: absolute; top: 0px; left: 0px; transform-origin: 0px 0px 0px; transform: scale(1); width: 100%; height: 100%; font-size: 12px; font-family: Arial; line-height: normal; pointer-events: none; visibility: visible;">
+				  <div style="position: absolute; white-space: nowrap; background-color: rgba(45, 62, 80, 0.8); border-radius: 1px; box-shadow: rgba(48, 38, 27, 0.4) 0px 0px 8px;">
+				      <div style="margin:6px 10px 6px 10px;color:#FFFFFF; font-family:Arial; color:#FFFFFF;font-size:20px;">VR模式设置</div>					  
+				  </div>				      
+			      </div>				  
+			  </div>
+			  <div style="display: none; position: absolute; z-index: 3051; overflow: visible; opacity: 1; cursor: pointer; pointer-events: auto;"></div>
+			  <div style="display: none; position: absolute; z-index: 3001; overflow: visible; opacity: 1; cursor: pointer; pointer-events: auto;"></div>
+			  <div style="position: absolute; z-index: 2001; overflow: visible; opacity: 1; cursor: pointer; pointer-events: auto; background: none; width: 101px; height: 26px; transform-origin: 50% 50% 0px; transform: translateZ(0px) translate(-4552px, -5536px) translate(-50px, -13px) rotate(0deg) translate(0px, -38px) scale(1, 1) translate(0px, 0px); display: none;">
+			      <div style="position: absolute; top: 0px; left: 0px; transform-origin: 0px 0px 0px; transform: scale(1); width: 100%; height: 100%; font-size: 12px; font-family: Arial; line-height: normal; pointer-events: none; visibility: visible;">
+				  <div style="position: absolute; white-space: nowrap; background-color: rgba(0, 0, 0, 0.5); border-radius: 5px;">
+				      <table style="width:100%;height:100%;border-collapse:collapse;text-decoration:inherit;"><tbody>
+					      <tr style="vertical-align:top;">
+						  <td style="padding:0;">
+						      <div style="margin:5px 5px 5px 5px;font-family:STXihei; font-size:12px; color:#ffffff;letter-spacing:1px;textAlign:center;">都江堰景区全景</div>
+						  </td>
+					      </tr>
+					  </tbody>
+				      </table>					  
+				  </div>				      
+			      </div>				      
+			  </div>
+			  <div style="position: absolute; z-index: 2001; overflow: visible; opacity: 1; cursor: pointer; pointer-events: auto; background: none; width: 127px; height: 26px; transform-origin: 50% 50% 0px; transform: translateZ(0px) translate(-2669px, -3693px) translate(-63px, -13px) rotate(0deg) translate(0px, -38px) scale(1, 1) translate(0px, 0px); display: none;">
+			      <div style="position: absolute; top: 0px; left: 0px; transform-origin: 0px 0px 0px; transform: scale(1); width: 100%; height: 100%; font-size: 12px; font-family: Arial; line-height: normal; pointer-events: none; visibility: visible;">
+				  <div style="position: absolute; white-space: nowrap; background-color: rgba(0, 0, 0, 0.5); border-radius: 5px;">
+				      <table style="width:100%;height:100%;border-collapse:collapse;text-decoration:inherit;">
+					  <tbody><tr style="vertical-align:top;">
+						  <td style="padding:0;">
+						      <div style="margin:5px 5px 5px 5px;font-family:STXihei; font-size:12px; color:#ffffff;letter-spacing:1px;textAlign:center;">都江堰水利枢纽鱼嘴</div>
+						  </td>
+					      </tr>
+					  </tbody>
+				      </table>					  
+				  </div>				      
+			      </div>				  
+			  </div>			      
+		      </div>			  
+		  </div>
+		  <div style="position: absolute; left: 0px; bottom: 0px; width: 100%; height: 156px; overflow: hidden; display: none; transform: translateZ(2e+12px); z-index: 999999999;">
+		      <div style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; overflow: hidden; opacity: 0.67; background-color: rgb(0, 0, 0); box-shadow: rgb(255, 255, 255) 0px 0px 8px; margin-top: 8px;"></div>
+		      <pre style="font-family: &quot;Courier New&quot;; font-size: 11px; position: absolute; left: 5px; top: 0px; padding: 0px 16px 0px 0px; background: none; border: 0px; margin-top: 10px; width: 100%; height: 146px; overflow: auto; display: block; text-align: left; white-space: pre-line; text-size-adjust: none; color: rgb(255, 255, 255); cursor: text;">
+			INFO: krpano 1.19-pr10 (build 2017-05-10) INFO: HTML5/Desktop - Chrome 65.0 - WebGL INFO: Registered to: OTHINK Technology Co.,Ltd.
+			<span style="color:#FFFF00;">ERROR: jsget() - calling Javascript "krpCallbackObject" failed: ReferenceError: krpCallbackObject is not defined</span> 
+			</pre>
+		      <div style="position: absolute; right: 0px; top: 10px; padding: 0px 4px; height: 30px; user-select: none; cursor: pointer; -webkit-tap-highlight-color: transparent; font-family: &quot;Courier New&quot;; font-size: 10px; color: rgb(255, 255, 255);">CLOSE</div>
+		      <div style="position: absolute; right: 0px; bottom: 0px; padding: 0px 4px 4px; height: 12px; user-select: none; cursor: pointer; -webkit-tap-highlight-color: transparent; font-family: &quot;Courier New&quot;; font-size: 10px; color: rgb(15, 255, 0); display: none;">LAYERS</div>
+		      <div style="position: absolute; right: 0px; bottom: 18px; padding: 4px 4px 0px; height: 12px; user-select: none; cursor: pointer; -webkit-tap-highlight-color: transparent; font-family: &quot;Courier New&quot;; font-size: 10px; color: rgb(15, 255, 0); display: none;">HOTSPOTS</div>
+		  </div>		      
+	      </div>		  
+	  </div>
+	  <div class="TopContainer_container_3aTj8U">
+	      <div class="Subtitle_no_subtitle__9U3O5"></div>
+	      <div class="RightBtnContainer_container_2TnlAa">
+		  <div><em class="Button_btn_3I1HLL" style="display: block;">
+			  <i class="icon_icon_2qVimu" style="background-size: 900px 1009px; background-position: -65px -589px; width: 62px; height: 62px;"></i></em>
+		      <div><em class="Button_btn_3I1HLL" style="display: block;">
+			      <i class="icon_icon_2qVimu" style="background-size: 900px 1009px; background-position: -130px -660px; width: 62px; height: 62px;"></i></em>
+		      </div><em class="Button_btn_3I1HLL" id="vr_btn" style="display: block;">
+			  <i class="icon_icon_2qVimu" style="background-size: 900px 1009px; background-position: -1px -590px; width: 62px; height: 62px;"></i></em>
+		  </div>
+	      </div>
+	      <div class="TitleContainer_title_3n-dyo">
+		  <div class="TitleContainer_author_3Po4nX"></div>
+		  <div><a class="Logo_logo2_2naKBI"><img src="/Public/Home/720vr/b02c8d3bc8ffcc992d9810e01554eb5f.png"></a></div>
+	      </div>
+	  </div>
+	  <div>
+	      <div class="Theme1_component_k85rpQ block-horizontal-layout">
+		  <div class="Theme1_left_3Khbg_">
+		      <div class="LBButton_button_1UYObd">
+			  <div class="LBButton_size_1LOdZZ">
+			      <i class="LBButton_icon_1SRnYA" style="background-image: url(&quot;http://api-qiniu2.720static.com/category/system/90/piclist.png&quot;);"></i>
+			  </div>
+			  <div class="LBButton_title_1lPozS">场景选择</div>			      
+		      </div>			  
+		  </div>
+		  <div class="Theme1_right_22mVy8 block-horizontal-layout block-justify-end">
+		      <div class="Button_button_box_IEKNKj">
+			  <div class="Button_button_iUNSEq block-vertical-layout block-align-center">
+			      <em style="display: block;"><i class="icon_icon_2qVimu" style="background-size: 900px 1009px; background-position: -240px -734px; width: 80px; height: 80px;"></i></em>
+			      <p>足迹</p>
+			  </div>
+		      </div>
+		      <div class="Button_button_box_IEKNKj">
+				  <div class="Button_button_iUNSEq block-vertical-layout block-align-center">
+				      <em style="display: block;"><i class="icon_icon_2qVimu" style="background-size: 900px 1009px; background-position: -320px -734px; width: 80px; height: 80px;"></i></em>
+				      <p>分享</p>
+				  </div>
+		      </div>
+		      <div class="Button_button_box_IEKNKj">
+			  <div class="Button_button_iUNSEq block-vertical-layout block-align-center">
+			      <em style="display: block;"><i class="icon_icon_2qVimu" style="background-size: 900px 1009px; background-position: -80px -734px; width: 80px; height: 80px;"></i></em>
+			      <p>7</p>
+			  </div>
+		      </div>
+		      <div class="Button_button_box_IEKNKj">
+			  <div class="Button_button_iUNSEq block-vertical-layout block-align-center">
+			      <em style="display: block;"><i class="icon_icon_2qVimu" style="background-size: 900px 1009px; background-position: 0px -731px; width: 80px; height: 80px;"></i></em>
+			      <p>说一说</p>
+			  </div>
+		      </div>
+		  </div>
+	      </div>
+	  </div>
+	  <div class="Theme1_theme_11xfGS">
+		<div class="Panos_panos_GjUcrA">
+		    <div class="Panos_anim_971ly7 Panos_move_1pnxy7">
+			<div class="Panos_wrapper_3hxUAH">
+			    <div data-tip="都江堰景区全景" class="Panos_item_1mjB5K" currentitem="false">
+				<div class="Panos_img_3Tm8fI" style="background-image: url(&quot;http://thumb-qiniu.720static.com/@/resource/prod/51di0713308/cc62auO5ubv/6154867/imgs/thumb.jpg?imageView2/0/w/200/h/200&quot;);">
+				    <div class="Panos_name_2Vp2sE"><span class="Panos_small_3Hvv8E ellipsis">都江堰景区全景</span>
+				    </div>
+				</div>
+			    </div>
+			    <div data-tip="都江堰市幸福大街" class="Panos_item_1mjB5K" currentitem="false">
+				<div class="Panos_img_3Tm8fI" style="background-image: url(&quot;http://thumb-qiniu.720static.com/@/resource/prod/51di0713308/cc62auO5ubv/9343017/imgs/thumb.jpg?imageView2/0/w/200/h/200&quot;);">
+				    <div class="Panos_name_2Vp2sE">
+					<span class="Panos_small_3Hvv8E ellipsis">都江堰市幸福大街</span>
+				    </div>
+				</div>
+			    </div>
+			    <div data-tip="都江堰南桥" class="Panos_item_1mjB5K" currentitem="false">
+				<div class="Panos_img_3Tm8fI" style="background-image: url(&quot;http://thumb-qiniu.720static.com/@/resource/prod/51di0713308/cc62auO5ubv/9342873/imgs/thumb.jpg?imageView2/0/w/200/h/200&quot;);">
+				    <div class="Panos_name_2Vp2sE"><span class="Panos_small_3Hvv8E ellipsis">都江堰南桥</span>
+				    </div>
+				</div>
+			    </div>
+			    <div data-tip="都江堰宣化门" class="Panos_item_1mjB5K" currentitem="false">
+				<div class="Panos_img_3Tm8fI" style="background-image: url(&quot;http://thumb-qiniu.720static.com/@/resource/prod/51di0713308/cc62auO5ubv/9343520/imgs/thumb.jpg?imageView2/0/w/200/h/200&quot;);">
+				    <div class="Panos_name_2Vp2sE"><span class="Panos_small_3Hvv8E ellipsis">都江堰宣化门</span></div>
+				</div>
+			    </div>
+			    <div data-tip="都江堰南桥夜景" class="Panos_item_1mjB5K" currentitem="false">
+				<div class="Panos_img_3Tm8fI" style="background-image: url(&quot;http://thumb-qiniu.720static.com/@/resource/prod/51di0713308/cc62auO5ubv/6034113/imgs/thumb.jpg?imageView2/0/w/200/h/200&quot;);">
+				    <div class="Panos_name_2Vp2sE"><span class="Panos_small_3Hvv8E ellipsis">都江堰南桥夜景</span>
+				    </div>
+				</div>
+			    </div>
+			    <div data-tip="都江堰市南桥" class="Panos_item_1mjB5K" currentitem="false">
+				<div class="Panos_img_3Tm8fI" style="background-image: url(&quot;http://thumb-qiniu.720static.com/@/resource/prod/51di0713308/cc62auO5ubv/6034183/imgs/thumb.jpg?imageView2/0/w/200/h/200&quot;);">
+				    <div class="Panos_name_2Vp2sE"><span class="Panos_small_3Hvv8E ellipsis">都江堰市南桥</span>
+				    </div>
+				</div>
+			    </div>
+			    <div data-tip="都江堰水利枢纽宝瓶口" class="Panos_itemActive_3wsUdG" currentitem="false">
+				<div class="Panos_img_3Tm8fI" style="background-image: url(&quot;http://thumb-qiniu.720static.com/@/resource/prod/51di0713308/cc62auO5ubv/6154868/imgs/thumb.jpg?imageView2/0/w/200/h/200&quot;);">
+				    <div class="Panos_name_2Vp2sE"><span class="Panos_small_3Hvv8E ellipsis">都江堰水利枢纽宝瓶口</span>
+				    </div>
+				</div>
+			    </div>
+			    <div data-tip="都江堰水利枢纽鱼嘴" class="Panos_item_1mjB5K" currentitem="false">
+				<div class="Panos_img_3Tm8fI" style="background-image: url(&quot;http://thumb-qiniu.720static.com/@/resource/prod/51di0713308/cc62auO5ubv/6154869/imgs/thumb.jpg?imageView2/0/w/200/h/200&quot;);">
+				    <div class="Panos_name_2Vp2sE"><span class="Panos_small_3Hvv8E ellipsis">都江堰水利枢纽鱼嘴</span>
+				    </div>
+				</div>
+			    </div>
+			</div>
+		    </div>
+		</div>
+	      <div class="__react_component_tooltip place-top type-dark " data-id="tooltip" style="left: 815px; top: 479px;">都江堰水利枢纽宝瓶口</div>		  
+	  </div>
+	  <div>	      
+	  </div>	      
+      </div>	      
+  </div>
+
+  <div class="script">
+    <script type="text/javascript">
+
+      window.__INITIAL_STATE__ = {
+        'sceneType': 1,
+        'data': {"author":{"uid":"cc62auO5ubv","expired":0,"nickname":"沙木文化","cert":0,"avatar":"/avatar/cc62auO5ubv/ae4a4090a911ad4ef1c3de2fddd6c1de.jpg","id":973910}
+	    ,"product":{"config":{"qr":"","link":[],"scenes":[{"voice":{},"panoId":6154867
+			    ,"hotspot":[{"atv":"28.673000000000002","blank":"1"
+				    ,"data":{"sceneId":"","panoId":"6034113","effect":"0"},"title":"都江堰南桥夜景","type":0,"url":"","ath":"114.253","keepView":"1","showTitle":"1","iconType":1,"id":"s_14895162_0","iconUrl":"/v2/hotspot/80/new_spotd12_gif.png"}
+				,{"atv":"-17.737000000000002","blank":"1","data":{"sceneId":"","panoId":"9342873","effect":"0"},"title":"都江堰南桥","type":0,"url":"","ath":"113.041","keepView":"1","showTitle":"1","iconType":1,"id":"s_14895162_1","iconUrl":"/v2/hotspot/80/new_spotd11_gif.png"}
+				,{"atv":"-29.5","blank":"1","data":{"sceneId":"","panoId":"9343017","effect":"0"},"title":"都江堰市幸福大街","type":0,"url":"","ath":"-93.062","keepView":"1","showTitle":"1","iconType":1,"id":"s_14895162_2","iconUrl":"/v2/hotspot/80/new_spotd11_gif.png"}
+				,{"atv":"-0.37100000000000044","blank":"1","data":{"sceneId":"","panoId":"9343520","effect":"0"},"title":"都江堰宣化门","type":0,"url":"","ath":"-129.613","keepView":"1","showTitle":"1","iconType":1,"id":"s_14895162_3","iconUrl":"/v2/hotspot/80/new_spotd12_gif.png"}
+				,{"atv":"-45.363","blank":"1","data":{"sceneId":"","panoId":"6154869","effect":"0"},"title":"都江堰水利枢纽鱼嘴","type":0,"url":"","ath":"120.334","keepView":"1","showTitle":"1","iconType":1,"id":"s_14895162_4","iconUrl":"/v2/hotspot/80/new_spotd11_gif.png"}
+				,{"atv":"-43.665","blank":"1","data":{"sceneId":"","panoId":"6154868","effect":"0"},"title":"都江堰水利枢纽宝瓶口","type":0,"url":"","ath":"87.787","keepView":"1","showTitle":"1","iconType":1,"id":"s_14895162_5","iconUrl":"/v2/hotspot/80/new_spotd11_gif.png"}]
+			    ,"sound":{"type":2,"url":"/cc62auO5ubv/1/a4f1f4e0fcf868119ae38f496663208f.mp3"},"subtitle":{},"name":"都江堰景区全景","id":14895162,"startImage":{"mobile":{"image":"","enabled":0},"pc":{"image":"","enabled":0}},"cdn":23},{"voice":{},"panoId":9343017,"hotspot":[{"atv":"-48.852","blank":"1","data":{"sceneId":"","panoId":"6154867","effect":"0"},"title":"都江堰景区全景","type":0,"url":"","ath":"161.02","keepView":"1","showTitle":"1","iconType":1,"id":"s_14895166_0","iconUrl":"/v2/hotspot/80/new_spotd11_gif.png"},{"atv":"-43.076","blank":"1","data":{"sceneId":"","panoId":"9342873","effect":"0"},"title":"都江堰南桥","type":0,"url":"","ath":"125.965","keepView":"1","showTitle":"1","iconType":1,"id":"s_14895166_1","iconUrl":"/v2/hotspot/80/new_spotd11_gif.png"}],"sound":{"type":2,"url":"/cc62auO5ubv/1/a4f1f4e0fcf868119ae38f496663208f.mp3"},"subtitle":{},"name":"都江堰市幸福大街","id":14895166,"startImage":{"mobile":{"image":"","enabled":0},"pc":{"image":"","enabled":0}},"cdn":36},{"voice":{},"panoId":9342873,"hotspot":[],"sound":{"type":2,"url":"/cc62auO5ubv/1/a4f1f4e0fcf868119ae38f496663208f.mp3"},"subtitle":{},"name":"都江堰南桥","id":14895165,"startImage":{"mobile":{"image":"","enabled":0},"pc":{"image":"","enabled":0}},"cdn":36},{"voice":{},"panoId":9343520,"hotspot":[{"atv":"-67.148","blank":"1","data":{"sceneId":"","panoId":"6154867","effect":"0"},"title":"都江堰景区全景","type":0,"url":"","ath":"164.554","keepView":"1","showTitle":"1","iconType":1,"id":"s_14895167_0","iconUrl":"/v2/hotspot/80/new_spotd11_gif.png"},{"atv":"-58.942","blank":"1","data":{"sceneId":"","panoId":"9342873","effect":"0"},"title":"都江堰南桥","type":0,"url":"","ath":"-158.737","keepView":"1","showTitle":"1","iconType":1,"id":"s_14895167_1","iconUrl":"/v2/hotspot/80/new_spotd11_gif.png"}],"sound":{"type":2,"url":"/cc62auO5ubv/1/a4f1f4e0fcf868119ae38f496663208f.mp3"},"subtitle":{},"name":"都江堰宣化门","id":14895167,"startImage":{"mobile":{"image":"","enabled":0},"pc":{"image":"","enabled":0}},"cdn":37},{"voice":{},"panoId":6034113,"hotspot":[{"atv":"-4.224","blank":"1","data":{"sceneId":"","panoId":"6034183","effect":"0"},"title":"都江堰市南桥","type":0,"url":"","ath":"1.369","keepView":"1","showTitle":"1","iconType":1,"id":"s_14895160_0","iconUrl":"/v2/hotspot/80/new_spotd12_gif.png"},{"atv":"-58.391","blank":"1","data":{"sceneId":"","panoId":"6154867","effect":"0"},"title":"都江堰景区全景","type":0,"url":"","ath":"133.738","keepView":"1","showTitle":"1","iconType":1,"id":"s_14895160_1","iconUrl":"/v2/hotspot/80/new_spotd11_gif.png"}],"sound":{"type":2,"url":"/cc62auO5ubv/1/a4f1f4e0fcf868119ae38f496663208f.mp3"},"subtitle":{},"name":"都江堰南桥夜景","id":14895160,"startImage":{"mobile":{"image":"","enabled":0},"pc":{"image":"","enabled":0}},"cdn":25},{"voice":{},"panoId":6034183,"hotspot":[{"atv":"-28.019","blank":"1","data":{"sceneId":"","panoId":"6154867","effect":"0"},"title":"都江堰景区全景","type":0,"url":"","ath":"179.098","keepView":"1","showTitle":"1","iconType":1,"id":"s_14895161_0","iconUrl":"/v2/hotspot/80/new_spotd11_gif.png"}],"sound":{"type":2,"url":"/cc62auO5ubv/1/a4f1f4e0fcf868119ae38f496663208f.mp3"},"subtitle":{},"name":"都江堰市南桥","id":14895161,"startImage":{"mobile":{"image":"","enabled":0},"pc":{"image":"","enabled":0}},"cdn":24},{"voice":{},"panoId":6154868,"hotspot":[{"atv":"-53.219","blank":"1","data":{"sceneId":"","panoId":"6154867","effect":"0"},"title":"都江堰景区全景","type":0,"url":"","ath":"-76.339","keepView":"1","showTitle":"1","iconType":1,"id":"s_14895163_0","iconUrl":"/v2/hotspot/80/new_spotd11_gif.png"},{"atv":"-45.916","blank":"1","data":{"sceneId":"","panoId":"6154869","effect":"0"},"title":"都江堰水利枢纽鱼嘴","type":0,"url":"","ath":"141.458","keepView":"1","showTitle":"1","iconType":1,"id":"s_14895163_1","iconUrl":"/v2/hotspot/80/new_spotd11_gif.png"}],"sound":{"type":2,"url":"/cc62auO5ubv/1/a4f1f4e0fcf868119ae38f496663208f.mp3"},"subtitle":{},"name":"都江堰水利枢纽宝瓶口","id":14895163,"startImage":{"mobile":{"image":"","enabled":0},"pc":{"image":"","enabled":0}},"cdn":23},{"voice":{},"panoId":6154869,"hotspot":[{"atv":"-49.223","blank":"1","data":{"sceneId":"","panoId":"6154867","effect":"0"},"title":"都江堰景区全景","type":0,"url":"","ath":"-106.763","keepView":"1","showTitle":"1","iconType":1,"id":"s_14895164_0","iconUrl":"/v2/hotspot/80/new_spotd11_gif.png"},{"atv":"-37.756","blank":"1","data":{"sceneId":"","panoId":"6154868","effect":"0"},"title":"都江堰水利枢纽宝瓶口","type":0,"url":"","ath":"-70.687","keepView":"1","showTitle":"1","iconType":1,"id":"s_14895164_1","iconUrl":"/v2/hotspot/80/new_spotd11_gif.png"}],"sound":{"type":2,"url":"/cc62auO5ubv/1/a4f1f4e0fcf868119ae38f496663208f.mp3"},"subtitle":{},"name":"都江堰水利枢纽鱼嘴","id":14895164,"startImage":{"mobile":{"image":"","enabled":0},"pc":{"image":"","enabled":0}},"cdn":23}],"logo":{"link":"","align":"1","enabled":"1","url":"/cc62auO5ubv/2/b02c8d3bc8ffcc992d9810e01554eb5f.png"},"category":{"groups":[{"scenes":[{"panoId":6154867,"thumb":"/resource/prod/51di0713308/cc62auO5ubv/6154867/imgs/thumb.jpg","name":"都江堰景区全景","id":14895162},{"panoId":9343017,"thumb":"/resource/prod/51di0713308/cc62auO5ubv/9343017/imgs/thumb.jpg","name":"都江堰市幸福大街","id":14895166},{"panoId":9342873,"thumb":"/resource/prod/51di0713308/cc62auO5ubv/9342873/imgs/thumb.jpg","name":"都江堰南桥","id":14895165},{"panoId":9343520,"thumb":"/resource/prod/51di0713308/cc62auO5ubv/9343520/imgs/thumb.jpg","name":"都江堰宣化门","id":14895167},{"panoId":6034113,"thumb":"/resource/prod/51di0713308/cc62auO5ubv/6034113/imgs/thumb.jpg","name":"都江堰南桥夜景","id":14895160},{"panoId":6034183,"thumb":"/resource/prod/51di0713308/cc62auO5ubv/6034183/imgs/thumb.jpg","name":"都江堰市南桥","id":14895161},{"panoId":6154868,"thumb":"/resource/prod/51di0713308/cc62auO5ubv/6154868/imgs/thumb.jpg","name":"都江堰水利枢纽宝瓶口","id":14895163},{"panoId":6154869,"thumb":"/resource/prod/51di0713308/cc62auO5ubv/6154869/imgs/thumb.jpg","name":"都江堰水利枢纽鱼嘴","id":14895164}],"title":"场景选择"}],"iconUrl":"/category/system/90/piclist.png","iconType":1},"switch":{"showAuth":0,"enableGyro":0,"enableComment":1,"showPv":0,"enableLittleplanet":1,"showComment":1,"enableLike":1,"enableLocation":1,"showMenu":1,"enablePassword":0,"enableShare":1,"enableViewchange":0,"enableVr":1}}
+		,"status":1,"authorUid":"cc62auO5ubv","likeCount":7,"property":{"updateDate":1526094420,"keywords":"","channel":{"name":"建　筑","id":32},"name":"5·12汶川特大地震都江堰市VR全景","remark":"","pid":"fe0jtOsn5y6","id":5897456,"type":1,"thumbUrl":"/resource/prod/51di0713308/cc62auO5ubv/6034113/imgs/thumb.jpg","templateId":1,"selected":1,"createDate":1525791902},"process":0,"pvCount":631}
+	},
+        'playerVersion': '1b27b4f5f48220d7d2833c0593bb681fdb480cdb8eb5a8cdb8aa8be465675e08',
+        'xml': '<?xml version="1.0"?><krpano version="1.19"><include url="%$playerDomain%/api/lensflare/lensflare.xml"/><include url="%$playerDomain%/krp/player_%$playerVersion%.xml"/><scene name="s_14895162" pano_id="6154867" scene_id="14895162"><preview url="%$cdnDomain23%/resource/prod/51di0713308/cc62auO5ubv/6154867/imgs/preview.jpg"/><image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop"><level tiledimagewidth="4608" tiledimageheight="4608"><cube url="%$cdnDomain23%/resource/prod/51di0713308/cc62auO5ubv/6154867/imgs/%s/l4/%0v/l4_%s_%0v_%0h.jpg"/></level><level tiledimagewidth="2304" tiledimageheight="2304"><cube url="%$cdnDomain23%/resource/prod/51di0713308/cc62auO5ubv/6154867/imgs/%s/l3/%0v/l3_%s_%0v_%0h.jpg"/></level><level tiledimagewidth="1152" tiledimageheight="1152"><cube url="%$cdnDomain23%/resource/prod/51di0713308/cc62auO5ubv/6154867/imgs/%s/l2/%0v/l2_%s_%0v_%0h.jpg"/></level><level tiledimagewidth="576" tiledimageheight="576"><cube url="%$cdnDomain23%/resource/prod/51di0713308/cc62auO5ubv/6154867/imgs/%s/l1/%0v/l1_%s_%0v_%0h.jpg"/></level></image><image if="webvr.isenabled OR !device.desktop"><cube url="%$cdnDomain23%/resource/prod/51di0713308/cc62auO5ubv/6154867/imgs/mobile_%s.jpg"/></image></scene><scene name="s_14895166" pano_id="9343017" scene_id="14895166"><preview url="%$cdnDomain36%/resource/prod/51di0713308/cc62auO5ubv/9343017/imgs/preview.jpg"/><image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop"><level tiledimagewidth="3840" tiledimageheight="3840"><cube url="%$cdnDomain36%/resource/prod/51di0713308/cc62auO5ubv/9343017/imgs/%s/l3/%v/l3_%s_%v_%h.jpg"/></level><level tiledimagewidth="1792" tiledimageheight="1792"><cube url="%$cdnDomain36%/resource/prod/51di0713308/cc62auO5ubv/9343017/imgs/%s/l2/%v/l2_%s_%v_%h.jpg"/></level><level tiledimagewidth="1024" tiledimageheight="1024"><cube url="%$cdnDomain36%/resource/prod/51di0713308/cc62auO5ubv/9343017/imgs/%s/l1/%v/l1_%s_%v_%h.jpg"/></level></image><image if="webvr.isenabled OR !device.desktop"><cube url="%$cdnDomain36%/resource/prod/51di0713308/cc62auO5ubv/9343017/imgs/mobile_%s.jpg"/></image></scene><scene name="s_14895165" pano_id="9342873" scene_id="14895165"><preview url="%$cdnDomain36%/resource/prod/51di0713308/cc62auO5ubv/9342873/imgs/preview.jpg"/><image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop"><level tiledimagewidth="5120" tiledimageheight="5120"><cube url="%$cdnDomain36%/resource/prod/51di0713308/cc62auO5ubv/9342873/imgs/%s/l4/%0v/l4_%s_%0v_%0h.jpg"/></level><level tiledimagewidth="2560" tiledimageheight="2560"><cube url="%$cdnDomain36%/resource/prod/51di0713308/cc62auO5ubv/9342873/imgs/%s/l3/%0v/l3_%s_%0v_%0h.jpg"/></level><level tiledimagewidth="1280" tiledimageheight="1280"><cube url="%$cdnDomain36%/resource/prod/51di0713308/cc62auO5ubv/9342873/imgs/%s/l2/%0v/l2_%s_%0v_%0h.jpg"/></level><level tiledimagewidth="640" tiledimageheight="640"><cube url="%$cdnDomain36%/resource/prod/51di0713308/cc62auO5ubv/9342873/imgs/%s/l1/%0v/l1_%s_%0v_%0h.jpg"/></level></image><image if="webvr.isenabled OR !device.desktop"><cube url="%$cdnDomain36%/resource/prod/51di0713308/cc62auO5ubv/9342873/imgs/mobile_%s.jpg"/></image></scene><scene name="s_14895167" pano_id="9343520" scene_id="14895167"><preview url="%$cdnDomain37%/resource/prod/51di0713308/cc62auO5ubv/9343520/imgs/preview.jpg"/><image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop"><level tiledimagewidth="3142" tiledimageheight="3142"><cube url="%$cdnDomain37%/resource/prod/51di0713308/cc62auO5ubv/9343520/imgs/%s/l3/%v/l3_%s_%v_%h.jpg"/></level><level tiledimagewidth="1536" tiledimageheight="1536"><cube url="%$cdnDomain37%/resource/prod/51di0713308/cc62auO5ubv/9343520/imgs/%s/l2/%v/l2_%s_%v_%h.jpg"/></level><level tiledimagewidth="768" tiledimageheight="768"><cube url="%$cdnDomain37%/resource/prod/51di0713308/cc62auO5ubv/9343520/imgs/%s/l1/%v/l1_%s_%v_%h.jpg"/></level></image><image if="webvr.isenabled OR !device.desktop"><cube url="%$cdnDomain37%/resource/prod/51di0713308/cc62auO5ubv/9343520/imgs/mobile_%s.jpg"/></image></scene><scene name="s_14895160" pano_id="6034113" scene_id="14895160"><preview url="%$cdnDomain25%/resource/prod/51di0713308/cc62auO5ubv/6034113/imgs/preview.jpg"/><image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop"><level tiledimagewidth="2992" tiledimageheight="2992"><cube url="%$cdnDomain25%/resource/prod/51di0713308/cc62auO5ubv/6034113/imgs/%s/l3/%v/l3_%s_%v_%h.jpg"/></level><level tiledimagewidth="1536" tiledimageheight="1536"><cube url="%$cdnDomain25%/resource/prod/51di0713308/cc62auO5ubv/6034113/imgs/%s/l2/%v/l2_%s_%v_%h.jpg"/></level><level tiledimagewidth="768" tiledimageheight="768"><cube url="%$cdnDomain25%/resource/prod/51di0713308/cc62auO5ubv/6034113/imgs/%s/l1/%v/l1_%s_%v_%h.jpg"/></level></image><image if="webvr.isenabled OR !device.desktop"><cube url="%$cdnDomain25%/resource/prod/51di0713308/cc62auO5ubv/6034113/imgs/mobile_%s.jpg"/></image></scene><scene name="s_14895161" pano_id="6034183" scene_id="14895161"><preview url="%$cdnDomain24%/resource/prod/51di0713308/cc62auO5ubv/6034183/imgs/preview.jpg"/><image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop"><level tiledimagewidth="3056" tiledimageheight="3056"><cube url="%$cdnDomain24%/resource/prod/51di0713308/cc62auO5ubv/6034183/imgs/%s/l3/%v/l3_%s_%v_%h.jpg"/></level><level tiledimagewidth="1536" tiledimageheight="1536"><cube url="%$cdnDomain24%/resource/prod/51di0713308/cc62auO5ubv/6034183/imgs/%s/l2/%v/l2_%s_%v_%h.jpg"/></level><level tiledimagewidth="768" tiledimageheight="768"><cube url="%$cdnDomain24%/resource/prod/51di0713308/cc62auO5ubv/6034183/imgs/%s/l1/%v/l1_%s_%v_%h.jpg"/></level></image><image if="webvr.isenabled OR !device.desktop"><cube url="%$cdnDomain24%/resource/prod/51di0713308/cc62auO5ubv/6034183/imgs/mobile_%s.jpg"/></image></scene><scene name="s_14895163" pano_id="6154868" scene_id="14895163"><preview url="%$cdnDomain23%/resource/prod/51di0713308/cc62auO5ubv/6154868/imgs/preview.jpg"/><image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop"><level tiledimagewidth="4608" tiledimageheight="4608"><cube url="%$cdnDomain23%/resource/prod/51di0713308/cc62auO5ubv/6154868/imgs/%s/l4/%0v/l4_%s_%0v_%0h.jpg"/></level><level tiledimagewidth="2304" tiledimageheight="2304"><cube url="%$cdnDomain23%/resource/prod/51di0713308/cc62auO5ubv/6154868/imgs/%s/l3/%0v/l3_%s_%0v_%0h.jpg"/></level><level tiledimagewidth="1152" tiledimageheight="1152"><cube url="%$cdnDomain23%/resource/prod/51di0713308/cc62auO5ubv/6154868/imgs/%s/l2/%0v/l2_%s_%0v_%0h.jpg"/></level><level tiledimagewidth="576" tiledimageheight="576"><cube url="%$cdnDomain23%/resource/prod/51di0713308/cc62auO5ubv/6154868/imgs/%s/l1/%0v/l1_%s_%0v_%0h.jpg"/></level></image><image if="webvr.isenabled OR !device.desktop"><cube url="%$cdnDomain23%/resource/prod/51di0713308/cc62auO5ubv/6154868/imgs/mobile_%s.jpg"/></image></scene><scene name="s_14895164" pano_id="6154869" scene_id="14895164"><preview url="%$cdnDomain23%/resource/prod/51di0713308/cc62auO5ubv/6154869/imgs/preview.jpg"/><image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop"><level tiledimagewidth="4608" tiledimageheight="4608"><cube url="%$cdnDomain23%/resource/prod/51di0713308/cc62auO5ubv/6154869/imgs/%s/l4/%0v/l4_%s_%0v_%0h.jpg"/></level><level tiledimagewidth="2304" tiledimageheight="2304"><cube url="%$cdnDomain23%/resource/prod/51di0713308/cc62auO5ubv/6154869/imgs/%s/l3/%0v/l3_%s_%0v_%0h.jpg"/></level><level tiledimagewidth="1152" tiledimageheight="1152"><cube url="%$cdnDomain23%/resource/prod/51di0713308/cc62auO5ubv/6154869/imgs/%s/l2/%0v/l2_%s_%0v_%0h.jpg"/></level><level tiledimagewidth="576" tiledimageheight="576"><cube url="%$cdnDomain23%/resource/prod/51di0713308/cc62auO5ubv/6154869/imgs/%s/l1/%0v/l1_%s_%0v_%0h.jpg"/></level></image><image if="webvr.isenabled OR !device.desktop"><cube url="%$cdnDomain23%/resource/prod/51di0713308/cc62auO5ubv/6154869/imgs/mobile_%s.jpg"/></image></scene><config><autoTours><tour title="一键导览" hideHotspots="false" loop="false" disableMusic="false" subtitlePosition="bottom" subtitleSize="16" subtitleBackground="black"/></autoTours><panos><pano name="s_14895162"><info title="都江堰景区全景" pano_id="6154867"/><view autorotatekeepview="0" maxpixelzoom="2.0" fovmin="70" loadscenekeepview="0" fov="120" vlookatmax="90" vlookat="7.5163211003312425" fovmax="120" vlookatmin="-90" hlookat="-226.73039678549367" fovtype="MFOV"/><autoplay duration="180" keep_originview="0" enabled="1" enter_next="1"/><bottom_circle type="2" url="%$mediaDomain%/cc62auO5ubv/2/36837b3974c0ae48d1b6ac9954a4081e.png" is_float="1"/></pano><pano name="s_14895166"><info title="都江堰市幸福大街" pano_id="9343017"/><view autorotatekeepview="0" maxpixelzoom="2.0" fovmin="70" loadscenekeepview="0" fov="120" vlookatmax="90" vlookat="4.125842886331475" fovmax="120" vlookatmin="-90" hlookat="-251.89855429851409" fovtype="MFOV"/><autoplay duration="180" keep_originview="0" enabled="1" enter_next="1"/><bottom_circle type="2" url="%$mediaDomain%/cc62auO5ubv/2/36837b3974c0ae48d1b6ac9954a4081e.png" is_float="1"/></pano><pano name="s_14895165"><info title="都江堰南桥" pano_id="9342873"/><view autorotatekeepview="0" maxpixelzoom="2.0" fovmin="70" loadscenekeepview="0" fov="120" vlookatmax="90" vlookat="4.127505158233925" fovmax="120" vlookatmin="-90" hlookat="5.755999824383176" fovtype="MFOV"/><autoplay duration="180" keep_originview="0" enabled="1" enter_next="1"/><bottom_circle type="2" url="%$mediaDomain%/cc62auO5ubv/2/36837b3974c0ae48d1b6ac9954a4081e.png" is_float="1"/></pano><pano name="s_14895167"><info title="都江堰宣化门" pano_id="9343520"/><view autorotatekeepview="0" maxpixelzoom="2.0" fovmin="70" loadscenekeepview="0" fov="120" vlookatmax="90" vlookat="-14.713458178240653" fovmax="120" vlookatmin="-90" hlookat="0.2718251645912018" fovtype="MFOV"/><autoplay duration="180" keep_originview="0" enabled="1" enter_next="1"/><bottom_circle type="2" url="%$mediaDomain%/cc62auO5ubv/2/36837b3974c0ae48d1b6ac9954a4081e.png" is_float="1"/></pano><pano name="s_14895160"><info title="都江堰南桥夜景" pano_id="6034113"/><view autorotatekeepview="0" maxpixelzoom="2.0" fovmin="70" loadscenekeepview="0" fov="120" vlookatmax="90" vlookat="-22.298530483443866" fovmax="120" vlookatmin="-90" hlookat="1.25094676011717" fovtype="MFOV"/><autoplay duration="180" keep_originview="0" enabled="1" enter_next="1"/><bottom_circle type="2" url="%$mediaDomain%/cc62auO5ubv/2/36837b3974c0ae48d1b6ac9954a4081e.png" is_float="1"/></pano><pano name="s_14895161"><info title="都江堰市南桥" pano_id="6034183"/><view autorotatekeepview="0" maxpixelzoom="2.0" fovmin="70" loadscenekeepview="0" fov="120" vlookatmax="90" vlookat="0.25830219190505277" fovmax="120" vlookatmin="-90" hlookat="-105.6947852765241" fovtype="MFOV"/><autoplay duration="180" keep_originview="0" enabled="1" enter_next="1"/><bottom_circle type="2" url="%$mediaDomain%/cc62auO5ubv/2/36837b3974c0ae48d1b6ac9954a4081e.png" is_float="1"/></pano><pano name="s_14895163"><info title="都江堰水利枢纽宝瓶口" pano_id="6154868"/><view autorotatekeepview="0" maxpixelzoom="2.0" fovmin="70" loadscenekeepview="0" fov="120" vlookatmax="90" vlookat="27.41754424074568" fovmax="120" vlookatmin="-90" hlookat="-14.345097996115456" fovtype="MFOV"/><autoplay duration="180" keep_originview="0" enabled="1" enter_next="1"/><bottom_circle type="2" url="%$mediaDomain%/cc62auO5ubv/2/36837b3974c0ae48d1b6ac9954a4081e.png" is_float="1"/></pano><pano name="s_14895164"><info title="都江堰水利枢纽鱼嘴" pano_id="6154869"/><view autorotatekeepview="0" maxpixelzoom="2.0" fovmin="70" loadscenekeepview="0" fov="120" vlookatmax="90" vlookat="6.206990225104004" fovmax="120" vlookatmin="-90" hlookat="-419.41938025528395" fovtype="MFOV"/><autoplay duration="180" keep_originview="0" enabled="1" enter_next="1"/><bottom_circle type="2" url="%$mediaDomain%/cc62auO5ubv/2/36837b3974c0ae48d1b6ac9954a4081e.png" is_float="1"/></pano></panos></config></krpano>',
+      };
+    </script>
+    <script type="text/javascript" src="/Public/Home/720vr/player_krp_v2.js"></script>
+    <script src="/Public/Home/720vr/common.5801465f138bf7681232.js"></script>
+    <script src="/Public/Home/720vr/panoPageV2.05e4782c1112e19a12fc.js"></script>
+  </div>
+
+
+</body>
+</html>

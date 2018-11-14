@@ -1,0 +1,282 @@
+<extend name="Base/common_user"/>
+
+<block name="title_part">注册</block>
+
+<block name="body_content">
+    <div class="container">
+        <section>
+            <div class="col-xs-10 col-xs-offset-1 register" style="margin-top: 60px;margin-bottom: 120px;">
+                <div class="col-xs-12"><h1 style="font-size: 18px;color: #333333;">欢迎注册{:C('WEB_SITE_TITLE')}账号</h1></div>
+                <div class="col-xs-12 rg_go">
+                    <div class="col-sm-4 col-xs-6" style="position: relative;padding: 0;margin-bottom: 20px;">
+                        <img src="__IMG__/start_image.png" class="img-responsive" alt="" style="height: 40px;">
+
+                        <div style="margin-top: -35px;color: white;line-height: 30px;font-size: 16px;margin-left: 21px;">
+                            填写用户信息
+                        </div>
+                    </div>
+                    <php>
+                        $src_upload=$src_finish="__IMG__/todo_image.png";
+                        if($type=="upload"){
+                        $src_upload="__IMG__/finish_image.png";
+                        }elseif($type=="finish"){
+                        $src_upload=$src_finish="__IMG__/finish_image.png";
+                        }
+                    </php>
+                    <div class="col-sm-4 col-xs-6" style="position: relative;padding: 0;display:none;">
+                        <img src="{$src_upload}" class="img-responsive" alt="" style="height: 40px;">
+
+                        <div style="margin-top: -35px;color: white;line-height: 30px;font-size: 16px;margin-left: 21px;">
+                            上传头像（可跳过）
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-6 col-sm-offset-0 col-xs-offset-6" style="position: relative;padding: 0;">
+                        <img src="{$src_finish}" class="img-responsive" alt="" style="height: 40px;">
+
+                        <div style="margin-top: -35px;color: white;line-height: 30px;font-size: 16px;margin-left: 21px;">
+                            注册完成
+                        </div>
+                    </div>
+                </div>
+                <style>
+                    input{
+                        display: inline-block;
+                    }
+                </style>
+                <if condition="$type eq 'start'">
+                    <div class="col-xs-12 col-md-6">
+                        <form class="" action="__SELF__" method="post">
+                            <div class="form-group">
+                                <label for="username" class=".sr-only col-xs-12" style="display: none"></label>
+                                <input type="text" id="username" class="form-control" placeholder="请输入用户名"
+                                       ajaxurl="{:U('Member/User/CheckUserNameUnique')}" errormsg="请填写4-16位用户名"
+                                       nullmsg="请填写用户名"
+                                       datatype="*4-16" value="" name="username">
+                                <span class="help-block">输入用户名，只允许字母和数字和下划线</span>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="mobile" class=".sr-only col-xs-12" style="display: none"></label>
+                                <input type="text" id="mobile" class="form-control" placeholder="请输入手机"
+                                       ajaxurl="/member/checkMobileUnique.html" errormsg="请填写11位手机号码"
+                                       nullmsg="请填写手机号码"
+                                       datatype="*11" value="" name="mobile">
+
+                                <span class="help-block">输入手机号码，只允许11位数字的手机号码</span>
+                                <div class="clearfix"></div>
+                            </div>
+			     <div class="form-group">
+				<label for="smsVerifyCode" class=".sr-only col-xs-12" style="display: none"></label>
+				<div class="col-xs-8" style="padding: 0px;">
+				    <input type="text" id="smsVerifyCode" class="form-control" placeholder="验证码" name="smsVerifyCode"> 
+				</div> 
+				<div class="col-xs-4" style="line-height: 32px; text-align: center;">
+				    <!--<a style="width: 100%;height: 100%" href="javascript:void(0);" onclick="change_show(this)">获取验证码</a>-->
+				    <input type="button" id="changeMobile" name="changeMobile" class="form-control" value="获取验证码" style=" background-color: #eeeeee; border: 1px solid #cccccc;"> 
+				</div>
+				<div class="clearfix"></div>
+			    </div>
+                            <div class="form-group">
+                                <label for="inputEmail" class=".sr-only col-xs-12" style="display: none"></label>
+                                <input type="text" id="inputEmail" class="form-control" placeholder="请输入电子邮件"
+                                       ajaxurl="/member/checkUserEmailUnique.html" errormsg="请填写正确格式的邮箱" nullmsg="请填写邮箱"
+                                       datatype="e" value="" name="email">
+                                <span class="help-block">输入邮箱地址</span>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="form-group">
+                                <div id="password_block" class="input-group">
+                                    <input type="password" id="inputPassword" class="form-control" placeholder="请输入密码"
+                                           errormsg="密码为6-20位" nullmsg="请填写密码" datatype="*6-20" name="password">
+
+                                    <div class="input-group-addon"><a style="width: 100%;height: 100%"
+                                                                      href="javascript:void(0);"
+                                                                      onclick="change_show(this)">show</a></div>
+                                </div>
+                                <span class="help-block">请输入密码</span>
+                                <div class="clearfix"></div>
+                            </div>
+                            <if condition="C(VERIFY_OPEN) eq 1 OR C(VERIFY_OPEN) eq 2">
+                                <div class="form-group">
+                                    <label for="verifyCode" class=".sr-only col-xs-12" style="display: none"></label>
+
+                                    <div class="col-xs-4" style="padding: 0px;">
+                                        <input type="text" id="verifyCode" class="form-control" placeholder="验证码"
+                                               errormsg="请填写正确的验证码" nullmsg="请填写验证码" datatype="*5-5" name="verify">
+                                        <span class="help-block">输入验证码</span>
+                                    </div>
+                                    <div class="col-xs-8 lg_lf_fm_verify">
+                                        <img class="verifyimg reloadverify img-responsive" alt="点击切换" src="{:U('verify')}"
+                                             style="cursor:pointer;">
+                                    </div>
+                                    <div class="col-xs-12 Validform_checktip text-warning lg_lf_fm_tip"></div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </if>
+                            <div class="form-group">
+				<label for="inputEmail" class=".sr-only col-xs-12" style="display: none"></label>
+				<select id="areaid" name="areaid">
+				    <option value="">选择所属门店</option>
+				     <volist name="arealist" id="svo">
+					 <option value="{$svo.evalue}">{$svo.provincename}/{$svo.cityname}/{$svo.ename}</option>
+				     </volist>
+				</select>
+                                <span class="help-block">请选择门店，后台账号审核时作为依据，无具体门店可不选</span>
+                                <div class="clearfix"></div> 
+                            </div>
+                            <div class="form-group">
+				<label for="inputEmail" class=".sr-only col-xs-12" style="display: none"></label>
+				<select id="rankid" name="rankid">
+				    <option value="">选择设计师级别</option>
+				     <volist name="ranklist" id="rvo">
+					 <option value="{$rvo.evalue}">{$rvo.ename}</option>
+				     </volist>
+				</select>
+                                <span class="help-block">后台账号审核时作为依据，非设计师可不选</span>
+                                <div class="clearfix"></div> 
+                            </div>
+                            <div style="float: left;vertical-align: bottom;margin-top: 12px;color: #848484;">
+                                已有账户， <a href="{:U('Member/User/login')}" title="" style="color: #AB7C32;">登录</a>
+                            </div>
+                            <button type="button" id="btn_submit" class="btn btn-primary pull-right">提 交</button>
+                        </form>
+                    </div>
+                </if>
+                <if condition="$type eq 'upload'">
+                    <include file="User/changeavatar"/>
+                    <div class="col-xs-4"><a class="btn btn-default" href="{:U('Member/User/step3')}" title="">跳过此步骤</a></div>
+                </if>
+                <if condition="$type eq 'finish'">
+                    <div class="col-xs-12" style="font-size: 16px;margin-top: 30px;">
+                        <span>感谢您注册 {:C('WEB_SITE_TITLE')} ，希望你用的满意！ <a href="{:U('Member/Index/Index')}" title="">
+				完善个人资料</a> 或 <a href="{:U('Home/Index/index')}" title="">前往首页</a></span>
+                    </div>
+                </if>
+            </div>
+        </section>
+    </div>
+  <div id='hcode' style="display:none"></div>
+</block>
+
+<block name="script_content">
+    <script type="text/javascript">
+	$(function(){
+	    $("#btn_submit").click(function(){  
+		    var a = $('#smsVerifyCode').val();
+		    var b = $('#hcode').html();
+		    if ($('#mobile').val()==''){
+			alert('手机号不能为空！');
+			return;
+			};
+		    if (a==''){
+			alert('验证码不能为空');
+			return;
+		    };
+//		    alert(a+"--"+b);
+		    if(a!=b){
+			alert('输入验证码不正确');
+			return;
+		    }
+		    $("form").submit();
+		    return true;
+	    });
+	})
+        if (<if condition="$type eq 'start'">1<else />0</if>) {
+            $(document)
+                .ajaxStart(function() {
+                    $("button:submit").addClass("log-in").attr("disabled", true);
+                })
+                .ajaxStop(function() {
+                    $("button:submit").removeClass("log-in").attr("disabled", false);
+                });
+            $("form").submit(function() {
+                var self = $(this);
+		
+                $.post(self.attr("action"), self.serialize(), success, "json");
+                return false;
+
+                function success(data) {
+                if (data.status) {
+                    toastr.success('欢迎回来，页面正在跳转，请稍候。', '温馨提示');
+                    if (data.url == '') {
+                        data.url = "/Member/Index/Index";
+                    }
+                    setTimeout(function() {
+                        window.location.href = data.url
+                    }, 10);
+                } else {
+                    toastr.error(data.info, '温馨提示');
+                    //self.find(".Validform_checktip").text(data.info);
+                    //刷新验证码
+                    $(".reloadverify").click();
+                }
+            }
+            });
+
+            function change_show(obj) {
+            if ($(obj).text().trim() == 'show') {
+                var value = $('#inputPassword').val().trim();
+                var html = '<input type="text" value="' + value + '" id="inputPassword" class="form-control" placeholder="请输入密码" errormsg="密码为6-20位" nullmsg="请填写密码" datatype="*6-20" name="password">' +
+                        '<div class="input-group-addon"><a style="width: 100%;height: 100%" href="javascript:void(0);" onclick="change_show(this)">hide</a></div>';
+                $('#password_block').html(html);
+            } else {
+                var value = $('#inputPassword').val().trim();
+                var html = '<input type="password" value="' + value + '" id="inputPassword" class="form-control" placeholder="请输入密码" errormsg="密码为6-20位" nullmsg="请填写密码" datatype="*6-20" name="password">' +
+                        '<div class="input-group-addon"><a style="width: 100%;height: 100%" href="javascript:void(0);" onclick="change_show(this)">show</a></div>';
+                $('#password_block').html(html);
+            }
+        }
+
+            $(function() {
+                var verifyimg = $(".verifyimg").attr("src");
+                $(".reloadverify").click(function() {
+                    if (verifyimg.indexOf('?') > 0) {
+                        $(".verifyimg").attr("src", verifyimg + '&random=' + Math.random());
+                    } else {
+                        $(".verifyimg").attr("src", verifyimg.replace(/\?.*$/, '') + '?' + Math.random());
+                    }
+                });
+            });
+        }
+    </script>
+    
+    <script>
+	    $("#changeMobile").click(function(){
+		var mobile = $('#mobile').val();
+		if(mobile == ''){
+		     alert('手机号不能为空！');
+			return;
+		}
+		if(mobile.length !=11){
+		     alert('手机号输入不正确！');
+			return;
+		}
+		$.post("/index.php/Member/User/getSmsCode",{mobile:mobile,code:$("#code").val()},function(data){
+
+		    $("#hcode").html(data.result.code);
+
+		},"json"
+		);
+		time(this);
+	    })
+	    
+    </script>
+<script type="text/javascript">
+var wait=60;
+function time(o) {
+    if (wait == 0) {
+    o.removeAttribute("disabled");  
+    o.value="获取验证码";
+    wait = 30;
+    } else {
+        o.setAttribute("disabled", true);
+        o.value="重新发送(" + wait + ")";
+        wait--;
+        setTimeout(function() {
+            time(o)
+            },
+        1000)
+        }
+    }
+</script>
+</block>

@@ -1,0 +1,124 @@
+<extend name="Base/common_user"/>
+<block name="title_part">登录</block>
+<block name="body_content">
+    <div class="dl" id="lib_Tab1">
+        <div class="dl_menu">
+            <ul>
+                <li id="one1" onclick="setTab('one', 1, 4)"  class="hover">{$loginname}登陆</li>
+                <li id="one2" onclick="setTab('one', 2, 4)" style="display: none;">商家登陆</li>
+            </ul>
+        </div>
+        <div class="dl_main" id="con_one_1">
+            <div class="dl_left"></div>
+            <div class="dl_right">
+                <form id="person_form" action="__SELF__" method="post">
+                    <input type="hidden" name="beforepage" value="Home/Index/Index" />
+                    <p>邮箱/手机号码</p>
+                    <p class="text2">
+                        <input type="text" class="text2_a" placeholder="请输入用户名"
+                               ajaxurl="{:U('member/user/checkunique')}" errormsg="请填写1-16位用户名"
+                               nullmsg="请填写用户名"
+                               datatype="*1-16" value="" name="username" />
+                    </p>
+                    <p>密码</p>
+                    <p class="text2_1">
+                        <input type="password" class="text2_a" placeholder="请输入密码"
+                               errormsg="密码为6-20位" nullmsg="请填写密码" datatype="*6-20" name="password" />
+                    </p>
+                    <p>验证码</p>
+                    <input type="text" class="text2_2" placeholder="验证码"
+                           errormsg="请填写验证码" nullmsg="请填写验证码" datatype="*5-5" name="verify" />
+                    <img class="verifyimg reloadverify" alt="点击切换" src="{:U('verify')}"
+                         style="cursor:pointer;max-width: 60%" />
+                    <p class="zddd" style="display: none;">
+                        <input type="checkbox" name="remember" style="cursor:pointer;" />自动登陆&nbsp;&nbsp;&nbsp;
+                        <A href="#">忘记密码?</A>
+                    </p>
+                    <button type="submit" class="dl_b">登 陆</button>
+                </form>
+            </div>
+        </div>
+        <div class="dl_main" id="con_one_2" style="display:none">
+            <div class="dl_left"></div>
+            <div class="dl_right">
+                <form id="person_form" action="__SELF__" method="post">
+                    <input type="hidden" name="beforepage" value="Provider/Index/Index" />
+                    <p>邮箱</p>
+                    <p class="text2"><input type="text" class="text2_a" placeholder="请输入用户名"
+                                            ajaxurl="{:U('member/user/checkunique')}" errormsg="请填写1-16位用户名"
+                                            nullmsg="请填写用户名"
+                                            datatype="*1-16" value="" name="username" /></p>
+                    <p>密码</p>
+                    <p class="text2_1"><input type="password" class="text2_a" placeholder="请输入密码"
+                                              errormsg="密码为6-20位" nullmsg="请填写密码" datatype="*6-20" name="password" /></p>
+                    <p>验证码</p>
+                    <input type="text" class="text2_2" placeholder="验证码"
+                           errormsg="请填写验证码" nullmsg="请填写验证码" datatype="*5-5" name="verify" />
+                    <img class="verifyimg reloadverify" alt="点击切换" src="{:U('verify')}"
+                         style="cursor:pointer;max-width: 60%" />
+                    <p class="zddd">
+                        <input type="checkbox" name="remember" style="cursor:pointer;" />自动登陆&nbsp;&nbsp;&nbsp;
+                        <A href="#">忘记密码?</A>
+                    </p>
+                    <button type="submit" class="dl_b">登 陆</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="mfzc"><A href="{:U('member/user/register')}">免费注册>></A></div>
+</block>
+<block name="script_content">
+    <script type="text/javascript">
+        function setTab(name, cursel, n) {
+            for (i = 1; i <= n; i++) {
+                var menu = document.getElementById(name + i);
+                var con = document.getElementById("con_" + name + "_" + i);
+                menu.className = i == cursel ? "hover" : "";
+                con.style.display = i == cursel ? "block" : "none";
+            }
+        }
+        $(function() {
+            $(".main .menu li").each(function() {
+                if ($(this).children("a").attr("href") === "/member/user/login.html") {
+                    $(this).addClass("cur1").siblings('li').removeClass("cur1");
+                }
+            });
+            //$("#person_form").Validform();
+            $(document)
+                    .ajaxStart(function() {
+                        $("button:submit").addClass("log-in").attr("disabled", true);
+                    })
+                    .ajaxStop(function() {
+                        $("button:submit").removeClass("log-in").attr("disabled", false);
+                    });
+            $("form").submit(function() {
+		alert(self.attr("action"));
+                var self = $(this);
+                $.post(self.attr("action"), self.serialize(), success, "json");
+                return false;
+                function success(data) {
+                    if (data.status) {
+                        $('body').append(data.info);
+                        toastr.success('欢迎回来，页面正在跳转，请稍候。', '温馨提示');
+                        setTimeout(function() {
+                            window.location.href = data.url;
+                        }, 1500);
+                    } else {
+                        toastr.error(data.info, '温馨提示');
+                        //self.find(".Validform_checktip").text(data.info);
+                        //刷新验证码
+                        $(".reloadverify").click();
+                    }
+                }
+            });
+            var verifyimg = $(".verifyimg").attr("src");
+            $(".reloadverify").click(function() {
+                if (verifyimg.indexOf('?') > 0) {
+                    $(".verifyimg").attr("src", verifyimg + '&random=' + Math.random());
+                } else {
+                    $(".verifyimg").attr("src", verifyimg.replace(/\?.*$/, '') + '?' + Math.random());
+                }
+            });
+        });
+    </script>
+</block>

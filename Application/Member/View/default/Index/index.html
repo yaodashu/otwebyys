@@ -1,0 +1,78 @@
+<extend name="Base/Common"/>
+
+<block name="body_content">
+    <div class="mybox_page">
+        <include file="Public/mymenu_box"/>
+        <div class="homepage_box">       
+            <div class="line_mybox home_infor">
+                <div class="fistinfor">
+                    <h4>
+                        <strong>
+                            {$current_user.nickname}&nbsp;{$current_user.rankname}</strong>
+
+                        <a title="我要认证" style="display: none;" target="_blank" href="#">我要升级>></a>
+
+                    </h4>
+                    <!--                    <p>0个关注，0个粉丝，0篇帖子</p>-->
+                    <ul>
+                        <li><strong>等级：</strong><div class="chengzhang">
+                                <div class="tiao">
+                                    <strong style="width: {:D('UserCenter/Title')->getScorePercent($current_user['score'])}%;"></strong>
+                                </div>
+                                <span>
+                                    {$current_user.title}</span></div>
+                        </li>
+                        <li><strong>经验值：</strong>
+                            <p>
+                                {$current_user.score}&nbsp;&nbsp;
+                                <a href="{:U('Member/Index/ScoreRule')}" title="如何获得" target="_blank" style="display: none;">如何获得&gt;&gt;</a></p>
+
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="signin_box">
+                    <div class="signin_my">
+                        <strong><a href="{:U('Member/Index/MoneyRule')}" title="如何获得" target="_blank">
+                                如何获得&gt;&gt;</a></strong>
+                        <p>
+                            <span>我的金币</span><em>{$current_user.tox_money}</em></p>
+                    </div>
+                    <!--                    <div class="signin_link" id="Pushed"><a href="#">打卡领车币<em>+5</em></a></div>-->
+                </div>
+            </div>
+
+
+            <div class="line_mybox">
+                <div class="my_title">
+                    <h3>我的关注</h3>
+                </div>
+                <div class="my_zuji box_top">
+ 
+                    <div class="clear">
+                    </div>
+                </div>
+            </div>
+            <div class="line_mybox" style="display: none;">
+                <div class="my_title_h4"><h4>看看网友们都关注什么</h4></div>
+                <div class="guanzhu_wantyou">
+                    <ul>
+                    </ul>	  
+                </div>
+            </div>
+            <div class="line_mybox" style="display: none;">
+                <div class="my_title"><h3>猜你喜欢</h3></div>
+                <div class="liketext_box">
+                    <ul class="list">
+                        <volist name='like_cars' id='like_car'>
+                            <li><span>推荐</span><i>|</i><A href="{:U('Home/Buy/CarDetail', array('id'=>$like_car['id']))}">{$like_car.title}</A></li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear">
+        </div>
+    </div>
+</block>

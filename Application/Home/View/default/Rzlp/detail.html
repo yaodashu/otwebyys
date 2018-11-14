@@ -1,0 +1,716 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的小窝热装楼盘|{$rzloupan_view.dtitle}</title>
+<meta name="keywords" content="我的小窝热装楼盘" />
+<meta name="description" content="我的小窝热装楼盘" />
+<link rel="stylesheet" href="__PUBLIC__/home/css/swiper.css"> 
+
+<!--<script src="__PUBLIC__/home/js/mobile.js" type="text/javascript"></script>-->
+<link href="__PUBLIC__/home/css/style.css" type="text/css" rel="Stylesheet" />
+<script src="__PUBLIC__/home/js/jquery.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/js/jquery.cookies.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/js/common.js" type="text/javascript"></script>
+
+<!--<script src="__PUBLIC__/home/images/jQueryRotate.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/images/swiper.js" type="text/javascript"></script>-->
+
+<script type="text/javascript">
+$(function () {
+    do_banner1();
+    //alert(getQueryString('fengge')); 
+    init_param();
+     
+
+})
+/*0 banner1*/
+function do_banner1(){ 
+    //此类型新闻的图层显示介绍文字
+    $('#banner1 ul li').hover(function(){  
+		 //图片放大
+	    //先记录上是哪层div高度 
+	    var dValue=$(this).find("div").height(); 
+	     $(this).find("div").css("height",dValue);
+
+	    var wValue=1.1 * $(this).find("a img").width(); 
+	    var hValue=1.1 * $(this).find("a img").height(); 
+	    $(this).find("a img").animate({width: wValue, 
+	    height: hValue, 
+	    left:("-"+(0.1 * $(this).find("a img").width())/2), 
+	    top:("-"+(0.1 * $(this).find("a img").height())/2)}, 800);  
+	},function(){ 
+	    //图片缩小
+	    $(this).find("a img").animate({width: "100%", 
+	    height: "100%", 
+	    left:"0px", 
+	    top:"0px"}, 600 ); 
+	});
+}
+/*1 banner1*/
+function init_param(){ 
+}
+
+function getQueryString(name) { 
+var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+var r = window.location.search.substr(1).match(reg); 
+if (r != null) return unescape(r[2]); return null; 
+} 
+
+var is_last=false;
+var loading=false;
+var page=2;
+var first =true;
+//更新条件重新查询数据
+function query_search(type,id){  
+    if(type=='1' || type=='2' || type=='3'){
+	$("#query1_keyword").val("");
+    }
+    //异步重新查询数据:1风格，2居室；3设计师；5关键词；4加载更多
+    if(type=='1' || type=='2' || type=='3' || type=='5'){
+	page = 1; 
+    }
+    return;
+    var turl ="http://"+document.domain+"/index.php/home/rzlp/ajaxGetData/page/"+page;
+    $.ajax({
+	url:turl,
+	type : 'POST',
+	dataType : "json",
+	cache:false,
+	data : {
+		'ftype' : $("#ftype").val(), 
+		'keyword' : $("#query1_keyword").val()
+	},
+	success:function(result){
+	    var total = 0;
+	    if(result.is_last=="1"){
+		is_last ="1";		
+		$("#more").html('已加载全部');
+	    }else{
+		is_last ="0";
+		$("#more").html('加载更多');
+	    }
+	    var htmlstr="";
+	    if(result.code=='0'){
+		total = result.total;
+//		alert(result.data.length);
+//		//拼装html添加到html末尾
+		for(var item=0;item<result.data.length;item++){    
+		    htmlstr =htmlstr+'<li key="'+result.data[item].id+'">';
+		    htmlstr =htmlstr+'	    <div class="div1">';
+		    htmlstr =htmlstr+'				<a href="/index.php/home/article/detail/aid/'+result.data[item].id+'" target="_blank">';
+		    htmlstr =htmlstr+'				    <img src="'+result.data[item].picpath+'" width="100%" height="100%" alt="'+result.data[item].title+'" /></a>';
+		    htmlstr =htmlstr+'			    </div>';
+		    htmlstr =htmlstr+'			    <div class="div2">';
+		    htmlstr =htmlstr+'				<p class="style1"><b><a href="/index.php/home/anli/detail/aid/'+result.data[item].id+'" target="_blank">'+result.data[item].dtitle+'</a></b></p>';
+		    htmlstr =htmlstr+'				<p class="style2"><b>'+result.data[item].description+'...</b></p>'; 
+		    htmlstr =htmlstr+'				<p class="style8"><b><a href="/index.php/home/article/detail/aid/'+result.data[item].id+'" target="_blank">查看详情<span>+</span></a></b></p>';			     
+		    htmlstr =htmlstr+'			    </div> ';
+		    htmlstr =htmlstr+'			</li> ';
+		    
+//					    mySwiper.appendSlide('<div class="swiper-slide"><img alt="'+result.banner1[item].title+'" src="'+result.banner1[item].logo_url+'" style="width:100%;"></div>');
+		} 
+//		$("#accordion").css("dispaly","block");
+//		$("#main").append(result.data);
+//		    do_msg(); 
+		page++; 
+		loading=false;		    
+	    }else if(result.code=='10001'){  
+	    }
+	    //如果不是加载更多，则直接替换，否则需要进行追加操作
+	    if(type!="4"){
+		$("#newslist ul").html(htmlstr);
+//		$("#query_count span").html("共"+total+"套大宅装修设计新闻");
+	    }else{  
+		$("#newslist ul").append(htmlstr); 
+	    }
+    }});
+    
+}
+
+//点击加载更多，追加数据
+function load_more(){
+    if($("#more").html()=='加载更多'){
+	//异步查询数据，如果有结果则追加到末尾 
+	query_search('4',-1);
+    }else{
+	alert("您好，已经加载全部结果，请重新选择条件查询或刷新页面！");
+    }
+} 
+//综合关键词搜索
+function keyword_search(){ 
+    if($("#query1_keyword").val()==''){
+	 alert("请输入有效楼盘名称信息")
+	    return;
+    }
+    //情况查询其它条件
+    $("#fengge"+"_inp").val("");
+    $("#jushi"+"_inp").val("");
+    $("#shejishi"+"_inp").val("");
+    query_search('5',-1);
+} 
+
+</script>
+</head>
+<body class="p_list_anli">
+ 
+    <?php include ("./Application/Home/View/default/Common/topnav.html"); ?> 
+    <?php include ("./Application/Home/View/default/Common/header.html"); ?> 
+    
+
+    
+<!--<div id="toppic" style="width:100%;height: auto;margin-top: 0px; background-color: #f5f6f6;"> 
+    <img src="__PUBLIC__/home/images/banner/banner01.jpg" alt="我的小窝" width="100%"/>
+</div>-->
+
+<style type="text/css">
+	.RMdetailhearde{
+		width: 100%;
+		height: 500px;
+		background-image: url(/Public/home/images/loupan/rm_detai_hearder.jpg);
+		background-size: 100% 100%;
+	}
+	.RMdetailhearde_1{
+		width: 33%;
+		height: 100%;
+		float: left;
+	}
+	.RMdetailhearde_2{
+		width: 41%;
+		height: 100%;
+		float: left;
+	}
+	.RMdetailhearde_3{
+		width: 26%;
+		height: 100%;
+		float: left; 
+		margin: 0 auto;
+		overflow: hidden;
+		display: inline-block;
+		position: relative;
+	}
+	.RMdetailhearde_3 .div_bg{ 
+		background-color: #fff;
+		opacity: 0.7; 
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: 99;
+	}
+	.li_gd{
+		width: 31%;
+		height: 380px;
+		background-color: #0000FF;
+		float: left;
+		margin: 0% 1% 4% 1%;
+	}
+	.li_gd:hover{
+		box-shadow:0px 0px 2px 3px #DFDFDF;
+	}
+	.gd_div{
+		width: 100%;
+		height: auto;
+		
+		display: inline-block;
+	}
+	.gd_{
+		height: 100%;
+		width: 100%;
+		background-color: #fff;
+	}
+	
+
+    #tabbox{ width:600px; overflow:hidden; margin:0 auto;}
+   .tab_conbox{border-top: none;}
+   .tab_con{ }
+
+   .tabs{height: 44px;width: 80%;margin-left: 10%;margin-top: 50px;}
+   .tabs li{height:44px;line-height:44px;float:left;overflow: hidden;position: relative;width: 50%;text-align: center;font-size: 18px;} 
+   .tabs li a {display: block;padding: 0 20px;outline: none;}
+   .tabs li a:hover {background: #ccc;}	
+   .tabs .thistab,.tabs .thistab a:hover{background: #183078; color: #fff;}
+   .tab_con {width: 80%;margin-left: 10%;}
+   
+   .icon-user{
+   	position: absolute;
+   	left: 0; z-index: 5;
+   	background-image: url(/Public/home/images/loupan/fuwu.png);
+   	background-repeat: no-repeat;
+   	background-position: 0px 0px;
+   	width: 30px;
+   	height: 27px;
+   	margin-left: 10px;
+   	margin-top: 10px;
+   }
+   .user{
+   	height: 36px;
+   	width: 81%;
+   	padding-left: 40px;
+   	font-size: 20px;
+   	background-color: #fff;
+   	outline:none;
+	font-family: 微软雅黑;
+	padding-top: 0px;
+	padding-bottom: 0px;
+   } 
+     input::-webkit-input-placeholder {
+         font-size: 16px;
+         padding-left: 0px;
+     }
+	.xingming{
+		position: relative; width: 100%;
+		margin-top: 25px;
+	}
+	.li_dianhu_1{
+		width: 100%;
+		height: 18px;
+		line-height: 18px;
+		font-size: 12px;
+		font-family: "微软雅黑";
+		color: #c4c5c5;
+	}
+	.tipsList ul li,.tipsList2 ul li{width: 100%;height: 20px;line-height: 20px;font-size: 12px;font-family: '微软雅黑';color: #888888;text-align: center;}
+	 
+	.list-title{width: 100%;height: 50%;font-family: '微软雅黑';font-size: 18px;overflow: hidden;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;line-height: 60px;text-align: left; margin-left: 10%;}
+	@media screen and (max-width: 1501px) {  
+/*	    .gd_div ul li{height: 280px;}
+	    .list-title{line-height: 40px;}*/
+       }
+</style>
+<script type="text/javascript">
+	
+$(document).ready(function() {
+    jQuery.jqtab = function(tabtit,tab_conbox,shijian) {
+	$(tab_conbox).find(".tab_con").hide();
+	$(tabtit).find("li:first").addClass("thistab").show(); 
+	$(tab_conbox).find(".tab_con:first").show();
+
+	$(tabtit).find("li").bind(shijian,function(){
+		$(this).addClass("thistab").siblings("li").removeClass("thistab"); 
+		var activeindex = $(tabtit).find("li").index(this);
+		$(tab_conbox).children().eq(activeindex).show().siblings().hide();
+		return false;
+	});
+    };
+
+    $.jqtab("#tabs2","#tab_conbox2","mouseenter");
+	
+});
+
+</script>
+<div>      
+    <div id="main" class="main" style="background-color: #F5F5F5;">
+    	
+	
+    	     <!--头部-->
+         <div class="RMdetailhearde">
+            	 <div style="height: 100%;width: 1200px; margin: 0 auto;">
+            	 	 <div class="RMdetailhearde_1">
+            	 	     <div style="margin-top:100px;width: 100%;height: auto;">
+            	 	     	<img src="/Public/home/images/loupan/rm_detai_hearder_img.jpg" style="width: 100%;">
+            	 	     </div>
+            	     </div>
+            	     <div class="RMdetailhearde_2">
+            	 	      <div style="font-family: '微软雅黑';font-weight: 500;font-size: 28px;margin-left: 20px;color: #666666;margin-top: 100px;">
+            	 	      	{$rzloupan_view.dtitle}
+            	 	      </div>
+            	 	      <div style="font-family: '微软雅黑';font-size: 16px;margin-left: 20px;margin-top: 10px;line-height: 18px;color: #666666;width: 87%;overflow: hidden;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 5;">
+            	 	      	{$rzloupan_view.description}
+            	 	      </div>
+            	     </div>		     
+            	     <div class="RMdetailhearde_3">
+			 <div class="div_bg">			     
+			 </div>
+			 <div class="div_content" style="z-index: 999; position: absolute;width: 100%; height: 100%;">
+            	 	   <ul class="tabs" id="tabs2">
+				<li class="li_1">预约参观</li>
+				<li class="li_2">免费报价</li>
+			    </ul>
+			    <div style="margin-left: 10%; width: 80%;height: 5px;background-color: #d2d2d2;"></div>
+			    <ul class="tab_conbox" id="tab_conbox2">
+				<li class="tab_con con1">
+				     <div style="text-align: center; margin-top: 20px;font-size: 16px;" >
+					    今天已有<span class="cust_num" style="color: red;font-size: 25px;">{$renshu}</span>位
+				     </div>
+				     <div class="cust_info" style="text-align: center;font-size: 16px;" >
+					    业主获取了预约
+				     </div>
+				     <div  class="xingming">
+					     <i class="icon-user"></i>
+					     <input type="text" id="txt_name3" name="txt_name3" class="user" placeholder="填写姓名" />
+				     </div>
+				     <div  class="xingming" style="margin-top: 16px;">
+					     <i class="icon-user" style="background-image: url(/Public/home/images/loupan/shouji.png);"></i>
+					     <input type="text" id="txt_tel3" name="txt_tel3" class="user" placeholder="填写手机" />
+				     </div>
+				     <div id="btn_submit3" class="cust_btn" style="cursor: pointer; margin-top: 30px;height: 40px;width: 98%;background-color: #183078; text-align: center;color: #fff;line-height: 40px;font-size: 18px;">
+					     立即预约
+				     </div> 
+				</li>
+				<li class="tab_con con2">
+				     <div style="text-align: center; margin-top: 20px;font-size: 16px;" >
+					    今天已有<span class="cust_num" style="color: red;font-size: 25px;">{$renshu}</span>位
+				     </div>
+				     <div class="cust_info" style="text-align: center;font-size: 16px;" >
+					    业主获取了报价
+				     </div>
+				     <div  class="xingming">
+					     <i class="icon-user"></i>
+					     <input type="text" id="txt_name2" name="txt_name3" class="user" placeholder="填写姓名" />
+				     </div>
+				     <div  class="xingming" style="margin-top: 16px;">
+					     <i class="icon-user" style="background-image: url(/Public/home/images/loupan/shouji.png);"></i>
+					     <input type="text" id="txt_tel2" name="txt_tel3" class="user" placeholder="填写手机" />
+				     </div>
+				     <div id="btn_submit2" class="cust_btn" style="cursor: pointer; margin-top: 30px;height: 40px;width: 98%;background-color: #183078; text-align: center;color: #fff;line-height: 40px;font-size: 18px;">
+					     立即报价
+				     </div>
+				</li>
+			     </ul> 
+			    <div style="margin-top: 20px;margin-left: 10%;height: 75px;width: 75%;">					 
+				    <div style="width: 8%;height: 75px;float: left;margin-top: 12%;">
+					<img src="/Public/home/images/loupan/laba.png" style="width: 100%;">   
+				    </div>
+				<div class="tipsList" style="width: 92%;height:80px;margin-left: 8%;overflow: hidden;">
+				    <div id ="tipsList" style="width: 100%;height: 180px;margin-top: -40px;">
+					    <ul>
+						   <li style="">139**8892 5分钟之前报名</li>
+						   <li >139**5582 11分钟之前报名</li>
+						   <li >139**6673 15分钟之前报名</li>
+						   <li >132**4312 24分钟之前报名</li>
+						   <li >187**8762 44分钟之前报名</li>
+						   <li >134**4683 54分钟之前报名</li>
+						   <li >139**5292 54分钟之前报名</li>
+					    </ul>
+				    </div>
+
+				</div>
+			    </div>  
+			 </div>         	     
+            	     </div>
+            	 </div>
+         </div>
+	<script>
+	    $(function(){ 
+		    startmarquee(20,20,2000); 
+//		    $(".tabs .li_1").hover(function(){ 
+//			startmarquee(20,20,2000,"tipsList");
+//		    })
+//		    $(".tabs .li_2").hover(function(){  
+//			startmarquee(20,20,2000,"tipsList2");
+//		    })
+	    })
+	    //跑马灯
+		function startmarquee(lh,speed,delay) { 
+		var p=false; 
+		var t; 
+		var sh; 
+		var o=document.getElementById("tipsList"); 
+		o.innerHTML+=o.innerHTML; 
+		o.style.marginTop=0; 
+		o.onmouseover=function(){p=true;} 
+		o.onmouseout=function(){p=false;} 
+		function start(){ 
+		    sh = o.offsetHeight; 
+		    o.style.height = sh; 
+		    t=setInterval(scrolling,speed); 
+		    if(!p) o.style.marginTop=parseInt(o.style.marginTop)-1+"px"; 
+		} 
+		function scrolling(){ 
+		    if(parseInt(o.style.marginTop)%lh!=0){ 
+			o.style.marginTop=parseInt(o.style.marginTop)-1+"px"; 
+			if(Math.abs(parseInt(o.style.marginTop))>=sh/2) o.style.marginTop=0; 
+		    }else{ 
+			clearInterval(t); 
+			setTimeout(start,delay); 
+		    } 
+		} 
+		setTimeout(start,delay); 
+	    } 
+	    function startmarquee2(lh,speed,delay) { 
+		var p=false; 
+		var t; 
+		var sh; 
+		var o=document.getElementById("tipsList2"); 
+		o.innerHTML+=o.innerHTML; 
+		o.style.marginTop=0; 
+		o.onmouseover=function(){p=true;} 
+		o.onmouseout=function(){p=false;} 
+		function start2(){ 
+		    sh = o.offsetHeight; 
+		    o.style.height = sh; 
+		    t=setInterval(scrolling2,speed); 
+		    if(!p) o.style.marginTop=parseInt(o.style.marginTop)-1+"px"; 
+		} 
+		function scrolling2(){ 
+		    if(parseInt(o.style.marginTop)%lh!=0){ 
+			o.style.marginTop=parseInt(o.style.marginTop)-1+"px"; 
+			if(Math.abs(parseInt(o.style.marginTop))>=sh/2) o.style.marginTop=0; 
+		    }else{ 
+			clearInterval(t); 
+			setTimeout(start2,delay); 
+		    } 
+		} 
+		setTimeout(start2,delay); 
+	    } 
+	</script>
+         
+        <div id="position">
+	    <div class="div1"> 您所在的位置：<a href='/' target="_blank" style="color:#999999;">首页</a> &gt; <a href='/index.php/home/rzlp/' target="_blank" style="color:#999999;"> 热装楼盘</a>
+		&gt; <span style="color:#333333;">楼盘详情</span>
+	    </div>
+	</div>
+        <div id="abox">
+            <!--0_position-->
+	    <!--<div id="position"><div class="div1"><a href='/'>主页</a> &gt; <a href='/index.php/home/rzlp/index'>热装楼盘</a>&gt;{$rzloupan_view.dtitle} </div></div>-->
+<!--1_position-->
+            <!--<div class="title"><h1>新闻</h1></div>-->
+
+
+             <div style="width: 100%;height: 80px;background-color: #F5F5F5;margin-top: 2%;">
+			<div style="width: 35%;float: left;height: 100%;">
+				  <div style="border: 1px solid #dcdcdc;margin-top: 39px;"></div>
+			</div>
+			<div style="text-align: center;float: left;line-height: 80px;font-size: 34px;color:#333333;font-weight: 500;width: 30%;">
+				    该楼盘下精选案例推荐
+			</div>
+			<div style="width: 35%;float: left;height: 100%;">
+				  <div style="border: 1px solid #dcdcdc;margin-top: 39px;"></div>
+			</div>
+	       </div>
+            
+            
+	    <input type='hidden' id='ltype' name='ltype' value='{$ltype}'></input>  
+	    
+	</div>
+	
+	<div id="nbox1" style="margin-bottom: 5%;width: 1236px;">	    
+            
+<!--	    <div class="info_detail" style="display: none; margin: 4% 0 4% 0; border-top: solid 1px #CCCACA; border-bottom: solid 1px #CCCACA;display: inline-block;width: 100%;"> 
+		 <div id="more" style="padding: 3% 0 3% 0;">
+		     <volist name="imgs_data" id="po">			 
+			<div class="p_div" style='margin: 2% 0 2% 0;'> 
+			   <img src="{$po.path}" alt="{$po.path}" style="width:100%;height: 100%;" />
+			</div>
+		     </volist>
+		 </div> 
+	    </div> -->
+	     
+
+		 <!--<div id="sheji_anlilist">
+		    <ul>
+			<volist name="anlis_view" id="vo">
+			    <li key="{$vo.id}">
+			     <div class="div1">
+				 <a href="/index.php/home/anli/detail/aid/{$vo.id}" target="_blank">
+				    <if condition="$vo['picpath'] neq ''">    
+					    <img src="{$vo.picpath}" width="100%" height="100%" alt="{$vo.title}装修案例" />
+				     <else/>   
+					    <img src="{$vo.litpic}" width="100%" height="100%" alt="{$vo.title}装修案例" />
+				    </if> 
+				 </a>
+			     </div>
+			     <div class="div2">
+				 <p class="style1" style="width:94%;">
+				     <b><a href="/index.php/home/anli/detail/aid/{$vo.id}" target="_blank">{$vo.dtitle}</a></b>
+				     <a href="/q/" style="text-decoration: none;float: right;"><span style="">预约设计<img src="__PUBLIC__/images/right02.png"></img></span></a>
+				 </p>
+				 <p class="style2">设计师：<b>{$vo.shejishiname}</b></p>
+				 <p class="style3">户型：<b>{$vo.jushiname}</b></p>
+				 <p class="style4">面积：<b>{$vo.mianji}平米</b></p>
+				 <p class="style5">风格：<b>{$vo.fenggename}</b></p>
+				 <p class="style6">造价：<b>{$vo.zaojia}万</b></p>
+				 <p class="style7">主材配置：<b>{$vo.zhucai}</b></p>
+				 <p class="style8" style="display:none;"><b><a href="/index.php/home/anli/detail/aid/{$vo.id}" target="_blank">查看详情<img src="__PUBLIC__/home/images/logo_detail.png"></img></a></b></p>			     
+			     </div> 
+			    </li>
+			</volist>
+		    </ul>
+		 </div>		-->
+		 <div class="gd_div" style="margin-left:8px;">
+		 	<ul>
+		 	     <volist name="anlis_view" id="vo">
+		 		<li class="li_gd" key="{$vo.id}">
+				    <div class="gd_">
+					<div style="width: 100%;height: 73%;">	
+					    <a href="/index.php/home/anli/detail/aid/{$vo.id}" target="_blank">
+					       <if condition="$vo['picpath'] neq ''">    
+						       <img src="{$vo.picpath}" width="100%" height="100%" alt="{$vo.title}装修案例" />
+						<else/>   
+						       <img src="{$vo.litpic}" width="100%" height="100%" alt="{$vo.title}装修案例" />
+					       </if> 
+					    </a>
+					</div>
+					<div style="width: 100%;height: 27%;display: inline-block;background: #fff;">
+					    <div style="width: 70%;float: left;height: 100%;">
+						<div class="list-title" style="">
+							{$vo.dtitle}
+						</div>
+						<div style="width: 100%;height: 50%;font-family: '微软雅黑';font-size: 12px;line-height: 12px;text-align: left; margin-left: 10%;">
+							{$vo.fenggename}|{$vo.mianji}m²|{$vo.jushiname}|全包
+						</div>
+					    </div>
+					    <div style="width: 30%;float: left;height: 100%;">
+						<div style="background-color: #183078; height: 70%;width: 70%;margin-left: 8%;margin-top: 8%; ">
+						    <div style="width: 100%;height:20px; text-align: center;color: #fff;line-height: 20px;margin-top: 20%;display: inline-block;">
+							    预约
+						    </div>
+						    <div style="width: 100%;height: 50%;text-align: center;color: #fff;line-height: 16px;margin-top: 0px;display: inline-block;">
+							    参观
+						    </div>
+
+						</div>
+					    </div>
+					</div>
+				    </div>
+				</li>
+			    </volist>
+		 	</ul>
+		 </div> 
+	    
+<!--	    <div class="page_home" style="width: 100%;  margin-left: 0%;">
+		{$_page}
+	    </div>-->
+	    
+<!--	    <div class="load_more"> 
+		<div id="more"><a href="/index.php/home/rzlp/" style="text-decoration:none;">查看更多</a></div>
+	    </div> -->	    
+	     <div style="width: 97%;height: 80px;background-color: #F5F5F5;display: inline-block;margin-left: 1.5%;">
+			         <div style="width: 35%;float: left;height: 100%;">
+				           <div style="border: 1px solid #dcdcdc;margin-top: 39px;"></div>
+			         </div>
+			         <div style="text-align: center;float: left;line-height: 80px;font-size: 34px;color:#333333;font-weight: 500;min-width: 30%;">
+				             该楼盘施工工地
+			         </div>
+			         <div style="width: 35%;float: left;height: 100%;">
+				           <div style="border: 1px solid #dcdcdc;margin-top: 39px;"></div>
+			         </div>
+		</div>
+		
+		 <div class="gd_div" style="margin-left:8px;">
+		 	<ul>
+		 	     <volist name="gongdis_view" id="vo">
+		 		<li class="li_gd" key="{$vo.id}">
+				    <div class="gd_">
+					<div style="width: 100%;height: 73%;">	
+					    <a href="/index.php/home/gongdi/detail/aid/{$vo.id}" target="_blank">
+					       <if condition="$vo['picpath'] neq ''">    
+						       <img src="{$vo.picpath}" width="100%" height="100%" alt="{$vo.title}装修案例" />
+						<else/>   
+						       <img src="{$vo.litpic}" width="100%" height="100%" alt="{$vo.title}装修案例" />
+					       </if> 
+					    </a>
+					</div>
+					<div style="width: 100%;height: 27%;display: inline-block;background: #fff;">
+					    <div style="width: 70%;float: left;height: 100%;">
+						<div class="list-title" style="">
+							{$vo.dtitle}
+						</div>
+						<div style="width: 100%;height: 50%;font-family: '微软雅黑';font-size: 12px;line-height: 12px;text-align: left; margin-left: 10%;">
+							{$vo.fenggename}|{$vo.mianji}m²|{$vo.jushiname}|全包
+						</div>
+					    </div>
+					    <div style="width: 30%;float: left;height: 100%;">
+						<div style="background-color: #183078; height: 70%;width: 70%;margin-left: 8%;margin-top: 8%; ">
+						    <div style="width: 100%;height:20px; text-align: center;color: #fff;line-height: 20px;margin-top: 20%;display: inline-block;">
+							    预约
+						    </div>
+						    <div style="width: 100%;height: 50%;text-align: center;color: #fff;line-height: 16px;margin-top: 0px;display: inline-block;">
+							    参观
+						    </div>
+
+						</div>
+					    </div>
+					</div>
+				    </div>
+				</li>
+			    </volist>
+		 	</ul>
+		 </div>
+	    
+        </div> 
+	    
+	   
+	</div>    
+   
+
+<?php include ("./Application/Home/View/default/Common/footer.html"); ?> 
+     
+</body>
+</html>   
+
+<script type="text/javascript">
+$(function(){
+    
+		//异步获取报名名额
+//                baomingrenshuh();		
+		var regex_number=/^\d{7}$|^\d{8}$|^\d{11}$|^\d{3,4}(-)?\d{7,8}$/;
+		$("#btn_submit3").click(function(){
+		    var obj=$(this);
+		    var _name=$("#txt_name3");
+		    var val_name=$.trim(_name.val());
+		    if(val_name.length<=0){alert("温馨提示：请输入您的真实姓名！");_name.focus();_name.select();return false;}
+		    var _tel=$("#txt_tel3");
+		    var val_tel=$.trim(_tel.val());
+		    if(!regex_number.test(val_tel)){alert("温馨提示：联系电话格式不正确！");_tel.focus();_tel.select();return false;}
+		    var _loupan=$("#txt_loupan3");
+		    var val_loupan=$.trim(_loupan.val());
+		    //if(val_loupan.length<=0){alert("温馨提示：请输入您房子的楼盘名称！");_loupan.focus();_loupan.select();return false;}
+		    var _mianji=$("#txt_mianji3");
+		    var val_mianji=$.trim(_mianji.val());
+	    //        if(val_mianji.length<=0){alert("温馨提示：请输入您房子的面积！");_mianji.focus();_mianji.select();return false;}
+		    val_name=encodeURIComponent(val_name);
+		    val_tel=encodeURIComponent(val_tel);
+		    val_loupan=encodeURIComponent(val_loupan);
+		    val_mianji=encodeURIComponent(val_mianji);
+		    var val_content=encodeURIComponent("[来源页面："+document.title+"]");
+		    var url=encodeURIComponent(location.href);
+		    var sourceid=obj.attr("sourceid");
+		    if(!sourceid){sourceid=2;}
+		    window.open("http://i.dasn.com.cn/index.php/calltel/dooperate?name="+val_name+"&tel="+val_tel+"&loupan="+val_loupan+"&mianji="+val_mianji+"&content="+val_content+"&url="+url+"&sourceid="+sourceid);
+		    _name.val("");
+		    _tel.val("");
+		    _loupan.val("");
+		    _mianji.val("");
+		    //setTimeout(baomingrenshu,1000*3);
+		    return false;
+		});
+    
+		//异步获取报名名额
+//                baomingrenshuh();		
+		var regex_number=/^\d{7}$|^\d{8}$|^\d{11}$|^\d{3,4}(-)?\d{7,8}$/;
+		$("#btn_submit2").click(function(){
+		    var obj=$(this);
+		    var _name=$("#txt_name2");
+		    var val_name=$.trim(_name.val());
+		    if(val_name.length<=0){alert("温馨提示：请输入您的真实姓名！");_name.focus();_name.select();return false;}
+		    var _tel=$("#txt_tel2");
+		    var val_tel=$.trim(_tel.val());
+		    if(!regex_number.test(val_tel)){alert("温馨提示：联系电话格式不正确！");_tel.focus();_tel.select();return false;}
+		    var _loupan=$("#txt_loupan2");
+		    var val_loupan=$.trim(_loupan.val());
+		    //if(val_loupan.length<=0){alert("温馨提示：请输入您房子的楼盘名称！");_loupan.focus();_loupan.select();return false;}
+		    var _mianji=$("#txt_mianji2");
+		    var val_mianji=$.trim(_mianji.val());
+	    //        if(val_mianji.length<=0){alert("温馨提示：请输入您房子的面积！");_mianji.focus();_mianji.select();return false;}
+		    val_name=encodeURIComponent(val_name);
+		    val_tel=encodeURIComponent(val_tel);
+		    val_loupan=encodeURIComponent(val_loupan);
+		    val_mianji=encodeURIComponent(val_mianji);
+		    var val_content=encodeURIComponent("[来源页面："+document.title+"]");
+		    var url=encodeURIComponent(location.href);
+		    var sourceid=obj.attr("sourceid");
+		    if(!sourceid){sourceid=2;}
+		    window.open("http://i.dasn.com.cn/index.php/calltel/dooperate?name="+val_name+"&tel="+val_tel+"&loupan="+val_loupan+"&mianji="+val_mianji+"&content="+val_content+"&url="+url+"&sourceid="+sourceid);
+		    _name.val("");
+		    _tel.val("");
+		    _loupan.val("");
+		    _mianji.val("");
+		    //setTimeout(baomingrenshu,1000*3);
+		    return false;
+		});
+});
+</script> 
+  
+<script src="__PUBLIC__/home/js/footer.js" type="text/javascript"></script>
+<script src="/public/home/js/count.js" type="text/javascript"></script> 

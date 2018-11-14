@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的小窝施工工地|{$gongdi_view.dtitle}</title>
+<meta name="keywords" content="我的小窝施工工地" />
+<meta name="description" content="我的小窝施工工地" />
+<link rel="stylesheet" href="__PUBLIC__/home/css/swiper.css"> 
+
+<!--<script src="__PUBLIC__/home/js/mobile.js" type="text/javascript"></script>-->
+<link href="__PUBLIC__/home/css/style.css" type="text/css" rel="Stylesheet" />
+<script src="__PUBLIC__/home/js/jquery.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/js/jquery.cookies.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/js/common.js" type="text/javascript"></script>
+
+<!--<script src="__PUBLIC__/home/images/jQueryRotate.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/images/swiper.js" type="text/javascript"></script>-->
+
+<script type="text/javascript">
+$(function () {
+    $("#nav_shigong").addClass("current");
+    do_banner1();
+    //alert(getQueryString('fengge')); 
+    init_param();
+})
+/*0 banner1*/
+function do_banner1(){ 
+    //此类型新闻的图层显示介绍文字
+    $('#banner1 ul li').hover(function(){  
+		 //图片放大
+	    //先记录上是哪层div高度 
+	    var dValue=$(this).find("div").height(); 
+	     $(this).find("div").css("height",dValue);
+
+	    var wValue=1.1 * $(this).find("a img").width(); 
+	    var hValue=1.1 * $(this).find("a img").height(); 
+	    $(this).find("a img").animate({width: wValue, 
+	    height: hValue, 
+	    left:("-"+(0.1 * $(this).find("a img").width())/2), 
+	    top:("-"+(0.1 * $(this).find("a img").height())/2)}, 800);  
+	},function(){ 
+	    //图片缩小
+	    $(this).find("a img").animate({width: "100%", 
+	    height: "100%", 
+	    left:"0px", 
+	    top:"0px"}, 600 ); 
+	});
+}
+/*1 banner1*/
+function init_param(){ 
+}
+
+function getQueryString(name) { 
+var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+var r = window.location.search.substr(1).match(reg); 
+if (r != null) return unescape(r[2]); return null; 
+} 
+
+var is_last=false;
+var loading=false;
+var page=2;
+var first =true;
+//更新条件重新查询数据
+function query_search(type,id){  
+    if(type=='1' || type=='2' || type=='3'){
+	$("#query1_keyword").val("");
+    }
+    //异步重新查询数据:1风格，2居室；3设计师；5关键词；4加载更多
+    if(type=='1' || type=='2' || type=='3' || type=='5'){
+	page = 1; 
+    }
+    return;
+    var turl ="http://"+document.domain+"/index.php/home/gongdi/ajaxGetData/page/"+page;
+    $.ajax({
+	url:turl,
+	type : 'POST',
+	dataType : "json",
+	cache:false,
+	data : {
+		'ftype' : $("#ftype").val(), 
+		'keyword' : $("#query1_keyword").val()
+	},
+	success:function(result){
+	    var total = 0;
+	    if(result.is_last=="1"){
+		is_last ="1";		
+		$("#more").html('已加载全部');
+	    }else{
+		is_last ="0";
+		$("#more").html('加载更多');
+	    }
+	    var htmlstr="";
+	    if(result.code=='0'){
+		total = result.total;
+//		alert(result.data.length);
+//		//拼装html添加到html末尾
+		for(var item=0;item<result.data.length;item++){    
+		    htmlstr =htmlstr+'<li key="'+result.data[item].id+'">';
+		    htmlstr =htmlstr+'	    <div class="div1">';
+		    htmlstr =htmlstr+'				<a href="/index.php/home/article/detail/aid/'+result.data[item].id+'" target="_blank">';
+			if(result.data[item].picpath !="" && result.data[item].picpath !=null && result.data[item].picpath !=undefined){ 
+		    htmlstr =htmlstr+'				    <img src="'+result.data[item].picpath+'" width="100%" height="100%" alt="'+result.data[item].title+'" /></a>';
+			}else{ 
+		    htmlstr =htmlstr+'				    <img src="'+result.data[item].litpic+'" width="100%" height="100%" alt="'+result.data[item].title+'" /></a>';
+			}  
+		    
+		    htmlstr =htmlstr+'			    </div>';
+		    htmlstr =htmlstr+'			    <div class="div2">';
+		    htmlstr =htmlstr+'				<p class="style1"><b><a href="/index.php/home/anli/detail/aid/'+result.data[item].id+'" target="_blank">'+result.data[item].dtitle+'</a></b></p>';
+		    htmlstr =htmlstr+'				<p class="style2"><b>'+result.data[item].description+'...</b></p>'; 
+		    htmlstr =htmlstr+'				<p class="style8"><b><a href="/index.php/home/article/detail/aid/'+result.data[item].id+'" target="_blank">查看详情<span>+</span></a></b></p>';			     
+		    htmlstr =htmlstr+'			    </div> ';
+		    htmlstr =htmlstr+'			</li> ';
+		    
+//					    mySwiper.appendSlide('<div class="swiper-slide"><img alt="'+result.banner1[item].title+'" src="'+result.banner1[item].logo_url+'" style="width:100%;"></div>');
+		} 
+//		$("#accordion").css("dispaly","block");
+//		$("#main").append(result.data);
+//		    do_msg(); 
+		page++; 
+		loading=false;		    
+	    }else if(result.code=='10001'){  
+	    }
+	    //如果不是加载更多，则直接替换，否则需要进行追加操作
+	    if(type!="4"){
+		$("#newslist ul").html(htmlstr);
+//		$("#query_count span").html("共"+total+"套大宅装修设计新闻");
+	    }else{  
+		$("#newslist ul").append(htmlstr); 
+	    }
+    }});
+    
+}
+
+//点击加载更多，追加数据
+function load_more(){
+    if($("#more").html()=='加载更多'){
+	//异步查询数据，如果有结果则追加到末尾 
+	query_search('4',-1);
+    }else{
+	alert("您好，已经加载全部结果，请重新选择条件查询或刷新页面！");
+    }
+} 
+//综合关键词搜索
+function keyword_search(){ 
+    if($("#query1_keyword").val()==''){
+	 alert("请输入有效工地名称信息")
+	    return;
+    }
+    //情况查询其它条件
+    $("#fengge"+"_inp").val("");
+    $("#jushi"+"_inp").val("");
+    $("#shejishi"+"_inp").val("");
+    query_search('5',-1);
+} 
+
+</script>
+</head>
+<body class="p_list_anli">
+
+<?php include ("./Application/Home/View/default/Common/topnav.html"); ?> 
+<?php include ("./Application/Home/View/default/Common/header.html"); ?> 
+ 
+
+<div>    
+    <div id="main" class="main">
+	<div id="position">
+	    <div class="div1"> 您所在的位置：<a href='/' target="_blank" style="color:#999999;">首页</a> &gt; <a href='/index.php/home/gongdi/' target="_blank" style="color:#999999;">工地管理</a>
+		&gt; <span style="color:#333333;">工地详情</span>
+	    </div>
+	</div>
+	
+        <div id="abox"> 
+	    
+            <!--<div class="title"><h1>新闻</h1></div>-->
+	    <input type='hidden' id='ltype' name='ltype' value='{$ltype}'></input> 
+	        	    
+	</div>
+	
+	<div id="nbox1">	    
+            <div id="gongdidata">
+                <ul> 
+		    <li key="{$gongdi_view.id}">
+			<div class="div1" style="width: 38%;  padding: 2% 2% 2% 0; float: left;">
+			    <a href="/index.php/home/gongdi/detail/aid/{$gongdi_view.id}" target="_blank"></a>			    							    
+				<if condition="$gongdi_view['picpath'] neq ''"> 
+					<img src="{$gongdi_view.picpath}" alt="{$gongdi_view.dtitle}" style="width:100%;height: 100%;" />
+				    <else/>  
+					<img src="{$gongdi_view.litpic}" alt="{$gongdi_view.dtitle}" style="width:100%;height: 100%;" />
+				</if> 
+			</div>
+			<div class="div2 gongdi_detail" style="width: 58%; padding: 2% 0% 2% 2%;">
+			    <h3>
+				<span class="ftitle_gd">{$gongdi_view.dtitle}</span></h3>
+			    <i></i>
+			    
+			    <p class="style1" style="margin-top: 2%;width: 92%; line-height: 32px;font-size: 14px; height: 96px; overflow: hidden;color:#5F5D5D; text-overflow: ellipsis;  display: -webkit-box;   -webkit-line-clamp: 3;  -webkit-box-orient: vertical;">
+				 <b style="font-size: 18px; color: #5F5D5D;font-weight: 500px;">
+				 </b>
+				 {$gongdi_view.description} 
+			    </p>
+			    <p class="style2" style="margin-top: 2%;font-size: 14px;color: #5F5D5D;font-weight: 500px;">
+				    开工时间:
+				    <if condition="$gongdi_view['kaigong_time'] gt 0"> 
+				    {$gongdi_view['kaigong_time']|date='Y-m-d',###}	
+				    </if>				    
+			    <b style="font-size: 14px;color: #5F5D5D;font-weight: 500px;"></b></p> 
+			    <div class="d_step">
+				<div class="step_1">
+				    <div class="d_hengxian"><img src="__PUBLIC__/home/images/hengxian_01.png"></img></div> 
+				    <div class="d_hengxian"><img src="__PUBLIC__/home/images/hengxian_01.png"></img></div> 
+				    <div class="d_hengxian"><img src="__PUBLIC__/home/images/hengxian_01.png"></img></div>
+				</div>
+				<div class="step_2">
+				    <div class="d_jindu"><img src="__PUBLIC__/home/images/logo_shigong.png" <if condition="$gongdi_view['zxstep'] == '1'"> class="current"</if>></img></div> 
+				    <div class="d_jindu"><img src="__PUBLIC__/home/images/logo_shigong.png" <if condition="$gongdi_view['zxstep'] == '2'"> class="current"</if>></img></div> 
+				    <div class="d_jindu"><img src="__PUBLIC__/home/images/logo_shigong.png" <if condition="$gongdi_view['zxstep'] == '3'"> class="current"</if>></img></div>
+				</div>
+				<div class="step_3">
+				    <div class="d_title">开工</div> 
+				    <div class="d_title">施工阶段</div> 
+				    <div class="d_title">竣工</div>
+				</div>
+			    </div>
+			    
+			    <p class="style3 gongdi_detail_t">
+				<div style=" width: 80%;height: 34px;line-height: 34px; margin-top: 3%; text-align: center;font-size: 14px;color: #5F5D5D;font-family: 微软雅黑;">
+				    <a href="/q/" target="_blank" class="dongdi_yy" style="text-decoration: none;">
+					<!--免费申请户型规划-->
+					<div style="width: 160px;border: solid 1px #CAC8C8;float: left;border-radius: 2px;margin: 1% 4% 0 0;">免费申请户型规划</div>
+				    </a>
+				    <a href="/q/" target="_blank" class="dongdi_yy" style="text-decoration: none;">
+					<div style="width: 160px;border: solid 1px #CAC8C8;float: left;margin: 1% 0 0 0;border-radius: 2px;">
+					    <img src="/Public/Home/images/zixun01.png" style="height: 18px;margin-top: -3px;margin-right: 6px;" />预约看工地</div>
+				    </a>
+				</div>
+			    </p>
+			    <div class="cf share_wd" style="display:none;margin-top: 3%;"><span class="fl share_wd" style="font-size: 18px;color:#5F5D5D;">分享 ：</span>
+				    <div class="share_com of cf">
+					<a href="javascript:;" class="wx fl" style="display:none;"></a>
+					<div class="bdsharebuttonbox of"><a title="分享到微信" href="#" class="bds_weixin wx_0" data-cmd="weixin"></a><a title="分享到新浪微博" href="#" class="bds_tsina wb" data-cmd="tsina"></a><a title="分享到QQ空间" href="#" class="bds_qzone kj" data-cmd="qzone"></a><a data-cmd="more" class="bds_more shareM" href="#"></a></div>
+					<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+
+				    </div>
+			    </div>
+			</div> 
+		    </li> 
+		</ul>
+            </div>
+	    
+	   
+	    <div class="info_detail" style="margin: 4% 0 4% 0; border-top: solid 1px #CCCACA; border-bottom: solid 1px #CCCACA;display: inline-block;width: 100%;"> 
+		 
+	    <div class="info_more" style="margin-top: 3%;"> 
+		 <div id="more">
+		     <div class="p_div"><a href="javascript:;" style="text-decoration:none;"><div class="p_btn">现场工地-开工</div><img style="display:block;" src="__PUBLIC__/home/images/detail_down01.png"></img></a></div>
+		 </div>
+		
+		<if condition="$gongdi_data['imgids_kg_path'] neq ''">
+		    <div id="sheji_anlilist">
+			<img src="{$gongdi_data.imgids_kg_path}" width="100%" alt="{$vo1.title}" />
+   <!--		    <ul>
+			   <volist name="anlis_view" id="vo1">
+			       <li key="{$vo1.id}">
+				<div class="div1"> 
+					<img src="{$vo1.picpath}" width="100%" height="100%" alt="{$vo1.title}" />
+				</div> 
+			       </li>
+			   </volist>
+		       </ul>-->
+		    </div>	
+		</if>
+	    </div>  
+		
+		<if condition="$gongdi_view['zxstep'] gt '1'">
+		<div class="info_more" style="margin-top: 3%;"> 
+		     <div id="more">
+			 <div class="p_div"><a href="javascript:;" style="text-decoration:none;"><div class="p_btn">现场工地-施工阶段</div><img style="display:block;" src="__PUBLIC__/home/images/detail_down01.png"></img></a></div>
+		     </div>
+		<if condition="$gongdi_data['imgids_sg_path'] neq ''">
+		    <div id="sheji_anlilist">
+			<img src="{$gongdi_data.imgids_sg_path}" width="100%" alt="{$vo1.title}" />  
+		    </div>	
+		</if>
+		</div> 
+	    </if>
+		<if condition="$gongdi_view['zxstep'] gt '2'">
+		<div class="info_more" style="margin-top: 3%;"> 
+		     <div id="more">
+			 <div class="p_div"><a href="javascript:;" style="text-decoration:none;"><div class="p_btn">现场工地-竣工</div><img style="display:block;" src="__PUBLIC__/home/images/detail_down01.png"></img></a></div>
+		     </div>
+			<if condition="$gongdi_data['imgids_jg_path'] neq ''">
+			    <div id="sheji_anlilist">
+				<img src="{$gongdi_data.imgids_jg_path}" width="100%" alt="{$vo1.title}" /> 
+			    </div>	
+			</if>
+		</div> 
+	    </if>
+		  
+		<br></br>
+	    </div>  
+	    
+        </div> 
+	
+	</div>
+
+
+<?php include ("./Application/Home/View/default/Common/bottomnav.html"); ?> 
+<?php include ("./Application/Home/View/default/Common/footer.html"); ?> 
+     
+    
+</body>
+</html><script src="__PUBLIC__/home/js/footer.js" type="text/javascript"></script>
+<script src="/public/home/js/count.js" type="text/javascript"></script> 

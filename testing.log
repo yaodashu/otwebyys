@@ -1,0 +1,14 @@
+0.27597700 1512614123 ThinkPHP Lib Think Hook listen ()，时间：2017-12-07 10:35:23 name:Behavior\BuildLiteBehavior;
+0.29300000 1512614123 ThinkPHP Lib Think Hook listen ()，时间：2017-12-07 10:35:23 end-name:Behavior\BuildLiteBehavior;
+0.29437100 1512614123 ThinkPHP Lib Think Hook listen ()，时间：2017-12-07 10:35:23 name:Common\Behavior\InitHookBehavior;
+0.03828600 1512614124 ThinkPHP Lib Think Hook listen ()，时间：2017-12-07 10:35:24 end-name:Common\Behavior\InitHookBehavior;
+0.10138900 1512614124 ThinkPHP Lib Think Hook listen ()，时间：2017-12-07 10:35:24 name:Behavior\ReadHtmlCacheBehavior;
+0.11776500 1512614124 ThinkPHP Lib Think Hook listen ()，时间：2017-12-07 10:35:24 end-name:Behavior\ReadHtmlCacheBehavior;
+0.85811400 1512614126 ThinkPHP Lib Think Hook listen ()，时间：2017-12-07 10:35:26 name:Behavior\ParseTemplateBehavior;
+0.52775700 1512614127 ThinkPHP Lib Think Hook listen ()，时间：2017-12-07 10:35:27 name:Behavior\ContentReplaceBehavior;
+0.53771200 1512614127 ThinkPHP Lib Think Hook listen ()，时间：2017-12-07 10:35:27 end-name:Behavior\ContentReplaceBehavior;
+0.89015400 1512614127 ThinkPHP Lib Think Hook listen ()，时间：2017-12-07 10:35:27 end-name:Behavior\ParseTemplateBehavior;
+0.89895300 1512614127 ThinkPHP Lib Think Hook listen ()，时间：2017-12-07 10:35:27 name:Behavior\WriteHtmlCacheBehavior;
+0.92008000 1512614127 ThinkPHP Lib Think Hook listen ()，时间：2017-12-07 10:35:27 end-name:Behavior\WriteHtmlCacheBehavior;
+0.93715300 1512614127 ThinkPHP Lib Think Hook listen ()，时间：2017-12-07 10:35:27 name:Behavior\ShowPageTraceBehavior;
+0.94826600 1512614127 ThinkPHP Lib Think Hook listen ()，时间：2017-12-07 10:35:27 end-name:Behavior\ShowPageTraceBehavior;

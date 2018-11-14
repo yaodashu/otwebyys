@@ -1,0 +1,453 @@
+<extend name="Base/Common"/>
+
+<block name="body_content"> 
+<link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+<link href="__STATIC__/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__STATIC__/ueditor/ueditor.config.js"></script>  
+<script type="text/javascript" src="__STATIC__/ueditor/ueditor.all.js"></script> 
+    <style>
+	.memberdetail .dtitle{   
+	    width: 150px;
+	    display: inline-block;
+	    float: left;
+	    text-align: right;
+	}
+	.weui-uploader__file2 {
+	    float: left;
+	    margin-right: 9px;
+	    margin-bottom: 9px;
+	    width: 79px;
+	    height: 79px;
+	    background: no-repeat 50%;
+	    background-size: cover;
+	}
+	.weui-uploader__input2 {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
+    input[type='text']{
+	min-width: 350px;
+    }
+    </style>
+    <div class="mybox_page">
+        <include file="Public/mymenu_box"/>
+        <div class="homepage_box" style="width:770px;">
+            <div class="line_mybox">
+                <div class="my_title">
+                    <h3>设计信息</h3>
+                </div>
+                <div class="my_zuji box_top">  
+		    <form id="person_form" action="__SELF__" method="post">
+			<input type="hidden" name="id" value="{$id}" />
+			 <div class="form-group">
+			<label for="title">标题</label>
+			    <input type="text" class="form-control" name="title" id="title" value="{$anliview_data1.dtitle}" placeholder="请输入标题">
+			</div>
+			<div class="form-group">
+			<label for="keyword">关键词</label>
+			<input type="text" class="form-control" name="keyword" id="keyword" value="{$anliview_data1.keywords}" placeholder="请输入关键词、标签">
+			</div>
+			<div class="form-group">
+			<label for="keyword">简介</label> 
+			<textarea id="description" name="description" rows="3"  style="width:100%;">{$anliview_data1.description}</textarea>
+			</div>
+			<div class="form-group">
+			<label for="keyword">楼盘名称</label>
+			<input type="text" class="form-control" name="loupan" id="loupan" value="{$anliview_data1.loupan}" placeholder="请输入楼盘名称">
+			</div>
+			<div class="form-group">
+			<label for="keyword">居室户型</label>  
+			 <div>
+			     <select name="jushi" id="jushi" style="min-width: 150px;">
+<!--				 <option value="1">1</option>
+				 <option value="2">2</option>-->
+				<option value="">选择居室</option>
+				 <volist name="jushis" id="jvo">
+				     <option value="{$jvo.evalue}" <if condition="$anliview_data1['jushi'] eq $jvo['evalue']"> selected</if>>{$jvo.ename}</option>
+				 </volist>
+			     </select>
+			 </div>
+			</div>
+			<div class="form-group">
+			<label for="keyword">面积(平方米)</label>
+			    <input type="num" class="form-control" name="mianji" id="mianji" value="{$anliview_data1.mianji}" placeholder="请输入面积数字">
+			</div>
+			<div class="form-group">
+			<label for="keyword">装修风格</label>  
+			 <div>
+			     <select name="fengge" id="fengge" style="min-width: 150px;">
+<!--				 <option value="1">1</option>
+				 <option value="2">2</option>-->
+				<option value="">选择风格</option>
+				 <volist name="fengges" id="jvo">
+				     <option value="{$jvo.evalue}" <if condition="$anliview_data1['fengge'] eq $jvo['evalue']"> selected</if>>{$jvo.ename}</option>
+				 </volist>
+			     </select>
+			 </div>
+			</div>
+			<div class="form-group">
+			<label for="keyword">造价</label>
+			<input type="num" class="form-control" name="zaojia" id="zaojia" value="{$anliview_data1.zaojia}" placeholder="请输入造价">
+			</div>
+			<div class="form-group">
+			<label for="keyword">合作方式</label> 
+			 <div>
+			     <select name="fangshi" id="fangshi" style="min-width: 150px;">
+<!--				 <option value="1">1</option>
+				 <option value="2">2</option>-->
+				<option value="">选择方式</option>
+				 <volist name="fangshis" id="jvo">
+				     <option value="{$jvo.evalue}" <if condition="$anliview_data1['fangshi'] eq $jvo['evalue']"> selected</if>>{$jvo.ename}</option>
+				 </volist>
+			     </select>
+			 </div>
+			</div>
+			<div class="form-group">
+			<label for="keyword">主材简述</label>
+			<input type="text" class="form-control" name="zhucai" id="zhucai" value="{$anliview_data1.zhucai}" placeholder="请输入主材描述，如实木、艺术涂料、大理石">
+			</div>
+			<div class="form-group">
+			<label for="keyword">工期（天数)</label>
+			<input type="text" class="form-control" name="gongqi" id="gongqi" value="{$anliview_data1.gongqi}" placeholder="请输入天数">
+			</div>
+			<div class="form-group">
+			<label for="keyword">竣工时间</label>
+			<input type="text" class="form-control" name="edate" id="edate" value="{$anliview_data1.edate}" placeholder="请输入大概时间，如2018年、2018年5月">
+			</div>
+			<div class="form-group">
+			    <label for="keyword">详情<span style="color:#0040ff;">（重要说明：如有附件，上传附件每个包最大不能超过<span style="color:red;">30M</span>，选择附件执行上传如图示：）</span></label> 
+			<br>
+			<div><img src="/Public/images/help/uploadfile.jpg"></div>
+			<textarea id="content" name="content" rows="15"  style="width:100%;">{$documentanli_data.content}</textarea>
+			</div>
+			<div class="form-group">
+			    <label for="keyword">封面图<span style="color:#dd8383;">（要求宽高尺寸比列：400*300像素）</span></label>
+			    <br>
+			    <div class="am-u-sm-3" >
+				<label for="content" class="am-u-sm-2 am-form-label">当前使用图(宽高：{$anliview_data1['img1'][0]}*{$anliview_data1['img1'][1]})</label>
+				<div class="am-u-sm-2">
+				    <a href="{$anliview_data1.picpath}" target="_blank"><img src="{$anliview_data1.picpath}" width="120" /> </a>
+				</div>
+			    </div>
+			   <div class="weui-cell">
+				    <div class="weui-cell__bd weui-cell___primary">
+					    <div class="weui-uploader">
+						    <div class="weui-uploader__hd weui-cell">
+							    <div class="weui-cell__bd weui-cell__primary"></div>
+							    <div class="weui-cell__ft">0/1</div>
+						    </div>
+						    <div class="weui-uploader__bd">
+							    <ul class="weui-uploader__files">
+							    </ul>
+							    <div class="weui-uploader__input-box">
+								    <input class="weui-uploader__input" type="file" accept="image/jpg,image/jpeg,image/png" multiple />
+							    </div>
+						    </div>
+					    </div>
+				    </div>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="keyword">案例详情页顶部图 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#dd8383;">（要求宽高尺寸比列：830*440像素）</span></label>
+			    <br>
+			    <div class="am-u-sm-3" >
+				<label for="content" class="am-u-sm-2 am-form-label">当前使用图(宽高：{$anliview_data1['img2'][0]}*{$anliview_data1['img2'][1]})</label>
+				<div class="am-u-sm-2">
+				    <a href="{$documentanli_data.picpath}" target="_blank"><img src="{$documentanli_data.picpath}" width="120" /> </a>
+				</div>
+			    </div>
+			   <div class="weui-cell">
+				    <div class="weui-cell__bd weui-cell___primary">
+					    <div class="weui-uploader">
+						    <div class="weui-uploader__hd weui-cell">
+							    <div class="weui-cell__bd weui-cell__primary"></div>
+							    <div class="weui-cell__ft2">0/1</div>
+						    </div>
+						    <div class="weui-uploader__bd">
+							    <ul class="weui-uploader__files2">
+							    </ul>
+							    <div class="weui-uploader__input-box">
+								    <input class="weui-uploader__input2" type="file" accept="image/jpg,image/jpeg,image/png" multiple />
+							    </div>
+						    </div>
+					    </div>
+				    </div>
+			    </div>
+			</div>
+			
+<!--			<div class="form-group" style='display: block; margin-top: 1%;display: inline-block; width: 100%;'>
+					<label class="col-xs-12 col-sm-4 col-md-3 col-lg-2 control-label" style='width: 20%;'>附件上传1</label>
+					<div class="col-sm-8 col-xs-12" style='width: 80%;'>
+						 <input id="thefile1" name="thefile1" type="file" style="display:none">
+						<div class="input-append">
+						    <div class="col-xs-10">
+							<input id="file_name1" class="form-control" type="text" value="{$item['file1']}" style="height:30px;">
+						    </div>
+						    <a class="btn btn-primary" onclick="$('input[id=thefile1]').click();" style='margin-top: 0px;'>浏览文件</a>
+						</div>
+					</div>
+				</div>
+				<div class="form-group" style='display: block; margin-top: 1%;display: inline-block; width: 100%;'>
+					<label class="col-xs-12 col-sm-4 col-md-3 col-lg-2 control-label" style='width: 20%;'>附件上传2</label>
+					<div class="col-sm-8 col-xs-12" style='width: 80%;'>
+						 <input id="thefile2" name="thefile2" type="file" style="display:none">
+						<div class="input-append">
+						    <div class="col-xs-10">
+							<input id="file_name2" class="form-control" type="text" value="{$item['file2']}" style="height:30px;">
+						    </div>
+						    <a class="btn btn-primary" onclick="$('input[id=thefile2]').click();" style='margin-top: 0px;'>浏览文件</a>
+						</div>
+					</div>
+				</div>
+				<div class="form-group" style='display: block; margin-top: 1%;display: inline-block; width: 100%;'>
+					<label class="col-xs-12 col-sm-4 col-md-3 col-lg-2 control-label" style='width: 20%;'>附件上传3</label>
+					<div class="col-sm-8 col-xs-12" style='width: 80%;'>
+						 <input id="thefile3" name="thefile3" type="file" style="display:none">
+						<div class="input-append">
+						    <div class="col-xs-10">
+							<input id="file_name3" class="form-control" type="text" value="{$item['file3']}" style="height:30px;">
+						    </div>
+						    <a class="btn btn-primary" onclick="$('input[id=thefile3]').click();" style='margin-top: 0px;'>浏览文件</a>
+						</div>
+					</div>
+				</div>
+				<div class="form-group" style='display: block; margin-top: 0%;display: inline-block; width: 100%;'>
+					<label class="col-xs-12 col-sm-4 col-md-3 col-lg-2 control-label">&nbsp;</label>
+					<div class="col-sm-8 col-xs-12">
+					    <p><span style="color:red;">上传说明：支持上传文件格式为txt,zip,tar,doc,docx,xls,xlsx，大小10M以内</span></p>
+					</div>
+				</div>
+				<script type="text/javascript">
+				    $('input[id=thefile1]').change(function() {
+					$('#file_name1').val($(this).val());
+				    });
+				    $('input[id=thefile2]').change(function() {
+					$('#file_name2').val($(this).val());
+				    });
+				    $('input[id=thefile3]').change(function() {
+					$('#file_name3').val($(this).val());
+				    });
+				</script>-->
+			
+<!--			<div class="form-group">
+			<label for="exampleInputFile">File input</label>
+			<input type="file" id="exampleInputFile">
+			<p class="help-block">Example block-level help text here.</p>
+			</div>
+			<div class="checkbox">
+			<label>
+			  <input type="checkbox"> Check me out
+			</label>
+			</div>-->
+			
+			<if condition="$current_user['editlevel'] eq 1">
+			    <div class="form-group">
+				<button type="button" class="btn btn-default">提交</button>
+			    </div>
+			 <else/>
+			    <div class="form-group"> 
+				<span style="color:#1300ff;">您还没有编辑和发布设计的权限，管理员审核通过后才能操作，请耐心等待！</span>
+			    </div>
+			</if>
+		    </form>
+		    <script>
+			$(".btn-default").click(function(){
+			    
+			    $(".weui-uploader__file").each(function(){$("form").append('<input value="'+$(this).attr("code")+'" type="checkbox" name="img[]" style="display:none;" checked />');}); 
+			    $(".weui-uploader__file2").each(function(){$("form").append('<input value="'+$(this).attr("code")+'" type="checkbox" name="img2[]" style="display:none;" checked />');});  
+			   $("#person_form").submit();
+			}) 
+		    </script>
+                    <div class="clear">
+                    </div>
+                </div>
+            </div>  
+        </div>
+
+        <div class="clear">
+        </div>
+    </div>
+	<script type="text/javascript"> 
+	    //window.UEDITOR_HOME_URL = "/ueditor/";
+	    UE.getEditor('content');
+	  
+	    $(function (){
+		// 允许上传的图片类型  
+		var allowTypes = ['image/jpg', 'image/jpeg', 'image/png'];  
+		// 1024KB，也就是 1MB
+		var maxSize = 1024*1024*8;
+		// 图片最大宽度
+		var maxWidth = 640;
+		// 最大上传图片数量
+		var maxCount = 1;
+		var maxCount2 = 1;
+		$('.weui-uploader__input').on('change', function (event){
+		    var files = event.target.files;
+
+		    // 如果没有选中文件，直接返回 
+		    if (files.length==0){return;} 
+
+			    if ($('.weui-uploader__file').length+files.length > maxCount) {$.alert('最多只能上传' + maxCount + '张图片');return;} 
+
+		    for (var i = 0, len = files.length; i < len; i++) {
+			var file = files[i];  
+			var reader = new FileReader();  
+
+			// 如果类型不在允许的类型范围内  
+			if (allowTypes.indexOf(file.type) === -1) {
+					    $.alert("该类型不允许上传");
+			    continue;  
+			}  
+
+			if (file.size > maxSize) {  
+					    $.alert("图片太大，不允许上传");
+			    continue;  
+			}
+
+			reader.onload = function (e) {  
+			    var img = new Image();  
+			    img.onload = function () {  
+				// 不要超出最大宽度  
+				var w = Math.min(maxWidth, img.width);  
+				// 高度按比例计算  
+				var h = img.height * (w / img.width);  
+				var canvas = document.createElement('canvas');  
+				var ctx = canvas.getContext('2d');  
+				// 设置 canvas 的宽度和高度  
+				canvas.width = w;  
+				canvas.height = h;  
+				ctx.drawImage(img, 0, 0, w, h);  
+				var base64 = canvas.toDataURL('image/jpeg');  
+
+				// 插入到预览区  
+				var $preview = $('<li class="weui-uploader__file weui-uploader__file_status" code='+base64+' style="background-image:url(' + base64 + ')"><div class="weui-uploader__file-content">0%</div></li>');
+				$('.weui-uploader__files').append($preview);
+
+						    $(".weui-uploader__file").dblclick(function(){
+							    $(this).remove();
+							    var num = $('.weui-uploader__file').length;  
+							    $('.weui-cell__ft').text(num + '/' + maxCount);
+						    });
+
+				var num = $('.weui-uploader__file').length;  
+				$('.weui-cell__ft').text(num + '/' + maxCount);
+
+						    // 然后假装在上传，可以post base64格式，也可以构造blob对象上传，也可以用微信JSSDK上传  
+
+				var progress = 0;  
+				function uploading() {  
+				    $preview.find('.weui-uploader__file-content').text(++progress + '%');  
+				    if (progress < 100) {
+					setTimeout(uploading, 30);  
+				    }  
+				    else {
+					// 如果是失败，塞一个失败图标  
+					//$preview.find('.weui-uploader__file-content').html('<i class="weui-icon_warn"></i>');  
+					$preview.removeClass('weui-uploader__file_status').find('.weui-uploader__file-content').remove();
+					$.hideLoading();
+				    }  
+				}
+				$.showLoading("图片上传中...");
+				setTimeout(uploading, 30);  
+			    };  
+
+			    img.src = e.target.result;  
+			};  
+			reader.readAsDataURL(file);
+		    }
+		});  
+		
+		$('.weui-uploader__input2').on('change', function (event){ 
+		    var files = event.target.files;
+
+		    // 如果没有选中文件，直接返回 
+		    if (files.length==0){return;} 
+
+			    if ($('.weui-uploader__file2').length+files.length > maxCount2) {$.alert('最多只能上传' + maxCount2 + '张图片');return;} 
+
+		    for (var i = 0, len = files.length; i < len; i++) {
+			var file = files[i];  
+			var reader = new FileReader();  
+
+			// 如果类型不在允许的类型范围内  
+			if (allowTypes.indexOf(file.type) === -1) {
+					    $.alert("该类型不允许上传");
+			    continue;  
+			}  
+
+			if (file.size > maxSize) {  
+					    $.alert("图片太大，不允许上传");
+			    continue;  
+			}
+
+			reader.onload = function (e) {  
+			    var img = new Image();  
+			    img.onload = function () {  
+				// 不要超出最大宽度  
+				var w = Math.min(maxWidth, img.width);  
+				// 高度按比例计算  
+				var h = img.height * (w / img.width);  
+				var canvas = document.createElement('canvas');  
+				var ctx = canvas.getContext('2d');  
+				// 设置 canvas 的宽度和高度  
+				canvas.width = w;  
+				canvas.height = h;  
+				ctx.drawImage(img, 0, 0, w, h);  
+				var base64 = canvas.toDataURL('image/jpeg');  
+
+				// 插入到预览区  
+				var $preview = $('<li class="weui-uploader__file2 weui-uploader__file_status" code='+base64+' style="background-image:url(' + base64 + ')"><div class="weui-uploader__file-content">0%</div></li>');
+				$('.weui-uploader__files2').append($preview);
+
+						    $(".weui-uploader__file2").dblclick(function(){
+							    $(this).remove();
+							    var num = $('.weui-uploader__file2').length;  
+							    $('.weui-cell__ft2').text(num + '/' + maxCount2);
+						    });
+
+				var num = $('.weui-uploader__file2').length;  
+				$('.weui-cell__ft2').text(num + '/' + maxCount2);
+
+						    // 然后假装在上传，可以post base64格式，也可以构造blob对象上传，也可以用微信JSSDK上传  
+
+				var progress = 0;  
+				function uploading() {  
+				    $preview.find('.weui-uploader__file-content').text(++progress + '%');  
+				    if (progress < 100) {
+					setTimeout(uploading, 30);  
+				    }  
+				    else {
+					// 如果是失败，塞一个失败图标  
+					//$preview.find('.weui-uploader__file-content').html('<i class="weui-icon_warn"></i>');  
+					$preview.removeClass('weui-uploader__file_status2').find('.weui-uploader__file-content').remove();
+					$.hideLoading();
+				    }  
+				}
+				$.showLoading("图片上传中...");
+				setTimeout(uploading, 30);  
+			    };  
+
+			    img.src = e.target.result;  
+			};  
+			reader.readAsDataURL(file);
+		    }
+		});  
+	    }); 
+
+	</script>
+	
+	<!-- body 最后 -->
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script><!--
+
+ 如果使用了某些拓展插件还需要额外的JS 
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/swiper.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/city-picker.min.js"></script>-->
+</block>

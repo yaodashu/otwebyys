@@ -1,0 +1,63 @@
+<extend name="Public/base"/>
+
+<!-- 子导航 -->
+<block name="sidebar">
+    <include file="sidemenu" />
+</block>
+
+
+<block name="body">
+	<!-- 标题 -->
+	<div class="main-title">
+		<h2>
+		网站首页
+		</h2>
+	</div>
+ 
+	<p style="color:red;">
+	    说明：网站服务器页面缓存启用后，有缓存的页面后台数据更新不会实时更新页面，如果要即时生效需要手工更新缓存后查看！（这里的缓存指服务器，与浏览器缓存图片内容或样式无关）
+	</p>
+	<div class="cf">
+		<h3>
+		网站电脑版首页
+		</h3>
+		<div class="fl">
+		    <a href="/" target="_blank"><button class="btn" target-form="ids">当前首页</button></a>
+		    <a href="/index.php/home/index/index1" target="_blank"><button class="btn" target-form="ids">修改预览</button></a>
+		    <a href="javascript:del(1);" target="_blank"><button class="btn" target-form="ids">删除缓存</button></a> 
+		</div> 
+	</div>  
+	<div class="cf" style="margin-top: 2%;">
+		<h3>
+		网站手机版首页
+		</h3>
+		<div class="fl">
+		    <a href="/index.php/mob/" target="_blank"><button class="btn" target-form="ids">当前首页</button></a>
+		    <a href="/index.php/mob/index/index1" target="_blank"><button class="btn" target-form="ids">修改预览</button></a>
+		    <a href="javascript:del(2);" target="_blank"><button class="btn" target-form="ids">删除缓存</button></a> 
+		</div> 
+	</div>  
+	
+	<script type="text/javascript">
+	$(function(){
+	})
+	function del(type){ 
+	    $.ajax({
+		url:"{:U('Article/createindex')}",
+		cache:false,
+		type:"POST",
+		data:{del:type},
+		dataType:"json",
+		success:function(data){
+		    if(data.errCode=="0" && data.message=="SUCCESS"){
+			alert("更新成功！");
+			return;
+		    }else{
+			alert(data.message);
+			return;
+		    }
+		}		
+	    })
+	}
+	</script>
+</block> 

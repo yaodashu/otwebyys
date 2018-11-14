@@ -1,0 +1,686 @@
+/** 
+ * 描述：重置页面元素，设置布局样式及公共模块
+ * 作用范围：公共
+ */
+
+html,body {
+	font: 14px/1.5 "microsoft yahei", Helvetica, Tahoma, Arial, "Microsoft jhengHei", sans-serif;
+	color:#404040;
+	background-color:#fff;
+}
+body,p,pre,blockquote,
+h1,h2,h3,h4,h5,h6,			
+dl,dt,dd,ul,ol,li,			
+form,fieldset,legend,select,
+input,textarea,button,		
+table,caption,tr,th,td {
+	margin:0;
+	padding:0;
+}
+ol,ul {
+	list-style:none;
+}
+fieldset,img {
+	border:0 none;
+}
+img {
+	max-width: 100%;
+        border-radius: 15px 15px 15px 15px;
+}
+a {
+	color: #666;
+	text-decoration:none;
+}
+a:hover{
+	text-decoration:underline;
+}
+input,button,textarea,select,option {
+	font-family:inherit;
+	font-size:100%;	
+	outline: 0;
+}
+textarea {
+	overflow: auto;
+	resize: none;
+}
+
+/* 布局样式 */
+.cf,.nav {
+	*zoom: 1;
+}
+.cf:before, .cf:after,
+.nav:before, .nav:after,
+.media:before, .media:after,
+.form-item:before,.form-item:after {
+	display: table;
+	content: "";
+}
+.cf:after,
+.nav:after,
+.media:after,
+.form-item:after {
+	clear: both;
+}
+.cf,.nav,.media,
+.form-item {
+	*zoom: 1;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+.wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	width: 1000px;
+}
+.cont-container {
+	float: left;
+	width: 720px;
+}
+.side-container {
+	float: right;
+	width: 270px;
+}
+.columns .hd {
+	padding: 0 15px;
+	height: 45px;
+	line-height: 45px;
+	font-size: 16px;
+	color: #333;
+	border-bottom: 1px solid #ebebeb;
+}
+.columns .bd {
+	padding: 10px;
+}
+
+/* 公共独立类名 */
+.hidden {
+	display: none!important;
+}
+.block {
+	display: block;
+}
+.mod {
+	margin-bottom: 10px;
+	border: 1px solid #ebebeb;
+}
+.pillar {
+	display: inline-block;
+	width: 0;
+	height: 100%;
+	vertical-align: middle;
+}
+.ellipsis,
+.ellipsis li {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* 导航列表 */
+.nav li {
+	float: left;
+}
+.nav-list {
+	float: none;
+}
+.nav li a,
+.nav li a:hover,
+.nav-list li a,
+.nav-list li a:hover {
+	display: block;
+	text-decoration: none;
+}
+
+/* 表单样式 */
+.text,.textarea {
+    padding: 4px 6px;
+    font-size: 14px;
+    color: #34495E;
+    vertical-align: middle;
+    border: 1px solid #ebebeb;
+ 	border-radius: 2px;
+ 	background-color: #fff;
+}
+.text {
+	height: 20px;
+    line-height: 20px;
+}
+.textarea {
+	display: block;
+}
+.textarea textarea {
+	width: 100%;
+	border: 0 none;
+}
+select {
+	padding: 2px;
+	height: 27px;
+	line-height: 27px;
+	font-size: 14px;
+	border: 1px solid #ebebeb;
+}
+.radio,.checkbox {
+	display: inline-block;
+	font-size: 14px;
+	min-height: 20px;
+	line-height: 20px;
+	vertical-align: middle;
+}
+.radio input,
+.checkbox input {
+	float: left;
+	margin: 4px 4px 0 0;
+	*margin: 0 2px 0 0;
+}
+.radio + .radio,
+.checkbox + .checkbox {
+	margin-left: 15px;
+}
+.must {
+	margin: 0 4px;
+	color: #f00;
+}
+
+/* 横向多列表单 */
+.form-horizontal .form-item {
+	margin-bottom: 10px;
+}
+.form-horizontal .controls {
+	min-height: 28px;
+	overflow: hidden;
+	*zoom: 1;
+}
+.form-horizontal .item-label {
+	float: left;
+	margin-right: 25px;
+	width: 80px;
+	height: 28px;
+	line-height: 28px;
+	text-align: right;
+}
+.form-horizontal .text {
+	width: 220px;
+}
+
+/* 按钮 */
+.btn {
+    display: inline-block;
+    margin: 0 0 5px;
+    padding: 6px 16px;
+    line-height: 22px;
+    font-size: 16px;
+    color: #FFFFFF;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    border: 0 none;
+    border-radius: 2px 2px 2px 2px;
+	background-color: #348fd4;
+    transition: opacity 0.2s ease-in-out 0s;
+}
+.btn:hover {
+	text-decoration: none;
+	background-color: #2f81bf;
+}
+.btn-small {
+	padding: 3px 12px;
+	font-size: 14px;
+}
+.btn-mini {
+	padding: 1px 8px;
+	font-size: 14px;
+}
+
+/* 左右两列的媒体结构 */
+.media {
+	margin-bottom: 15px;
+}
+.media .media-avatar,
+.media .media-side {
+	float: left;
+	margin-right: 15px;
+}
+.media .media-avatar,
+.media .media-avatar img {
+	width: 52px;
+	height: 52px;
+	border-radius: 50%;
+}
+.media .media-avatar img,
+.media .media-side img {
+	display: block;
+}
+.media .media-body {
+	overflow: hidden;
+	line-height: 1.8;
+	word-break: break-all;
+}
+
+/* 实心小三角 */
+.arrow {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	line-height: 0;
+	vertical-align: middle;
+	border: 4px dashed transparent;
+}
+.arrow-down {
+	border-top-style: solid;
+	border-top-color: #000;
+	border-bottom-width: 0;
+}
+.arrow-up {
+	border-bottom-style: solid;
+	border-bottom-color: #000;
+	border-top-width: 0;
+}
+.arrow-left {
+	border-right-style: solid;
+	border-right-color: #000;
+	border-left-width: 0;
+}
+.arrow-right {
+	border-left-style: solid;
+	border-left-color: #000;
+	border-right-width: 0;
+}
+
+
+
+.Layer{
+border: 1px solid #0099CC;
+width: 380px;
+-webkit-border-radius: 15px;
+-moz-border-radius: 15px;
+border-radius: 15px;
+background: #fff;
+margin-left: 50%;
+margin-top: 50%;
+position:absolute;
+z-index: 9999;
+behavior: url(/pie/PIE.htc);}
+.Layer .title{border: 1px solid #0099CC;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+background: #76923c; 
+behavior: url(/pie/PIE.htc);}
+.Layer form input.sub{border: 1px solid #0099CC;
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+background: #76923d;
+behavior: url(/pie/PIE.htc);}
+.Layer {display:none;z-index:999;left:50%;
+top:50%;margin-left:-150px!important;/*FF IE7*/
+margin-top:-60px!important;/*FF IE7*/
+margin-top:0px;
+position:fixed!important;/* FF IE7*/
+position:absolute;/*IE6*/
+}
+.Layer form{ padding:10px 0 10px 32px ; font-size:12px;}
+.Layer form span.must{ color:#F00;text-align:left;}
+.Layer form input{ width:200px; height:20px; border:1px solid #000; margin:5px 0; padding-left:5px; vertical-align:middle;}
+.Layer form input.sub{width: 80px;
+                      background-color:#0099CC;
+color: #fff;
+margin-left: 104px;
+height: 25px;}
+.Layer .close{position:absolute; top:5px; right:6px;background-color:red; color:#e9260b;font-family: cursive; text-decoration:none;}
+.Layer .close:active{color: -webkit-activelink;}
+
+
+/*解析背景-title*/
+
+/*close hover样式*/
+
+ins#qiao-icon-wrap {
+                position: fixed;
+        _position: absolute;
+                                    top: 50%;
+                right: 0;
+                        
+    visibility:visible !important;
+    z-index: 2147483647;
+}
+
+/* icon head */
+#qiao-icon-wrap .qiao-icon-head {
+    position: relative;
+                width: 147px;
+        height: 70px;
+                    background: url(http://qiao.baidu.com/v3/res/iconbg/01.jpg) no-repeat;
+            
+    left: 0px;
+    overflow: hidden;
+    display: block;
+    z-index: 100;
+}
+
+/* icon head offline*/
+#qiao-icon-wrap .qiao-icon-head-offline {
+        
+}
+
+/* icon head title */
+#qiao-icon-wrap .qiao-icon-title {
+                background: url(http://qiao.baidu.com/v3/res/iconhead/04.png) no-repeat;
+        _background: none;
+        _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://qiao.baidu.com/v3/res/iconhead/04.png");
+    
+    position: absolute;
+    bottom: 10px;
+    width: 90px;
+    height: 30px;
+    text-indent: -999px;
+    overflow: hidden;
+}
+
+/* icon head transit */
+#qiao-icon-wrap .qiao-icon-gradient {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+                                filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#003290cd',endColorstr='#FF3290cd' );background: -webkit-gradient(linear, left top, left bottom,from(rgba(50,144,205,0)), to(#3290cd));background: -webkit-linear-gradient(top, rgba(50,144,205,0), #3290cd);background: -moz-linear-gradient(top, rgba(50,144,205,0), #3290cd);background: -o-linear-gradient(top, rgba(50,144,205,0), #3290cd);background: linear-gradient(to bottom, rgba(50,144,205,0), #3290cd);
+            
+}
+
+/* icon body */
+#qiao-icon-wrap .qiao-icon-body {
+    position: relative;
+    /* left = 25 - config.x > 0 ? 25 - config.w : 0 ;
+        left + config.x
+     */
+    /* 炫彩型 来自 config.dw*/
+    overflow: hidden;
+    padding-bottom: 10px;
+                        width: 147px;
+                    background: #3290cd;
+            
+    }
+
+/* icon group && icon user group */
+#qiao-icon-wrap .qiao-icon-group {
+    /* color: #bd4b13; */
+    font-weight: bold;
+    margin: 5px;
+    line-height: 1.5;
+    display: block;
+                color: #bd4b13;
+    
+}
+
+#qiao-icon-wrap .qiao-icon-user-group {
+    /* color: #bd4b13; */
+    font-weight: bold;
+    margin: 5px;
+    line-height: 1.5;
+    display: block;
+                color: #bd4b13;
+    
+}
+
+/* icon group */
+#qiao-icon-wrap .qiao-icon-group {
+    padding: 3px 3px 3px 7px;
+                                            background: #f7bd84;
+                        
+    overflow: hidden;
+    white-space: nowrap;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#qiao-icon-wrap .qiao-icon-group a {
+    display: block;
+    line-height: 1.5;
+    padding-left: 20px;
+    _zoom: 1;
+    background: url(http://qiao.baidu.com/v3//img/front/icon.png) -420px -20px;
+                color: #bd4b13;
+    
+}
+
+#qiao-icon-wrap .qiao-icon-group a:hover {
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+}
+
+#qiao-icon-wrap .qiao-icon-group a.qiao-icon-group-online {
+    background-position: -420px 0;
+}
+
+
+/* icon user */
+#qiao-icon-wrap .qiao-icon-user {
+    display: block;
+    margin: 0 5px 0 15px;
+    line-height: 1.5;
+    padding-left: 15px;
+    overflow: hidden;
+    border: 1px solid transparent;
+    _border: none;
+    _margin-left: 16px;
+    _padding: 1px 1px 1px 15px;
+    white-space: nowrap;
+    background: url(http://qiao.baidu.com/v3//img/front/icon.png) -420px -56px;
+                color: #bd4b13;
+    
+}
+
+/* icon user online */
+#qiao-icon-wrap .qiao-icon-user-online {
+    background-position: -420px -36px;
+}
+
+/* icon user hover */
+#qiao-icon-wrap .qiao-icon-user:hover {
+    filter:alpha(opacity=80);
+    -moz-opacity:0.5;
+    -khtml-opacity:0.5;
+    opacity:0.5;
+    border: 1px solid #fff;
+    _margin-left: 15px;
+    _padding: 0px 0px 0px 15px;
+}
+
+/* icon close 
+#qiao-icon-wrap .qiao-icon-close {
+    position: absolute;
+    width:25px;height:66px;top:50%;margin-top:-33px;left:-25px;background:url(http://qiao.baidu.com/v3/img/front/icon_close.png) -80px 0 no-repeat;
+}*/
+#qiao-icon-wrap .qiao-icon-close {
+    width: 25px;
+    height: 68px;
+    display: block;
+                width:25px;height:66px;background:url(/public/static/jiawuyou/images/icon_close.png) -80px 0 no-repeat;
+}
+
+/* icon close hover */
+#qiao-icon-wrap .qiao-icon-close:hover {
+                background-position: url(/public/static/jiawuyou/images/icon_close.png) -120px 0 no-repeat;;
+    
+}
+
+/* icon min */
+#qiao-icon-wrap .qiao-icon-min {
+    width: 25px;
+    height: 68px;
+    display: none;
+                width:25px;height:66px;background:url(/public/static/jiawuyou/images/icon_close.png) 0 0 no-repeat
+    
+}
+
+#qiao-icon-wrap .qiao-icon-min:hover {
+            background-position: url(/public/static/jiawuyou/images/icon_close.png) -40px 0 no-repeat;
+    }
+
+/* icon min change */
+#qiao-icon-wrap.qiao-icon-wrap-min .qiao-icon-head,
+#qiao-icon-wrap.qiao-icon-wrap-min .qiao-icon-body,
+#qiao-icon-wrap.qiao-icon-wrap-min .qiao-icon-min {
+    display: none;
+}
+
+#qiao-icon-wrap.qiao-icon-wrap-min .qiao-icon-colse {
+    display: block;
+}
+ins#qiao-invite-wrap {
+    visibility: visible !important;
+    position: fixed;
+    _position: absolute;
+
+    /* 容器大小 */
+    width:310px;height:144px;
+
+    /* 容器位置 */
+    top:50%;left: 50%;margin:-72px 0 0 -155px;
+
+    /* 背景 */
+    background:url(http://qiao.baidu.com/v3/res/invitebg/01.jpg);
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    z-index: 2147483647;
+}
+
+#qiao-invite-wrap .qiao-invite-decoration {
+        position: absolute;
+    top: 5px;
+    left: 5px;
+        width: 98px;
+    height: 128px;
+        border: 2px solid #FFF;
+
+        background: url(http://qiao.baidu.com/v3/res/invitehead/01_big.jpg) 0 0;
+    }
+
+#qiao-invite-wrap .qiao-invite-text {
+        position: absolute;
+    top: 50%;
+    left: 115px;
+    padding-right: 18px;
+    
+    /* 使用富文本，去掉*/
+    /* 字体设置 
+    font-size: 12px;
+    color: #333;*/
+    /* 字体最好用英文 
+    font-family: SimSun;
+    line-height: 1.5;*/
+}
+
+#qiao-invite-wrap .qiao-invite-close {
+    
+    position: absolute;
+    width: 10px;height: 10px;
+    top: 5px;right: 5px;
+        z-index: 100;
+    cursor: pointer;
+    background: url(http://qiao.baidu.com/v3/img/matrix/btn.png) -19px -63px;
+}
+
+#qiao-invite-wrap .qiao-invite-reject {
+    
+    position: absolute;
+    width: 80px;height: 25px;
+    bottom: 5px;right: 90px;
+    
+    line-height: 25px;
+    color: #666;
+    text-align: center;
+
+    
+    border: 1px solid #CCC;
+    cursor: pointer;
+
+    background: #EAEAEA;
+    background: -moz-linear-gradient(top, #F3F3F3, #E0E0E0);
+    background: -webkit-gradient(linear, 0 0, 0, 100%, from(#F3F3F3), to(#E0E0E0));
+}
+
+#qiao-invite-wrap .qiao-invite-accept {
+    
+    position: absolute;
+    bottom: 5px;right: 5px;
+    width: 80px;height: 25px;
+
+    
+    line-height: 25px;
+    color: #000;
+    text-align: center;
+
+    border: 1px solid #7292B3;
+    cursor: pointer;
+
+    background: #206cd3;
+    /* 使用纯色 
+    background: -moz-linear-gradient(top, #A7C6E5, #7FB0DF);
+    background: -webkit-gradient(linear, 0 0, 0, 100%, from(#A7C6E5), to(#7FB0DF));
+    */
+}
+
+#qiao-invite-wrap .qiao-invite-form {
+    display:none;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    
+    width: 100%;
+    padding: 5px 0;
+    overflow: hidden;
+
+    background: #D6E3F0;
+
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#qiao-invite-wrap .qiao-invite-form-inner {
+    position: relative;
+    padding-left: 5px;
+    padding-right: 60px;
+    overflow: hidden;
+}
+
+#qiao-invite-wrap .qiao-invite-input {
+    display: block;
+    
+    width: 100%;
+    height: 32px;
+    padding: 2px;
+    outline: none;
+
+    border: 1px solid #CCC;
+    background: #FFF;
+}
+
+#qiao-invite-wrap .qiao-invite-send {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    width: 40px;
+    height: 36px;
+    line-height: 36px;
+    background: #B0CBE5;
+    border: 1px solid #6095C6;
+    color: #000;
+    text-align: center;
+    cursor: pointer;
+}

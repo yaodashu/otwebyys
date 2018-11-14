@@ -1,0 +1,56 @@
+<?php
+//初始化Smarty成员属性的公用文件init.inc.php
+define('ROOT',str_replace("\\","/",dirname(_FILE_)),'/'); //指定项目的根路径
+require ROOT.'libs/Smarty.class.php';                     //加载smarty类文件
+$smarty = new Smarty(); 
+//实例化smarty类对象$smarty
+
+/*推荐使用smarty3以上版本方式设置默认路径，设置成功后都返回$smarty对象本身，可以使用连贯操作 */
+$smarty->setTemplateDir(ROOT.'templates/');        //设置所有模板文件存放的目录
+//     ->addTemplateDir(ROOT.'templates2')         //可以添加多个模板目录（前后台各一个）
+  ->setCompileDir(ROOT.'templates_c/')//设置所有编译过的模板文件存放目录
+  ->setPluginsDir(ROOT.'plugins/')//设置模板扩充插件存放目录
+  ->setCacheDir(ROOT.'cache/')//设置缓存文件存放的目录(开启缓存才被使用)
+  ->setConfigDir(ROOT.'configs');              //设置模板配置文件存放的目录
+  
+  
+$smarty->caching = false;                      //设置smarty缓存开关1开启 0 关闭 ture开启 false 关闭
+$smarty->cache_lifetime = 60*60*24             //设置模板缓存有时间段的长度为1天
+$smarty->left_delimiter = '<{';                //设置模板语言中的左结束符号
+$smarty->right_delimiter = '}>';               //设置模板语言中的右结束符号
+
+
+
+/*初始化配置说明*/
+//smarty2时的设置方式：
+/*
+$smarty->template_dir = "./templates";    //设置模板目录，2.0设置方法，3.0沿用但不支持
+$smarty->compile_dir = "./templates_c";    //设置编译目录。2.0设置方法，3.0沿用但不init持
+$smarty->config_dir = "./configs/"; //设置编译目录。2.0设置方法，3.0沿用但不支持
+$smarty->cache_dir = "./cache/"; //设置编译目录。2.0设置方法，3.0沿用但不支持
+*/
+
+//smarty3对属性进行了封装，可以使用如下方法进行访问获得目录
+$smarty->getCacheDir();                //得到当前缓存目录路径
+$smarty->getTemplateDir();  //得到当前模板目录路径的数组
+$smarty->getConfigDir();               //得到当前配置文件目录路径
+$smarty->getCompileDir();              //得到当前编译目录路径
+$smarty->getPluginsDir();              //得到当前插件目录路径数组
+
+//同样下面的方法进行目录设置：
+//设置新的模板目录，注意设置后模板目录的数组只有该值一个，不管原来有几个值
+$smarty->setTemplateDir("./templates/");
+$smarty->setCompileDir("./templates_c/");    //设置新的编译目录
+$smarty->setConfigDir("./configs/");         //设置新的配置文件目录
+$smarty->setCacheDir("./cache/");//设置新的缓存目录
+$smarty->setLeftDelimiter('<{');            //方法设置推荐
+$smarty->setRightDelimiter('<{');           //方法设置推荐
+//引用的模板文件的路径必须在模板目录数组中，否则报错，由于仍然用原来的模板文件，这样模板数组中有两个路径。
+$smarty->addTemplateDir('./templates2/');
+//添加一个新的插件目录，如果用set将取消插件数组，变为单指
+$smarty->addPluginsDir('./myplugins');
+
+//说明：这些Smarty对象中的设置方法，设置成功后返回的还是Smarty类对象($this),所以可以像
+//init.inc.php脚本中应用的方式一样，采用对象连贯操作方式部署smarty路径。
+/*初始化配置说明*/
+?>

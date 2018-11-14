@@ -1,0 +1,910 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>|我的小窝</title>
+<meta name="keywords" content="，长沙我的小窝，湖南家装领导者，中高档装修市场遥遥领先，我的小窝" />
+<meta name="description" content="，长沙我的小窝，湖南家装领导者，中高档装修市场遥遥领先，我的小窝" />
+<link rel="stylesheet" href="/Public/home/css/swiper.css"> 
+
+<!--<script src="/Public/home/js/mobile.js" type="text/javascript"></script>-->
+<link href="/Public/home/css/style.css" type="text/css" rel="Stylesheet" />
+<script src="/Public/home/js/jquery.js" type="text/javascript"></script>
+<script src="/Public/home/js/jquery.cookies.js" type="text/javascript"></script>
+<script src="/Public/home/js/common.js" type="text/javascript"></script>
+
+<!--<script src="/Public/home/images/jQueryRotate.js" type="text/javascript"></script>
+<script src="/Public/home/images/swiper.js" type="text/javascript"></script>-->
+<style>
+
+</style>
+
+<script type="text/javascript">
+$(function () {
+    do_banner1();
+    //alert(getQueryString('fengge')); 
+     
+
+})
+/*0 banner1*/
+function do_banner1(){ 
+    //此类型新闻的图层显示介绍文字
+    $('#banner1 ul li').hover(function(){  
+		 //图片放大
+		//先记录上是哪层div高度 
+		var dValue=$(this).find("div").height(); 
+		 $(this).find("div").css("height",dValue);
+		 
+		var wValue=1.1 * $(this).find("a img").width(); 
+		var hValue=1.1 * $(this).find("a img").height(); 
+		$(this).find("a img").animate({width: wValue, 
+		height: hValue, 
+		left:("-"+(0.1 * $(this).find("a img").width())/2), 
+		top:("-"+(0.1 * $(this).find("a img").height())/2)}, 800);  
+	},function(){ 
+	    //图片缩小
+	    $(this).find("a img").animate({width: "100%", 
+	    height: "100%", 
+	    left:"0px", 
+	    top:"0px"}, 600 ); 
+	});
+}
+
+function getQueryString(name) { 
+var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+var r = window.location.search.substr(1).match(reg); 
+if (r != null) return unescape(r[2]); return null; 
+} 
+
+</script>
+</head>
+<body class="p_list_anli">
+    <style>
+    #topnav div span{
+	color:#666666;
+    }
+    .city_chg:hover{cursor: pointer;}
+    #city_list .areatop{display: inline-block;overflow: overlay;}
+    #city_list .areatop .list1{width: 18%; min-width: 70px; display: inline-block;  float: left;} 
+    #city_list .areatop .list2{width: 80%; display: inline-block;  float: left;}
+    #city_list .areatop .list1 div{width: 70px;height: 38px;line-height: 38px;text-align: center;font-size: 16px;font-weight: 600;color:#666666;display: inline-block;}
+    #city_list .areatop .list2 div{min-width: 70px;height: 38px;line-height: 38px;text-align: center;font-size: 16px;font-weight: 500;color:#666666;display: inline-block;}
+    #city_list .areatop .list2 div:hover{background: #183078;color: #fff;}
+    .list2-1 div{margin-left: 2px;}
+    .fl{float: left;}
+    #weixin_qr{margin: 36px 0px 0px 67%;}
+    
+/*    @media screen and (max-width: 1601px) {  
+    #weixin_qr{margin: 36px 0px 0px 64%;}
+    }
+    @media screen and (max-width: 1401px) { 
+    #weixin_qr{margin: 36px 0px 0px 61%;}
+    }
+    @media screen and (max-width: 1251px) { 
+    #weixin_qr{margin: 36px 0px 0px 58%;}
+    }*/
+  
+</style>  
+    <!--引入阿里矢量图地址-->
+    <style type="text/css">
+    @font-face {
+      font-family: 'iconfont';
+      src: url('/Public/font_333060/iconfont.eot');
+      src: url('/Public/font_333060/iconfont.eot?#iefix') format('embedded-opentype'),
+      url('/Public/font_333060/iconfont.woff') format('woff'),
+      url('/Public/font_333060/iconfont.ttf') format('truetype'),
+      url('/Public/font_333060/iconfont.svg#iconfont') format('svg');
+    }
+    .iconfont{
+      font-family:"iconfont" !important;
+      font-size:16px;font-style:normal;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-stroke-width: 0.2px;
+      -moz-osx-font-smoothing: grayscale;
+    }
+</style>
+<div class="main-top mainarea" style="background: #d1d1d2;width: 100%; height: 35px; position: absolute;">
+    <div id="topnav" style="width:1200px;height:35px;color:#b0aeae;overflow: hidden; z-index: 9999;margin: 0 auto;">    
+<!--	<div style="margin-top: 8px;width:18%;text-align: right;line-height: 20px;display: inline-block;float: left;color:#666666;">
+	    &nbsp;
+	</div>-->
+	<div style="margin-top: 8px;width:600px;text-align: left;line-height: 20px;display: inline-block;float: left;">
+	    <span style="margin-left: 2px;margin-right: 10px;">欢迎来到我的小窝</span>
+	    <span style="margin-left: 2px;">
+		<!--<img src="/Public/images/addr01.png" style="height: 18px; margin-top: -2px;">--> 
+		<div class="icon icon-green radius icon-list-fun" style="height: 19px;line-height: 19px;display: inline-block;width: 20px;">
+		       <i style="font-size: 18px;padding-top:0px;margin-top:0px;line-height: 19px;" class="aui-iconfont iconfont">&#xe650;</i></div>
+	    </span>
+	    <span class="city_name">长沙</span>
+	    <span class="city_chg" onclick="city_chg();">【切换】</span>
+	</div>
+
+	<div style="margin-top: 8px;width:590px;text-align: right;line-height: 20px;display: inline-block;float: left;" class="topn">
+	    <span class="weixin_qr"><img src="/Public/images/weixin01.png" style="height: 18px; margin-top: -3px;"></span>
+	    <span class="weixin_qr" style="margin-left: 5px;">关注微信公众账号</span>
+	    <span class="weixin_qr" style="margin:0 10px 0 10px;"><img src="/Public/images/down01.png" style="height: 7px; margin-top:0px;"></span>
+	    <span>咨询电话</span>
+	    <span style="font-size: 18px;margin-left: 5px;">400 048 0731</span>
+	</div>
+<!--	<div style="margin-top: 8px;width:16.5%;text-align: right;line-height: 20px;display: inline-block;float: left;color:#666666;">
+	    &nbsp;
+	</div>-->
+    </div>     
+</div>
+<!--城市切换-->
+<div id="top-list" class="mainarea" style="">
+    <div id="city_list" style="height: 260px; width: 384px;background: #fff; margin: 36px 0px 0px 110px; z-index: 2147483647;position: absolute;display: none;">
+	<div style="width: 100%;height: 100%;background: #fff;padding: 10px;">
+	    <div class="areatop">
+		<div class="list1"><div class="fl">A-H</div></div>
+		<div class="list2 list2-1">
+		    <a href="http://www.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="fl">长沙</div></a>
+		    <a href="http://cd.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="fl">常德</div></a>
+		    <a href="http://cz.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="fl">郴州</div></a>
+		    <a href="http://hh.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="fl">怀化</div></a>
+		    <a href="http://hy.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="fl">衡阳</div></a>
+		    <a href="http://gy.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="fl" style="width: 140px;">贵阳（贵州省）</div></a>
+		</div>
+	    </div>
+	    <div class="areatop">
+		<div class="list1"><div class="fl">I-P</div></div>
+		<div class="list2"> 
+		    <a href="http://js.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">吉首</div></a>	
+		    <a href="http://ld.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">娄底</div></a>	
+		    <a href="http://ly.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">浏阳</div></a>
+		    <a href="http://leiyang.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">耒阳</div></a>		
+		    <a href="http://liling.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">醴陵</div></a>		    
+		</div>
+	    </div>
+	    <div class="areatop">
+		<div class="list1"><div class="fl">Q-Z</div></div>
+		<div class="list2">
+		    <a href="http://sy.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">邵阳</div></a>	
+		    <a href="http://xt.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">湘潭/湘乡</div></a>		
+		    <a href="http://xh.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">新化</div></a>	
+		    <a href="http://yy.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">岳阳</div></a>	
+		    <a href="http://yi.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">益阳</div></a>	
+		    <a href="http://yz.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">永州</div></a>		
+		    <a href="http://zjj.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">张家界</div></a>		
+		    <a href="http://zz.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">株洲</div></a>		    
+		</div>	    
+	    </div>
+	</div>
+    </div>
+    <!--微信二维码-->
+    <div id="weixin_qr" style="height: 100px; width: 100px;  z-index: 2147483647;position: absolute;display: none;margin-left: 900px;display: none;">
+	<img src="/Public/images/weixin.png" style="width: 100%;height: 100%;">
+    </div>
+</div>
+<script>
+    $(function(){
+	//$("#city_list").css("display","block");
+    })
+//    切换城市
+    function city_chg(){
+	//alert("citys");
+	if($("#city_list").css("display")=="none"){
+	    $("#city_list").css("display","block");
+	}else{
+	    $("#city_list").css("display","none");
+	}
+    } 
+    $(".city_chg").hover(function(){ 
+		$("#city_list").css("display","block");
+	},function(){});
+    $("#city_list").hover(function(){ 
+	},function(){$("#city_list").css("display","none");});
+//	显示微信二维码
+    $(".weixin_qr").hover(function(){
+		$("#weixin_qr").css("display","block");
+	},function(){$("#weixin_qr").css("display","none");});
+</script> 
+    <style>    
+    /*float dialog end*/
+    #headerf { margin:0 auto; width: 1200px; height: 85px;overflow: hidden; z-index: 9990; background-color: #ffffff;opacity: 1;font-family: 微软雅黑;}
+    #headerf div a .current{color:#fff;font-weight: 600;}
+    #headerf .div1 { position: relative; margin: 0 0 0 0; width:350px;min-width: 200px; height: 85px; overflow: hidden;float: left; }
+    #headerf .div1 img{position: relative; width: 100%; max-width: 191px; float: left; margin-top: 15px;}    
+    #headerf .div2 { float: left;width: 850px; height: 85px; padding-left: 0%; margin: 0 0 0 0; overflow: hidden; float: left;}
+    #headerf .div2 div {width:14.2%; height: 85px; display: inline-block; text-align: center;line-height: 85px;}
+    #headerf .div2 a div {font-size: 16px;font-weight: 500;color:#333333;text-decoration:none;float: left;}   
+    #headerf .div2 a div:hover,#headerf .div2 a div.current {color:#fff;font-weight: 500;background: #183078;}
+    #headerf a:hover #nav_layer3{display: block; }
+    #headerf .div3 { position: relative;font-size: 18px;font-weight: 600;color:#5f5d5d; overflow: hidden; line-height: 85px; }
+    #headerf .div3 .tel{ width: 175px;line-height: 85px;height: 85px;float: left;}
+    #headerf .div3 .tel a:hover {color:#DF0010;}    
+    #headerf .div3 .search{ width: 200px;line-height: 85px;height: 85px;float: left;padding-top:40px;}
+    #headerf .div3 .tel a:hover {color:#00352d;}    
+    #headerf .div3 .tel{ width: 185px;}       
+    #headerf .div3 .tel .div01{ width: 42px;}     
+    #headerf .div3 .tel .div02{ width: 142px;height: 85px;}   
+    .search .keyword {float: left;width:260px;    height: 25px;line-height: 25px;color: #969393;margin-top:0px; padding-left: 10px;border: 1px solid #c5c5cc;font-size: 12px;font-weight: 500;font-family: 微软雅黑; border-radius: 15px 15px 15px 15px;}
+    #headerf .div4{width: 224px;margin-left: 0px; }
+    
+    .s-span1 {height: 36px;  font-size: 12px;  line-height: 36px;   display: inline-block;    float: left;   font-weight: 500;  color: #9a9898;   font-family: 微软雅黑;}
+    .s-span1 a{height: 36px;  font-size: 12px;  line-height: 36px; }
+    .s-content1,.s-content2{color: #2e4f89}
+    
+    #nav_layer1{display: none;
+			 margin: 120px 0 0 325px;position: absolute; width: 200px;height: 125px; z-index: 2147483647;background: #fff;
+    }
+    #nav_layer3{display: none;
+			 margin: 120px 0 0 515px;position: absolute; width: 200px;height: 185px; z-index: 2147483647;background: #fff;
+    }
+    #nav_layer6{display: none;
+			 margin: 120px 0 0 800px;position: absolute; width: 200px;height: 185px; z-index: 2147483647;background: #fff;
+    }
+    
+    .headerf_nav div{width: 100%;height: 60px;margin: 3px 0 0 0;overflow: hidden;background: #fff;color:#7d7d7d;}
+    .headerf_nav div .div1{width: 30%;display: inline-block; float: left; text-align: center; margin-top:0px;}
+    .headerf_nav div:hover div {background: #183078;color:#fff;}
+    .headerf_nav div .div1 .icon {width:100%;height: 100%;margin: 0;}
+    .headerf_nav div .div2{width: 70%;display: inline-block; float: left; text-align: left; margin-top: 0px;font-size: 16px;line-height: 60px;}   
+    
+    @media screen and (max-width: 1200px) {  
+    }
+    
+</style>
+
+<div class="mainarea" style="background-color: #ffffff;width: 100%; height: 85px; /* margin-top: 35px; */ position: absolute; top: 35px;">
+<div id="headerf">
+    <div class="div1" style="width: 230px;">
+        <a href="/" title="湖南家装领导者">
+	    <img src="/Public/images/logo.png" alt="长沙我的小窝" />
+	   <h1 style="text-indent: -9000px;" title="我的小窝">我的小窝</h1>
+	</a>
+    </div>
+    <div class="div2" style="width: 670px;"> 
+	<a href="/" target="_blank"><div id="nav_home" class="">首页</div></a>
+<!--	<a href="/index.php/home/anli/" target="_blank"><div id="nav_anli">装修案例</div></a>
+	<a href="/index.php/home/shejishi/" target="_blank"><div id="nav_sheji">设计团队</div></a>
+	<a href="javascript:void(0);">
+	    <div id="nav_oubiao">
+		欧标工艺
+	    </div>
+	</a>
+	<a href="http://yatai.dasn.com.cn/" target="_blank"><div id="nav_yatai">亚太墅装</div></a>
+	<a href="http://dazhai.dasn.com.cn/" target="_blank"><div id="nav_dazhai">点石·大宅</div></a>
+	<a href="/zhuanti/about" target="_blank"><div id="nav_aboutus">关于我们</div></a>-->
+    </div> 
+    <div class="div3 search" style="width: 280px; margin-left: 20px;padding-top: 10px; height: 75px;display: inline-block;">
+	<form target="_blank" id="form_search" action="/index.php/home/other/search">
+	    <div style="display: inline-block;float: left; position: relative;">
+		<input type="hidden" name="kwtype" value="0">
+		<input id='keyword' name="keyword" type="text" class="style1 keyword" style="" value="" placeholder="关键词查询" onfocus="if (value ==&#39;关键词查询&#39;){value =&#39;&#39;}" onblur="if (value ==&#39;&#39;){value=&#39;关键词查询&#39;}">
+		<img onclick="go_search();" src="/Public/images/search_logo2.png" style="position: absolute; top: 5px; margin-left: -40px;">
+	    </div>
+	    <div id="btnsearch" onclick="go_search();" style="display:none;">搜&nbsp;&nbsp;&nbsp;&nbsp;索</div>
+	    <!--<input type="submit" value="输入关键词搜索" class="style2" title="输入关键词搜索">-->
+	    <a href="javascript:go_search();" style="display: none;">
+		<img src="/Public/home/images/logo_search.png" style="border:none;float: left; height:30px;margin-top: -5px;">
+	    </a>
+	</form>  
+	<div class="cache-search" style="display: inline-block;line-height: 36px; height: 36px;  overflow: hidden;  width: 100%;">
+	    <span class="s-span1">热门搜：</span>
+	    <span class="s-span1"><a href="/zhuanti/quanfang" target="_blank" class="hsearch" style="text-decoration: none;color: #0722f3; font-weight: 500; font-family: 微软雅黑;">定制全装&nbsp;&nbsp;</a></span>
+	    <span class="s-span1"><a href="/zhuanti/brand" target="_blank" class="hsearch" style="text-decoration: none;color: #0722f3; font-weight: 500; font-family: 微软雅黑;">免费服务&nbsp;&nbsp;</a></span>
+	    <span class="s-span1 s-content1"><a href="/zhuanti/gongyi" target="_blank" class="hsearch" style="text-decoration: none;color: #0722f3; font-weight: 500; font-family: 微软雅黑;">欧标工艺&nbsp;&nbsp;</a></span>
+	    <span class="s-span1 s-content2" style="margin-left:5px;"><a href="/zhuanti/gongcheng" target="_blank" class="hsearch" style="text-decoration: none;color: #0722f3; font-weight: 500; font-family: 微软雅黑;">工程服务&nbsp;&nbsp;</a></span>
+	</div>
+    </div>
+<!--    <div class="div3" style="display: none;">
+	<div class="tel">
+	    <a target="_blank" href="javascript:void(0)" style="text-decoration:none;">
+		<div class="div01" style="float: left;padding-top: 23px;width: 42px; display: inline-block;">
+		    <img src="/Public/home/images/logo_tel.png" style="border:none;float: right;"></div>
+		<div class="div02" style="padding-top: 0%;display: inline-block;">400-048-0731</div>
+	    </a>
+	</div>
+	<div class="search">
+	    <form target="_blank" id="form_search" action="/index.php/home/other/search">
+		<input type="hidden" name="kwtype" value="0">
+		<input name="keyword" type="text" class="style1 keyword" style="float: left;width: 120px;height: 26px;color: #969393;margin-top: -5px; padding-left: 10px;border: 1px solid #c3c2c2;" value="" placeholder="输入关键词搜索" onfocus="if (value ==&#39;输入关键词搜索&#39;){value =&#39;&#39;}" onblur="if (value ==&#39;&#39;){value=&#39;输入关键词搜索&#39;}">
+		<input type="submit" value="输入关键词搜索" class="style2" title="输入关键词搜索">
+		<a href="javascript:go_search();">
+		    <img src="/Public/home/images/logo_search.png" style="border:none;float: left; height:30px;margin-top: -5px;">
+		</a>
+	    </form> 
+	</div>
+    </div>  -->
+</div> 
+</div>
+
+<div id="top-list" class="mainarea" style="">
+    <div class="headerf_nav" id="nav_layer1" style="display:none;">
+       <a href="/index.php/home/anli/" target="_blank">
+	   <div id="nav_layer11" style="">
+	       <div class="div1">
+		   <div class="icon icon-green radius icon-list-fun">
+		       <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe644;</i></div></div>
+	       <div class="div2">装修案例</div>	       
+	   </div></a>
+       <a href="/index.php/home/quanjin/" target="_blank">
+	   <div id="nav_layer12" style="">
+	      <div class="div1">
+		   <div class="icon icon-green radius icon-list-fun">
+		       <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe63d;</i></div></div>
+	      <div class="div2">全景VR设计</div>
+	   </div></a>
+    </div>
+    <div class="headerf_nav" id="nav_layer3" style="display:none;">
+       <a href="/zhuanti/gongyi/" target="_blank">
+	   <div id="nav_layer31" style=""> 
+	       <div class="div1"> 
+		   <div class="icon icon-green radius icon-list-fun">
+		       <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe673;</i></div></div>
+	       <div class="div2">欧标工艺</div>	       
+	   </div></a>
+       <a href="/zhuanti/brand/" target="_blank">
+	   <div id="nav_layer32" style="">
+	       <div class="div1"> 
+		   <div class="icon icon-green radius icon-list-fun">
+		       <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe641;</i></div></div>
+	       <div class="div2">五免服务</div>	       
+	   </div></a>
+       <a href="/zhuanti/gongcheng/" target="_blank">
+	   <div id="nav_layer33" style="">
+	      <div class="div1"> 
+		   <div class="icon icon-green radius icon-list-fun">
+		       <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe664;</i></div></div>
+	      <div class="div2">工程保障</div>
+	   </div></a>
+    </div>
+
+    <div class="headerf_nav" id="nav_layer6" style="display:none;">
+       <a href="/zhuanti/about/" target="_blank">
+	   <div id="nav_layer61" style="">
+	       <div class="div1">
+		   <div class="icon icon-green radius icon-list-fun">
+		       <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe611;</i></div></div>
+	       <div class="div2">品牌介绍</div>	       
+	   </div></a>
+       <a href="/index.php/home/article/index/ftype/4" target="_blank">
+	   <div id="nav_layer62" style="">
+	      <div class="div1">
+		   <div class="icon icon-green radius icon-list-fun">
+		       <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe631;</i></div></div>
+	      <div class="div2">新闻动态</div>
+	   </div></a>
+       <a href="/zhuanti/shiliyou/" target="_blank">
+	   <div id="nav_layer63" style="">
+	      <div class="div1"> 
+		   <div class="icon icon-green radius icon-list-fun">
+		       <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe6e1;</i></div></div>
+	      <div class="div2">选择点石10大理由</div>
+	   </div></a>
+    </div>
+</div>
+<div style="width:100%;height:120px;">&nbsp;</div> 
+
+<script>  
+    $(function(){ 
+	var turl ="/index.php/home/other/getcount/"; 
+	$.ajax({url:turl,type : 'GET',dataType : "json",cache:false,data : {},	success:function(result){
+	   // alert(result.length);
+	   for(var item=0;item<result.length;item++){
+	       var str="";
+	       if(item==0 && result[0].title!=''){  
+//		    $(".s-content1").html(result[0].title); ///index.php/home/other/search?kwtype=0&keyword=刚
+		    str = '<a href="/index.php/home/other/search?kwtype=0&keyword='+result[0].title+'" target="_blank" style="text-decoration: none;color: #0722f3; font-weight: 500; font-family: 微软雅黑;">'+result[0].title+'&nbsp;&nbsp;</a>';
+		    $(".s-content1").html(str);
+		} 
+		if(item==1 && result[1].title!=''){
+//		    $(".s-content2").html(result[1].title);
+		    str = '<a href="/index.php/home/other/search?kwtype=0&keyword='+result[1].title+'" target="_blank" style="text-decoration: none;color: #0722f3; font-weight: 500; font-family: 微软雅黑;">'+result[1].title+'&nbsp;&nbsp;</a>';
+		    $(".s-content2").html(str);
+		} 
+	   }
+	}})
+    })
+    function go_search(){ 	
+    var turl ="/index.php/home/other/count/";  
+	if($.trim($("#keyword").val())=="" || $.trim($("#keyword").val())=='开启您的私人定制之旅'){alert("请输入有效查询条件！");$("#keyword").focus(); return;}
+	$.ajax({url:turl,type : 'POST',dataType : "json",cache:false,data : {'url' : location.href,'keyword' : $("#keyword").val()},	success:function(result){}})
+	
+	$("#form_search").submit();
+    } 
+    $("#headerf .div2 div").hover(function(){ 
+	var id = $(this).attr("id");
+	//alert(id);
+	if(id=="nav_anli" || id=="nav_oubiao" || id=="nav_aboutus"){
+	    if(id=="nav_anli"){
+		$("#nav_layer1").css("display","block");
+		$("#nav_layer11 div").css("background","#183078");	
+		$("#nav_layer11 div").css("color","#fff");		
+	    }else if(id=="nav_oubiao"){
+		$("#nav_layer3").css("display","block");
+		$("#nav_layer31 div").css("background","#183078");	
+		$("#nav_layer31 div").css("color","#fff");
+	    }else if(id=="nav_aboutus"){
+		$("#nav_layer6").css("display","block");
+		$("#nav_layer61 div").css("background","#183078");	
+		$("#nav_layer61 div").css("color","#fff");
+	    }
+	}else{
+	    $("#nav_layer1").css("display","none");
+	    $("#nav_layer3").css("display","none");
+	    $("#nav_layer6").css("display","none");
+	}
+    },function(){});
+    $(".headerf_nav").hover(function(){ },function(){
+	//alert("tts");
+	$("#nav_layer1").css("display","none");
+	$("#nav_layer3").css("display","none");
+	$("#nav_layer6").css("display","none");
+    });
+    //默认子菜单切换
+    $("#nav_layer11").hover(function(){
+		$("#nav_layer11 div").css("background","#183078");	
+		$("#nav_layer11 div").css("color","#fff");	
+    },function(){
+	//alert("ttt");
+	$("#nav_layer11 div").css("background","#fff");	
+	$("#nav_layer11 div").css("color","#7d7d7d");
+    });
+    $("#nav_layer31").hover(function(){
+		$("#nav_layer31 div").css("background","#183078");	
+		$("#nav_layer31 div").css("color","#fff");	
+     },function(){
+	$("#nav_layer31 div").css("background","#fff");	
+	$("#nav_layer31 div").css("color","#7d7d7d");
+    });
+    $("#nav_layer61").hover(function(){
+		$("#nav_layer61 div").css("background","#183078");	
+		$("#nav_layer61 div").css("color","#fff");	
+     },function(){
+	$("#nav_layer61 div").css("background","#fff");	
+	$("#nav_layer61 div").css("color","#7d7d7d");
+    });
+
+</script> 
+    
+<!--<div id="toppic" style="width:100%;height: auto;margin-top: 0px; background-color: #f5f6f6;"> 
+    <img src="/Public/home/images/banner/banner01.jpg" alt="我的小窝" width="100%"/>
+</div>-->
+<div>  
+    
+    <div id="main" class="main">
+	<div id="position"  style="    width: 1200px;
+    margin: 0 auto;
+    display: block;
+    padding: 0;
+    float: none;margin-bottom: 20px;">
+	    <div class="div1"> 您所在的位置：<a href='/' target="_blank" style="color:#999999;">首页</a>&gt; 
+		<a href="/index.php/home/article/index/ftype/" target="_blank" style="color:#999999;"></a>
+		&gt; <span style="color:#333333;">文章详情</span>
+	    </div>
+	</div> 
+        <div id="abox">  
+	</div>
+	
+	<div id="nbox1"  style="    width: 1200px;
+    margin: 0 auto;
+    display: block;
+    padding: 0;
+    float: none;margin-top: 20px;">			    
+            <div id="newslist" style="display: inline-block;background: #fff;padding-top: 30px;margin-bottom:50px;">
+              
+                    <div class="ftitle"><span class="ftitle_fw"></span></div>
+		    <div class="title_sub" style="text-align: left;   font-size: 14px;  color: #999999; margin-left: 35px;margin-bottom: 55px;">
+			阅读数：&nbsp;&nbsp;&nbsp;&nbsp;时间：1970-01-01 08:00:00&nbsp;&nbsp;&nbsp;&nbsp;来源：
+							我的小窝		    </div>
+		    <hr style='border-top: solid 1px #e2dfdf;width: 100%;margin: 20px 0 20px 0%;display: none;'></hr>
+                    <div class="edit_con_original" style="    margin:0 35px 0 35px;text-align: left;"> 
+			<!--                       不管你是一个酷爱艺术的文艺青年，还是一个推崇简约生活的时尚极客，亦或你是一位渴望自然浪漫的少女，或者是一位追求优雅内敛的绅士，在观湖国际260平方米
+		       <a href="/case/index.html" target="_blank">大宅装修新闻</a>里，当充满艺术气息的图案印花与时尚悦动的色调完美融合的时候，这里一定是你的心仪之所，无关人的任何性格与喜好。
+		        <h4>门厅</h4>                      
+			<i></i>                
+			<img src="/Upload/image/20170523/water/20170523180211_7199.jpg" title="观湖国际别墅现代门厅装修实景图" alt="观湖国际别墅现代门厅装修实景图" onerror="lod(this)"    /><p>&nbsp;</p>    
+			观湖国际260平方米<a href="/index.html" target="_blank">大宅装修设计</a>，别具魅力的现代风格演绎，带您走进这质感优雅的空间氤氲着摩登现代的生活情调的别墅之家。首先步入门厅，映入眼帘的是耀眼的马赛克背景墙搭配造型雅致的玄关桌，从而彰显了整个居室的审美价值。<h4>客厅</h4>                        <i></i>                                             <img src="http://cdn.shangceng.com.cn/Upload/image/20170523/water/20170523180319_3191.jpg" title="观湖国际别墅现代客厅装修实景图" alt="观湖国际别墅现代客厅装修实景图" onerror="lod(this)"    /><p>&nbsp;</p>     
+			<br />-->
+                    </div> 
+		    
+		    <div style="width:100%;margin: 50px 0 35px 0px;display: inline-block;">
+			<div style="width:60%;float: left;text-align: left;font-size: 16px;line-height: 22px;margin-left: 35px;overflow: hidden;">
+			    <a href="/index.php/home/article/detail/aid/13047" style="text-decoration:none;color:#666666;">
+				    上一篇:阿里云OSS使用-ThinkPHP 文件上传	
+				</a>			    &nbsp;
+			    <br>
+			    			    &nbsp;
+			</div>
+			<div style="width:27%;float: right;text-align: right;font-size: 16px;margin-top: 20px;">
+			    <div style="width: 80px; display: inline-block;float: left;height: 28px;line-height: 28px;color: #5d5a5a;">立即分享：</div>
+			    <div class="bdsharebuttonbox">   
+				<a href="#" class="bds_more" data-cmd="more"></a>  
+				<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>  
+				<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>  
+				<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>  
+				<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>  
+				<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>  
+			    </div>  
+			    <script>  
+				    window._bd_share_config={  
+					    "common":{  
+						"bdPopTitle":"您的自定义pop窗口标题",  
+						"bdSnsKey":{},  
+						"bdText":"此处填写自定义的分享内容",   
+						"bdMini":"2",  
+						"bdMiniList":false,  
+						"bdPic":"http://localhost/centlight/public/attachment/201410/24/14/5449ef39574f5_282x220.jpg", /* 此处填写要分享图片地址 */  
+						"bdStyle":"0",  
+						"bdSize":"16"  
+						},  
+					    "share":{}  
+				    };  
+				    with(document)0[  
+						    (getElementsByTagName('head')[0]||body).  
+						    appendChild(createElement('script')).  
+						    src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)  
+				    ];  
+				</script>  			    
+			</div>
+		    </div>
+		    
+		    <div style="width:100%;margin: 30px 0 0 0;">
+		    </div> 
+		    
+		 
+            </div>	
+	    
+	    <div id="newslist_r" style="">
+
+		  <div style="color: #666666; font-size: 25px;font-family: '微软雅黑'; font-weight: 500;text-align: center;margin: 20px 0 0px 0;">
+			 免费获取装修报价
+		  </div>
+
+		  <div style="margin: 10px 0 5px 8%; width: 92%; height: 40px; line-height: 40px;  display: inline-block;position: relative; float: left;">
+			 <input type="text" placeholder="请输入您的姓名" id="txt_name3" name="txt_name3" style="height: 100%;width: 85%; padding-left: 5%;font-family: '微软雅黑'; font-size: 16px;border: solid 1px #e5e5e5;" />
+		  </div>
+
+		  <div style="margin: 10px 0 5px 8%; width: 92%; height: 40px; line-height: 40px;  display: inline-block;position: relative; float: left;">
+			 <input type="text" placeholder="请输入您的手机号码" id="txt_tel3" name="txt_tel3" style="height: 100%;width: 85%; padding-left: 5%;font-family: '微软雅黑'; font-size: 16px;border: solid 1px #e5e5e5;" />
+		  </div>
+		  <div style="margin: 10px 0 5px 8%; width: 92%; height: 40px; line-height: 40px;  display: inline-block;position: relative; float: left;">
+			 <input class="name" type="text" id="txt_mianji3" name="txt_mianji3" placeholder="请输入您的房屋面积" style="height: 100%; width: 85%; padding-left: 5%;font-family: '微软雅黑';font-size: 16px;border: solid 1px #e5e5e5;"/>
+			 <div style="margin-left:-24px;width: 30px;position: absolute;float: right;font-size: 16px;color:#999999;display: inline-block;height: 46px;line-height: 46px;">㎡</div>
+		  </div>
+
+		  <div id="btn_submit3" style="cursor: pointer; margin: 10px 0 5px 24px;width: 84.5%;height: 42px;line-height: 40px;display: inline-block;background-color: #2E4F89;color: #fff;text-align: center;font-size: 16px;font-family: '微软雅黑';border-radius: 4px;">
+			 获取报价
+		  </div> 
+		  <div style="color:#353637;font-size: 12px;font-family: '微软雅黑';text-align: center;margin: 10px 0 10px 0;">
+			 ※我们会严格保护您的隐私请放心填写
+		  </div>
+	    </div>
+	    
+        </div>  
+	   
+	
+    </div>
+    <!--end main-->
+
+   
+<style>    
+	.li_{
+		width: 33.33%;
+	    float: left;
+	    text-align: center;
+	    font-size: 12px;
+	    margin-top: 25px;
+	}
+	.bottomBtn{
+		overflow: hidden;
+		width: 23%; 
+		float: left; 
+		text-align: center; 
+		margin: 0.85%;
+		background: #fff;
+		height:100%;
+		border-radius: 5px;
+	}
+	
+	.li_yinying:hover{
+		box-shadow:0px 0px 2px 3px #000;
+		
+	}
+	.bottom_nav .bottomBtn{color: #666666;border: solid 1px #dedede;}	
+	.bottom_nav div .img1{display: block;}
+	.bottom_nav div .img2{display: none;}
+	.bottom_nav div .p1{margin: 55px 0 0 0; padding-right: 20%; float: right;}
+	.bottom_nav div .p2{margin: 50px 0 0 0;line-height: 26px; width: 100%; text-align: left;}
+	.bottom_nav div .p3{line-height: 20px; width: 100%; text-align: left;}
+	.bottom_nav .current,.bottom_nav .bottomBtn:hover{
+	    background: #183078;
+	    color:#fff;
+	    -moz-box-shadow: 2px 2px 10px #a7a3a3; -webkit-box-shadow: 2px 2px 10px #a7a3a3; box-shadow: 2px 2px 10px #a7a3a3;border: 1px solid #a7a3a3;
+	}
+	.bottom_nav div.current .img1,.bottom_nav .bottomBtn:hover .img1{display: none;}
+	.bottom_nav div.current .img2,.bottom_nav .bottomBtn:hover .img2{display: block;}
+	     
+    @media screen and (max-width: 1201px) { 
+	.bottomBtn{
+		/*margin: 0.75%;*/
+	}
+    } 
+    
+</style>
+  <!--底部--> 
+   <div  style="width: 100%;height: auto; margin-top: 0px;background-color: #f5f6f6;padding: 2% 0 2% 0;">
+   	 <div class="bottom_nav" style="margin: 0 auto; text-align: center; font-size: 14px; color: #3b3a3b; font-family: '微软雅黑';line-height: 40px; display: block; width:1220px;height: 150px;">
+   	 	<div class="bottomBtn"> 
+			<div class="div1" style="float: left; width: 41%;height: 100%;" >
+			    <p class="p1" style="">
+				<img class="img1" src="/Public/home/images/bottom/jiantou_0.png" style="height: 40px;">
+				<img class="img2" src="/Public/home/images/bottom/jiantou_1.png" style="height: 40px;">
+			    </p>
+			</div>
+			<div class="div2" style="float:left; width: 58%;height: 100%; font-size: 16px;">
+			    <p class="p2" style="">湖南更多精英</p>
+			    <p class="p3" style="">家庭的选择</p>
+			</div>
+   	 	</div>
+	     <div class="bottomBtn"> 
+			<div class="div1" style="float: left; width: 41%;height: 100%;" >
+			    <p class="p1" style="">
+				<img class="img1" src="/Public/home/images/bottom/mendian_0.png" style="height: 40px;">
+				<img class="img2" src="/Public/home/images/bottom/mendian_1.png" style="height: 40px;">
+			    </p>
+			</div>
+			<div class="div2" style="float:left; width: 58%;height: 100%; font-size: 16px;">
+			    <p class="p2" style="">全国60家门店</p>
+			    <p class="p3" style="">专注中高端装修20年</p>
+			</div>
+   	 	</div>
+	     <div class="bottomBtn"> 
+			<div class="div1" style="float: left; width: 41%;height: 100%;" >
+			    <p class="p1" style="">
+				<img class="img1" src="/Public/home/images/bottom/gaoduan_0.png" style="height: 40px;">
+				<img class="img2" src="/Public/home/images/bottom/gaoduan_1.png" style="height: 40px;">
+			    </p>
+			</div>
+			<div class="div2" style="float:left; width: 58%;height: 100%; font-size: 16px;">
+			    <p class="p2" style="">湖南中高端市场</p>
+			    <p class="p3" style="">遥遥领先</p>
+			</div>
+   	 	</div>
+	     <div class="bottomBtn"> 
+			<div class="div1" style="float: left; width: 41%;height: 100%;" >
+			    <p class="p1" style="">
+				<img class="img1" src="/Public/home/images/bottom/bi_0.png" style="height: 40px;">
+				<img class="img2" src="/Public/home/images/bottom/bi_1.png" style="height: 40px;">
+			    </p>
+			</div>
+			<div class="div2" style="float:left; width: 58%;height: 100%; font-size: 16px;">
+			    <p class="p2" style="">70000m²</p>
+			    <p class="p3" style="">点石定制工厂</p>
+			</div>
+   	 	</div>
+<!--   	 	<div class="bottomBtn"> 
+			<div style="float: left; width: 33.33%;height: 100%; margin: 55px 0 0 0;" >
+				<p>
+				<img class="img1" src="/Public/images/jiantou.png" style="height: 40px;">
+				<img class="img2" src="/Public/images/mendian.png" style="height: 58px;">
+			    </p>
+			</div>
+			<div style="float:left; width: 66.66%;height: 100%;font-size: 12px;">
+			    <p style="margin-top: 35px;line-height: 20px; width: 100%; text-align: left;">全国48家门店</p>
+			    <p style="line-height: 20px; width: 100%; text-align: left;">专注中高端装修20年</p>
+			</div> 
+   	 	</div>
+		<div class="bottomBtn">
+		    <div style="float: left; width: 33.33%;height: 100%;margin-top: 37px;" >
+			    <p>
+			    <img src="/Public/images/gaoduan.png"/ style="height: 35px;">
+			</p>
+		    </div>
+		    <div style="float:left; width: 66.66%;height: 100%;font-size: 12px;">
+			    <p style="margin-top: 35px;line-height: 20px; width: 100%; text-align: left;">湖南中高端市场</p>
+			<p style="line-height: 20px; width: 100%; text-align: left;">遥遥领先</p>
+		    </div>
+   	 	</div>
+        <div class="bottomBtn"> 
+		    <div style="float: left; width: 33.33%;height: 100%;margin-top: 37px;" >
+			    <p>
+			    <img src="/Public/images/bi.png"/ style="height: 34px;">
+			</p>
+		    </div>
+		    <div style="float:left; width: 66.66%;height: 100%;font-size: 12px;">
+			    <p style="margin-top: 35px;line-height: 20px; width: 100%; text-align: left;">50000m²</p>
+			<p style="line-height: 20px; width: 100%; text-align: left;">点石定制工厂</p>
+		    </div> 
+   	 	</div>-->
+   	 </div>
+   </div> 
+<style>
+    .footer ul li a div{color: #5a5c5c;}
+    .footer ul li a:hover,.footer a:hover{text-decoration: none;color: #183078;}    
+    .footer ul li a:hover div,.footer a:hover span{color: #183078;}
+</style>
+<div id="top-list" class="mainarea" style="width: 100%; background-color: #333333;">
+    <div class="footer"   style=" height: auto; margin: 0px auto; background-color: #333333;line-height: 40px;width: 1200px;display: block;"> 
+       <div style="margin-top: 2%; height: 320px; text-align: center; font-size: 18px;color: #3b3a3b;line-height: 40px;display: inline-block;padding-bottom: 55px;">
+	    <div style="width: 10%; margin: 0 2% 0 0;float: left;text-align: center;">
+		    <p style="text-align: left; font-size: 16px;color: #999999;">装修案例</p>
+		    <ul style="margin-top: 3%;">
+			    <li style="float: left;display: inline-block;width: 100%;text-align: left;">
+				    <a href="/index.php/home/anli/" target="_blank">
+					    <div style="height: 20px;line-height: 20px; font-size: 14px;">装修案例</div>
+				    </a>
+			    </li>
+			    <li style="float: left;display: inline-block;width: 100%;text-align: left;">
+				    <a href="/index.php/home/quanjin/" target="_blank">
+					    <div style="height: 20px;line-height: 20px; font-size: 14px;">全景VR设计</div>
+				    </a>
+			    </li>
+		    </ul>
+	    </div>
+
+
+	    <div style="width: 10%; margin: 0 2% 0 0;float: left;text-align: center;">
+		   <a href="/index.php/home/shejishi/" target="_blank"></a> <p style="text-align: left; font-size: 16px;color: #999999;">设计团队</p>
+		    <ul style="margin-top: 3%;">
+			    <li style="float: left;display: inline-block;width: 100%;text-align: left;">
+				    <a href="/index.php/home/shejishi/index/rank/1500" target="_blank">
+					    <div style="height: 20px;line-height: 20px; font-size: 14px;">首席设计师</div>
+				    </a>
+			    </li>
+			    <li style="float: left;display: inline-block;width: 100%;text-align: left;">
+				    <a href="/index.php/home/shejishi/index/rank/1000" target="_blank">
+					    <div style="height: 20px;line-height: 20px; font-size: 14px;">高级设计师</div>
+				    </a>
+			    </li>
+			    <li style="float: left;display: inline-block;width: 100%;text-align: left;">
+				    <a href="/index.php/home/shejishi/index/rank/500" target="_blank">
+					    <div style="height: 20px;line-height: 20px; font-size: 14px;">主任设计师</div>
+				    </a>
+			    </li>
+		    </ul>
+	    </div>
+
+	    <div style="width: 10%; margin: 0 2% 0 0;float: left;text-align: center;">
+		    <p style="text-align: left; font-size: 16px;color: #999999;">欧标工艺</p>
+		    <ul style="margin-top: 3%;">
+			    <li style="float: left;display: inline-block;width: 100%;text-align: left;">
+				    <a href="/zhuanti/gongyi/" target="_blank">
+					    <div style="height: 20px;line-height: 20px; font-size: 14px;">欧标工艺</div>
+				    </a>
+			    </li>
+			    <li style="float: left;display: inline-block;width: 100%;text-align: left;">
+				    <a href="/zhuanti/brand/" target="_blank">
+					    <div style="height: 20px;line-height: 20px; font-size: 14px;">五免服务</div>
+				    </a>
+			    </li>
+			    <li style="float: left;display: inline-block;width: 100%;text-align: left;">
+				    <a href="/zhuanti/gongcheng/" target="_blank">
+					    <div style="height: 20px;line-height: 20px;font-size: 14px;">工程保障</div>
+				    </a>
+			    </li>
+		    </ul>
+	    </div>
+
+		    <div style="width: 10%; margin: 0 2% 0 0;float: left;text-align: center;">
+		    <p style="text-align: left; font-size: 16px;color: #999999;">关于我们</p>
+		    <ul style="margin-top: 3%;">
+			    <li style="float: left;display: inline-block;width: 100%;text-align: left;">
+				    <a href="/zhuanti/about/" target="_blank">
+					    <div style="height: 20px;line-height: 20px; font-size: 14px;">品牌介绍</div>
+				    </a>
+			    </li>
+			    <li style="float: left;display: inline-block;width: 100%;text-align: left;">
+				    <a href="/index.php/home/article/index/ftype/4" target="_blank">
+					    <div style="height: 20px;line-height: 20px;font-size: 14px;">新闻动态</div>
+				    </a>
+			    </li>
+		    </ul>
+	    </div>
+
+	       <div style="float: right;margin-top: 0%;width: 15%;height: 200px;margin-top: 10px;">
+		    <ul>
+			    <li style="width: 100%;height: 40px;font-size: 16px;color: #999999;min-width: 130px;">
+				<div><img src="/Public/images/weixinlogo.png" style="height: 22px;margin-top: 0px;    margin-left: -10px;"> 点石微信公众号</div>	   	   			
+			    </li>
+			    <li style="width: 100%; ">
+				    <img style="height: 128px;" src="/Public/images/qrcode_dasn.png"/>
+			    </li>
+		    </ul>
+	       </div>
+	       <div style="float: right;margin-top: 0%;width: 15%;height: 200px; margin-right: 45px;margin-top: 10px;">
+		    <ul>
+			    <li style="width: 100%;height: 40px;font-size: 16px;color: #999999;min-width: 130px;">
+				<div><img src="/Public/images/weibologo.png" style="height: 22px;margin-top: 0px;margin-left: -10px;">  点石微博</div>  
+			    </li>
+			    <li style="width: 100%;">
+				<span style="padding: 4px; background: #fff; overflow: overlay; display: inline-block;">
+				    <img style="height: 120px;" src="/Public/images/qrcode_dasn_weibo.png"/></span>
+			    </li>
+		    </ul>
+	       </div>
+
+
+	     <div style="float: left;  margin-top: -90px;width: 100%;height: 50px;">
+		    <img src="/Public/images/dasn.png" style="float: left; height: 45px; margin-left: -20px;">
+		    <img src="/Public/images/phone.png" style="float: left; height: 45px; " >
+		    <div style="float: left;font-family: '微软雅黑';font-size: 30px;color: #5a5c5c;" >
+			    400 048 0731
+		    </div>
+	     </div>
+
+	 <div style="border-top: 0.5px solid #191919; margin-top: 220px;">
+
+	 </div>
+	   <style>
+	       .footer div a span{color:#5a5c5c;}
+	   </style>
+	 <div class="footer" style=" width: 100%;height: 75px; ">
+	    <div style="margin-top: 20px; width: 100%;height: 20px;font-size: 14px;line-height: 15px; color: #5a5c5c;">
+		    友情链接：
+		    <a href="http://www.luoxijiaju.com/" target="_blank"><span>罗西家具 |</span></a>
+		    <a href="http://siemensgabor.com/" target="_blank"><span>嘉宝橱柜 |</span></a>
+		    <a href="http://yatai.dasn.com.cn/" target="_blank"><span>亚太墅装 |</span></a>
+		    <a href="http://dazhai.dasn.com.cn/" target="_blank"><span>我的小窝</span></a>
+	    </div>
+	    <div style="color: #5a5c5c;line-height: 20px;font-size: 14px;margin-top: 20px;padding-bottom: 80px;">
+		<p>湖南点石装饰设计工程有限公司 1998-2018版权所有  <a id="gszza" href="javascript:void(0)" style="color:#5a5c5c;">企业统一社会信用代码：9143010279032122XL</a>     备案：<a href="http://www.miibeian.gov.cn/" target="_blank" style="color:#5a5c5c;">湘ICP备11020209号-2</a>
+		</p>
+	    </div>
+	 </div>
+       </div>
+
+    </div>
+</div>
+<style>
+.gszz{position:fixed;top:0px;left:30%;margin:0 auto;display:none;width:500px;height:600px;z-index:999;}	
+.gszz img{height:100%;width:100%} 
+</style>
+<script>
+    $('#gszza').hover(function(){
+	    $('.gszz').css('display','block');
+    },function(){
+	    $('.gszz').css('display','none');
+    })
+</script>
+<div class="gszz">
+	<img src="/Public/images/ds_gs.jpg"/>
+</div> 
+     
+</body>
+</html>   
+
+
+<script type="text/javascript">
+$(function(){
+       
+		//异步获取报名名额
+//                baomingrenshuh();		
+		var regex_number=/^\d{7}$|^\d{8}$|^\d{11}$|^\d{3,4}(-)?\d{7,8}$/;
+		$("#btn_submit3").click(function(){
+		    var obj=$(this);
+		    var _name=$("#txt_name3");
+		    var val_name=$.trim(_name.val());
+		    if(val_name.length<=0){alert("温馨提示：请输入您的真实姓名！");_name.focus();_name.select();return false;}
+		    var _tel=$("#txt_tel3");
+		    var val_tel=$.trim(_tel.val());
+		    if(!regex_number.test(val_tel)){alert("温馨提示：联系电话格式不正确！");_tel.focus();_tel.select();return false;}
+		    var _loupan=$("#txt_loupan3");
+		    var val_loupan=$.trim(_loupan.val());
+		    //if(val_loupan.length<=0){alert("温馨提示：请输入您房子的楼盘名称！");_loupan.focus();_loupan.select();return false;}
+		    var _mianji=$("#txt_mianji3");
+		    var val_mianji=$.trim(_mianji.val());
+	    //        if(val_mianji.length<=0){alert("温馨提示：请输入您房子的面积！");_mianji.focus();_mianji.select();return false;}
+		    val_name=encodeURIComponent(val_name);
+		    val_tel=encodeURIComponent(val_tel);
+		    val_loupan=encodeURIComponent(val_loupan);
+		    val_mianji=encodeURIComponent(val_mianji);
+		    var val_content=encodeURIComponent("[来源页面："+document.title+"]");
+		    var url=encodeURIComponent(location.href);
+		    var sourceid=obj.attr("sourceid");
+		    if(!sourceid){sourceid=2;}
+		    window.open("http://i.dasn.com.cn/index.php/calltel/dooperate?name="+val_name+"&tel="+val_tel+"&loupan="+val_loupan+"&mianji="+val_mianji+"&content="+val_content+"&url="+url+"&sourceid="+sourceid);
+		    _name.val("");
+		    _tel.val("");
+		    _loupan.val("");
+		    _mianji.val("");
+		    //setTimeout(baomingrenshu,1000*3);
+		    return false;
+		});
+});
+</script> 
+
+<script src="/Public/home/js/footer.js" type="text/javascript"></script>
+<script src="/public/home/js/count.js" type="text/javascript"></script>

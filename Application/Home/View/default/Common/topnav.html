@@ -1,0 +1,140 @@
+<style>
+    #topnav div span{
+	color:#666666;
+    }
+    .city_chg:hover{cursor: pointer;}
+    #city_list .areatop{display: inline-block;overflow: overlay;}
+    #city_list .areatop .list1{width: 18%; min-width: 70px; display: inline-block;  float: left;} 
+    #city_list .areatop .list2{width: 80%; display: inline-block;  float: left;}
+    #city_list .areatop .list1 div{width: 70px;height: 38px;line-height: 38px;text-align: center;font-size: 16px;font-weight: 600;color:#666666;display: inline-block;}
+    #city_list .areatop .list2 div{min-width: 70px;height: 38px;line-height: 38px;text-align: center;font-size: 16px;font-weight: 500;color:#666666;display: inline-block;}
+    #city_list .areatop .list2 div:hover{background: #183078;color: #fff;}
+    .list2-1 div{margin-left: 2px;}
+    .fl{float: left;}
+    #weixin_qr{margin: 36px 0px 0px 67%;}
+    
+/*    @media screen and (max-width: 1601px) {  
+    #weixin_qr{margin: 36px 0px 0px 64%;}
+    }
+    @media screen and (max-width: 1401px) { 
+    #weixin_qr{margin: 36px 0px 0px 61%;}
+    }
+    @media screen and (max-width: 1251px) { 
+    #weixin_qr{margin: 36px 0px 0px 58%;}
+    }*/
+  
+</style>  
+    <!--引入阿里矢量图地址-->
+    <style type="text/css">
+    @font-face {
+      font-family: 'iconfont';
+      src: url('/Public/font_333060/iconfont.eot');
+      src: url('/Public/font_333060/iconfont.eot?#iefix') format('embedded-opentype'),
+      url('/Public/font_333060/iconfont.woff') format('woff'),
+      url('/Public/font_333060/iconfont.ttf') format('truetype'),
+      url('/Public/font_333060/iconfont.svg#iconfont') format('svg');
+    }
+    .iconfont{
+      font-family:"iconfont" !important;
+      font-size:16px;font-style:normal;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-stroke-width: 0.2px;
+      -moz-osx-font-smoothing: grayscale;
+    }
+</style>
+<div class="main-top mainarea" style="background: #d1d1d2;width: 100%; height: 35px; position: absolute;">
+    <div id="topnav" style="width:1200px;height:35px;color:#b0aeae;overflow: hidden; z-index: 9999;margin: 0 auto;">    
+<!--	<div style="margin-top: 8px;width:18%;text-align: right;line-height: 20px;display: inline-block;float: left;color:#666666;">
+	    &nbsp;
+	</div>-->
+	<div style="margin-top: 8px;width:600px;text-align: left;line-height: 20px;display: inline-block;float: left;">
+	    <span style="margin-left: 2px;margin-right: 10px;">欢迎来到我的小窝</span>
+	    <span style="margin-left: 2px;">
+		<!--<img src="/Public/images/addr01.png" style="height: 18px; margin-top: -2px;">--> 
+		<div class="icon icon-green radius icon-list-fun" style="height: 19px;line-height: 19px;display: inline-block;width: 20px;">
+		       <i style="font-size: 18px;padding-top:0px;margin-top:0px;line-height: 19px;" class="aui-iconfont iconfont">&#xe650;</i></div>
+	    </span>
+	    <span class="city_name">长沙</span>
+	    <span class="city_chg" onclick="city_chg();">【切换】</span>
+	</div>
+
+	<div style="margin-top: 8px;width:590px;text-align: right;line-height: 20px;display: inline-block;float: left;" class="topn">
+	    <span class="weixin_qr"><img src="/Public/images/weixin01.png" style="height: 18px; margin-top: -3px;"></span>
+	    <span class="weixin_qr" style="margin-left: 5px;">关注微信公众账号</span>
+	    <span class="weixin_qr" style="margin:0 10px 0 10px;"><img src="/Public/images/down01.png" style="height: 7px; margin-top:0px;"></span>
+	    <span>咨询电话</span>
+	    <span style="font-size: 18px;margin-left: 5px;">400 048 0731</span>
+	</div>
+<!--	<div style="margin-top: 8px;width:16.5%;text-align: right;line-height: 20px;display: inline-block;float: left;color:#666666;">
+	    &nbsp;
+	</div>-->
+    </div>     
+</div>
+<!--城市切换-->
+<div id="top-list" class="mainarea" style="">
+    <div id="city_list" style="height: 260px; width: 384px;background: #fff; margin: 36px 0px 0px 110px; z-index: 2147483647;position: absolute;display: none;">
+	<div style="width: 100%;height: 100%;background: #fff;padding: 10px;">
+	    <div class="areatop">
+		<div class="list1"><div class="fl">A-H</div></div>
+		<div class="list2 list2-1">
+		    <a href="http://www.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="fl">长沙</div></a>
+		    <a href="http://cd.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="fl">常德</div></a>
+		    <a href="http://cz.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="fl">郴州</div></a>
+		    <a href="http://hh.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="fl">怀化</div></a>
+		    <a href="http://hy.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="fl">衡阳</div></a>
+		    <a href="http://gy.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="fl" style="width: 140px;">贵阳（贵州省）</div></a>
+		</div>
+	    </div>
+	    <div class="areatop">
+		<div class="list1"><div class="fl">I-P</div></div>
+		<div class="list2"> 
+		    <a href="http://js.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">吉首</div></a>	
+		    <a href="http://ld.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">娄底</div></a>	
+		    <a href="http://ly.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">浏阳</div></a>
+		    <a href="http://leiyang.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">耒阳</div></a>		
+		    <a href="http://liling.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">醴陵</div></a>		    
+		</div>
+	    </div>
+	    <div class="areatop">
+		<div class="list1"><div class="fl">Q-Z</div></div>
+		<div class="list2">
+		    <a href="http://sy.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">邵阳</div></a>	
+		    <a href="http://xt.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">湘潭/湘乡</div></a>		
+		    <a href="http://xh.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">新化</div></a>	
+		    <a href="http://yy.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">岳阳</div></a>	
+		    <a href="http://yi.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">益阳</div></a>	
+		    <a href="http://yz.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">永州</div></a>		
+		    <a href="http://zjj.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">张家界</div></a>		
+		    <a href="http://zz.dasn.com.cn" target="_self" style="text-decoration:none;"><div class="f1">株洲</div></a>		    
+		</div>	    
+	    </div>
+	</div>
+    </div>
+    <!--微信二维码-->
+    <div id="weixin_qr" style="height: 100px; width: 100px;  z-index: 2147483647;position: absolute;display: none;margin-left: 900px;display: none;">
+	<img src="/Public/images/weixin.png" style="width: 100%;height: 100%;">
+    </div>
+</div>
+<script>
+    $(function(){
+	//$("#city_list").css("display","block");
+    })
+//    切换城市
+    function city_chg(){
+	//alert("citys");
+	if($("#city_list").css("display")=="none"){
+	    $("#city_list").css("display","block");
+	}else{
+	    $("#city_list").css("display","none");
+	}
+    } 
+    $(".city_chg").hover(function(){ 
+		$("#city_list").css("display","block");
+	},function(){});
+    $("#city_list").hover(function(){ 
+	},function(){$("#city_list").css("display","none");});
+//	显示微信二维码
+    $(".weixin_qr").hover(function(){
+		$("#weixin_qr").css("display","block");
+	},function(){$("#weixin_qr").css("display","none");});
+</script>

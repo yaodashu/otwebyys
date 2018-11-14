@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<!--<meta name="description" content="{dede:field.description function='html2text(@me)'/}" />
+<meta name="keywords" content="{dede:field.keywords/}" />
+<title>{dede:field.seotitle/}</title>-->
+<meta name="description" content="8大高品质装修标准 200家名品联动 3000万巅峰钜惠，2000席中高档定制家装VIP样房全国钜惠抢定。点石家装咨询热线：400-048-0731" />
+<meta name="keywords" content="点石家装节,长沙装修活动,长沙点石家装" />
+<title>点石定制家装节_湖南家装领导者_长沙点石家装</title> 
+<script src="/templets/de/img/mobile.js" type="text/javascript"></script>
+<link href="/zhuanti/base.css" type="text/css" rel="Stylesheet" />
+<link href="/zhuanti/jiazhuangjie/style.css" rel="stylesheet" type="text/css" />
+<script src="/templets/de/img/jquery.js" type="text/javascript"></script>
+<script src="/templets/de/img/jquery.cookies.js" type="text/javascript"></script>
+<script type="text/javascript" src="/zhuanti/jiazhuangjie/jquery.flash.js"></script>
+<base target="_blank" />
+<script type="text/javascript">
+	function baomingrenshu() {
+        do_baomingrenshu("/zhuanti/jiazhuangjie/baomingrenshu.php",$("#area7 .div6,#area60 .div6"));
+    }
+    $(function () {
+		do_area38();
+		baomingrenshu();
+		do_baoming($("#btn_submit"),$("#txt_name"),$("#txt_tel"),$("#txt_loupan"),$("#txt_mianji"),11);
+		do_baoming($("#btn_submit1"),$("#txt_name1"),$("#txt_tel1"),$("#txt_loupan1"),$("#txt_mianji1"),11);
+		
+	$('#area31 .div1').flash({
+		src: 'http://weixin.dasn.com.cn/wkt/quanjing/jo1/scene.swf',
+		width: 1000,
+		height: 625
+	});
+
+    });
+    
+    function do_area38(){
+	    $("#area38 .div1 ul li").hover(function(){
+		    $("#area38 .div1 ul li").css("backgroundPositionY","0").eq($(this).index()).css("backgroundPositionY","-41px");
+		    $("#area38 .div2 ul li").hide().eq($(this).index()).show();
+	    },function(){});
+	$("#area38 .div1 ul li").css("backgroundPositionY","0").eq(1).css("backgroundPositionY","-41px");
+	$("#area38 .div2 ul li").hide().eq(1).show();
+    }
+</script>
+</head>
+<body class="p_zhuanti p_t_32">
+<div id="top">
+	<div class="div1">
+		<ul><li class="first">点石家装城市站点导航：</li><li><a href="http://www.dasn.com.cn/">长沙</a></li><li><a href="http://yy.dasn.com.cn/">岳阳</a></li><li><a href="http://zz.dasn.com.cn/">株洲</a></li><li><a href="http://xt.dasn.com.cn/">湘潭</a></li><li><a href="http://xt.dasn.com.cn/">湘乡</a></li><li><a href="http://hy.dasn.com.cn/">衡阳</a></li><li><a href="http://cz.dasn.com.cn/">郴州</a></li><li><a href="http://cz.dasn.com.cn/">桂阳</a></li><li><a href="http://ld.dasn.com.cn/">娄底</a></li><li><a href="http://hh.dasn.com.cn/">怀化</a></li><li><a href="http://cd.dasn.com.cn/">常德</a></li><li><a href="http://sy.dasn.com.cn/">邵阳</a></li><li><a href="http://ly.dasn.com.cn/">浏阳</a></li><li><a href="http://yi.dasn.com.cn/">益阳</a></li><li><a href="http://gy.dasn.com.cn/">贵阳(贵州省)</a></li><li><a href="http://yz.dasn.com.cn/">永州</a></li><li><a href="http://js.dasn.com.cn/">吉首</a></li></ul>
+	</div>
+</div>
+<div id="header">
+    <div class="div1">
+        <a href="/" title="长沙最好的装修公司"><img src="/templets/de/img/logo.png" alt="长沙点石家装" /></a>
+    </div>
+    <div class="div2" id="search"></div>
+    <div class="div3"></div>
+</div>
+<div id="nav">
+    <div class="div1">
+        <ul>
+            <li class="first"><a href="/" title="长沙点石家装">首页</a></li>
+            <li><a href="/anli/" title="长沙点石家装装修案例">装修案例</a></li>
+            <li><a href="/shejishi/" title="长沙点石家装设计师">设计团队</a></li>
+            <li><a href="/zhuanti/gongyi/" title="长沙点石家装欧标工艺">欧标工艺</a></li>
+            <li><a href="/dzjj/" title="长沙点石家装定制家居">名品生活馆</a></li>
+            <li><a href="http://www.dasn.com.cn/zhuanti/about/" target="_blank" title="点石集团简介">点石集团</a></li>
+        </ul>
+    </div>
+</div>
+<div id="area">
+	<!--主题部分开始-->
+	<div id="area1" class="area"></div>
+	<div id="area2" class="area"></div>
+	<div id="area3" class="area"></div>
+	<div id="area4" class="area"></div>
+	<div id="area5" class="area"></div>
+	<div id="area6" class="area">
+		<div class="box" style="display:none;">
+			<div class="div1"><a href="/q/" class="hidetonbsp"></a></div>
+			<div class="div2"><a href="/q/" class="hidetonbsp"></a></div>
+			<div class="div3"><a href="/q/" class="hidetonbsp"></a></div>
+		</div></div>
+	<div id="area7" class="area">
+		<div class="box">
+			<div class="common1 div1"><input type="text" id="txt_name" /></div>
+			<div class="common1 div2"><input type="text" id="txt_tel" /></div>
+			<div class="common1 div3"><input type="text" id="txt_loupan" /></div>
+			<div class="common1 div4"><input type="text" id="txt_mianji" /></div>
+			<div class="div5"><button id="btn_submit"></button></div>
+			<div class="div6">***</div>
+		</div>	
+	</div>
+	<div id="area8" class="area"></div>
+	<div id="area9" class="area"></div>
+	<div id="area10" class="area"></div>
+	<div id="area11" class="area">
+		<div class="box">
+			<div class="div1"><a href="/q/" class="hidetonbsp"></a></div>
+			<div class="div2"><a href="/q/" class="hidetonbsp"></a></div> 
+		</div></div>
+	</div>
+	<div id="area12" class="area"></div>
+	<div id="area13" class="area">
+		<div class="box" style="width:1080px;">
+			<div class="div1"><a href="/q/" class="hidetonbsp"></a></div>
+			<div class="div2"><a href="/q/" class="hidetonbsp"></a></div>
+			<div class="div3"><a href="/q/" class="hidetonbsp"></a></div>
+		</div></div>
+	</div>
+	<div id="area14" class="area"></div>
+	<div id="area15" class="area">
+		<div class="box">
+			<div class="div1"><a href="/q/" class="hidetonbsp"></a></div>
+		</div>
+	</div>
+	<div id="area16" class="area"></div>
+	<div id="area17" class="area"></div>
+	<div id="area18" class="area"></div>
+	<div id="area19" class="area">
+		<div class="box">
+			<div class="div1"><a href="/q/" class="hidetonbsp"></a></div>
+		</div>
+	</div>
+	<div id="area20" class="area"></div>
+	<div id="area21" class="area"></div>
+	<div id="area22" class="area"></div>
+	<div id="area23" class="area"></div>
+	<div id="area24" class="area">
+		<div class="box">
+			<div class="div1"><a href="/q/" class="hidetonbsp"></a></div>
+		</div>
+	</div>
+	<div id="area25" class="area"></div>
+	<div id="area26" class="area"></div>
+	<div id="area27" class="area"></div>
+	<div id="area28" class="area"></div>
+	<div id="area29" class="area"></div>
+	<div id="area30" class="area"></div>
+	<div id="area31" class="area">
+	    <div class="box">
+		<div class="div1"></div>
+	    </div>
+	</div>
+	<div id="area32" class="area"></div>
+	<div id="area33" class="area"></div>
+	<div id="area34" class="area">
+		<div class="box">
+			<div class="div1"><a href="/q/" class="hidetonbsp"></a></div>
+		</div>
+	</div>
+	<div id="area35" class="area"></div>
+	<div id="area36" class="area"></div>
+	<div id="area37" class="area">
+		<div class="box">
+			<div class="div1"><a href="/q/" class="hidetonbsp"></a></div>
+		</div>
+	</div>
+	<div id="area38" class="area">
+		<div class="box"> 
+			<div class="div1">
+				<ul><li class="style1" style='backgroundPositionY:0px;'></li><li class="style2" style="backgroundPositionY:-41px;"></li></ul>
+			</div>
+			<div class="div2">
+				<ul><li class="style1" style="display:none;"></li><li class="style2" style="display:block;"></li></ul>
+			</div>
+		</div>
+	</div>
+	<div id="area39" class="area">
+		<div class="box">
+			<div class="div1"><a href="/q/" class="hidetonbsp"></a></div>
+			<div class="div2"><a href="/q/" class="hidetonbsp"></a></div>
+			<div class="div3"><a href="/q/" class="hidetonbsp"></a></div>
+		</div>
+	</div>
+	<div id="area40" class="area"></div>
+	<div id="area41" class="area">
+		<div class="box">
+			<div class="div1"><a href="/q/" class="hidetonbsp"></a></div>
+		</div>
+	</div>
+	<div id="area42" class="area"></div>
+	<div id="area43" class="area"></div> 
+	<div id="area44" class="area"></div> 
+	<div id="area45" class="area"></div> 
+	<div id="area46" class="area"></div> 
+	<div id="area47" class="area"></div> 
+	<div id="area48" class="area">
+		<div class="box">
+			<div class="div1"><a href="/q/" class="hidetonbsp"></a></div>
+		</div>
+	</div> 
+	<div id="area49" class="area"></div> 
+	<div id="area50" class="area"></div> 
+	<div id="area51" class="area"></div> 
+	<div id="area52" class="area"></div> 
+	<div id="area53" class="area"></div> 
+	<div id="area54" class="area"></div> 
+	<div id="area55" class="area">
+		<div class="box">
+			<div class="div1"><a href="/q/" class="hidetonbsp"></a></div>
+		</div>
+	</div> 
+	<div id="area56" class="area"></div> 
+	<div id="area57" class="area"></div> 
+	<div id="area58" class="area"></div> 
+	<div id="area59" class="area"></div> 
+	<div id="area60" class="area">
+		<div class="box">
+			<div class="common1 div1"><input type="text" id="txt_name1" /></div>
+			<div class="common1 div2"><input type="text" id="txt_tel1" /></div>
+			<div class="common1 div3"><input type="text" id="txt_loupan1" /></div>
+			<div class="common1 div4"><input type="text" id="txt_mianji1" /></div>
+			<div class="div5"><button id="btn_submit1"></button></div>
+			<div class="div6">***</div>
+		</div>
+	</div> 
+	<div id="area61" class="area"></div> 
+    <!--主题部分结束-->
+</div>
+<div id="footer">
+    <div class="box1">
+        <ul>
+            <li class="first"><a href="http://www.dasn.com.cn/zhuanti/about/">品牌故事</a></li>
+            <li><a href="/anli/">装修案例</a></li>
+            <li><a href="/shejishi/">设计团队</a></li>
+            <li><a href="/zhuanti/gongyi/">欧标工艺</a></li>
+            <li><a href="/news/">点石快讯</a></li>
+            <li><a href="/riji/">工地报道</a></li>
+            <li><a href="/zhishi/">装修知识</a></li>
+            <li><a href="/about/contact.html">联系我们</a></li>
+        </ul>
+    </div>
+    <div class="box3">
+        <div class="box4"></div>
+        <div class="box5">
+            <p>湖南点石装饰设计工程有限公司 &copy;1998-2017 版权所有</p>
+            <p>24小时免费咨询热线：400-048-0731</p>
+            <p>备案：<a href="http://www.miibeian.gov.cn/" target="_blank">湘ICP备11020209号-2</a></p>
+        </div>
+        <div class="box6"></div>
+    </div>
+</div>
+</body>
+</html>
+<script src="/zhuanti/base.js" type="text/javascript"></script>

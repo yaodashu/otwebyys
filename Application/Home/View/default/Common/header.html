@@ -1,0 +1,259 @@
+<style>    
+    /*float dialog end*/
+    #headerf { margin:0 auto; width: 1200px; height: 85px;overflow: hidden; z-index: 9990; background-color: #ffffff;opacity: 1;font-family: 微软雅黑;}
+    #headerf div a .current{color:#fff;font-weight: 600;}
+    #headerf .div1 { position: relative; margin: 0 0 0 0; width:350px;min-width: 200px; height: 85px; overflow: hidden;float: left; }
+    #headerf .div1 img{position: relative; width: 100%; max-width: 191px; float: left; margin-top: 15px;}    
+    #headerf .div2 { float: left;width: 850px; height: 85px; padding-left: 0%; margin: 0 0 0 0; overflow: hidden; float: left;}
+    #headerf .div2 div {width:14.2%; height: 85px; display: inline-block; text-align: center;line-height: 85px;}
+    #headerf .div2 a div {font-size: 16px;font-weight: 500;color:#333333;text-decoration:none;float: left;}   
+    #headerf .div2 a div:hover,#headerf .div2 a div.current {color:#fff;font-weight: 500;background: #183078;}
+    #headerf a:hover #nav_layer3{display: block; }
+    #headerf .div3 { position: relative;font-size: 18px;font-weight: 600;color:#5f5d5d; overflow: hidden; line-height: 85px; }
+    #headerf .div3 .tel{ width: 175px;line-height: 85px;height: 85px;float: left;}
+    #headerf .div3 .tel a:hover {color:#DF0010;}    
+    #headerf .div3 .search{ width: 200px;line-height: 85px;height: 85px;float: left;padding-top:40px;}
+    #headerf .div3 .tel a:hover {color:#00352d;}    
+    #headerf .div3 .tel{ width: 185px;}       
+    #headerf .div3 .tel .div01{ width: 42px;}     
+    #headerf .div3 .tel .div02{ width: 142px;height: 85px;}   
+    .search .keyword {float: left;width:260px;    height: 25px;line-height: 25px;color: #969393;margin-top:0px; padding-left: 10px;border: 1px solid #c5c5cc;font-size: 12px;font-weight: 500;font-family: 微软雅黑; border-radius: 15px 15px 15px 15px;}
+    #headerf .div4{width: 224px;margin-left: 0px; }
+    
+    .s-span1 {height: 36px;  font-size: 12px;  line-height: 36px;   display: inline-block;    float: left;   font-weight: 500;  color: #9a9898;   font-family: 微软雅黑;}
+    .s-span1 a{height: 36px;  font-size: 12px;  line-height: 36px; }
+    .s-content1,.s-content2{color: #2e4f89}
+    
+    #nav_layer1{display: none;
+			 margin: 120px 0 0 325px;position: absolute; width: 200px;height: 125px; z-index: 2147483647;background: #fff;
+    }
+    #nav_layer3{display: none;
+			 margin: 120px 0 0 515px;position: absolute; width: 200px;height: 185px; z-index: 2147483647;background: #fff;
+    }
+    #nav_layer6{display: none;
+			 margin: 120px 0 0 800px;position: absolute; width: 200px;height: 185px; z-index: 2147483647;background: #fff;
+    }
+    
+    .headerf_nav div{width: 100%;height: 60px;margin: 3px 0 0 0;overflow: hidden;background: #fff;color:#7d7d7d;}
+    .headerf_nav div .div1{width: 30%;display: inline-block; float: left; text-align: center; margin-top:0px;}
+    .headerf_nav div:hover div {background: #183078;color:#fff;}
+    .headerf_nav div .div1 .icon {width:100%;height: 100%;margin: 0;}
+    .headerf_nav div .div2{width: 70%;display: inline-block; float: left; text-align: left; margin-top: 0px;font-size: 16px;line-height: 60px;}   
+    
+    @media screen and (max-width: 1200px) {  
+    }
+    
+</style>
+
+<div class="mainarea" style="background-color: #ffffff;width: 100%; height: 85px; /* margin-top: 35px; */ position: absolute; top: 35px;">
+<div id="headerf">
+    <div class="div1" style="width: 230px;">
+        <a href="/" title="湖南家装领导者">
+	    <img src="/Public/images/logo.png" alt="长沙我的小窝" />
+	   <h1 style="text-indent: -9000px;" title="我的小窝">我的小窝</h1>
+	</a>
+    </div>
+    <div class="div2" style="width: 670px;"> 
+	<a href="/index.php/home/index/test" target="_blank"><div id="nav_home" class="">首页</div></a>
+<!--	<a href="/index.php/home/anli/" target="_blank"><div id="nav_anli">装修案例</div></a>
+	<a href="/index.php/home/shejishi/" target="_blank"><div id="nav_sheji">设计团队</div></a>
+	<a href="javascript:void(0);">
+	    <div id="nav_oubiao">
+		欧标工艺
+	    </div>
+	</a>
+	<a href="http://yatai.dasn.com.cn/" target="_blank"><div id="nav_yatai">亚太墅装</div></a>
+	<a href="http://dazhai.dasn.com.cn/" target="_blank"><div id="nav_dazhai">点石·大宅</div></a>
+	<a href="/zhuanti/about" target="_blank"><div id="nav_aboutus">关于我们</div></a>-->
+    </div> 
+    <div class="div3 search" style="width: 280px; margin-left: 20px;padding-top: 10px; height: 75px;display: inline-block;">
+	<form target="_blank" id="form_search" action="/index.php/home/other/search">
+	    <div style="display: inline-block;float: left; position: relative;">
+		<input type="hidden" name="kwtype" value="0">
+		<input id='keyword' name="keyword" type="text" class="style1 keyword" style="" value="" placeholder="关键词查询" onfocus="if (value ==&#39;关键词查询&#39;){value =&#39;&#39;}" onblur="if (value ==&#39;&#39;){value=&#39;关键词查询&#39;}">
+		<img onclick="go_search();" src="/Public/images/search_logo2.png" style="position: absolute; top: 5px; margin-left: -40px;">
+	    </div>
+	    <div id="btnsearch" onclick="go_search();" style="display:none;">搜&nbsp;&nbsp;&nbsp;&nbsp;索</div>
+	    <!--<input type="submit" value="输入关键词搜索" class="style2" title="输入关键词搜索">-->
+	    <a href="javascript:go_search();" style="display: none;">
+		<img src="/Public/home/images/logo_search.png" style="border:none;float: left; height:30px;margin-top: -5px;">
+	    </a>
+	</form>  
+	<div class="cache-search" style="display: inline-block;line-height: 36px; height: 36px;  overflow: hidden;  width: 100%;">
+	    <span class="s-span1">热门搜：</span>
+	    <span class="s-span1"><a href="/zhuanti/quanfang" target="_blank" class="hsearch" style="text-decoration: none;color: #0722f3; font-weight: 500; font-family: 微软雅黑;">定制全装&nbsp;&nbsp;</a></span>
+	    <span class="s-span1"><a href="/zhuanti/brand" target="_blank" class="hsearch" style="text-decoration: none;color: #0722f3; font-weight: 500; font-family: 微软雅黑;">免费服务&nbsp;&nbsp;</a></span>
+	    <span class="s-span1 s-content1"><a href="/zhuanti/gongyi" target="_blank" class="hsearch" style="text-decoration: none;color: #0722f3; font-weight: 500; font-family: 微软雅黑;">欧标工艺&nbsp;&nbsp;</a></span>
+	    <span class="s-span1 s-content2" style="margin-left:5px;"><a href="/zhuanti/gongcheng" target="_blank" class="hsearch" style="text-decoration: none;color: #0722f3; font-weight: 500; font-family: 微软雅黑;">工程服务&nbsp;&nbsp;</a></span>
+	</div>
+    </div>
+<!--    <div class="div3" style="display: none;">
+	<div class="tel">
+	    <a target="_blank" href="javascript:void(0)" style="text-decoration:none;">
+		<div class="div01" style="float: left;padding-top: 23px;width: 42px; display: inline-block;">
+		    <img src="/Public/home/images/logo_tel.png" style="border:none;float: right;"></div>
+		<div class="div02" style="padding-top: 0%;display: inline-block;">400-048-0731</div>
+	    </a>
+	</div>
+	<div class="search">
+	    <form target="_blank" id="form_search" action="/index.php/home/other/search">
+		<input type="hidden" name="kwtype" value="0">
+		<input name="keyword" type="text" class="style1 keyword" style="float: left;width: 120px;height: 26px;color: #969393;margin-top: -5px; padding-left: 10px;border: 1px solid #c3c2c2;" value="" placeholder="输入关键词搜索" onfocus="if (value ==&#39;输入关键词搜索&#39;){value =&#39;&#39;}" onblur="if (value ==&#39;&#39;){value=&#39;输入关键词搜索&#39;}">
+		<input type="submit" value="输入关键词搜索" class="style2" title="输入关键词搜索">
+		<a href="javascript:go_search();">
+		    <img src="/Public/home/images/logo_search.png" style="border:none;float: left; height:30px;margin-top: -5px;">
+		</a>
+	    </form> 
+	</div>
+    </div>  -->
+</div> 
+</div>
+
+<div id="top-list" class="mainarea" style="">
+    <div class="headerf_nav" id="nav_layer1" style="display:none;">
+       <a href="/index.php/home/anli/" target="_blank">
+	   <div id="nav_layer11" style="">
+	       <div class="div1">
+		   <div class="icon icon-green radius icon-list-fun">
+		       <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe644;</i></div></div>
+	       <div class="div2">装修案例</div>	       
+	   </div></a>
+       <a href="/index.php/home/quanjin/" target="_blank">
+	   <div id="nav_layer12" style="">
+	      <div class="div1">
+		   <div class="icon icon-green radius icon-list-fun">
+		       <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe63d;</i></div></div>
+	      <div class="div2">全景VR设计</div>
+	   </div></a>
+    </div>
+    <div class="headerf_nav" id="nav_layer3" style="display:none;">
+       <a href="/zhuanti/gongyi/" target="_blank">
+	   <div id="nav_layer31" style=""> 
+	       <div class="div1"> 
+		   <div class="icon icon-green radius icon-list-fun">
+		       <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe673;</i></div></div>
+	       <div class="div2">欧标工艺</div>	       
+	   </div></a>
+       <a href="/zhuanti/brand/" target="_blank">
+	   <div id="nav_layer32" style="">
+	       <div class="div1"> 
+		   <div class="icon icon-green radius icon-list-fun">
+		       <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe641;</i></div></div>
+	       <div class="div2">五免服务</div>	       
+	   </div></a>
+       <a href="/zhuanti/gongcheng/" target="_blank">
+	   <div id="nav_layer33" style="">
+	      <div class="div1"> 
+		   <div class="icon icon-green radius icon-list-fun">
+		       <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe664;</i></div></div>
+	      <div class="div2">工程保障</div>
+	   </div></a>
+    </div>
+
+    <div class="headerf_nav" id="nav_layer6" style="display:none;">
+       <a href="/zhuanti/about/" target="_blank">
+	   <div id="nav_layer61" style="">
+	       <div class="div1">
+		   <div class="icon icon-green radius icon-list-fun">
+		       <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe611;</i></div></div>
+	       <div class="div2">品牌介绍</div>	       
+	   </div></a>
+       <a href="/index.php/home/article/index/ftype/4" target="_blank">
+	   <div id="nav_layer62" style="">
+	      <div class="div1">
+		   <div class="icon icon-green radius icon-list-fun">
+		       <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe631;</i></div></div>
+	      <div class="div2">新闻动态</div>
+	   </div></a>
+       <a href="/zhuanti/shiliyou/" target="_blank">
+	   <div id="nav_layer63" style="">
+	      <div class="div1"> 
+		   <div class="icon icon-green radius icon-list-fun">
+		       <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe6e1;</i></div></div>
+	      <div class="div2">选择点石10大理由</div>
+	   </div></a>
+    </div>
+</div>
+<div style="width:100%;height:120px;">&nbsp;</div> 
+
+<script>  
+    $(function(){ 
+	var turl ="/index.php/home/other/getcount/"; 
+	$.ajax({url:turl,type : 'GET',dataType : "json",cache:false,data : {},	success:function(result){
+	   // alert(result.length);
+	   for(var item=0;item<result.length;item++){
+	       var str="";
+	       if(item==0 && result[0].title!=''){  
+//		    $(".s-content1").html(result[0].title); ///index.php/home/other/search?kwtype=0&keyword=刚
+		    str = '<a href="/index.php/home/other/search?kwtype=0&keyword='+result[0].title+'" target="_blank" style="text-decoration: none;color: #0722f3; font-weight: 500; font-family: 微软雅黑;">'+result[0].title+'&nbsp;&nbsp;</a>';
+		    $(".s-content1").html(str);
+		} 
+		if(item==1 && result[1].title!=''){
+//		    $(".s-content2").html(result[1].title);
+		    str = '<a href="/index.php/home/other/search?kwtype=0&keyword='+result[1].title+'" target="_blank" style="text-decoration: none;color: #0722f3; font-weight: 500; font-family: 微软雅黑;">'+result[1].title+'&nbsp;&nbsp;</a>';
+		    $(".s-content2").html(str);
+		} 
+	   }
+	}})
+    })
+    function go_search(){ 	
+    var turl ="/index.php/home/other/count/";  
+	if($.trim($("#keyword").val())=="" || $.trim($("#keyword").val())=='开启您的私人定制之旅'){alert("请输入有效查询条件！");$("#keyword").focus(); return;}
+	$.ajax({url:turl,type : 'POST',dataType : "json",cache:false,data : {'url' : location.href,'keyword' : $("#keyword").val()},	success:function(result){}})
+	
+	$("#form_search").submit();
+    } 
+    $("#headerf .div2 div").hover(function(){ 
+	var id = $(this).attr("id");
+	//alert(id);
+	if(id=="nav_anli" || id=="nav_oubiao" || id=="nav_aboutus"){
+	    if(id=="nav_anli"){
+		$("#nav_layer1").css("display","block");
+		$("#nav_layer11 div").css("background","#183078");	
+		$("#nav_layer11 div").css("color","#fff");		
+	    }else if(id=="nav_oubiao"){
+		$("#nav_layer3").css("display","block");
+		$("#nav_layer31 div").css("background","#183078");	
+		$("#nav_layer31 div").css("color","#fff");
+	    }else if(id=="nav_aboutus"){
+		$("#nav_layer6").css("display","block");
+		$("#nav_layer61 div").css("background","#183078");	
+		$("#nav_layer61 div").css("color","#fff");
+	    }
+	}else{
+	    $("#nav_layer1").css("display","none");
+	    $("#nav_layer3").css("display","none");
+	    $("#nav_layer6").css("display","none");
+	}
+    },function(){});
+    $(".headerf_nav").hover(function(){ },function(){
+	//alert("tts");
+	$("#nav_layer1").css("display","none");
+	$("#nav_layer3").css("display","none");
+	$("#nav_layer6").css("display","none");
+    });
+    //默认子菜单切换
+    $("#nav_layer11").hover(function(){
+		$("#nav_layer11 div").css("background","#183078");	
+		$("#nav_layer11 div").css("color","#fff");	
+    },function(){
+	//alert("ttt");
+	$("#nav_layer11 div").css("background","#fff");	
+	$("#nav_layer11 div").css("color","#7d7d7d");
+    });
+    $("#nav_layer31").hover(function(){
+		$("#nav_layer31 div").css("background","#183078");	
+		$("#nav_layer31 div").css("color","#fff");	
+     },function(){
+	$("#nav_layer31 div").css("background","#fff");	
+	$("#nav_layer31 div").css("color","#7d7d7d");
+    });
+    $("#nav_layer61").hover(function(){
+		$("#nav_layer61 div").css("background","#183078");	
+		$("#nav_layer61 div").css("color","#fff");	
+     },function(){
+	$("#nav_layer61 div").css("background","#fff");	
+	$("#nav_layer61 div").css("color","#7d7d7d");
+    });
+
+</script>

@@ -1,0 +1,548 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的小窝设计师</title>
+<meta name="keywords" content="我的小窝设计师" />
+<meta name="description" content="我的小窝设计师" />
+<link rel="stylesheet" href="__PUBLIC__/home/css/swiper.css"> 
+
+<!--<script src="__PUBLIC__/home/js/mobile.js" type="text/javascript"></script>-->
+<link href="__PUBLIC__/home/css/style.css" type="text/css" rel="Stylesheet" />
+<script src="__PUBLIC__/home/js/jquery.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/js/jquery.cookies.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/js/common.js" type="text/javascript"></script>
+
+<!--<script src="__PUBLIC__/home/images/jQueryRotate.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/images/swiper.js" type="text/javascript"></script>-->
+
+<script type="text/javascript">
+$(function () { 
+    //alert(getQueryString('rank')); 
+    init_param();
+     
+    update_real_num();
+
+})
+/*0 banner1*/
+function do_banner1(){ 
+    //此类型设计师的图层显示介绍文字
+    $('#banner1 ul li').hover(function(){  
+		 //图片放大
+		//先记录上是哪层div高度 
+		var dValue=$(this).find("div").height(); 
+		 $(this).find("div").css("height",dValue);
+		 
+		var wValue=1.1 * $(this).find("a img").width(); 
+		var hValue=1.1 * $(this).find("a img").height(); 
+		$(this).find("a img").animate({width: wValue, 
+		height: hValue, 
+		left:("-"+(0.1 * $(this).find("a img").width())/2), 
+		top:("-"+(0.1 * $(this).find("a img").height())/2)}, 800);  
+	},function(){ 
+	    //图片缩小
+	    $(this).find("a img").animate({width: "100%", 
+	    height: "100%", 
+	    left:"0px", 
+	    top:"0px"}, 600 ); 
+	});
+}
+/*1 banner1*/
+function init_param(){
+    var area = "{$area}"; 
+    var rank = "{$rank}";   
+//    alert(rank+";"+jushi+";"+shejishi);
+    if(area!="" && area!=null && area!="null"){  
+	$(".anlisearch_fengge .div_style2 a").removeClass("current");
+	$(".anlisearch_fengge .div_style3 li a[key='"+area+"']").addClass("current");
+    } 
+    if(rank!="" && rank!=null && rank!="null"){  
+	$(".anlisearch_jushi .div_style2 a").removeClass("current");
+	$(".anlisearch_jushi .div_style3 li a[key='"+rank+"']").addClass("current");
+    } 
+}
+
+function getQueryString(name) { 
+var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+var r = window.location.search.substr(1).match(reg); 
+if (r != null) return unescape(r[2]); return null; 
+} 
+
+var is_last=false;
+var loading=false;
+var page=2;
+var first =true;
+//更新条件重新查询数据
+function query_search(type,id){ 
+    if(type=='1'){  
+	$(".anlisearch_fengge .div_style2 a").removeClass("current");
+	$(".anlisearch_fengge .div_style3 li a").removeClass("current");
+	if(parseInt(id)>0){
+	    $("#area"+"_inp").val(id);
+	    $(".anlisearch_fengge .div_style3 li a[key='"+id+"']").addClass("current");
+	}else if(id==0){
+	    $("#area"+"_inp").val("");
+	    $(".anlisearch_fengge .div_style2 a").addClass("current");
+	}
+    }
+    if(type=='2'){
+	$(".anlisearch_jushi .div_style2 a").removeClass("current");
+	$(".anlisearch_jushi .div_style3 li a").removeClass("current");
+	if(parseInt(id)>0){
+	    $("#rank"+"_inp").val(id);
+	    $(".anlisearch_jushi .div_style3 li a[key='"+id+"']").addClass("current");
+	}else if(id==0){
+	    $("#rank"+"_inp").val("");
+	    $(".anlisearch_jushi .div_style2 a").addClass("current");
+	}
+    } 
+    if(type=='1' || type=='2' || type=='3'){
+	$("#query1_keyword").val("");
+    }
+    //异步重新查询数据:1风格，2居室；3设计师；5关键词；4加载更多
+    if(type=='1' || type=='2' || type=='3' || type=='5'){
+	page = 1; 
+    }
+    //20170815修改为直接跳转，分页查询
+    if(true){
+	var turl ="http://"+document.domain+"/index.php/home/shejishi/index/"; 
+	var condition="";
+	if($("#area"+"_inp").val()!=""){
+	    condition = condition + "area/"+$("#area_inp").val()+"/";
+	} 
+	if($("#rank"+"_inp").val()!=""){
+	    condition = condition + "rank/"+$("#rank_inp").val()+"/";
+	}	
+	if($("#query1_keyword").val()!=""){
+	    condition = condition + "keyword/"+$("#query1_keyword").val()+"/";
+	}
+	location.href=turl+condition;
+    }
+    return;    
+    
+    var turl ="http://"+document.domain+"/index.php/home/shejishi/ajaxGetShejishi/page/"+page;
+    $.ajax({
+	url:turl,
+	type : 'POST',
+	dataType : "json",
+	cache:false,
+	data : {
+		'area' : $("#area_inp").val(),
+		'fengge' : $("#fengge_inp").val(),
+		'jushi' : $("#jushi_inp").val(),
+		'rank' : $("#rank_inp").val(), 
+		'keyword' : $("#query1_keyword").val()
+	},
+	success:function(result){
+	    var total = 0;
+	    if(result.is_last=="1"){
+		is_last ="1";		
+		$("#more").html('已加载全部');
+	    }else{
+		is_last ="0";
+		$("#more").html('加载更多');
+	    }
+	    var htmlstr="";
+	    if(result.code=='0'){
+		total = result.total;
+//		alert(result.data.length);
+//		//拼装html添加到html末尾
+		for(var item=0;item<result.data.length;item++){   
+		    htmlstr =htmlstr+'<li key="'+result.data[item].id+'">';
+		    htmlstr =htmlstr+'	    <div class="div1">';
+		    htmlstr =htmlstr+'				<a href="/index.php/home/shejishi/detail/aid/'+result.data[item].id+'" target="_blank">';
+		    htmlstr =htmlstr+'				<div class="touxiang">';
+		    if(result.data[item].picpath !="" && result.data[item].picpath !=null && result.data[item].picpath !=undefined){
+		    htmlstr =htmlstr+'				    <img src="'+result.data[item].picpath+'" width="100%" height="100%" alt="'+result.data[item].title+'大宅设计师" /></div></a>';
+		    }else{
+		    htmlstr =htmlstr+'				    <img src="/uploads/shejishi/shejishi/'+result.data[item].sno+'.jpg" width="100%" height="100%" alt="'+result.data[item].title+'大宅设计师" /></div></a>';
+		    }
+		     
+		    htmlstr =htmlstr+'				 </div>';
+		    htmlstr =htmlstr+'			    </div>';
+		    htmlstr =htmlstr+'			    <div class="div2">';
+		    htmlstr =htmlstr+'				<p class="style1"><b><a href="/index.php/home/shejishi/detail/aid/'+result.data[item].id+'" target="_blank">'+result.data[item].dtitle+'</a></b></p>';
+		    htmlstr =htmlstr+'				<p class="style2"><b>'+result.data[item].rankname+'</b></p>'; 		     
+		    htmlstr =htmlstr+'			    </div> ';
+		    htmlstr =htmlstr+'			</li> ';
+		    
+//					    mySwiper.appendSlide('<div class="swiper-slide"><img alt="'+result.banner1[item].title+'" src="'+result.banner1[item].logo_url+'" style="width:100%;"></div>');
+		} 
+//		$("#accordion").css("dispaly","block");
+//		$("#main").append(result.data);
+//		    do_msg(); 
+		page++; 
+		loading=false;		    
+	    }else if(result.code=='10001'){  
+	    }
+	    //如果不是加载更多，则直接替换，否则需要进行追加操作
+	    if(type!="4"){
+		$("#shejishilist ul").html(htmlstr);
+		$("#query_count span").html("共"+total+"位行业顶级资深设计师");
+	    }else{  
+		$("#shejishilist ul").append(htmlstr); 
+	    }
+    }});
+    
+}
+
+//点击加载更多，追加数据
+function load_more(){
+    if($("#more").html()=='加载更多'){
+	//异步查询数据，如果有结果则追加到末尾 
+	query_search('4',-1);
+    }else{
+	alert("您好，已经加载全部结果，请重新选择条件查询或刷新页面！");
+    }
+} 
+//综合关键词搜索
+function keyword_search(){ 
+    if($("#query1_keyword").val()==''){
+	 alert("请输入有效设计师名称信息")
+	    return;
+    }
+    //情况查询其它条件
+    $("#area"+"_inp").val("");
+    $("#fengge"+"_inp").val("");
+    $("#jushi"+"_inp").val("");
+    $("#rank"+"_inp").val(""); 
+    query_search('5',-1);
+} 
+
+//刷新页面
+function search_new(type,page){ 
+    //判断是分类还是关键词搜索
+    if(type=='1'){
+	//情况查询其它条件
+	//情况查询其它条件
+	$("#area"+"_inp").val("");
+	$("#fengge"+"_inp").val("");
+	$("#jushi"+"_inp").val("");
+	$("#rank"+"_inp").val(""); 
+    }else{
+	$("#query1_keyword").val("");
+    } 
+    if(parseInt(page)>0){}else{
+	page=1;
+    }
+    var turl ="http://"+document.domain+"/index.php/home/shejishi/index/"; 
+    var condition="";
+    if($("#area"+"_inp").val()!=""){
+	condition = condition + "area/"+$("#area_inp").val()+"/";
+    } 
+    if($("#rank"+"_inp").val()!=""){
+	condition = condition + "rank/"+$("#rank_inp").val()+"/";
+    }
+    if($("#query1_keyword").val()!=""){
+	condition = condition + "keyword/"+$("#query1_keyword").val()+"/";
+    }
+    location.href=turl+condition;
+} 
+
+function update_real_num(){
+    
+    var turl ="http://"+document.domain+"/index.php/home/shejishi/ajaxUpdateRealNum/page";
+   // alert(turl);
+    $.ajax({
+	url:turl,
+	type : 'POST',
+	dataType : "json",
+	cache:false,
+	data : {
+	},
+	success:function(result){
+	    
+	}
+    });
+}
+
+
+</script>
+<style type="text/css">
+	.sjs_txt{
+		height: 12px;
+		line-height: 12px;
+		width: 30%;
+		background-color: #EEEEEE;
+		color: #8f8f8f;
+	    text-align: center;
+	    margin-bottom: 7px;
+	    margin-right: 4px;
+	}
+	#shejishilist ul li{width: 100%; height: 400px;margin-top: 20px;}
+	#shejishilist .tab1{height: 53%;}
+	#shejishilist .tab2{height: 45%;}
+	.lists1 {line-height: 22px; height:22px;overflow: hidden;}
+	.lists1 .divlist1,.lists1 .divlist2,.lists2 .divlist1{font-size: 16px;color:#333333;}
+	.lists2 .divlist2{font-size: 14px;color:#666666;}
+	.lists2 .divlist2 div{overflow: hidden; background-image:url(/Public/images/juxin.png); background-size: 100% 100%; font-size: 14px; height: 24px;line-height: 24px;width: 28%;color: #8f8f8f;text-align: center;margin-bottom: 7px; margin-right: 4px;display: inline-block;}
+	
+	#shejishilist .img1{float: left; margin-top: 40px;margin-left: 20px; height: 320px; width: 350px;}
+	#shejishilist .img2{float: left; margin-top: 40px;margin-left: 20px; height: 320px; width: 350px;}   
+	#shejishilist .news{position: absolute; margin-top: 50px; margin-left: 14px;}
+/*	@media screen and (max-width: 1800px) {   
+	    #shejishilist .img1{ margin-top: 50px;height: 300px; width: 300px;margin-left: 20px;}
+	    #shejishilist .img2{ margin-top: 50px; height: 300px; width: 300px;margin-left: 20px;}
+	    #shejishilist .news{position: absolute; margin-top: 60px; margin-left: 14px;}
+	}      
+	@media screen and (max-width: 1760px) {   
+	    #shejishilist .img1{ margin-top: 50px;height: 300px; width: 300px;margin-left: 20px;}
+	    #shejishilist .img2{ margin-top: 50px; height: 300px; width: 300px;margin-left: 20px;}
+	    #shejishilist .news{position: absolute; margin-top: 60px; margin-left: 14px;}
+	}     
+	@media screen and (max-width: 1700px) {   
+	    #shejishilist .img1{ margin-top: 50px; height: 300px; width: 300px;margin-left: 10px;}
+	    #shejishilist .img2{ margin-top: 50px; height: 300px; width: 300px;margin-left: 20px;}
+	    #shejishilist .news{position: absolute; margin-top: 60px; margin-left: 4px;}
+	} 
+	@media screen and (max-width: 1650px) {   
+	    #shejishilist .img1{ margin-top: 50px; height: 300px; width: 300px;margin-left: -10px;}
+	    #shejishilist .img2{ margin-top: 50px; height: 300px; width: 300px;margin-left: 10px;}
+	    #shejishilist .news{position: absolute; margin-top: 60px; margin-left: -4px;}
+	} 
+	
+	@media screen and (max-width: 1580px) { 
+	    #shejishilist ul li{width: 100%; height: 300px;margin-top: 20px;}
+	    #shejishilist .tab1{height: 50%;}
+	    .lists1 {line-height: 18px; height:18px;}
+	    #shejishilist .img1{float: left; margin-top: 20px;margin-left: 20px; height: 250px; width: 250px;}
+	    #shejishilist .img2{float: left; margin-top: 20px;margin-left: 10px; height: 250px; width: 250px;}
+	    #shejishilist .news{position: absolute; margin-top: 30px; margin-left: 14px;}
+	} */
+	
+</style>
+</head>
+<style type="text/css">
+	.bottomBtn{
+		overflow: hidden;
+		width: 23%; 
+		float: left; 
+		text-align: center; 
+		margin: 1%;
+		background: #fff;
+		height: 70%;
+	}
+</style>
+<body class="p_list_anli">
+
+    <?php include ("./Application/Home/View/default/Common/topnav.html"); ?> 
+    <?php include ("./Application/Home/View/default/Common/header.html"); ?> 
+    
+       
+<!--<div id="toppic" style="width:100%;height: auto;margin-top: 0px; background-color: #f5f6f6;"> 
+    <img src="__PUBLIC__/home/images/banner/banner01.jpg" alt="我的小窝" width="100%"/>
+</div>-->
+    
+<div>      
+    <div id="main" class="main" style="background-color: #F5F5F5;">
+	<!--0_position-->
+	<div id="position">
+	    <div class="div1"> 您所在的位置：<a href='/' target="_blank" style="color:#999999;">首页</a> &gt; <a href='/index.php/home/shejishi/' target="_blank" style="color:#333333;">设计团队</a>
+	    </div> 
+	</div> 
+	<!--1_position-->
+        <div id="abox">
+            <!--<div class="title"><h1>大宅设计师</h1></div>-->
+	    <input type='hidden' id='area_inp' name='area_inp' value='{$area}'></input>
+	    <input type='hidden' id='fengge_inp' name='fengge_inp' value='{$fengge}'></input>
+	    <input type='hidden' id='jushi_inp' name='jushi_inp' value='{$jushi}'></input>
+	    <input type='hidden' id='rank_inp' name='rank_inp' value='{$rank}'></input>  
+	      <div id="shejishisearch">
+		<div class="div1 anlisearch_fengge">
+		    <div class="div_style1">
+			所属分店：
+		    </div>
+		    <div class="div_style2"><a href="javascript:query_search('1',0)" key="" class="current" style="padding: 3px 10px 5px 10px;">全部</a></div>
+		    <div class="div_style3"> 
+			<ul id="anlisearch_fengge">	
+			    <volist name="areas" id="avo">
+				<li><a href="javascript:query_search('1',{$avo.evalue})" key="{$avo.evalue}">{$avo.ename}</a></li>
+			    </volist>
+<!--			    <li><a href="javascript:query_search('1',500)" key="500">五一店</a></li>
+			    <li><a href="javascript:query_search('1',1000)" key="1000">城南店</a></li>
+			    <li><a href="javascript:query_search('1',1500)" key="1500">城东店</a></li>
+			    <li><a href="javascript:query_search('1',2000)" key="2000">河西店</a></li>
+			    <li><a href="javascript:query_search('1',2500)" key="2500">湘府店</a></li>
+			    <li><a href="javascript:query_search('1',3000)" key="3000">望城店</a></li>
+			    <li><a href="javascript:query_search('1',3500)" key="3500">宁乡店</a></li>
+			    <li><a href="javascript:query_search('1',4000)" key="4000">大宅定制馆</a></li>-->
+			    
+			</ul>
+		    </div>
+		</div>
+		  <hr style="border-top: 0.5px dashed #999; width: 97%;  margin-left: 1.5%;"></hr>
+		<div class="div1 anlisearch_jushi" style="">
+		    <div class="div_style1">设计级别：</div>
+		    <div class="div_style2"><a href="javascript:query_search('2',0)" key="" class="current" style="padding: 3px 10px 5px 10px;">全部</a></div>
+		    <div class="div_style3"> 
+			<ul id="anlisearch_jushi"> 	
+			    <volist name="ranks" id="rvo">
+				<li><a href="javascript:query_search('2',{$rvo.evalue})" key="{$rvo.evalue}">{$rvo.ename}</a></li>
+			    </volist>
+<!--			    <li><a href="javascript:query_search('2',500)" key="500">资深首席设计师</a></li>
+			    <li><a href="javascript:query_search('2',3500)" key="3500">首席设计师</a></li>
+			    <li><a href="javascript:query_search('2',1000)" key="1000">高级设计师</a></li>
+			    <li><a href="javascript:query_search('2',1500)" key="1500">主任设计师</a></li>-->
+			    
+			</ul>
+		    </div>
+		</div>  
+	    </div>
+	    <!--0_calltel-->
+	    <div class="query_tell" style="display: none;">
+		<div id="query1">
+		    <input type="text"  placeholder="输入设计师名字" id="query1_keyword" value="{$keyword}"/>
+		    <a href="javascript:;"><div onclick="search_new(1,1);">搜索</div></a>
+		</div>
+		<div id="calltel1">
+		    <input type="text"  placeholder="联系电话" id="calltel1_keyword" value="" />
+		    <a href="javascript:;" id="call_a"><div id="call_btn">呼叫我的小窝</div></a>
+		</div>
+		<div id="query_count" style="font-size: 16px;">
+		    <span>共{$lists_count}位行业顶级资深设计师</span> 
+		</div>
+	    </div> 
+	    <!--1_calltel-->	
+	    
+    </div>
+	
+	<div id="abox1" style="width: 1200px; padding-left: 0%;">	    
+            <div id="shejishilist">
+                <ul>
+		    <volist name="lists_data1" id="vo">
+			<li key="{$vo.id}"  style="">
+			   <div style="float: left; width: 35%; height: 100%;margin-left: 2%;">
+			   	
+				<a href="{$html_path_pc}shejishi/{$vo.id}.html" target="_blank">
+				    <div class="tab1" style="width: 100%;">
+					   <div style="float: left;height: 96%;width: 50%;text-align: center;">	
+						<div style="width:152px;height:152px;margin-top:20px;overflow:hidden;margin-left:auto;margin-right:auto;border-radius: 50%;">
+						    <if condition="$vo['headerpic'] neq '' && $vo['headerpic'] neq '0'">
+							<img src="{$vo.headerpic}" alt="点石定制家装"  style="height: 100%;"/>  
+						    <elseif condition="$vo['picpath'] neq '' && $vo['picpath'] neq '0'" />
+							  <img src="{$vo.picpath}"  alt="我的小窝设计师" style="width: 100%;" />
+						    <else/>
+							 <img src="/Uploads/shejishi/{$vo.sno}.jpg" alt="点石定制家装"  style="width: 100%;"/>  
+						    </if>  
+						</div>
+					   </div>
+
+					   <div style="float: left;height: 100%;width: 48%;padding-left: 2%;">
+						  <div style="margin-top:27%; text-align: left;font-family: '微软雅黑';font-weight: 500;font-size: 34px;">
+							  {$vo.dtitle}
+						  </div>
+						  <div style="text-align: left;font-family: '微软雅黑';font-size: 14px;color: #999999;margin-top: 5px;">
+							  {$vo.rankname}
+						  </div>
+					   </div>
+
+				    </div>
+			    	  </a>
+			    	  <div class="tab2" style="width: 100%;">
+			    	  	  <div class="lists1" style="float: left;width: 100%;">
+			    	  	  	<div class="divlist1" style="float: left;margin-left: 30px;">
+			    	  	  		所属分店：
+			    	  	  	</div>
+			    	  	  	<div class="divlist2" style="float: left;color: #999999;">
+			    	  	  		 {$vo.areaname}
+			    	  	  	</div>
+			    	  	  </div>
+			    	  	  
+			    	  	  <div class="lists1" style="margin-top:7px; float: left; width: 100%;">
+			    	  	  	<div class="divlist1" style="float: left;margin-left: 30px;">
+			    	  	  		从业年限：
+			    	  	  	</div>
+			    	  	  	<div class="divlist2" style="float: left;color: #999999;">
+			    	  	  		{$vo.years}年
+			    	  	  	</div>
+			    	  	  </div>
+			    	  	  
+			    	  	  <div class="lists1" style="margin-top: 7px; float: left; width: 100%;">
+			    	  	  	<div class="divlist1" style="float: left;margin-left: 30px;">
+			    	  	  		毕业院校：
+			    	  	  	</div>
+			    	  	  	<div class="divlist2" style="float: left;color: #999999;">
+			    	  	  		{$vo.school}
+			    	  	  	</div>
+			    	  	  </div>
+			    	  	  <div class="lists2" style="margin-top: 7px; float: left;width: 100%;">
+			    	  	  	<div class="divlist1" style="float: left;margin-left: 30px;">
+			    	  	  		擅长风格：
+			    	  	  	</div>
+			    	  	  	<div class="divlist2" style="float: left;height: 70px;width: 70%;">
+						    <volist name="vo.shanchangs" id="svo">
+							<if condition="$i lt 10">							    
+							    <div style="">{$svo}</div>
+							</if>
+						    </volist>
+<!--						    <div style="">简欧</div>
+						    <div style="">现代简约</div>
+						    <div style="">新中式</div>
+						    <div style="">地中海</div>
+						    <div style="">混搭</div>-->
+			    	  	  	</div>
+			    	  	  </div>			    	  	
+			    	  </div>			    	  
+			    </div>
+			    
+			    <div style="float: left;width: 63%;height: 100%;position: relative;display: inline-block;">
+				<if condition="$vo['anlis'][0]['pathinfo'] neq ''">
+				    <a href="{$html_path_pc}anli/{$vo['anlis'][0]['id']}.html" target='_blank'>
+					<img class="img1" src="{$vo['anlis'][0]['pathinfo']}" style="">					
+				    </a>
+				    <div class='news'>
+					 <img class="imgnews" src="/Public/home/images/anli/news.png" style="">
+				    </div>
+				</if>
+				<if condition="$vo['anlis'][1]['pathinfo'] neq ''">
+				    <a href="{$html_path_pc}anli/{$vo['anlis'][1]['id']}.html" target='_blank'>					
+					<img class="img2" src="{$vo['anlis'][1]['pathinfo']}" style="">
+				    </a>
+				</if>
+<!--			    	<img class="img1" src="/Public/images/sjsimg1.png" style="">
+			    	<img class="img2" src="/Public/images/sjsimg2.png" style="">-->
+			    </div>
+			    
+			</li>
+		    </volist>    
+		</ul>
+            </div>
+	    <div class="page_home">
+		{$_page}
+	    </div>
+	    <script>
+		function pagego(){
+		    var paget = $("#gop").val();
+		    var pagep = decodeURI($("#goval").val());
+//		    alert(pagep+"/"+paget);
+		    if(parseInt(paget)>0){
+			var turl = pagep.replace("[PAGE]",paget);
+			location.href=turl;
+		    }else{
+			alert("请输入有效页码!");
+			return; 
+		    }
+		}
+	    </script>
+	    
+<!--	    <div class="load_more">  
+		<div><a href="javascript:load_more();" style="text-decoration:none;" id="more">加载更多</a></div>
+	    </div> -->
+	    
+        </div> 
+        
+        <!--底部-->
+<?php include ("./Application/Home/View/default/Common/bottomnav.html"); ?> 
+ 
+<?php include ("./Application/Home/View/default/Common/footer.html"); ?> 
+     
+</body>
+</html>   
+
+<script type="text/javascript">
+$(function(){
+});
+</script> 
+
+<script src="__PUBLIC__/home/js/footer.js" type="text/javascript"></script>
+<script src="/public/home/js/count.js" type="text/javascript"></script> 

@@ -1,0 +1,228 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.mainCon {position: relative; width:980px; margin: 0px auto; clear:both; padding: 10px 0px; background-color:#FFF;}
+
+.leftCont {float: left; width: 710px; padding:3px; margin-left:10px !important; *margin-left: 6px; height: auto; clear:both;}
+.rightCont {float: right; width: 235px; padding:5px; margin:0px 8px 10px 0px !important; *margin:0px 4px 25px 0px;}
+
+.sub_leftCont {float: left; width: 700px; padding:0px; margin-left:15px !important; *margin-left: 8px; height: auto; clear:both;}
+.sub_rightCont {float: right; width: 245px; padding:5px; margin:0px 10px 10px 0px !important; *margin:0px 5px 25px 0px;}
+
+.cbanner {float:left; width: 345px; height:235px; margin:0px; padding:0px; text-align:left;}
+.toplink {float:left; width: 530px; height:auto; margin-left: 15px; padding:5px 5px; text-align:center;}
+.toplink span {font:bold 16px/28px "宋体"; color:#ff6600;}
+.toplink span a{font:bold 16px/28px "宋体"; color:#ff6600; text-decoration:none;}
+.toplink span a:hover {text-decoration: underline;}
+.toplink a.tld {float:left; font:normal 12px/20px "宋体"; color:#999; text-decoration:none; text-align:left;}
+.toplink a:hover.tld {text-decoration: underline;}
+
+.consultItem {float:left; width: 340px; height:auto; margin-top: 10px; padding:0px;}
+.itemTit {float:left; width: 335px; background: url(../images/lc_rigTitbg.jpg) left bottom repeat-x; height:36px !important; *height:35px; padding-top:5px !important; *padding-top:5px; padding-left:10px; border-bottom:1px solid #ddd;}
+.itemTit img {float:left; margin-top: 5px;}
+.itemTit span {float:left; padding-left: 10px; font:normal 16px/30px "微软雅黑"; color:#333;}
+.itemTit b {float:right; margin-right: 10px; font:normal 12px/30px "宋体"; color:#999;}
+.itemTit a {color:#999; text-decoration: none;}
+.mr_10 {margin-right:15px !important; *margin-right:10px;}
+
+.item_dlbox {float:left; padding: 15px 10px 15px 15px; margin: 0px; width: 320px; height: auto;}
+.item_dlbox dl {float:left; text-align:left; list-style: none; margin:0px; padding:0px;}
+.item_dlbox dt {float:left; width:90px; height:65px; margin-right: 15px;}
+.item_dlbox dd {float: left; width: 210px; margin: 0px; padding: 0px; vertical-align: middle; color:#999; font:normal 12px/20px "宋体";}
+.item_dlbox dd span {height: 25px; line-height: 25px; color:#f33968; font-size: 12px; font-weight:bold; color: #666;}
+.item_dlbox a.sptit {color: #666; text-decoration: none;}
+.item_dlbox a:hover.sptit {text-decoration: underline;}
+.item_dlbox a.ddtxt {color:#999; text-decoration: none;}
+.item_dlbox a:hover.ddtxt {text-decoration: underline;}
+
+
+.Txtlist {float:left; padding:5px 20px; margin-bottom: 10px;}
+.Txtlist ul li {list-style-type: disc; color: #ccc; /* list-style-position:inside; */}
+.Txtlist ul li a {font:normal 12px/24px "宋体"; color:#666; padding-left: 2px;}
+
+.clistbg {float: left; clear:both; height: 42px; width: 98%; background: url(../images/clistbg.gif) left bottom repeat-x; margin-left: 5px;}
+.clistTit {float: left; height: 40px; width: auto; display: block; text-indent: 0px; font:normal 20px/40px "微软雅黑"; letter-spacing:1px; color: #336699; border-bottom: 2px solid #ea6303; padding: 0px 10px;}
+
+.listbox {float:left; width: 680px !important; margin:0px; padding: 8px 10px !important; *padding: 20px 10px;}
+.listbox dl {list-style:none; padding-right: 10px;}
+.listbox dl dt {display:block; height:35px; padding:0px;}
+.listbox dl dd {clear: both; display:block; margin: 5px 0px; padding-bottom: 10px; font: normal 12px/20px "宋体"; color:#999; text-align:justify; text-justify: auto; padding-left: 20px;}
+.listbox dl dt span {padding-left: 20px; background:url(../images/arrow_tit.gif) 0px 9px no-repeat; float:left; font:bold 14px/34px "宋体"; color:#666;}
+.listbox dl dt a {color:#666; text-decoration: none;}
+.listbox dl dt a:hover {text-decoration: underline;}
+.listbox dl dt b {float:right; font:normal 12px/30px "宋体"; color:#999;}
+.listbox dl dd a {color:#999; text-decoration: none;}
+.listbox dl dd a:hover {text-decoration: underline;}
+
+.pageNumbox {float:left; width: 670px; padding: 10px auto !important; margin: 20px auto; height: 40px; clear:both;}
+.pagebtn {text-align: center; width:auto; height:auto; clear:both;}
+.pagebtn input {cursor:pointer; font:normal 14px/30px Arial, Helvetica, sans-serif, "宋体"; text-align:center; border: medium none;}
+.pagebtn a {text-decoration: none;}
+.pagebtn a:hover {text-decoration: none;}
+input.ud_btn {width:65px; height: 32px; margin:0px 2px; color: #666; background:url(../images/ud_btn.gif) 0 0 no-repeat;}
+input.ud_btnh {width:65px; height: 32px; margin:0px 2px; color: #fff; background:url(../images/ud_btnh.gif) 0 0 no-repeat;}
+input.num_btn {width:31px; height:30px; margin: 0px 2px; color:#666; background:url(../images/numbtn_a.gif) 0 0 no-repeat;}
+input.num_btnh {width:31px; height:30px; margin: 0px 2px; color:#fff; background:url(../images/numbtn_ah.gif) 0 0 no-repeat;}
+
+.ctdTit {clear:both; height: 60px; width: 680px; border-bottom: 1px solid #ddd; text-align:center; padding: 10px 0px; margin-left: 5px;}
+.ctdTit h3 {display: block; font:normal 22px/40px "微软雅黑"; color:#ff6600;}
+.ctdTit span {clear:both;font:normal 12px/20px "宋体"; color:#999;}
+
+.text_detbox {float:left; width: 670px !important; margin:0px; padding: 10px 10px !important; *padding: 20px 10px; min-height: 320px !important; *height: 320px;}
+.text_detbox ul {list-style:none; margin:0px; padding:0px;}
+.text_detbox ul li {clear: both; display:block; margin: 5px 0px; text-indent: 2em; font: normal 14px/20px "宋体"; color:#666; text-align:justify; text-justify: auto; padding:0px 10px;}
+
+.textlink {float:left; width: 670px; text-align:left; margin:0px 5px; padding:0px; font: normal 12px/25px "宋体"; color: #666;}
+.uplink {float:left; width:auto; background:url(../images/uplink.gif) 5px 8px no-repeat; padding-left: 22px;}
+.downlink {float:right; width:auto; background:url(../images/downlink.gif) 5px 9px no-repeat; padding-left: 22px;}
+
+.sharebox {float:left; width: 670px; margin: 30px auto; height: 50px; display:inline; text-align:right; font:normal 14px/30px "宋体"; color: #666;}
+.sharebox img {border:none; display:inline;}
+.sharebox a {cursor:pointer; margin:0px 2px;}
+
+
+/****右侧内容****/
+.ListColumn {float: left; width: 230px; border:1px solid #ddd; height:auto; padding:0px; margin-bottom: 10px;}
+.subListColumn {float: left; width: 243px; border:1px solid #ddd; height:auto; padding:0px; margin-bottom: 10px;}
+
+.ListTit {
+	background: url(../images/lc_rigTitbg.jpg) repeat-x;
+	float: left;
+	height: 30px !important;
+	*height: 32px;
+	clear: both;
+	width: 100%;
+	margin:0px;
+	border-bottom:1px solid #ddd;
+	font:normal 16px/24px "微软雅黑", Arial, Helvetica, sans-serif;
+	color:#333;
+	text-indent:15px;
+	padding-top:8px !important;
+	*padding-top:8px;
+}
+
+.rightList {float:left; padding:10px 10px 25px 20px;}
+.rightList ul li {list-style-type: disc; color: #ccc; /* list-style-position:inside; */}
+.rightList ul li a {font:normal 14px/25px "微软雅黑"; color:#666; padding-left: 2px;}
+
+.adimg {float: left; width: 230px; border:1px solid #eaeaea; height:auto; margin: 0px; padding:0px;}
+
+.rcol_menu {float:left; width:230px; height:auto; clear: both; display:block; margin: 10px 0px; border: 1px solid #ddd;}
+.rcol_menu ul {float:left; list-style-type:none; padding: 0px; }
+.rcol_menu li {overflow: hidden; white-space:nowrap; float:left; height:60px; display:block; padding-top: 20px; margin: 0px 10px !important; *margin: 0px 5px; font:normal 14pt/28px "微软雅黑";width:135px; padding-bottom: 10px; padding-left:75px; border-bottom: 1px solid #ddd;}
+.rcol_link {width: auto; height:30px; font-size: 10pt; font-family: "微软雅黑"; color:#909090;}
+.rcol_link a {color:#999; margin: 0px;}
+.rcol_link a:hover {color:#999; text-decoration: none;}
+
+.cl_Txtli {float:left; padding:12px 12px 15px 12px;}
+.cl_Txtli ul li {list-style-type: disc; color: #ccc; list-style-position:inside;}
+.cl_Txtli ul li a {font:normal 12px/25px "宋体"; color:#666; padding:0px;}
+
+.numTxtli {float:left; padding:12px 12px 15px 12px;}
+.numTxtli ul li {list-style-type: decimal; background:url(../images/licobg.gif) 0px 7px no-repeat; list-style-position:inside; color: white; padding-left: 3px;}
+.numTxtli ul li a {font:normal 12px/30px Arial, Helvetica, sans-serif; color:#666; padding-left: 5px;}
+
+.yuy_click {clear:both; width:245px; margin:0px; padding:0px; text-align:right; background-color: #ee0022;}
+
+.cfocus {
+	height: 235px;
+	//overflow: hidden;
+}
+
+.cbanner {
+	height: 235px;
+	overflow: hidden;
+}
+
+.cbanner .viewport {
+	width: 345px;
+	height: 200px;
+	overflow: hidden;
+	position: relative;
+}
+
+.cbanner .buttons {
+	display: block;
+	margin: 30px 10px 0 0;
+	float: left;
+}
+
+.cbanner .next {
+	margin: 30px 0 0 10px;
+}
+
+.cbanner .disable {
+	visibility: hidden;
+}
+
+.cbanner .overview {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.cbanner .overview li {
+	float: left;
+	margin: 0 20px 0 0;
+	padding: 0px;
+	height: 200px;
+	width: 345px;
+}
+
+.cbanner .bottomBar {
+	vertical-align: center;
+	padding-top: 6px;
+	position:relative;
+	width: 345px;
+	height: 20px;
+	background: #47515B;
+}
+
+.cbanner .pager {
+	width:200px;
+	overflow: hidden;
+	list-style: none;
+	clear: both;
+	text-align:left;
+}
+
+.cbanner .pager li {
+	float: left;
+}
+
+.cbanner .pagenum {
+	text-decoration: none;
+	text-align: center;
+	#padding: 5px;
+	color: #9A9899;
+	font-size: 12px;
+	display: block;
+}
+
+.cbanner .active {
+	color: #EE9900;
+}
+
+.cbanner .bannerTitle {
+	width: 260px;
+	white-space:nowrap;
+	overflow: hidden;
+	font-weight: bold;
+	padding-left: 10px;
+	float: left;
+	color: #fff;
+}
+
+.breadcrumb {
+	margin: auto;
+	padding-top: 10px;
+	margin-bottom: -3px;
+    position: relative;
+    width: 980px;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0){.cl_Txtli ul li {width: 210px;} }

@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的小窝装修案例</title>
+<meta name="keywords" content="我的小窝装修案例" />
+<meta name="description" content="我的小窝装修案例" />
+<link rel="stylesheet" href="__PUBLIC__/home/css/swiper.css"> 
+
+<!--<script src="__PUBLIC__/home/js/mobile.js" type="text/javascript"></script>-->
+<link href="__PUBLIC__/home/css/style.css" type="text/css" rel="Stylesheet" />
+<script src="__PUBLIC__/home/js/jquery.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/js/jquery.cookies.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/js/common.js" type="text/javascript"></script>
+
+<!--<script src="__PUBLIC__/home/images/jQueryRotate.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/images/swiper.js" type="text/javascript"></script>-->
+<style>
+
+</style>
+
+<script type="text/javascript">
+$(function () {
+    $("#nav_anli").addClass("current");
+    do_banner1();
+    //alert(getQueryString('fengge')); 
+     
+
+})
+/*0 banner1*/
+function do_banner1(){ 
+    //此类型案例的图层显示介绍文字
+    $('#banner1 ul li').hover(function(){  
+		 //图片放大
+		//先记录上是哪层div高度 
+		var dValue=$(this).find("div").height(); 
+		 $(this).find("div").css("height",dValue);
+		 
+		var wValue=1.1 * $(this).find("a img").width(); 
+		var hValue=1.1 * $(this).find("a img").height(); 
+		$(this).find("a img").animate({width: wValue, 
+		height: hValue, 
+		left:("-"+(0.1 * $(this).find("a img").width())/2), 
+		top:("-"+(0.1 * $(this).find("a img").height())/2)}, 800);  
+	},function(){ 
+	    //图片缩小
+	    $(this).find("a img").animate({width: "100%", 
+	    height: "100%", 
+	    left:"0px", 
+	    top:"0px"}, 600 ); 
+	});
+}
+
+function getQueryString(name) { 
+var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+var r = window.location.search.substr(1).match(reg); 
+if (r != null) return unescape(r[2]); return null; 
+} 
+
+</script>
+</head>
+<body class="p_list_anli">
+
+<div id="headerf">
+    <div class="div1">
+        <a href="/" title="长沙最好的大宅装修公司"><img src="__PUBLIC__/home/images/yatai_logo.png" alt="长沙我的小窝" /></a>
+    </div>
+    <div class="div2"> 
+	<a href="/index.php/home/anli/"><div id="nav_anli">装修案例</div></a>
+	<a href="/index.php/home/shejishi/"><div id="nav_sheji">设计团队</div></a>
+	<a href="/index.php/home/gongdi/"><div id="nav_shigong">施工管理</div></a>
+	<a href="/zhuanti/yanjiuyuan/"><div id="nav_yanjiu">别墅研究院</div></a>
+	<a href="/zhuanti/gongyi/"><div id="nav_baozhang">施工保障</div></a>
+	<a href="/about/"><div id="nav_about">关于亚太</div></a> 
+    </div>
+    <div class="div3">
+	<div class="tel">
+	    <a target="_blank" href="javascript:void(0)" style="text-decoration:none;">
+		<div class="div01" style="float: left;padding-top: 23px;width: 42px; display: inline-block;">
+		    <img src="__PUBLIC__/home/images/logo_tel.png" style="border:none;float: right;"></div>
+		<div class="div02" style="padding-top: 0%;display: inline-block;">400-048-0731</div>
+	    </a>
+	</div>
+	<div class="search">
+	    <form target="_blank" id="form_search" action="/index.php/home/other/search">
+		<input type="hidden" name="kwtype" value="0">
+		<input name="keyword" type="text" class="style1 keyword" style="float: left;width: 120px;height: 26px;color: #969393;margin-top: -5px; padding-left: 10px;border: 1px solid #c3c2c2;" value="" placeholder="输入关键词搜索" onfocus="if (value ==&#39;输入关键词搜索&#39;){value =&#39;&#39;}" onblur="if (value ==&#39;&#39;){value=&#39;输入关键词搜索&#39;}">
+		<!--<input type="submit" value="输入关键词搜索" class="style2" title="输入关键词搜索">-->
+		<a href="javascript:go_search();">
+		    <img src="__PUBLIC__/home/images/logo_search.png" style="border:none;float: left; height:30px;margin-top: -5px;">
+		</a>
+	    </form> 
+	    <script>
+		function go_search(){ 
+		    $("#form_search").submit();
+		}
+	    </script>
+	</div>
+    </div>  
+</div>  
+<div style="width:100%;height:100px;">&nbsp;</div> 
+<div>  
+    <div id="banner1">
+     <ul>
+	 <li><div class="case_pad"><a href="/" target="_blank"><img src="__PUBLIC__/home/images/banner/banner02.jpg" width="100%" /></a></div></li> 
+     </ul>
+    </div> 
+    <div id="main" class="main">
+        <div id="abox">
+            <!--0_position-->
+	    <div id="position"><div class="div1"><a href='/'>主页</a> &gt; <a href='/index.php/home/anli/'>装修案例</a> &gt;  <a href='javascript:;'>{$anli_view.dtitle}装修案例</a></div></div>
+<!--1_position-->
+            <!--<div class="title"><h1>装修案例</h1></div>-->
+	    <!--0_calltel-->
+	    <div class="query_tell" style="text-align: center;">
+		<div id="calltel2">
+		    <div class="sub1"><input type="text"  placeholder="联系电话" id="calltel1_keyword" value="" /></div>		    
+		    <div class="sub2"><a href="javascript:;" id="call_a"><div id="call_btn">呼叫我的小窝</div></a></div>
+		</div>
+	    </div> 
+	    <!--1_calltel-->	
+	</div>
+	
+	<div id="abox1">	    
+	       <div class="case_details_1 ab ad cf">
+                <div class="case_1_l  fl">
+                    <div class="fixed_wrap cf">
+			    <div class="xg">
+				<h3><a href="/index.php/home/anli/" class="ftitle_fw" style="text-decoration:none;">案例信息</a></h3>
+				<i></i>
+
+				<div class="anli_detail_info">
+				    <ul>
+					<li>设计风格：{$anli_view.fenggename}</li><li>户型面积：{$anli_view.mianji}平米</li>
+					<li>户型类别：{$anli_view.jushiname}</li><li>合作方式：{$anli_view.fangshiname}</li>
+					<li>所属楼盘：{$anli_view.loupan}</li><li>竣工日期：{$anli_view.edate}</li>
+					<li>工期：{$anli_view.gongqi}</li><li>造价：{$anli_view.zaojia}万</li>
+					<li style="width:100%;height: auto;max-height: 56px; overflow: hidden;">主材配置：{$anli_view.zhucai}</li>
+				    </ul>
+				</div> 
+
+				<div class="cf share_wd" style="color:#9f9583;"><span class="fl share_wd">分享 ：</span>
+				    <div class="share_com of cf">
+					<a href="javascript:;" class="wx fl" style="display:none;"></a>
+					<div class="bdsharebuttonbox of">
+					    <a title="分享到微信" href="#" class="bds_weixin wx_0" data-cmd="weixin"></a>
+					    <a title="分享到新浪微博" href="#" class="bds_tsina wb" data-cmd="tsina"></a>
+					    <a title="分享到QQ空间" href="#" class="bds_qzone kj" data-cmd="qzone"></a>
+					    <a data-cmd="more" class="bds_more shareM" href="#"></a></div>
+					<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+
+				    </div>
+				</div>
+			    </div>
+	                    <div class="xg">
+				<h3><a href="/index.php/home/shejishi/" class="ftitle_fw" style="text-decoration:none;">设计师</a></h3>
+		                    <i></i>	 
+
+				    <div class="cf desgin Record">
+					<div class="fl">
+					    <a href="/index.php/home/shejishi/detail/aid/{$shejishi_view.id}" target="_blank" class="tran_scale">
+						<if condition="$shejishi_view['picpath'] neq ''">       
+							<img class="ratio-img" style="max-width: 170px;" data-ratio="1.4" onerror="lod(this)" data-src="{$shejishi_view['picpath']}" title="{$shejishi_view.nickname}大宅设计师" alt="{$shejishi_view.nickname}大宅设计师" src="{$shejishi_view['picpath']}" >
+					         <else/>  
+						 	<img class="ratio-img" style="max-width: 170px;" data-ratio="1.4" onerror="lod(this)" data-src="/uploads/shejishi/shejishi/{$shejishi_view['sno']}.jpg" title="{$shejishi_view.nickname}大宅设计师" alt="{$shejishi_view.nickname}大宅设计师" src="/uploads/shejishi/shejishi/{$shejishi_view['sno']}.jpg" >
+					        </if> 	 
+					    </a>
+					</div>
+					<div class="of">
+					    <h2>{$shejishi_view.nickname}</h2>
+					    <a href="/index.php/home/shejishi/detail/aid/{$shejishi_view.id}" target="_blank" class="ck" style="text-decoration:underline;">查看TA的主页</a>
+					    <p>已有<span class="SingleLine1Num" data-id="1085">{$shejishi_view.yuyuenum}</span>人预约TA<b></b></p>
+					    <a href="javascript:void(0);" onclick="window.open ('{$url_pc_online}/q/','53kf','height=520,width=700,top=100,left=210');" class="yy">
+						<img src="/Public/home/images/zixun01.png" />在线咨询</a>
+					    <a href="{$url_pc_online}/q/" class="free">免费申请设计预案</a>
+					</div>
+					<div class="tc_free AForm form_box">
+					    <a href="javascript:;" class="closed1">x</a>
+					    <div>
+						<h4>专业设计师1对1免费家装指导</h4>
+
+					       <div><input type="text" name="text" placeholder="姓名" class="name required Aname" data-valid="isNonEmpty" data-error="姓名不能为空"></div>
+						<div><input type="text" name="text" placeholder="电话" class="tp required Aphone" data-valid="isNonEmpty||isMobile" data-error="电话不能为空||电话格式不正确"></div>
+						<input type="button" name="button" value="立 即 申 请" class="btn Applicationbtn " data-id="1085" data-name="免费申请设计预案" data-Title="任方远" data-classid="26"/>
+						<p>已有<span class="SingleLine1Num" data-id="1085">18</span>位业主申请了此服务</p>
+					    </div>
+					</div>
+				    </div>		                 
+                    		</div>
+                        </div>
+                </div>
+                <div class="case_1_r of">
+                    <div class="ftitle"><h3 class="ftitle_fw">{$anli_view.dtitle}</h3></div>
+                    <div class="edit_con_original"> 
+			{$anli_data.content}
+			
+			<if condition="$imgurls[0] neq '' && $anli_data['content'] eq ''">
+			    <div>
+				<ul>
+				<volist name="imgurls" id="vi">
+				    <li style="padding:1%;text-align: center;">
+					<img src="{$vi}" style=""></img>
+				    </li>
+				</volist>
+				    
+				</ul>				
+			    </div>
+			</if> 
+                    </div>                        
+                </div>
+            </div>
+	    
+	    <div class="load_more"> 
+		<div id="more"><a href="/index.php/home/anli/" style="text-decoration:none;">查看更多</a></div>
+	    </div> 
+	    
+        </div> 
+    </div>
+    <!--end main-->
+
+
+<div id="main8" style="width:100%;height: auto;margin-top: 0px; background-color: #00352d;"> 
+    <ul> 
+	<a href="/about/history.html"> <li>品牌故事</li></a>    	<li class="ft_fenge"> | </li>	
+	<a href="/index.php/home/anli/"> <li> 装修案例</li></a>	<li class="ft_fenge"> | </li>	
+	<a href="/index.php/home/shejishi/"> <li> 设计团队</li></a>	<li class="ft_fenge"> | </li>
+	<a href="/zhuanti/gongyi/"> <li> 别墅工艺</li></a>	<li class="ft_fenge"> | </li>
+	<a href="/index.php/home/article/"> <li> 行业新闻</li></a>	<li class="ft_fenge"> | </li>
+	<a href="/index.php/home/gongdi/"> <li> 别墅工地</li></a>	<li class="ft_fenge"> | </li>
+	<a href="/zhuanti/yanjiuyuan/"> <li class="ft_yanjiuyuan"> 别墅研究院</li></a>	<li class="ft_fenge"> | </li>
+	<a href="/about/contact.html"> <li> 联系我们</li></a> 
+    </ul>
+</div>   
+    
+<div id="footer"> 
+    <div class="box2"><ul><li class="first">友情链接:<a href="http://www.dasn.com.cn/" target="_blank">我的小窝</a></li></ul></div>
+    <div class="box3">
+        <a href="#"><div class="box4"></div></a>
+        <div class="box5">
+            <p class="style1">我的小窝 &copy;1998-2018 版权所有</p>
+            <p>24小时免费咨询热线：400-048-0731</p>
+            <p>备案：<a href="http://www.miibeian.gov.cn/" target="_blank">湘ICP备11020209号-2</a></p>
+        </div> 
+        <div class="box6">
+	</div>
+    </div>  
+    <div class="qr">
+	    <img src="__PUBLIC__/home/images/qr_yatai.png" style="width: 100%;"></img>  
+    </div>
+</div>
+    
+    
+</body>
+</html><script src="__PUBLIC__/home/js/footer.js" type="text/javascript"></script>
+<script src="/public/home/js/count.js" type="text/javascript"></script> 

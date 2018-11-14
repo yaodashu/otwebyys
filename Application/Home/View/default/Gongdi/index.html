@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的小窝工地</title>
+<meta name="keywords" content="我的小窝工地" />
+<meta name="description" content="我的小窝工地" />
+<link rel="stylesheet" href="__PUBLIC__/home/css/swiper.css"> 
+
+<!--<script src="__PUBLIC__/home/js/mobile.js" type="text/javascript"></script>-->
+<link href="__PUBLIC__/home/css/style.css" type="text/css" rel="Stylesheet" />
+<script src="__PUBLIC__/home/js/jquery.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/js/jquery.cookies.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/js/common.js" type="text/javascript"></script>
+
+<!--<script src="__PUBLIC__/home/images/jQueryRotate.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/images/swiper.js" type="text/javascript"></script>-->
+
+<script type="text/javascript">
+$(function () {
+    $("#nav_shigong").addClass("current");
+    do_banner1();
+    //alert(getQueryString('area')); 
+    init_param();
+      
+})
+/*0 banner1*/
+function do_banner1(){ 
+    //此类型工地的图层显示介绍文字
+    $('#banner1 ul li').hover(function(){  
+		 //图片放大
+		//先记录上是哪层div高度 
+		var dValue=$(this).find("div").height(); 
+		 $(this).find("div").css("height",dValue);
+		 
+		var wValue=1.1 * $(this).find("a img").width(); 
+		var hValue=1.1 * $(this).find("a img").height(); 
+		$(this).find("a img").animate({width: wValue, 
+		height: hValue, 
+		left:("-"+(0.1 * $(this).find("a img").width())/2), 
+		top:("-"+(0.1 * $(this).find("a img").height())/2)}, 800);  
+	},function(){ 
+	    //图片缩小
+	    $(this).find("a img").animate({width: "100%", 
+	    height: "100%", 
+	    left:"0px", 
+	    top:"0px"}, 600 ); 
+	});
+}
+/*1 banner1*/
+function init_param(){
+    var area = "{$area}"; 
+//    alert(area+";"+jushi+";"+shejishi);
+    if(area!="" && area!=null && area!="null"){  
+	$(".search_area .div_style2 a").removeClass("current");
+	$(".search_area .div_style3 li a[key='"+area+"']").addClass("current");
+    } 
+}
+
+function getQueryString(name) { 
+var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+var r = window.location.search.substr(1).match(reg); 
+if (r != null) return unescape(r[2]); return null; 
+} 
+
+var is_last=false;
+var loading=false;
+var page=2;
+var first =true;
+//更新条件重新查询数据
+function query_search(type,id){    
+    if(type=='6'){  
+	$(".search_area .div_style2 a").removeClass("current");
+	$(".search_area .div_style3 li a").removeClass("current");
+	if(parseInt(id)>0){
+	    $("#area"+"_inp").val(id);
+	    $(".search_area .div_style3 li a[key='"+id+"']").addClass("current");
+	}else if(id==0){
+	    $("#area"+"_inp").val("");
+	    $(".search_area .div_style2 a").addClass("current");
+	}
+    }  
+    if(type=='1' || type=='2' || type=='3' || type=='6'){
+	$("#query1_keyword").val("");
+    }
+    //异步重新查询数据:1风格，2居室；3设计师；5关键词；4加载更多
+    if(type=='1' || type=='2' || type=='3' || type=='5' || type=='6'){
+	page = 1; 
+    }
+    //20170815修改为直接跳转，分页查询
+    if(true){
+	var turl ="http://"+document.domain+"/index.php/home/gongdi/index/"; 
+	var condition="";
+	if($("#area"+"_inp").val()!=""){
+	    condition = condition + "area/"+$("#area_inp").val()+"/";
+	}	
+	if($("#query1_keyword").val()!=""){
+	    //condition = condition + "keyword/"+$("#query1_keyword").val()+"/";
+	}
+	location.href=turl+condition;
+    }
+    return;    
+    
+    var turl ="http://"+document.domain+"/index.php/home/gongdi/ajaxGetData/page/"+page;
+    var url_pc_online ="{$url_pc_online}";
+//    alert(turl+":"+ $("#area_inp").val());
+    $.ajax({
+	url:turl,
+	type : 'POST',
+	dataType : "json",
+	cache:false,
+	data : {
+		'area' : $("#area_inp").val(), 
+		'keyword' : $("#query1_keyword").val()
+	},
+	success:function(result){
+	    var total = 0;
+	    if(result.is_last=="1"){
+		is_last ="1";		
+		$("#more").html('已加载全部');
+	    }else{
+		is_last ="0";
+		$("#more").html('加载更多');
+	    }
+	    var htmlstr="";
+	    if(result.code=='0'){
+		total = result.total;
+//		alert(result.data.length);
+//		//拼装html添加到html末尾
+		for(var item=0;item<result.data.length;item++){  
+		    htmlstr =htmlstr+'<li key="'+result.data[item].id+'">'; 
+		    htmlstr =htmlstr+'	    <div class="li_div">';
+		    htmlstr =htmlstr+'		<div class="div1">';
+		    htmlstr =htmlstr+'			<a href="/index.php/home/gongdi/detail/aid/'+result.data[item].id+'" target="_blank">';
+			if(result.data[item].picpath !="" && result.data[item].picpath !=null && result.data[item].picpath !=undefined){
+		    htmlstr =htmlstr+'			<img src="'+result.data[item].picpath+'" width="100%" height="100%" alt="'+result.data[item].title+'" /></a>'; 
+			}else{
+		    htmlstr =htmlstr+'			<img src="'+result.data[item].litpic+'" width="100%" height="100%" alt="'+result.data[item].title+'" /></a>'; 
+			} 
+		    htmlstr =htmlstr+'		</div>';
+		    htmlstr =htmlstr+'		<div class="div2">';
+		    htmlstr =htmlstr+'			<p class="style1"><a href="/index.php/home/gongdi/detail/aid/'+result.data[item].id+'" target="_blank" class="ftitle_gd">'+result.data[item].dtitle+'</a><b></b></p>';
+		    htmlstr =htmlstr+'			<p class="style2">所在区域：'+result.data[item].areaname+'</p>'; 
+		    var contents = result.data[item].description; 
+		    htmlstr =htmlstr+'			<p class="style3" style=" text-overflow: ellipsis;  display: -webkit-box;   -webkit-line-clamp: 2;  -webkit-box-orient: vertical;">'+result.data[item].description+'<b></b></p>'; 
+		    htmlstr =htmlstr+'			<p class="style8"><b><a href="'+url_pc_online+'/q/" target="_blank">预约看工地<span></span></a></b></p>';			     
+		    htmlstr =htmlstr+'		</div> ';		    
+		    htmlstr =htmlstr+'		<div class="div3 gongdi_step">  ';
+		    htmlstr =htmlstr+'		     <div class="step_1"> ';
+		    htmlstr =htmlstr+'			<div class="d_hengxian"><img src="__PUBLIC__/home/images/hengxian_01.png"></img></div>  ';
+		    htmlstr =htmlstr+'			<div class="d_hengxian"><img src="__PUBLIC__/home/images/hengxian_01.png"></img></div>  ';
+		    htmlstr =htmlstr+'			<div class="d_hengxian"><img src="__PUBLIC__/home/images/hengxian_01.png"></img></div> ';
+		    htmlstr =htmlstr+'		    </div> ';
+		    htmlstr =htmlstr+'		    <div class="step_2"> ';
+		    if(result.data[item].zxstep=='3'){
+			htmlstr =htmlstr+'			<div class="d_jindu"><img src="__PUBLIC__/home/images/logo_shigong.png"></img></div>  ';
+			htmlstr =htmlstr+'			<div class="d_jindu"><img src="__PUBLIC__/home/images/logo_shigong.png"></img></div>  ';
+			htmlstr =htmlstr+'			<div class="d_jindu"><img src="__PUBLIC__/home/images/logo_shigong.png" class="current"></img></div> ';
+		    }else if(result.data[item].zxstep=='2'){
+			htmlstr =htmlstr+'			<div class="d_jindu"><img src="__PUBLIC__/home/images/logo_shigong.png"></img></div>  ';
+			htmlstr =htmlstr+'			<div class="d_jindu"><img src="__PUBLIC__/home/images/logo_shigong.png" class="current"></img></div>  ';
+			htmlstr =htmlstr+'			<div class="d_jindu"><img src="__PUBLIC__/home/images/logo_shigong.png"> class="current"</if>></img></div> ';
+		    }else{
+			htmlstr =htmlstr+'			<div class="d_jindu"><img src="__PUBLIC__/home/images/logo_shigong.png" class="current"></img></div>  ';
+			htmlstr =htmlstr+'			<div class="d_jindu"><img src="__PUBLIC__/home/images/logo_shigong.png"></img></div>  ';
+			htmlstr =htmlstr+'			<div class="d_jindu"><img src="__PUBLIC__/home/images/logo_shigong.png"></img></div> ';
+		    }
+		    htmlstr =htmlstr+'		    </div> ';
+		    htmlstr =htmlstr+'		    <div class="step_3"> ';
+		    htmlstr =htmlstr+'			<div class="d_title">开工</div>  ';
+		    htmlstr =htmlstr+'			<div class="d_title">施工阶段</div>  ';
+		    htmlstr =htmlstr+'			<div class="d_title">竣工</div> ';
+		    htmlstr =htmlstr+'		    </div> ';
+		    htmlstr =htmlstr+'		</div> ';
+		    htmlstr =htmlstr+'	    </div> ';
+		    htmlstr =htmlstr+'	</li> '; 
+		    
+//					    mySwiper.appendSlide('<div class="swiper-slide"><img alt="'+result.banner1[item].title+'" src="'+result.banner1[item].logo_url+'" style="width:100%;"></div>');
+		} 
+//		$("#accordion").css("dispaly","block");
+//		$("#main").append(result.data);
+//		    do_msg(); 
+		page++; 
+		loading=false;		    
+	    }else if(result.code=='10001'){  
+	    }
+	    //如果不是加载更多，则直接替换，否则需要进行追加操作
+	    if(type!="4"){
+		$("#gongdilist ul").html(htmlstr);
+		$("#query_count span").html("共"+total+"套大宅装修设计工地");
+	    }else{  
+		$("#gongdilist ul").append(htmlstr); 
+	    }
+    }});
+    
+}
+
+//点击加载更多，追加数据
+function load_more(){
+    if($("#more").html()=='加载更多'){
+	//异步查询数据，如果有结果则追加到末尾 
+	query_search('4',-1);
+    }else{
+	alert("您好，已经加载全部结果，请重新选择条件查询或刷新页面！");
+    }
+} 
+//综合关键词搜索
+function keyword_search(){ 
+    if($("#query1_keyword").val()==''){
+	 alert("请输入有效工地名称、楼盘名称、设计师名字信息")
+	    return;
+    }
+    //情况查询其它条件
+    $("#area"+"_inp").val(""); 
+    query_search('5',-1);
+} 
+//刷新页面
+function search_new(type,page){ 
+    //判断是分类还是关键词搜索
+    if(type=='1'){
+	//情况查询其它条件
+	$("#area"+"_inp").val(""); 
+    }else{
+	$("#query1_keyword").val("");
+    } 
+    if(parseInt(page)>0){}else{
+	page=1;
+    }
+    var turl ="http://"+document.domain+"/index.php/home/gongdi/index/"; 
+    var condition="";
+    if($("#area"+"_inp").val()!=""){
+	condition = condition + "area/"+$("#area_inp").val()+"/";
+    }
+    if($("#query1_keyword").val()!=""){
+	condition = condition + "keyword/"+$("#query1_keyword").val()+"/";
+    }
+    location.href=turl+condition;
+} 
+
+</script>
+</head>
+<body class="p_list_anli">
+
+    <?php include ("./Application/Home/View/default/Common/topnav.html"); ?> 
+    <?php include ("./Application/Home/View/default/Common/header.html"); ?> 
+    <?php include ("./Application/Home/View/default/Common/hbanner.html"); ?> 
+     
+<div>   
+    <div id="main" class="main">
+            <!--0_position-->
+        <div id="position">
+	    <div class="div1"> 您所在的位置：<a href='/' target="_blank" style="color:#999999;">首页</a> &gt; <a href='/index.php/home/anli/' target="_blank" style="color:#333333;">工地管理</a>
+	    </div> 
+	</div>
+<!--1_position-->
+        <div id="abox" style="width: 1200px; padding-left: 0%;margin: 0 auto;">
+            <!--<div class="title"><h1>别墅工地</h1></div>-->
+	    <input type='hidden' id='area_inp' name='area_inp' value='{$area}'></input>
+	    <input type="hidden"  placeholder="输入案例名称、楼盘名称、设计师名字" id="query1_keyword" value="{$keyword}" />    
+	    
+	      <div id="gongdisearch" style="margin: 1% 0 1% 0%;">
+		<div class="div1 search_area" style='height: auto;max-height: 80px;'>
+		    <div class="div_style1">区域</div>
+		    <div class="div_style2"><a href="javascript:query_search('6',0)" key="" class="current">全部</a></div>
+		    <div class="div_style3" style='height: auto;max-height: 80px;'> 
+			    <ul id="search_area" >	
+				<volist name="areas" id="va">
+				    <li><a href="javascript:query_search('6',{$va.evalue})" key="{$va.evalue}">{$va.ename}</a></li>
+				</volist>
+    <!--		      <li><a href="javascript:query_search('6',430102)" key="430102">芙蓉区</a></li>
+			  <li><a href="javascript:query_search('6',430111)" key="430111">雨花区</a></li>
+			  <li><a href="javascript:query_search('6',430103)" key="430103">天心区</a></li>
+			  <li><a href="javascript:query_search('6',430105)" key="430105">开福区</a></li>
+			  <li><a href="javascript:query_search('6',430104)" key="430104">岳麓区</a></li>
+			  <li><a href="javascript:query_search('6',430121)" key="430121">星沙</a></li>
+			  <li><a href="javascript:query_search('6',430122)" key="430122">望城</a></li>
+			  <li><a href="javascript:query_search('6',400000)" key="400000">其他</a></li> -->
+			    </ul>
+		    </div>
+		</div>
+	    </div> 
+	    
+    </div>
+	
+	<div id="abox1">	    
+            <div id="gongdilist">
+                <ul>
+		    <volist name="lists_gongdi1" id="vo">
+			<li key="{$vo.id}">
+			    <div class="li_div">
+				<div class="div1">
+				    <a href="/index.php/home/gongdi/detail/aid/{$vo.id}" target="_blank">								    
+					<if condition="$vo['picpath'] neq ''">
+						<img src="{$vo.picpath}" width="100%" height="100%" alt="{$vo.title}别墅工地" /> 
+					    <else/> 
+						<img src="{$vo.litpic}" width="100%" height="100%" alt="{$vo.title}别墅工地" /> 
+					</if> 
+				    </a>
+				</div>
+				<div class="div2">
+				    <p class="style1"><a href="/index.php/home/gongdi/detail/aid/{$vo.id}" target="_blank" class="ftitle_gd">{$vo.dtitle}</a><b></b></p>
+				    <p class="style2">所在区域：{$vo.areaname}</p>
+				    <p class="style3" style=" text-overflow: ellipsis;  display: -webkit-box;   -webkit-line-clamp: 2;  -webkit-box-orient: vertical;">
+				    {$vo['description']}
+					<b></b>
+					</p>
+				    <p class="style8"><b><a href="{$url_pc_online}/q/" target="_blank">预约看工地<span></span></a></b></p>			     
+				</div> 
+				<div class="div3 gongdi_step">				    
+				    <div class="step_1">
+					<div class="d_hengxian"><img src="__PUBLIC__/home/images/hengxian_01.png"></img></div> 
+					<div class="d_hengxian"><img src="__PUBLIC__/home/images/hengxian_01.png"></img></div> 
+					<div class="d_hengxian"><img src="__PUBLIC__/home/images/hengxian_01.png"></img></div>
+				    </div>
+				    <div class="step_2">
+					<div class="d_jindu"><img src="__PUBLIC__/home/images/logo_shigong.png" <if condition="$vo['zxstep'] == 1"> class="current"</if>></img></div> 
+					<div class="d_jindu"><img src="__PUBLIC__/home/images/logo_shigong.png" <if condition="$vo['zxstep'] == 2"> class="current"</if>></img></div> 
+					<div class="d_jindu"><img src="__PUBLIC__/home/images/logo_shigong.png" <if condition="$vo['zxstep'] == 3"> class="current"</if>></img></div>
+				    </div>
+				    <div class="step_3">
+					<div class="d_title">开工</div> 
+					<div class="d_title">施工阶段</div> 
+					<div class="d_title">竣工</div>
+				    </div>
+				</div>
+			    </div>
+			</li>
+		    </volist>
+<!--		    <li>
+                        <div class="div1"><a href="/gongdi/1152.html" target="_blank"><img src="/uploads/170331/2-1F331163211S5.jpg" width="100%" height="100%" alt="中航城别墅工地" /></a></div>
+                        <div class="div2">
+                            <p class="style1"><b><a href="/gongdi/1152.html" target="_blank">中航城</a></b></p>
+                            <p class="style2">设计师：<b><a href="/shejishi/19000.html" target="_blank">李明成</a></b></p>
+                            <p class="style3">户型：<b>别墅</b></p>
+                            <p class="style4">面积：<b>300平米</b></p>
+                            <p class="style5">风格：<b>美式</b></p>
+                            <p class="style6">造价：<b>500</b></p>
+                            <p class="style7">主材配置：<b></b></p>
+                            <p class="style8"><b><a href="/gongdi/1152.html" target="_blank">查看详情<img src="__PUBLIC__/home/images/logo_detail.png"></img></a></b></p>			     
+                        </div> 
+                    </li>
+		    <li>
+                        <div class="div1"><a href="/gongdi/1151.html" target="_blank"><img src="/uploads/170331/2-1F3311630341D.jpg" width="100%" height="100%" alt="中海天鉴别墅工地" /></a></div>
+                        <div class="div2">
+                            <p class="style1"><b><a href="/gongdi/1151.html" target="_blank">中航城</a></b></p>
+                            <p class="style2">设计师：<b><a href="/shejishi/19000.html" target="_blank">李明成</a></b></p>
+                            <p class="style3">户型：<b>别墅</b></p>
+                            <p class="style4">面积：<b>550平米</b></p>
+                            <p class="style5">风格：<b>新中式</b></p>
+                            <p class="style6">造价：<b>500</b></p>
+                            <p class="style7">主材配置：<b></b></p>
+                            <p class="style8"><b><a href="/gongdi/1151.html" target="_blank">查看详情<img src="__PUBLIC__/home/images/logo_detail.png"></img></a></b></p>			     
+                        </div> 
+                    </li>-->
+<!--		    <li>
+                        <div class="div1"><a href="/gongdi/1150.html" target="_blank"><img src="/uploads/170331/2-1F331162S5307.jpg" width="100%" height="320" alt="西街庭院别墅工地" /></a></div>
+                        <div class="div2">
+                            <p class="style1"><b><a href="/gongdi/1150.html" target="_blank">中航城</a></b></p>
+                            <p class="style2">设计师：<b><a href="/shejishi/19000.html" target="_blank">李明成</a></b></p>
+                            <p class="style3">户型：<b>别墅</b></p>
+                            <p class="style4">面积：<b>400平米</b></p>
+                            <p class="style5">风格：<b>美式</b></p>
+                            <p class="style6">造价：<b>1000</b></p>
+                            <p class="style7">主材配置：<b></b></p>
+                            <p class="style8"><b><a href="/gongdi/1150.html" target="_blank">查看详情<img src="__PUBLIC__/home/images/logo_detail.png"></img></a></b></p>			     
+                        </div> 
+                    </li>
+		    <li>
+                        <div class="div1"><a href="/gongdi/1149.html" target="_blank"><img src="/uploads/170331/2-1F331162532564.jpg" width="100%" height="320" alt="五矿沁园金城别墅工地" /></a></div>
+                        <div class="div2">
+                            <p class="style1"><b><a href="/gongdi/1149.html" target="_blank">中航城</a></b></p>
+                            <p class="style2">设计师：<b><a href="/shejishi/19000.html" target="_blank">李明成</a></b></p>
+                            <p class="style3">户型：<b>别墅</b></p>
+                            <p class="style4">面积：<b>450平米</b></p>
+                            <p class="style5">风格：<b>美式</b></p>
+                            <p class="style6">造价：<b>500</b></p>
+                            <p class="style7">主材配置：<b></b></p>
+                            <p class="style8"><b><a href="/gongdi/1149.html" target="_blank">查看详情<img src="__PUBLIC__/home/images/logo_detail.png"></img></a></b></p>			     
+                        </div> 
+                    </li>-->
+<!--		    <li>
+                        <div class="div1"><a href="/gongdi/1146.html" target="_blank"><img src="/uploads/170329/2-1F3291605151b.jpg" width="100%" height="320" alt="天麓别墅别墅工地" /></a></div>
+                        <div class="div2">
+                            <p class="style1"><b><a href="/gongdi/1146.html" target="_blank">中航城</a></b></p>
+                            <p class="style2">设计师：<b><a href="/shejishi/4500.html" target="_blank">李志刚</a></b></p>
+                            <p class="style3">户型：<b>别墅</b></p>
+                            <p class="style4">面积：<b>1200平米</b></p>
+                            <p class="style5">风格：<b>欧式</b></p>
+                            <p class="style6">造价：<b>500</b></p>
+                            <p class="style7">主材配置：<b></b></p>
+                            <p class="style8"><b><a href="/gongdi/1146.html" target="_blank">查看详情<img src="__PUBLIC__/home/images/logo_detail.png"></img></a></b></p>			     
+                        </div> 
+                    </li>
+		    <li>
+                        <div class="div1"><a href="/gongdi/1145.html" target="_blank"><img src="/uploads/170329/2-1F329155941Y9.jpg" width="100%" height="320" alt="美洲故事别墅工地" /></a></div>
+                        <div class="div2">
+                            <p class="style1"><b><a href="/gongdi/1145.html" target="_blank">中航城</a></b></p>
+                            <p class="style2">设计师：<b><a href="/shejishi/4500.html" target="_blank">李志刚</a></b></p>
+                            <p class="style3">户型：<b>别墅</b></p>
+                            <p class="style4">面积：<b>800平米</b></p>
+                            <p class="style5">风格：<b>美式</b></p>
+                            <p class="style6">造价：<b>500</b></p>
+                            <p class="style7">主材配置：<b></b></p>
+                            <p class="style8"><b><a href="/gongdi/1145.html" target="_blank">查看详情<img src="__PUBLIC__/home/images/logo_detail.png"></img></a></b></p>			     
+                        </div> 
+                    </li>-->
+		</ul>
+            </div>
+	    <div class="page_home">
+		{$_page}
+	    </div>
+	    
+<!--	    <div class="load_more">  
+		<div><a href="javascript:load_more();" style="text-decoration:none;" id="more">加载更多</a></div>
+	    </div> -->
+        </div> 
+	
+	</div>
+
+
+<?php include ("./Application/Home/View/default/Common/bottomnav.html"); ?> 
+<?php include ("./Application/Home/View/default/Common/footer.html"); ?> 
+     
+</body>
+<!--</html><script src="__PUBLIC__/home/js/footer.js" type="text/javascript"></script>-->
+<script src="/public/home/js/count.js" type="text/javascript"></script> 

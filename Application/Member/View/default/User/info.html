@@ -1,0 +1,120 @@
+<extend name="Base/Common"/>
+<block name="title_part">会员信息</block>
+<block name="head_style">
+    <link href="__STATIC__/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="__STATIC__/member/css/css.css" rel="stylesheet" type="text/css" />
+</block>
+<block name="head_script"></block>
+<block name="body_content">
+    <div class="mybox_page">
+        <include file="Public/mymenu_box"/>
+        <div class="homepage_box">
+            <form action="{:U('info')}" id="info_form" method="post">
+                <div class="line_mybox home_inforh">
+                    <div class="my_title single_title">
+                        <h3>我的资料</h3>
+                    </div>
+                    <div class="my_text">
+                        <div class="form-item cf">
+                            <label class="item-label">用户名<span class="check-tips">（用户名无法修改）</span></label>
+                            <div class="controls">
+                                <input type="text" class="text input-large" name="username" value="{$current_user.username}" disabled="disabled" />                    
+                            </div>
+                        </div>
+                        <div class="form-item cf" style="display:none;">
+                            <label class="item-label">称谓<span class="check-tips">（编辑可修改称谓,如: 张先生, 王小姐, 李云龙）</span></label>
+                            <div class="controls">
+                                <input type="text" class="text input-large" name="signature" value="{$current_user.signature}" />                    
+                            </div>
+                        </div>
+                        <div class="form-item cf">
+                            <label class="item-label">手机<span class="check-tips">（编辑可修改手机,如: 13900000000）</span></label>
+                            <div class="controls">
+                                <input type="text" class="text input-large" name="mobile" value="{$current_user.mobile}" readonly />                    
+                            </div>
+                        </div>
+                        <div class="form-item cf">
+                            <label class="item-label">邮箱<span class="check-tips">（编辑可修改邮箱, 如: alex.xiao@sina.com）</span></label>
+                            <div class="controls">
+                                <input type="text" class="text input-large" name="email" value="{$current_user.email}" />                    
+                            </div>
+                        </div>
+                        <div class="form-item cf">
+                            <label class="item-label">昵称<span class="check-tips">（编辑可修改昵称, 如: 情逆三世缘）</span></label>
+                            <div class="controls">
+                                <input type="text" class="text input-large" name="nickname" value="{$current_user.nickname}" />                    
+                            </div>
+                        </div>
+                        <div class="form-item cf">
+                            <label class="item-label">生日<span class="check-tips">（编辑可修改生日, 如: 2000-1-1）{$current_user.birthday}</span></label>
+                            <div class="controls">
+                                <input type="text" class="text input-large time" name="birthday" value="{$current_user.birthday}" />                    
+                            </div>
+                        </div>
+			<div class="form-group">
+			    <label for="inputEmail" class=".sr-only col-xs-12" style="display: block;padding: 4px 0px;">请选择门店，后台账号审核时作为依据，无具体门店可不选</label>
+			    <select id="areaid" name="areaid">
+				<option value="">选择所属门店</option>
+				 <volist name="arealist" id="svo">
+				     <option value="{$svo.evalue}" <if condition="$current_user['area'] eq $svo['evalue']"> selected</if>>{$svo.provincename}/{$svo.cityname}/{$svo.ename}</option>
+				 </volist>
+			    </select>
+			    <span class="help-block"></span>
+			    <div class="clearfix"></div> 
+			</div>
+			<div class="form-group">
+			    <label for="inputEmail" class=".sr-only col-xs-12" style="display: block;padding: 4px 0px;">后台账号审核时作为依据，非设计师可不选</label>
+			    <select id="rankid" name="rankid">
+				<option value="">选择设计师级别</option>
+				 <volist name="ranklist" id="rvo">
+				     <option value="{$rvo.evalue}" <if condition="$current_user['rank'] eq $rvo['evalue']"> selected</if>>{$rvo.ename}</option>
+				 </volist>
+			    </select>
+			    <span class="help-block"></span>
+			    <div class="clearfix"></div> 
+			</div>
+                    </div>
+                </div>
+                <button class="btn submit-btn ajax-post" id="submit" type="submit">确 定</button>
+                <a class="btn btn-return" href="javascript:history.go(-1);">返 回</a>
+            </form>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</block>
+<block name="foot_script">
+    <link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+    <link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">
+    <link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.time').datetimepicker({
+                format: 'yyyy-mm-dd hh:ii',
+                language: "zh-CN",
+                minView: 2,
+                autoclose: true
+            });
+        });
+        $("form").submit(function() {
+            var self = $(this);
+            $.post(self.attr("action"), self.serialize(), success, "json");
+            //return false;
+            function success(data) {
+                if (data.status) {
+                toastr.success('修改成功，页面正在跳转，请稍候。', '温馨提示');
+                if (data.url == '') {
+                    data.url = "{:U('Member/User/Info')}";
+                }
+                setTimeout(function() {
+                    window.location.href = data.url
+                }, 10);
+                } else {
+                    toastr.error(data.info, '温馨提示');
+                }
+            }
+        });
+    </script>
+</block>

@@ -1,0 +1,424 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的小窝设计师</title>
+<meta name="keywords" content="我的小窝设计师" />
+<meta name="description" content="我的小窝设计师" />
+<link rel="stylesheet" href="__PUBLIC__/home/css/swiper.css"> 
+
+<!--<script src="__PUBLIC__/home/js/mobile.js" type="text/javascript"></script>-->
+<link href="__PUBLIC__/home/css/style.css" type="text/css" rel="Stylesheet" />
+<script src="__PUBLIC__/home/js/jquery.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/js/jquery.cookies.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/js/common.js" type="text/javascript"></script>
+
+<!--<script src="__PUBLIC__/home/images/jQueryRotate.js" type="text/javascript"></script>
+<script src="__PUBLIC__/home/images/swiper.js" type="text/javascript"></script>-->
+<style>
+	.bottomBtn{
+		overflow: hidden;
+		width: 23%; 
+		float: left; 
+		text-align: center; 
+		margin: 1%;
+		background: #fff;
+		height: 70%;
+	}
+	
+	@media screen and (min-width: 1401px) {  
+	    
+	}
+</style>
+
+<script type="text/javascript">
+$(function () {
+    $("#nav_sheji").addClass("current");
+    do_banner1();
+    //alert(getQueryString('fengge')); 
+     
+})
+/*0 banner1*/
+function do_banner1(){ 
+    //此类型设计师的图层显示介绍文字
+    $('#banner1 ul li').hover(function(){  
+		 //图片放大
+		//先记录上是哪层div高度 
+		var dValue=$(this).find("div").height(); 
+		 $(this).find("div").css("height",dValue);
+		 
+		var wValue=1.1 * $(this).find("a img").width(); 
+		var hValue=1.1 * $(this).find("a img").height(); 
+		$(this).find("a img").animate({width: wValue, 
+		height: hValue, 
+		left:("-"+(0.1 * $(this).find("a img").width())/2), 
+		top:("-"+(0.1 * $(this).find("a img").height())/2)}, 800);  
+	},function(){ 
+	    //图片缩小
+	    $(this).find("a img").animate({width: "100%", 
+	    height: "100%", 
+	    left:"0px", 
+	    top:"0px"}, 600 ); 
+	});
+}
+
+function getQueryString(name) { 
+var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+var r = window.location.search.substr(1).match(reg); 
+if (r != null) return unescape(r[2]); return null; 
+} 
+
+</script>
+</head>
+<body class="p_list_anli">
+
+
+<?php include ("./Application/Home/View/default/Common/topnav.html"); ?> 
+<?php include ("./Application/Home/View/default/Common/header.html"); ?> 
+     
+    
+<!--<div id="toppic" style="width:100%;height: auto;margin-top: 0px; background-color: #f5f6f6;"> 
+    <img src="__PUBLIC__/home/images/banner/banner01.jpg" alt="我的小窝" width="100%"/>
+</div>-->
+
+<div>   
+    <div id="main" class="main" style="background-color: #F5F5F5;margin-top: 0px;">
+    	
+    	    <div style="width: 100%;height: 300px; background-image: url(/Public/images/hearder.png);background-size: 100% 100%;display: inline-block;position: relative;">
+    	    	  
+    	    	  <div style="width: 100%;height: 100%;background-color: #000; opacity: 0.5;position: absolute;z-index: 9;"> 
+    	    	   </div>
+		    <div style="width: 100%;height: 100%;position: absolute;z-index: 19;">
+			<div  style="margin-left: 18%;width: 1200px; height: 100%;  margin: 0 auto;">
+
+			   <div id="position" style="background: inherit; color: #fff;margin: 0px 0 0 0%;padding-top: 10px;">
+			       <div class="div1" style="background:inherit; color: #fff;">您所在的位置：
+				   <a href='/' style="color: #fff;" target="_blank">主页</a> &gt;
+				   <a href='/index.php/home/shejishi/' style="color: #fff;" target='_blank'>设计团队</a> &gt; {$s_data.nickname}
+			       </div>
+			   </div>
+			  <div style="width: 100%;height: 100px;display: inline-block; text-align: center;">
+			      <img src="{$s_data.headerpic}" style="width: 132px;height: 132px;">
+			  </div>
+
+			  <div style="width: 100%;height: 50px; color: #fff; margin-top: 30px;">
+			       <div style="width: 50%;height: 100%;color: #fff;font-family: '微软雅黑'; float: left; text-align: right;font-weight: 500;font-size: 24px;line-height: 50px;">
+				       {$s_view.dtitle}
+			       </div>
+			       <div style="width: 49%;padding-left: 1%;height: 100%;color: #fff;font-family: '微软雅黑';float: left;text-align: left;font-size: 14px;line-height: 50px;margin-top: 2px;">
+				        {$s_view.rankname}
+			       </div>
+			  </div>
+
+			  <div style="width: 100%;height: 15px;line-height: 15px;text-align: center;color: #fff;font-size: 12px;display: inline-block;">
+			      访问 {$s_view.view} | 作品 {$s_data.num_zuoping}
+			  </div>
+
+			</div>
+		    </div>
+    	    </div>
+    	
+	<style>
+	    .info1{display: inline-block; width: 88px; float: left;font-size: 16px;}
+	    .info2{display: inline-block; width: 80%; float: left;font-size: 16px;line-height: 22px;}
+	    .sdetail{width: 100%;height: 375px; background-color: #fff;margin-top: 60px;}
+	    .sdetail .detail1{width: 28%;height: 100%;float: left; text-align: center;min-width: 280px;}
+	    .sdetail .detail1 .detailbg{width: 72%; height: 79%; margin: 11% 0 0 14%;    background: #dadada;}
+	    .sdetail .detail1 .detailbg img{width: 100%;height: 100%;margin: -2.5% 0 0 -5%;}
+	    .sdetail .detail2{width: 67%;height: 100%;float: left;}
+	    
+	    @media screen and (max-width: 1301px) {  
+		.sdetail{height: 345px;}
+		.sdetail .detail1{;min-width: 240px;}
+	    }	    
+	</style>
+	<div id="abox1">	    
+	     
+	     <!--设计师详情-->
+	     <div class="sdetail" style="">
+	     	<div class="detail1" style="">
+		    <div class="detailbg">			
+	     		<img src="{$s_view.picpath}" style="">
+		    </div>
+	     	</div>
+	     	<div class="detail2" style="">
+	     		 <div  style="width: 100%; margin: 25px 0 0 0;font-family: '微软雅黑'; font-weight: 500;font-size: 30px;color:#000;">
+	     		 	 {$s_view.dtitle}
+	     		 </div>
+	     		 <div  style="width: 100%;color:#666666;font-size: 16px;margin-top: 25px;height:20px;overflow: hidden;   display: inline-block;">
+			     {$s_view.areaname}   <span style='padding: 0 40px 0 40px;'>|</span>
+				{$s_view.years}年从业年限  <span style='padding: 0 50px 0 40px;'>|</span>
+				{$s_view.school}
+	     		 </div>
+	     		 <div  style="width: 100%;color:#666666;font-size: 16px;margin-top: 25px;height: 20px; overflow: hidden;    display: inline-block;">
+			     <div class="info1">擅长风格 ：</div><div class="info2">{$s_view.shanchang}</div>
+	     		 </div>
+	     		 <div  style="width: 100%;color:#666666;font-size: 16px;margin-top: 10px;height:20px;overflow: hidden;  display: inline-block;">
+	     		     <div class="info1">设计理念 ：</div>{$s_view.linian}
+	     		 </div>
+	     		 <div  style="width: 100%;color:#666666;font-size: 16px;margin-top: 10px;    display: inline-block;">
+			     <div class="info1">荣誉资质 ：</div><div class="info2">{$s_view.rongyu}</div>
+	     		 </div>
+	     		 <div  style="width: 100%;color:#666666;font-size: 16px;margin-top: 10px;height:20px;overflow: hidden;  display: inline-block;">
+	     		     <div class="info1">主要作品 ：</div><div class="info2">{$s_view.zuoping}</div>
+	     		 </div>
+	     		 <div  style="width: 100%;color:#666666;font-size: 16px;margin-top: 20px;    display: inline-block;">
+			     <a href="/q/" target="_blank"><div class="" style="width:145px;height: 42px;line-height: 42px;background: #183078;color:#fff;text-align: center;">预约TA</div></a>
+	     		 </div>		         
+	     	</div>
+	     </div>
+	     
+	    
+	    <div class="info_more" style="width: 102%;margin-left: 0;"> 
+		
+		<div style="width: 98%;height: 80px;background-color: #F5F5F5;">
+			<div style="width: 40%;float: left;height: 100%;">
+				<div style="border-bottom: 1px solid #dcdcdc;margin-top: 39px;"></div>
+			</div>
+			<div style="text-align: center;float: left;line-height: 80px;font-size: 20px;font-weight: 500;width: 20%;">
+				设计师经典案例
+			</div>
+			<div style="width: 40%;float: left;height: 100%;">
+				<div style="border-bottom: 1px solid #dcdcdc;margin-top: 39px;"></div>
+			</div>
+		</div>
+		
+		
+		 <div id="sheji_anlilist">
+		    <ul>
+			<volist name="anlis_view" id="vo">
+			    <li key="{$vo.id}" class="li_yinying_anli">
+			     <div class="div1">
+				 <a href="/index.php/home/anli/detail/aid/{$vo.id}" target="_blank">
+				    <if condition="$vo['picpath'] neq ''">    
+					    <img src="{$vo.picpath}" width="100%" height="100%" alt="{$vo.title}装修案例" />
+				     <else/>   
+					    <img src="{$vo.litpic}" width="100%" height="100%" alt="{$vo.title}装修案例" />
+				    </if> 
+				 </a>
+			     </div>
+			     <div class="div2" style="height: 90px;">			     	
+			     	<a href="">
+			     	<div style="height: 50px; width: 50px; float: right; background-color: #183078;margin-top: 15px;margin-right: 10px;">
+			     		<div  style="font-size: 14px; line-height: 16px;margin-top: 8px; color: #fff;">
+			     			预约
+			     		</div>
+			     		<div  style="font-size: 14px; line-height: 16px; color: #fff;">
+			     			设计
+			     		</div>
+			     	</div>
+			     	</a>
+				 <p class="style1" style="width:100%;">
+				     <b><a href="/index.php/home/anli/detail/aid/{$vo.id}" target="_blank"style="color: #333333;font-size: 18px;">{$vo.dtitle}</a></b>
+				     <!--<a href="/q/" style="text-decoration: none;float: right;" target="_blank"><span style="">预约设计<img src="__PUBLIC__/images/right02.png"></img></span></a></p>-->
+				 <p class="style2"><b>{$vo.fenggename}|{$vo.mianji}平米|{$vo.jushiname}|{$vo.fangshiname}</b></p>
+				<!-- <p class="style3">户型：<b>{$vo.jushiname}</b></p>-->
+				 <!--<p class="style4">面积：<b>{$vo.mianji}平米</b></p>
+				 <p class="style5">风格：<b>{$vo.fenggename}</b></p>
+				 <p class="style6">造价：<b>{$vo.zaojia}万</b></p>
+				 <p class="style7">主材配置：<b>{$vo.zhucai}</b></p>
+				 <p class="style8" style="display: none;"><b><a href="/index.php/home/anli/detail/aid/{$vo.id}" target="_blank">查看详情<img src="__PUBLIC__/home/images/logo_detail.png"></img></a></b></p>			     -->
+			     </div> 
+			    </li>
+			</volist>
+		    </ul>
+		 </div>		
+	    </div> 
+	     
+	     
+	     <div style="width: 100%;height: 80px;background-color: #F5F5F5;">
+			<div style="width: 40%;float: left;height: 100%;">
+				<div style="border-bottom: 1px solid #dcdcdc;margin-top: 39px;"></div>
+			</div>
+			<div style="text-align: center;float: left;line-height: 80px;font-size: 20px;font-weight: 500;width: 20%;">
+				设计师全景案例
+			</div>
+			<div style="width: 40%;float: left;height: 100%;">
+				<div style="border-bottom: 1px solid #dcdcdc;margin-top: 39px;"></div>
+			</div>
+		</div>
+	    
+	    	 <div id="sheji_quanjinlist">
+		    <ul>
+			<volist name="quanjins_view" id="vo">
+			    <li key="{$vo.id}" class="li_yinying_anli">
+			     <div class="div1">
+				<if condition="$vo['out_url'] neq ''">
+					<a href="{$vo.out_url}" target="_blank">	
+				    <else/>
+					<a href="javascript:void(0);" target="_blank">	
+				</if>		 
+				    <if condition="$vo['picpath'] neq ''">    
+					    <img src="{$vo.picpath}" width="100%" height="100%" alt="{$vo.title}装修案例" />
+				     <else/>   
+					    <img src="{$vo.litpic}" width="100%" height="100%" alt="{$vo.title}装修案例" />
+				    </if> 
+				 </a>
+			     </div>
+			     <div class="div2" style="height: 90px;">
+			     	
+			     	<a href="">
+			     	<div style="height: 44px; width:120px; float: right; background-color: #183078;margin-top: 10px;margin-right: 20px;text-align: center;">
+			     		<div  style="font-size: 14px; line-height: 30px;margin-top: 8px; color: #fff;">
+			     			预约设计
+			     		</div> 
+			     	</div>
+			     	</a>
+				 <p class="style1" style="width:100%;">
+				     <b><a href="/index.php/home/anli/detail/aid/{$vo.id}" target="_blank"style="color: #000">{$vo.dtitle}</a></b>
+				     <!--<a href="/q/" style="text-decoration: none;float: right;" target="_blank"><span style="">预约设计<img src="__PUBLIC__/images/right02.png"></img></span></a></p>-->
+				 <p class="style2"><b>{$vo.fenggename}|{$vo.mianji}平米|{$vo.jushiname}</b></p>
+				<!-- <p class="style3">户型：<b>{$vo.jushiname}</b></p>-->
+				 <!--<p class="style4">面积：<b>{$vo.mianji}平米</b></p>
+				 <p class="style5">风格：<b>{$vo.fenggename}</b></p>
+				 <p class="style6">造价：<b>{$vo.zaojia}万</b></p>
+				 <p class="style7">主材配置：<b>{$vo.zhucai}</b></p>
+				 <p class="style8" style="display: none;"><b><a href="/index.php/home/anli/detail/aid/{$vo.id}" target="_blank">查看详情<img src="__PUBLIC__/home/images/logo_detail.png"></img></a></b></p>			     -->
+			     </div> 
+			    </li>
+			</volist>
+		    </ul>
+		 </div>
+		 
+	     <div style="width: 100%;height: 80px;background-color: #F5F5F5;">
+			<div style="width: 40%;float: left;height: 100%;">
+				<div style="border-bottom: 1px solid #dcdcdc;margin-top: 39px;"></div>
+			</div>
+			<div style="text-align: center;float: left;line-height: 80px;font-size: 20px;font-weight: 500;width: 20%;">
+				设计师推荐
+			</div>
+			<div style="width: 40%;float: left;height: 100%;">
+				<div style="border-bottom: 1px solid #dcdcdc;margin-top: 39px;"></div>
+			</div>
+		</div>
+	    	 <div id="sheji_shejishilist">
+		     <div class="tj1 pre" onclick="shejishiPic('1');"><img src="__PUBLIC__/home/images/shejishi/pre.png"></img>&nbsp;</div>
+		     <div class="tj1 content"> 
+			    <ul>
+				<volist name="shejishis_view" id="vo">
+				    <li class="pshow">
+					<a href="/index.php/home/shejishi/detail/aid/{$vo['id']}/" target="_blank">
+					    <div class="spic" style="height: 200px; width: 150px;display: inline-block;float: left;text-align: center;">
+						<p>
+						<if condition="$vo['headerpic'] neq ''"> 	
+							<img src="{$vo.headerpic}" alt="我的小窝设计师" style="height:150px;width: 150px;" />
+						    <else/>
+							<img src="{$vo.picpath}"  alt="我的小窝设计师" style="height:150px;width: 150px;" />
+						</if>						    
+						</p>	
+						<p  style="width: 100%;height:50px;font-size: 16px;line-height: 50px;color:#666666;">{$vo.dtitle}</p>
+					    </div> 					    
+					</a>
+				    </li>
+				</volist>
+			    </ul> 
+		     </div>
+		     <div class="tj1 next" onclick="shejishiPic('2');"><img src="__PUBLIC__/home/images/shejishi/next.png"></img>&nbsp;</div>
+		 </div>		
+	    
+        </div> 
+    </div>
+    
+    
+<?php include ("./Application/Home/View/default/Common/bottomnav.html"); ?>  
+
+<?php include ("./Application/Home/View/default/Common/footer.html"); ?> 
+     
+</body>
+</html>   
+
+<script type="text/javascript">
+$(function(){
+    shejishiPic('3');
+});
+function shejishiPic(direct){
+    //总设计师数目
+    var total = $("#sheji_shejishilist .content li").length;
+    //alert(total);
+    if(total<=0){
+	return false;
+    }
+    //查询显示的图片数目
+    var width_content = $("#sheji_shejishilist .content").css("width");
+    var width_li = $("#sheji_shejishilist .content li.pshow").eq(0).css("width");
+    var width1 = parseInt(width_content.replace("px",""))+50;
+    var width2 = parseInt(width_li.replace("px",""));
+    var num_pic = parseInt(width1/width2);//得到5或6 ，OK
+    if(num_pic!=5 && num_pic!=6){
+	return false;
+    } 
+    
+    //查询当前显示图像的开始和结束位置
+    var start=-1;
+    var end = num_pic-1;//默认结束位置索引为显示图片数目-1   
+    var shownum=0;
+    var li= $("#sheji_shejishilist .content li");
+    var item=0; 
+    li.each(function(){
+	//alert($(this).attr("class"));
+	if($(this).attr("class")=="pshow" && start==-1){
+	    start = item; //开始显示头像图片索引位置，0开始
+	}
+	item++;
+    })
+
+    if(direct=='1'){
+	//往前
+    //    计算结束位置
+	if(start>0){
+	    start = start-1;
+	}
+	end = start+num_pic-1;
+//	if(start==0){
+//	    return false;
+//	 }
+	 //开始到结束位置的显示，其它隐藏
+	 for(var item=0;item<li.length;item++){
+	     if(item>=start && item<=end){
+		li.eq(item).removeClass("phide").addClass("pshow");
+	     }else{
+		li.eq(item).removeClass("pshow").addClass("phide");
+	     }
+	 }
+    }if(direct=='2'){
+	//往后
+    //    计算结束位置
+	if(start+num_pic<total){
+	    start = start+1;
+	    end = start+num_pic-1;
+	}else{
+	    end = total-1;
+	} 
+//	if(end==total-1){
+//	    return false;
+//	 }
+	 //开始到结束位置的显示，其它隐藏
+	 for(var item=0;item<li.length;item++){
+	     if(item>=start && item<=end){
+		li.eq(item).removeClass("phide").addClass("pshow");
+	     }else{
+		li.eq(item).removeClass("pshow").addClass("phide");
+	     }
+	 }
+//	 li.eq(start).removeClass("pshow").addClass("phide");
+    }
+    //    打印翻页处理后开始位置、结束位置
+ //	alert("direct:"+direct+";start:"+start+";end:"+end);
+//	如果开始位置已经是开始，则隐藏前翻页按
+    if(start==0){  
+       $("#sheji_shejishilist .pre img").css("display","none");
+    }else{ 
+	$("#sheji_shejishilist .pre img").css("display","block");
+    }
+//	如果结束位置已经是最后，则隐藏后翻页按钮
+    if(end==total-1){
+       $("#sheji_shejishilist .next img").css("display","none");
+    }else{
+	$("#sheji_shejishilist .next img").css("display","block");
+    }
+    
+}
+</script>    
+
+<script src="__PUBLIC__/home/js/footer.js" type="text/javascript"></script>
+<script src="/public/home/js/count.js" type="text/javascript"></script> 

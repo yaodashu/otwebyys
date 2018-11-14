@@ -1,0 +1,25 @@
+<div class="mymenu_box">
+    <div class="box_1">
+        <div class="infor_head_box">
+            <div class="user_photo">
+                <a  href="{:U('Member/User/manageAvatar')}" title="点击修改头像"  online="online">
+                    <img src="{$current_user.avatar128_url}"  width="120"  height="120" alt="chifar" />
+                </a>
+            </div>
+            <dl>
+                <dt>{$current_user.nickname}</dt>
+                <dd>
+                    <a href="{:U('Member/User/info')}" title="帐号设置">个人资料</a>
+                    <a href="{:U('Member/User/changePassword')}" title='修改密码'>修改密码</a>
+                </dd>
+            </dl>
+        </div>
+        <ul>
+            <li class="current"><span><em></em><a href="{:U('Member/Index/index')}">我的驾无忧</a></span></li> 
+            <li><span><em></em><a href="{:U('Member/Index/mycar')}">我的座驾</a></span></li>
+            <li><span><em></em><a href="{:U('Member/Index/myorder')}">服务记录</a></span></li>  
+            <li><span><em></em><a href="{:U('Member/User/logoutHome')}">退出登录</a></span></li>
+            <li><span><em></em><a href="{:U('Home/Index/index')}">返回首页</a></span></li>
+        </ul>
+    </div>
+</div>

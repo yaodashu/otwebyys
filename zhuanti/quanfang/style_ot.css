@@ -1,0 +1,126 @@
+#footer{ margin-top:0; }
+.area{ width:100%; background-position: 50% 0; }
+.area .box{ margin:0 auto; width:980px; }
+#area{ background-color:#000; }
+#area1 { height: 200px; background-image: url(area_01.jpg); }
+#area2 { height: 200px; background-image: url(area_02.jpg); }
+#area3 { height: 200px; background-image: url(area_03.jpg); }
+#area4 { height: 200px; background-image: url(area_04.jpg); }
+#area5 { height: 200px; background-image: url(area_05.jpg); }
+#area6 { height: 200px; background-image: url(area_06.jpg); }
+#area7 { height: 200px; background-image: url(area_07.jpg); }
+#area8 { height: 200px; background-image: url(area_08.jpg); }
+#area9 { height: 200px; background-image: url(area_09.jpg);  }
+#area10 { height: 200px; background-image: url(area_10.jpg); }
+#area11 { height: 200px; background-image: url(area_11.jpg); }
+#area12 { height: 200px; background-image: url(area_12.jpg); }
+#area13 { height: 200px; background-image: url(area_13.jpg); }
+#area14 { height: 200px; background-image: url(area_14.jpg); }
+#area15 { height: 200px; background-image: url(area_15.jpg); }
+#area16 { height: 200px; background-image: url(area_16.jpg); }
+#area17 { height: 200px; background-image: url(area_17.jpg); }
+#area18 { height: 200px; background-image: url(area_18.jpg); }
+#area19 { height: 200px; background-image: url(area_19.jpg); }
+#area20 { height: 200px; background-image: url(area_20.jpg); }
+#area21 { height: 200px; background-image: url(area_21.jpg); }
+#area22 { height: 200px; background-image: url(area_22.jpg); }
+#area23 { height: 200px; background-image: url(area_23.jpg); }
+#area24 { height: 200px; background-image: url(area_24.jpg); }
+#area25 { height: 200px; background-image: url(area_25.jpg); }
+#area26 { height: 200px; background-image: url(area_26.jpg); }
+#area27 { height: 200px; background-image: url(area_27.jpg); }
+#area28 { height: 200px; background-image: url(area_28.jpg); }
+#area29 { height: 200px; background-image: url(area_29.jpg);  }
+#area30 { height: 200px; background-image: url(area_30.jpg); } 
+/*#area52 { height: 200px; background-image: url(area_52.jpg); }*/  
+
+#area6 .div1{   margin: 79px 0 0 725px;
+    width: 153px;
+    height: 29px;}
+
+#area8 .div1{ margin: 10px 0 0 165px; width: 206px;  height: 42px;display: inline-block;  position: relative;  float: left; }
+#area8 .div2{ margin: 10px 0 0 16px;  width: 206px;  height: 42px;display: inline-block;  position: relative;  float: left; }
+#area8 .div3{ margin: 10px 0 0 22px;  width: 206px;  height: 42px;display: inline-block;  position: relative;  float: left; }
+ 
+
+#area9 .common1{ width: 235px; height: 44px; }
+#area9 .common1 input{ position:absolute; padding:0 5px; width:100%; height:100%; line-height:39px; border:none; color:#000; background:none; font-size:18px; }
+#area8 .div10{ margin: 58px 0 0 360px; width: 40px;     height: 58px;display: inline-block; float: left;  position: relative;  }
+#area8 .div20{ margin: 58px 0 0 56px; width: 40px;   height: 58px;display: inline-block; float: left;  position: relative;   } 
+#area8 .div30{ margin: 58px 0 0 60px; width: 40px;   height: 58px;display: inline-block; float: left;  position: relative;   }
+    
+#area9 .div1{ margin: 44px 0 0 123px; }
+#area9 .div2{ margin: 118px 0 0 123px; }
+#area9 .div3{ margin: 46px 0 0 558px; }
+#area9 .div4{ margin: 118px 0 0 558px; }
+#area9 .div5{ margin: 51px 0 0 839px;   width: 128px;   height: 112px;}
+#area9 .div5 button{ width:100%; height:100%; border:none; background:none; cursor:pointer; }
+#area9 .div6{ margin:88px 0 0 794px; text-align:center; width:100px; height:30px; line-height:30px; font-size:22px; color:#900; font-weight:bolder; font-family:微软雅黑; }
+
+#area11 .div1{ margin: 173px 0 0 55px;  width: 272px;  height: 56px;  display: inline-block;  position: relative;   float: left; }
+#area11 .div2{  margin: 173px 0 0 325px;  width: 272px;  height: 56px; display: inline-block;  position: relative;  float: left; } 
+
+#area13 .div1{ margin: 173px 0 0 5px;  width: 276px; height: 56px;display: inline-block;  position: relative;  float: left; }
+#area13 .div2{ margin: 173px 0 0 125px;  width: 276px; height: 56px;display: inline-block;  position: relative;  float: left; }
+#area13 .div3{ margin: 173px 0 0 118px;  width: 276px; height: 56px;display: inline-block;  position: relative;  float: left; }
+
+
+#area10 .div1{   margin: 99px 0 0 85px;
+    width: 153px;
+    height: 29px;}
+
+#area12 .div1{  margin: 30px 0 0 14px;
+    width: 136px;
+    height: 36px; }
+
+#area15 .div1{       margin: 0px 0 0 14px;
+    width: 135px;
+    height: 36px; }
+
+#area17 .div1{ margin: 113px 0 0 79px;width: 136px;height: 34px;display: inline-block;  position: relative;  float: left; }
+#area17 .div2{ margin: 113px 0 0 202px;width: 136px;height: 34px;display: inline-block;  position: relative;  float: left; }
+#area17 .div3{ margin: 113px 0 0 202px;width: 136px;height: 34px;display: inline-block;  position: relative;  float: left; }
+
+#area19 .div1{ margin: 123px 0 0 79px;width: 136px;height: 34px;display: inline-block;  position: relative;  float: left; }
+#area19 .div2{ margin: 123px 0 0 202px;width: 136px;height: 34px;display: inline-block;  position: relative;  float: left; }
+#area19 .div3{ margin: 123px 0 0 202px;width: 136px;height: 34px;display: inline-block;  position: relative;  float: left; }
+
+/*#area21 .div1{ margin:-10px 0 0 289px; width:402px;height:41px; }
+#area21 .div1 ul li{float:left;display:inline;width:201px;height:41px;background:url(nav.png) 0 0 no-repeat;cursor:pointer;}
+#area21 .div1 ul li.style1{background-position:0 -41px;}
+#area21 .div1 ul li.style2{background-position:-201px 0;}
+#area21 .div2{ margin:70px 0 0 0; width:982px;height:512px; }
+#area21 .div2 ul li{float:left;display:inline;width:982px;height:512px;background:url(a1.png) 0 0 no-repeat;}
+#area21 .div2 ul li.style1{background-image:url(a1.png);}
+#area21 .div2 ul li.style2{background-image:url(a2.png);}*/
+ 
+#area23 .div1{ margin: 135px 0 0 162px;
+    width: 162px;
+    height: 30px;}
+#area23 .div2{ margin: 135px 0 0 652px;
+    width: 162px;
+    height: 30px;}
+ 
+
+
+#area24 .div1{margin: 66px 0 0 357px;
+    width: 272px;
+    height: 56px; }
+ 
+#area29 .common1{ width: 235px; height: 44px; }
+#area29 .common1 input{ position:absolute; padding:0 5px; width:100%; height:100%; line-height:39px; border:none; color:#000; background:none; font-size:18px; }
+#area28 .div1{ margin: 26px 0 0 165px; width: 206px;  height: 42px;display: inline-block;  position: relative;  float: left; }
+#area28 .div2{ margin: 26px 0 0 16px;  width: 206px;  height: 42px;display: inline-block;  position: relative;  float: left; }
+#area28 .div3{ margin: 26px 0 0 22px;  width: 206px;  height: 42px;display: inline-block;  position: relative;  float: left; }
+#area28 .div10{ margin: 58px 0 0 360px; width: 40px;     height: 58px;display: inline-block; float: left;  position: relative;  }
+#area28 .div20{ margin: 58px 0 0 56px; width: 40px;   height: 58px;display: inline-block; float: left;  position: relative;   } 
+#area28 .div30{ margin: 58px 0 0 60px; width: 40px;   height: 58px;display: inline-block; float: left;  position: relative;   }
+
+#area29 .div1{ margin: 62px 0 0 123px; }
+#area29 .div2{ margin: 135px 0 0 123px; }
+#area29 .div3{ margin: 63px 0 0 558px; }
+#area29 .div4{ margin: 135px 0 0 558px; }
+#area29 .div5{ margin: 65px 0 0 839px;   width: 128px;   height: 112px;}
+#area29 .div5 button{ width:100%; height:100%; border:none; background:none; cursor:pointer; }
+#area29 .div6{ margin:88px 0 0 794px; text-align:center; width:100px; height:30px; line-height:30px; font-size:22px; color:#900; font-weight:bolder; font-family:微软雅黑; }
+

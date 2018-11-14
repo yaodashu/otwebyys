@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>我的小窝|别墅客户需求档案</title>
+<meta name="keywords" content="我的小窝客户需求档案" />
+<meta name="description" content="我的小窝客户需求档案" />
+<meta http-equiv="pragma" content="no-cache">
+<meta name="viewport" id="viewport" content="width=480,initial-scale=1.0,max-scale=1.0,user-scalable=0" />
+<link rel="stylesheet" href="/public/css/amazeui.min.css"/>
+<link rel="stylesheet" href="/public/mob/css/style.css">
+<link rel="stylesheet" href="/public/css/swiper.css"> 
+<script src="/public/js/jquery.min.js"></script>
+<!--<script src="/public/js/jquery.min.js"></script>-->
+<script src="/public/js/swiper.js"></script>
+<style>  
+</style> 
+</head> 
+<body>
+    <input type="hidden" id="keys" name="keys" value="{$keys}"></input> 
+    <div id="weikaishi" style="display: none;width:100%;height:100%;background:rgba(0,0,0,.8);position: fixed; z-index: 99999; top: 0; left: 0;text-align: center; ">
+      <p style="margin-top:30%;display:inline-block;font-size:30px;font-family:'微软雅黑';color:#fff;">
+	  <div style="width: 80%;margin-left:10%;background: #fff;color:#000;border-radius: 10px;overflow:overlay;">
+	      <div style="width:70%;margin: 0 0 0 15%;">
+		  <img src="/Public/images/logoxq.png" style="width:100%;margin:5% 0 0 0%;"></img>
+	      </div>
+	      <div style="width:100%;margin: 8% 0 12% 0%;">
+		  <div style="margin: 5% 0 5% 0;">
+		      <input  style="border-radius: 5px;text-align: center;height: 52px; line-height: 52px; font-size: 32px;" type="password" id="key_val" name="key_val" value="{$key_val}"></input></div>
+		  <div onclick="key_input();"><input style="border-radius: 5px;text-align: center;height: 52px; line-height: 52px; font-size: 32px; font-weight: 500; width: 50%; height: 70px;background: #c3956b;border:solid 0px #fff;color: #f1eaea;
+    font-family: 微软雅黑;" type="button" id="key_submit" name="key_submit" value="确  定"></input></div>
+	      </div> 
+	  </div>
+      </p> 
+    </div> 
+    
+<div id="headerf" style="background-color: #fff;height: 100px;display:block;padding-top: 10px;z-index:9999;">
+    <div class="div1" style="width: 80%;min-width: 280px;height:30px;display: inline-block;">
+        <a href="/" title="长沙最好的大宅装修公司">
+		<img style="width: 70%;float: left; margin-left: 5%;min-width: 280px;" src="__PUBLIC__/home/images/yatai01.jpg" alt="长沙我的小窝" /></a>
+    </div> 
+    
+    <div class="div3" style="height:40px; width: 60%; float: right;display: inline-block;">
+	<div class="search" style=" width: 60%;height: 40px; float: right; padding-top: 5px;">
+	    <form target="_blank" id="form_search" action="/index.php/home/researchyt/index">
+		<input type="hidden" name="kwtype" value="0">
+		<input name="keyword" type="text" class="style1 keyword" 
+		       style="float: left;width: 70%;height: 28px;color: #969393;font-size:16px;margin-top: -5px; padding-left: 3px;border: 1px solid #c3c2c2;" value="{$keyword}" placeholder="关键词搜索" onfocus="if (value ==&#39;关键词搜索&#39;){value =&#39;&#39;}" onblur="if (value ==&#39;&#39;){value=&#39;关键词搜索&#39;}">
+		<!--<input type="submit" value="输入关键词搜索" class="style2" title="输入关键词搜索">-->
+		<a href="javascript:go_search();">
+		    <img src="__PUBLIC__/home/images/logo_search.png" style="border:none;float: left; height:28px;margin-top: -5px;">
+		</a>
+	    </form> 
+	    <script>
+		function go_search(){  
+		    $("#form_search").submit();
+		}
+	    </script>
+	</div>	
+    </div>
+</div>  
+<!--<div style="width:100%;height:100px;position: fixed;top: 0;z-index:-1px;">&nbsp;</div> --> 
+
+<div style="width:100;display:inline-block;height: 60px;line-height: 60px;width: 100%; text-align: center; font-size: 30px; font-family: 微软雅黑; font-weight: 600;">
+别墅客户需求档案
+</div>
+<div style="display:block;font-size: 12px;width:100%;line-height: 32px;">   
+    <div id="main" class="main" style="box-shadow: 0 0 1px #999;"> 	 
+		<div id="newslist" style="width: 100%;margin-left: 0%;padding:0; ">
+			<ul>
+				<volist name="lists" id="vo">
+				<a href="/index.php/home/researchyt/detail/id/{$vo.id}" target="_blank">
+					<li key="{$vo.id}" style="width:100%;height: auto;">
+					<div class="div2" style="margin:0;width: 100%;">				    
+						<div class="style1" style="width: 100%; display: inline-block; float: left;">
+						<span style="border-bottom: solid 1px #000;">{$vo.loupan}{$vo.dong} </span>&nbsp;楼盘&nbsp;
+						<span style="border-bottom: solid 1px #000;">{$vo.loupan}{$vo.dong} </span>&nbsp;栋&nbsp;
+						<span style="border-bottom: solid 1px #000;font-weight: 600;color:#0537f6;">{$vo.name}</span>&nbsp;的需求按档案
+						<span style="text-align: right;float: right;margin-right: 5%;">点击查看<span>+</span></span>
+						</div>			     
+					</div> 
+					</li>
+				</a>
+				</volist> 
+			</ul>
+		</div>
+	
+		<div class="page_home" style="background-color: #fff;">
+		{$_page}
+		</div>  
+	</div>  
+</div>
+
+<!--<script src="http://cdnjs.gtimg.com/cdnjs/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<script src="/public/js/amazeui.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> 
+
+<script type="text/javascript">
+$(function () {
+    var keys = "{$keys}";
+   // alert(keys);
+    if(keys=="2"){ 
+	$("#weikaishi").css("display","none");
+    } 
+})
+
+function key_input(){
+    var turl ="http://"+document.domain+"/index.php/Home/Researchyt/index";
+    var key_val = $("#key_val").val();
+    if(key_val=="" || key_val.length<5){
+	alert("请输入有效口令");
+	return;
+    }
+   // alert(turl);
+    $.ajax({
+	url:turl,
+	type : 'POST',
+	dataType : "json",
+	cache:false,
+	data : {
+		'otype' : "checkkey",
+		'key_val' : key_val
+	},
+	success:function(result){ 
+	    //alert(result.errcode);
+	    if(result.errcode=="1"){
+		$("#weikaishi").css("display","none"); 
+	    }else{
+		alert("请输入正确口令");
+	    }
+	}
+    })
+}
+    
+</script>
+</body>
+</html>  
+<script src="/public/mob/js/common.js" type="text/javascript"></script> 

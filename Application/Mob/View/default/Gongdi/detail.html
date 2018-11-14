@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>我的小窝施工工地|{$gongdi_view.dtitle}</title>
+    <meta name="description" content="我的小窝施工工地|{$gongdi_view.dtitle}" />
+    <meta name="keywords" content="我的小窝施工工地|{$gongdi_view.dtitle}" />
+    <!--<meta name="viewport" id="metaviewport" content="width=320,user-scalable=no" />-->
+    <meta name="viewport" id="viewport" content="width=480,initial-scale=1.0,max-scale=1.0,user-scalable=0" />
+<meta name="MobileOptimized" content="240" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="apple-touch-icon-precomposed" href="/favicon.png" />
+<!--<link rel="stylesheet" href="/public/mob/css/style_olddasn.css" />
+<link href="/public/mob/css/flexslider_oldyatai.css" rel="stylesheet" />-->
+<link rel="stylesheet" href="/public/mob/css/style_dasn.css" />
+<script src="/public/js/jquery.js"></script>
+<script src="/public/js/jquery.flexslider.js"></script>
+<script src="/public/mob/js/common.js" type="text/javascript"></script>
+<!--<script src="/public/mob/js/common_oldyatai.js"></script>-->
+</head>
+<style>
+    .p_div {
+    width: 22%;
+    margin-left: 25%;
+    min-width: 170px;text-align: center;
+    }
+    .p_div .p_btn {
+    border: solid 1px #D6D4D4;
+    background-color: #f7f7f7;
+    width: 99%;
+    height: 35px;
+    line-height: 35px;
+}
+</style>
+<body class="p_article_shejishi p_t_2 p_a_758">
+<?php include ("./Application/Mob/View/default/Common/header.html"); ?> 
+    
+<div id="guize" style="display: none;width:100%;height:100%;background:rgba(0,0,0,.8);position: fixed; z-index: 99999; top: 0; left: 0;text-align: center; ">
+  <!--<p style="margin-top:50%;display:inline-block;font-size:30px;font-family:'微软雅黑';color:#fff;">游戏暂未开始<br>_(:з」∠)_</p>-->  
+    <div id="navt" class="navt" style="display:block;width: 100%; height: 100%;">
+<!--	<ul>
+	    <li class="style1"><a href="{$xinxiliu_anli_url}{$tgurl}">
+		    <div class="div1"><img src="/public/images/anli.png"></div>
+		    <div class="div2">装修案例</div>	        </a></li>
+	    <li class="style2"><a href="{$xinxiliu_baojia_url}{$tgurl}">
+		    <div class="div1"><img src="/public/images/baojia.png"></div>
+		    <div class="div2">设计团队</div>		</a></li>
+	    <li class="style3"><a href="{$xinxiliu_act_url}{$tgurl}">
+		    <div class="div1"><img src="/public/images/youhui.png"></div>
+		    <div class="div2">施工管理</div>		</a></li>
+	    <li class="style4"><a href="{$xinxiliu_wumian_url}{$tgurl}">
+		    <div class="div1"><img src="/public/images/wumian.png"></div>
+		    <div class="div2">别墅工艺</div>		</a></li>
+	    <li class="style5"><a href="{$xinxiliu_gongyi_url}{$tgurl}">
+		    <div class="div1"><img src="/public/images/oubiao.png"></div>
+		    <div class="div2">欧标工艺</div>		</a></li>
+	    <li class="style6"><a href="{$xinxiliu_720_url}{$tgurl2}">
+		    <div class="div1"><img src="/public/images/quanjin.png" style="width: 70%;"></div>
+		    <div class="div2">720°全景</div>		</a></li>
+	    <li class="style7"><a href="{$xinxiliu_about_url}{$tgurl}">
+		    <div class="div1"><img src="/public/images/dianshi.png"></div>
+		    <div class="div2">关于点石</div>		</a></li> 
+	</ul>-->
+
+	<div id="area00" class="area" style="margin: 15% 0 0 0;">
+	    <img src="/public/mob/images/home/nav.png" style="width:100%;height: 100%;">
+	      <div class="box">
+			    <a href="/index.php/mob/anli" class="hidetonbsp"><div class="div10"></div></a>
+			    <a href="/index.php/mob/shejishi" class="hidetonbsp"><div class="div20"></div></a>
+			    <a href="/index.php/mob/gongdi" class="hidetonbsp"><div class="div30"></div></a> 
+			    <a href="/index.php/mob/zhuanti/gongyi" class="hidetonbsp"><div class="div40"></div></a>
+	    </div>
+	</div>
+	<div class="div_close">
+	    <div>
+		<a href="javascript:close_nav();"><img src="/public/mob/images/tab_close.png"></a>
+	    </div>	
+	</div>
+    </div>
+</div> 
+<script> 
+function show_nav(){ 
+//	alert($("#guize").css("display"));
+    if($("#guize").css("display")=="block"){
+	$("#guize").css("display","none");
+    }else{
+	$("#guize").css("display","block");
+    }
+}
+function close_nav(){
+    $("#guize").css("display","none");
+}
+</script>
+    <div id="main" class="main">
+        <div id="article" class="article">
+            <h1>我的小窝{$gongdi_view.dtitle}</h1>
+            <p class="info"></p>
+            <div class="content">
+                <p style="text-align:center;">		    							    
+		    <if condition="$gongdi_view['picpath'] neq ''"> 
+			    <img src="{$gongdi_view.picpath}" alt="{$gongdi_view.dtitle}" style="width:100%;height: 100%;" />
+			<else/>  
+			    <img src="{$gongdi_view.litpic}" alt="{$gongdi_view.dtitle}" style="width:100%;height: 100%;" />
+		    </if>  
+		  <!--<div class="p_div"><div class="p_btn">现场工地-开工</div><img style="display:block;margin-left: 40%;" src="__PUBLIC__/home/images/detail_down01.png"></img></div>-->
+		  
+		<if condition="$gongdi_data['imgids_kg_path'] neq ''">
+		    <div id="sheji_anlilist">
+			<img src="{$gongdi_data.imgids_kg_path}" width="100%" alt="{$vo1.title}" />
+   <!--		    <ul>
+			   <volist name="anlis_view" id="vo1">
+			       <li key="{$vo1.id}">
+				<div class="div1"> 
+					<img src="{$vo1.picpath}" width="100%" height="100%" alt="{$vo1.title}" />
+				</div> 
+			       </li>
+			   </volist>
+		       </ul>-->
+		    </div>	
+		</if>
+		<if condition="$gongdi_data['imgids_sg_path'] neq ''">
+		    <div id="sheji_anlilist">
+			<img src="{$gongdi_data.imgids_sg_path}" width="100%" alt="{$vo1.title}" />  
+		    </div>	
+		</if>
+		<if condition="$gongdi_data['imgids_jg_path'] neq ''">
+		    <div id="sheji_anlilist">
+			<img src="{$gongdi_data.imgids_jg_path}" width="100%" alt="{$vo1.title}" /> 
+		    </div>	
+		</if>
+		  
+		</p>
+		<p><b>设计风格：</b>{$gongdi_view.fenggename}</p>
+		<p><b>户型面积：</b>{$gongdi_view.mianji}平米</p>
+		<p><b>户型类别：</b>{$gongdi_view.jushiname}</p>
+		<p><b>合作方式：</b>{$gongdi_view.fangshiname}</p>
+		<p><b>竣工日期：</b>{$gongdi_view.edate}</p>
+		<p><b>装修工期：</b>{$gongdi_view.gongqi}</p>
+		<p><b>装修造价：</b>{$gongdi_view.zaojia}万</p>
+		<p><b>主材配置：</b>{$gongdi_view.zhucai}</p>
+		<p><b>设计师：</b><a href="/index.php/mob/shejishi/detail/aid/{$shejishi_view.id}">{$shejishi_view.nickname}({$shejishi_view.rankname})</a></p>
+
+            </div>
+            <div class="m_gb">
+		<input type="hidden" class="m_gb_name" name="name" value="免费电话" />
+		<input type="hidden" class="m_gb_content" name="content" value="免费电话" />
+		<p><a href="tel:400-048-0731">我的小窝24小时为您解答装修问题！</a></p>
+		    <table>
+		    <tr><th colspan="2" class="style1"><input type="text" class="m_gb_tel" style="text-align:center; width:250px;" name="tel" value="请输入您的手机号码" onfocus="if(value=='请输入您的手机号码'){value=''}" onblur="if(value==''){value='请输入您的手机号码'}" /></th></tr>
+		    <tr><th colspan="2" class="style1"><input type="submit" class="m_gb_submit" value="呼叫我的小窝回拨电话" sourceid="2" /></th></tr>
+		</table>
+	    </div>
+        </div>
+        <div class="title"><div class="title2"><h3 id="shejishizuopin"><span>楼盘案例</span></h3></div></div>
+        <ul class="ul ul2">
+	    <volist name="anlis_view" id="vo">		
+             <li>
+                <a href="/index.php/mob/anli/detail/aid/{$vo.id}">
+		    <div class="thumb">				    
+			<if condition="$vo['picpath'] neq ''"> 
+				<img src="{$vo.picpath}" width="68" height="50" alt="{$vo.dtitle}{$vo.fenggename}装修案例" />
+			    <else/>  
+				<img src="{$vo.litpic}" width="68" height="50" alt="{$vo.dtitle}{$vo.fenggename}装修案例" />
+			</if> 
+		    </div>   
+		    <h2>{$vo.dtitle}</h2> <p>{$vo.fenggename}<br />设计师：{$vo.shejishiname}<span class="count"><i class="style1"></i><i class="style2"></i><i class="style3">{$vo.mianji}平米</i></span></p>
+                </a>
+            </li>
+	    </volist>
+	        
+	    
+            <script type="text/javascript">$(function () { $("#shejishizuopin span").append(""); });</script>
+        </ul>
+    </div>
+<?php include ("./Application/Mob/View/default/Common/version.html"); ?>  
+<?php include ("./Application/Mob/View/default/Common/footer.html"); ?>  
+
+<span style="display:none;">
+        <script src="/plus/count.php?view=yes&aid={$gongdi_view.id}&mid=2" type="text/javascript"></script>
+    </span>
+</body>
+</html>
+<script src="/public/mob/js/footer.js" type="text/javascript"></script>  

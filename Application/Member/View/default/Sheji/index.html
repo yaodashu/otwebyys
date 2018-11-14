@@ -1,0 +1,85 @@
+<extend name="Base/Common"/>
+
+<block name="body_content"> 
+    <div class="mybox_page">
+        <include file="Public/mymenu_box"/>
+        <div class="homepage_box" style="width:770px;">
+            <div class="line_mybox">
+                <div class="my_title" style='width: 150px;  float: left;  display: inline-block;'>
+                    <h3>我的设计</h3> 
+                </div>
+		<div style='display: inline-block; margin-top: 20px;'>
+		    <if condition="$current_user['editlevel'] eq 1">
+			<a title="我要发布" style="display: block;" target="_blank" href="{:U('Member/Sheji/detail',array('id'=>$vo['id']))}">我要发布设计>></a></div>
+			<else/>
+			    <div class="form-group"> 
+				<span style="color:#1300ff;">您还没有编辑和发布设计的权限，管理员审核通过后才能操作，请耐心等待！</span>
+			    </div>
+		    </if>
+                <div class="my_zuji box_top"> 
+  
+		     <div id="memberlist" style="display: block;">
+			<ul>
+			    <li key="{$vo.id}">
+				<div class="div1">标题</div>
+				<div class="div2">关键词</div> 
+				<div class="div3">简介</div>
+				<div class="div4">楼盘名称</div>
+				<div class="div5">居室户型</div>
+				<div class="div6">面积</div>
+				<div class="div7">风格</div> 
+				<div class="div8">提交时间</div> 
+				<div class="div9">状态</div> 
+				<div class="div10">操作</div>
+			    </li>
+				
+			    <volist name="lists" id="vo">
+				<li key="{$vo.id}">
+				    <div class="div1" title="{$vo.dtitle}">{$vo.dtitle}&nbsp;</div>
+				    <div class="div2" title="{$vo.keywords}">{$vo.keywords}&nbsp;</div> 
+				    <div class="div3" title="{$vo.description}">{$vo.description}&nbsp;</div>
+				    <div class="div4" title="{$vo.loupan}">{$vo.loupan}&nbsp;</div> 
+				    <div class="div5" title="{$vo.jushiname}">{$vo.jushiname}&nbsp;</div>
+				    <div class="div6" title="{$vo.mianji}">{$vo.mianji}&nbsp;</div>
+				    <div class="div7" title="{$vo.fenggename}">{$vo.fenggename}&nbsp;</div> 
+				    <div class="div8"><php> echo date("Y-m-d",$vo['create_time']);</php>&nbsp;</div> 
+				    <div class="div9"><if condition="$vo['status'] eq '1'"><span style="background: #1b961b;color: #fff;padding: 0 5px;border-radius: 5px;">正常</span></if>
+					<if condition="$vo['status'] neq '1'"><span style="background: #AAA;color: #fff;padding: 0 5px;border-radius: 5px;">未通过</span></if>&nbsp;</div> 
+				    <div class="div10">
+					<if condition="$current_user['memberlist'] eq 1">
+					</if>
+					<a href="{:U('Member/Sheji/detail',array('id'=>$vo['id']))}" style="color: #0000FF;" target="_blank">详情/编辑</a>
+					&nbsp;
+				    </div>
+				</li>
+			    </volist> 
+			</ul>
+
+			<div class="page_home">
+			    {$_page}
+			</div>
+			<script>
+			    function pagego(){
+				var paget = $("#gop").val();
+				var pagep = decodeURI($("#goval").val());
+	    //		    alert(pagep+"/"+paget);
+				if(parseInt(paget)>0){
+				    var turl = pagep.replace("[PAGE]",paget);
+				    location.href=turl;
+				}else{
+				    alert("请输入有效页码!");
+				    return; 
+				}
+			    }
+			</script>
+		    </div>
+                    <div class="clear">
+                    </div>
+                </div>
+            </div>  
+        </div>
+
+        <div class="clear">
+        </div>
+    </div>
+</block>

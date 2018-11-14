@@ -1,0 +1,112 @@
+
+<style>
+    #citysdz{border: solid 0px #999; line-height: 54px; height: 54px;
+		    min-width: 80px; background-color: #fff; 
+		    -webkit-appearance:none;
+		    appearance:none;
+		    outline:none;
+		    -webkit-tap-highlight-color:rgba(0,0,0,0);
+		    background-image: url(/public/images/logo_down2.png);
+		    background-repeat: no-repeat;
+		    background-position: 100% 40%;}
+</style>
+<div id="header" class="box" style="background-color:#ffffff;">
+    <div class="div1">
+	 <a href="javascript:show_city();" style=""><img src="/public/images/logo_localtion1.png"></a>
+	    <select id="citys" name="citys" style="border: solid 0px #999; line-height: 75px; height: 75px;
+		    min-width: 65px; background-color: #fff; 
+		    -webkit-appearance:none;
+		    appearance:none;
+		    outline:none;
+		    -webkit-tap-highlight-color:rgba(0,0,0,0);
+		    background-image: url(/public/images/logo_down2.png);
+		    background-repeat: no-repeat;
+		    background-position: 100% 40%;display:block;font-size: 16px;" onchange="mobsite_city_chg();">
+		<option value="长沙">长沙</option>
+<!--		<option value="株洲">株洲</option>
+		<option value="湘潭">湘潭</option>
+		<option value="衡阳">衡阳</option>
+		<option value="岳阳">岳阳</option>
+		<option value="常德">常德</option>
+		<option value="益阳">益阳</option>
+		<option value="郴州">郴州</option>
+		<option value="永州">永州</option>
+		<option value="怀化">怀化</option>
+		<option value="娄底">娄底</option>
+		<option value="吉首">吉首</option>
+		<option value="贵阳">贵阳</option>
+		<option value="亚太墅装">亚太墅装</option>-->
+	    </select> 
+	  <select id="citysdz" name="citysdz" style="display:none;" onchange="mobsite_city_chg_dz();">
+		<option value="大宅">我的小窝</option>
+		<option value="点石">我的小窝</option>
+		<option value="亚太">亚太墅装</option>
+	    </select> 
+    </div>
+    <div class="div2">
+	&nbsp;
+    </div>
+    <a href="/index.php/mob/">
+    <div class="div3">
+	<!--<a href="tel:400-048-0731">&nbsp;</a>-->
+    </div>    
+    </a>
+    <div class="div4" onclick="show_nav();">
+	<a href="javascript:"></a>
+    </div>
+</div>
+  
+<div id="guize" style="display: none;width:100%;height:100%;background:rgba(0,0,0,.8);position: fixed; z-index: 99999; top: 0; left: 0;text-align: center; ">
+  <!--<p style="margin-top:50%;display:inline-block;font-size:30px;font-family:'微软雅黑';color:#fff;">游戏暂未开始<br>_(:з」∠)_</p>-->  
+<div id="navt" class="navt" style="display:block;width: 100%; height: 100%;">
+    <ul>
+	<li class="style1"><a href="/index.php/mob/about/history.html">
+		<div class="div1"><img src="/public/images/dianshi.png"></div>
+		<div class="div2">品牌故事</div>	        </a></li>
+	<li class="style2"><a href="/index.php/mob/anli/">
+		<div class="div1"><img src="/public/images/baojia.png"></div>
+		<div class="div2">装修案例</div>		</a></li>
+	<li class="style3"><a href="/index.php/mob/shejishi/">
+		<div class="div1"><img src="/public/images/tuandui.png"></div>
+		<div class="div2">设计团队</div>		</a></li>
+	<li class="style4"><a href="/index.php/mob/zhuanti/gongyi/">
+		<div class="div1"><img src="/public/images/oubiao.png"></div>
+		<div class="div2">欧标工艺</div>		</a></li>
+	<li class="style5"><a href="/index.php/mob/zhuanti/brand/">
+		<div class="div1"><img src="/public/images/wumian.png"></div>
+		<div class="div2">五免服务</div>		</a></li>
+	<li class="style6"><a href="/indep/quanjin/index.php?i=2">
+		<div class="div1"><img src="/public/images/quanjin.png" style="width: 70%;"></div>
+		<div class="div2">720°全景</div>		</a></li>
+	<li class="style7"><a href="/index.php/mob/news/index/ftype/6">
+		<div class="div1"><img src="/public/images/gongdi.png"></div>
+		<div class="div2">工地报道</div></a></li>
+	<li class="style8"><a href="/index.php/mob/news/index/ftype/4">
+		<div class="div1"><img src="/public/images/zhishi.png"></div>
+		<div class="div2">点石新闻</div></a></li>
+    </ul>
+    <div class="div_close">
+	<div>
+	    <a href="javascript:close_nav();"><img src="/public/images/tab_close.png"></a>
+	</div>	
+    </div>
+</div>
+</div> 
+
+<script>
+$(function(){   
+	appendcitys();
+	mobsite_domain_check_dz(); 
+});
+function show_nav(){ 
+    //alert($("#navt").css("display"));
+    if($("#guize").css("display")=="block"){
+	$("#guize").css("display","none");
+    }else{
+	$("#guize").css("display","block");
+    }
+}
+function close_nav(){
+    $("#guize").css("display","none");
+}
+</script>

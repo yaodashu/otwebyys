@@ -1,0 +1,339 @@
+
+    <!--banner图-->
+ <!--<script src="/Public/home/js/swiper.js" type="text/javascript"></script>-->
+  <style>   
+    .homeBanner {
+      overflow: hidden;
+      width: 100%;
+    <!--  max-height: 600px;-->
+    }
+    .homeBanner li{display: none;}
+    .homeBanner li.active{display: block;}
+    .homeBanner a{   
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-decoration: none;
+	outline: 0 none;
+    }
+    .homeBanner a img{ width: 100%;}
+    .homeBanner .Number {
+      bottom: 18px; 
+	height: 50px;
+	margin-top: -50px;
+	text-align: center;
+    }
+    .homeBanner .Number span.current {
+	background-image: url(/Public/home/images/yuan1_1.png);
+	background-size: 70%;
+	background-position: 50%;
+	background-repeat: no-repeat;
+    }
+
+   .homeBanner .Number span {
+	height: 12px;
+	width: 12px;
+	/*background: #666666;*/ 
+	border: solid 1px #fff;
+	margin: 7px 7px 0 7px;
+	border-radius: 6px;
+	display: inline-block;
+    }
+    .homeBanner .houmePrev {
+      position: absolute;
+      display: block;
+      left: 10%;
+      top: 390px;
+      z-index: 10;
+      width: 60px;
+      height: 60px;
+      background: #535353;
+      border-radius: 50%;
+      line-height: 55px;
+    text-align: center;
+    font-size: 38px;
+    color: #fff;
+    opacity: 0.55;
+      /*background: url(/Public/home/images/logo_pre.png) no-repeat left center;*/
+    }
+    .homeBanner .houmeNext {
+      position: absolute;
+      display: block;
+      right: 10%;
+      top: 390px;
+      z-index: 10;
+      width: 60px;
+      height: 60px;
+      background: #535353;
+      border-radius: 50%;
+      line-height: 55px;
+    text-align: center;
+    font-size: 38px;
+    color: #fff;
+    opacity: 0.55;
+      /*background: url(/Public/home/images/logo_next.png) no-repeat right center;*/
+    }
+     .homeBanner .houmePrev:hover, .homeBanner .houmeNext:hover{background: #333333;color: #dcd7d7;opacity: 0.95;}
+    .homeBanner .homeBanneraAbout {
+      position: absolute;
+      margin: 0 auto;
+      border-radius: 6px;
+      left: 0;
+      right: 0; 
+      top:490px;
+      height: 95px;
+      width: 59%;
+      z-index: 10;
+      background: rgba(51, 51, 51, 0.9);
+      padding: 15px 40px 0;
+    }
+    .homeBanner .homeBanneraAbout div {
+      overflow: hidden;
+      color: #fff;
+      line-height: 22px;
+      margin-bottom: 10px;
+    }
+    .homeBanner .homeBanneraAbout div h2 {
+      float: left;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 20px;
+    }
+    .homeBanner .homeBanneraAbout div span {
+      float: left;
+      font-size: 14px; 
+      padding-left: 0px;
+      margin-left: 5px;
+    }
+    .homeBanner .homeBanneraAbout input {
+      display: block;
+      float: left;
+      border: none;
+      font-size: 14px;
+      border-radius: 4px;
+      padding: 0 1%;
+      height: 48px;
+      margin-right: 0.5%;
+      font-family: 微软雅黑;
+    }
+    .homeBanner .homeBanneraAbout input.name {
+      width: 30%;
+    }
+    .homeBanner .homeBanneraAbout input.tel {
+      width: 40%;
+    }
+    .homeBanner .homeBanneraAbout input.button {
+      background-color: #183078 !important;
+      color: #fff;
+      text-align: center;
+      font-size: 18px;
+      margin-right: 0 !important;
+      cursor: pointer;
+      width: 25%;
+    }
+    .banner .Number span.hover {
+	background-color: #fff !important;
+	filter: alpha(opacity=100);
+	-moz-opacity: 1;
+	-khtml-opacity: 1;
+	opacity: 1;
+	width: 30px;
+    }
+    .banner .Number span {
+	overflow: hidden;
+	cursor: pointer;
+	filter: alpha(opacity=30);
+	-moz-opacity: 0.3;
+	-khtml-opacity: 0.3;
+	opacity: 0.3;
+	background: #333;
+	display: inline-block;
+	height: 2px;
+	width: 20px;
+	margin: 0 5px;
+    }
+    @media screen and (min-width: 2101px) { 
+	 .homeBanner .houmePrev {top:440px;}
+	 .homeBanner .houmeNext {top:440px;} 
+	.homeBanner .homeBanneraAbout { top:490px;}
+    }  
+    @media screen and (max-width: 1701px) { 
+	.homeBanner .homeBanneraAbout { top:440px;}
+    }  
+    @media screen and (max-width: 1621px) {
+	 .homeBanner .houmePrev {top:350px;}
+	 .homeBanner .houmeNext {top:350px;} 
+	.homeBanner .homeBanneraAbout { top:400px;}
+    }  
+    @media screen and (max-width: 1571px) {
+	.homeBanner .homeBanneraAbout { top:380px;}
+    } 
+    @media screen and (max-width: 1421px) {
+	 .homeBanner .houmePrev {top:320px;}
+	 .homeBanner .houmeNext {top:320px;} 
+	.homeBanner .homeBanneraAbout { top:370px;}
+    }
+    @media screen and (max-width: 1321px) {
+	 .homeBanner .houmePrev {top:280px;}
+	 .homeBanner .houmeNext {top:280px;} 
+	.homeBanner .homeBanneraAbout { top:330px;}
+    }
+</style>
+
+<div class="homeBanner">   
+    <ul>        
+	    <li class="active">
+                <a href="/zhuanti/zhounianqing/" target="_blank"
+                   onclick="">
+		    <img src="/Public/home/images/banner/zhounianqing600.jpg">
+		</a>     
+	    <li>
+                <a href="/zhuanti/quanfang/" target="_blank"
+                   onclick="">
+		    <img src="/Public/home/images/banner/quanfang600.jpg">
+		</a>
+            </li>
+            <li>
+                <a href="/zhuanti/shiliyou/" target="_blank"
+                   onclick="">
+		    <img src="/Public/home/images/banner/liyou600.jpg">
+		</a>
+            </li>
+        
+            <li>
+                <a href="/zhuanti/gongcheng/" target="_blank"
+                   onclick="">
+		    <img src="/Public/home/images/banner/gongcheng600.jpg">
+		</a>
+            </li>
+        
+            <li>
+                <a href="/zhuanti/gongyi/" target="_blank"
+                   onclick="">
+		    <img src="/Public/home/images/banner/gongyi600.jpg">
+		</a>
+            </li>
+        
+<!--            <li>
+                <a href="/zhuanti/brand/" target="_blank"
+                   onclick="">
+		    <img src="/Public/home/images/banner/brand.jpg">
+		</a>
+            </li>-->
+        
+    </ul>
+    <div class="houmeNumber Number">
+	<span href="javascript:void(0)" class="num1 current"></span>
+	<span href="javascript:void(0)" class="num2"></span>
+	<span href="javascript:void(0)" class="num3"></span>
+	<span href="javascript:void(0)" class="num4"></span>
+	<span href="javascript:void(0)" class="num5"></span>
+	<!--<span href="javascript:void(0)" class="num4"></span>-->
+    </div>
+    
+	<a href="javascript:banner_show('pre');" class="prev houmePrev"><span style="margin-left: -5px;"><</span></a>
+    <a href="javascript:banner_show('next');" class="next houmeNext"><span style="margin-left: 5px;">></span></a>
+    
+    <!--参考http://cs.ikongjian.com/-->
+    <div class="homeBanneraAbout" style="display: none;">
+        <div>
+            <h2>免费索取价值588元服务体验卡</h2><span class="places" style="margin-top: 2px;"> | 今日还剩138个名额</span></div> 
+        <input class="name" type="text" id="txt_name" name="txt_name" placeholder="请输入您的姓名">
+        <input class="tel" type="text" id="txt_tel" name="txt_tel" placeholder="输入手机号码，获取免费报价名额">
+        <input class="button" type="button" id="btn_submit" value="立即领取">
+        <script type="text/javascript">
+	    function baomingrenshuh() {
+	    //        do_baomingrenshu("/zhuanti/kaimenhong/baomingrenshu.php",$("#area7 .div6,#area42 .div6"));
+			$.ajax({ url: "/baomingrenshu.php?today=1", cache: false, success: function (html) { 
+			    //obj.html(html);
+			    //计算人数
+			    if(parseInt(html)){
+				var num = html;
+				//alert(num);
+				 $(".places").text("| 今日还剩" + html + "个名额");
+			     }
+			  }});
+		}
+	    var banner_interval = null;
+	    function banner_interval0(){if(banner_interval!=null){clearInterval(banner_interval);}} //清除定时器
+	    function banner_interval1(){banner_interval0();banner_interval=setInterval(banner_show,1000*5);} //设置定时器为5秒
+	    //初始化banner图切换
+	    function do_banner(){
+		//异步方式获取banner图链接地址和
+		
+		banner_interval1();//刷新定时器
+		
+		$(".houmeNumber span").click(function(){ 
+		    var li=$(".homeBanner ul li");
+		    var numbers=$(".homeBanner .houmeNumber span");
+		    var length=li.length;
+		    var idx=$(this).index(); 
+		    if(idx<=0 || idx>=length){
+			idx=0;
+		    }
+		    li.hide().eq(idx).show();
+		    numbers.eq(idx).addClass("current").siblings().removeClass("current");
+		})
+	    }
+	    //定时器触发更新当前banner
+	    function banner_show(type){
+		var li=$(".homeBanner ul li");
+		var numbers=$(".homeBanner .houmeNumber span");
+		var length=li.length;
+		var idx=numbers.filter(".current").index();
+		if(type=="pre"){
+		    if(idx==0){
+			idx=length-1;
+		    }else{
+			idx=idx-1;
+		    }		    
+		}else{
+		    idx=idx+1;
+		}
+	        //alert("timeInt"+idx+"length"+length+"--"+type);
+		if(idx>=length){idx=0;}
+		li.hide().eq(idx).show();
+		numbers.eq(idx).addClass("current").siblings().removeClass("current");
+	    }
+	    
+            $(function () {		
+		do_banner();
+		
+		//异步获取报名名额
+                baomingrenshuh();		
+		var regex_number=/^\d{7}$|^\d{8}$|^\d{11}$|^\d{3,4}(-)?\d{7,8}$/;
+		$("#btn_submit").click(function(){
+		    var obj=$(this);
+		    var _name=$("#txt_name");
+		    var val_name=$.trim(_name.val());
+		    if(val_name.length<=0){alert("温馨提示：请输入您的真实姓名！");_name.focus();_name.select();return false;}
+		    var _tel=$("#txt_tel");
+		    var val_tel=$.trim(_tel.val());
+		    if(!regex_number.test(val_tel)){alert("温馨提示：联系电话格式不正确！");_tel.focus();_tel.select();return false;}
+		    var _loupan=$("#txt_loupan");
+		    var val_loupan=$.trim(_loupan.val());
+		    //if(val_loupan.length<=0){alert("温馨提示：请输入您房子的楼盘名称！");_loupan.focus();_loupan.select();return false;}
+		    var _mianji=$("#txt_mianji");
+		    var val_mianji=$.trim(_mianji.val());
+	    //        if(val_mianji.length<=0){alert("温馨提示：请输入您房子的面积！");_mianji.focus();_mianji.select();return false;}
+		    val_name=encodeURIComponent(val_name);
+		    val_tel=encodeURIComponent(val_tel);
+		    val_loupan=encodeURIComponent(val_loupan);
+		    val_mianji=encodeURIComponent(val_mianji);
+		    var val_content=encodeURIComponent("[来源页面："+document.title+"]");
+		    var url=encodeURIComponent(location.href);
+		    var sourceid=obj.attr("sourceid");
+		    if(!sourceid){sourceid=39;}
+		    window.open("http://i.dasn.com.cn/index.php/calltel/dooperate?name="+val_name+"&tel="+val_tel+"&loupan="+val_loupan+"&mianji="+val_mianji+"&content="+val_content+"&url="+url+"&sourceid="+sourceid);
+		    _name.val("");
+		    _tel.val("");
+		    _loupan.val("");
+		    _mianji.val("");
+		    //setTimeout(baomingrenshu,1000*3);
+		    return false;
+		});
+            });
+        </script>
+    </div>
+</div>   
+ <!--banner图结束-->

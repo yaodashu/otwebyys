@@ -1,0 +1,214 @@
+<style>    
+    /*float dialog end*/
+    #headerf { margin: 35px auto 0 auto; width: 100%; height: 85px; overflow: hidden; position: fixed;z-index: 9999; background-color: #ffffff;opacity: 0.8;font-family: 微软雅黑;}
+    #headerf div a .current{color:#fff;font-weight: 600;}
+    #headerf .div1 { position: relative; margin: 0 0 0 18%; width:12%;min-width: 200px; height: 85px; overflow: hidden;float: left; }
+    #headerf .div1 img{position: relative; width: 100%; max-width: 191px; float: left; margin-top: 15px;}    
+    #headerf .div2 { float: left;width: 53%; height: 85px; padding-left: 3%; margin: 0 0 0 0; overflow: hidden; float: left;}
+    #headerf .div2 div {width:14%; height: 85px; display: inline-block; text-align: center;line-height: 85px;}
+    #headerf .div2 a div {font-size: 16px;font-weight: 500;color:#333333;text-decoration:none;float: left;}   
+    #headerf .div2 a div:hover {color:#fff;font-weight: 500;background: #183078;}
+    #headerf a:hover #nav_layer3{display: block; }
+    #headerf .div3 { position: relative;font-size: 18px;font-weight: 600;color:#5f5d5d; overflow: hidden; line-height: 85px; }
+    #headerf .div3 .tel{ width: 175px;line-height: 85px;height: 85px;float: left;}
+    #headerf .div3 .tel a:hover {color:#DF0010;}    
+    #headerf .div3 .search{ width: 200px;line-height: 85px;height: 85px;float: left;padding-top:40px;}
+    #headerf .div3 .tel a:hover {color:#00352d;}    
+    #headerf .div3 .tel{ width: 185px;}       
+    #headerf .div3 .tel .div01{ width: 42px;}     
+    #headerf .div3 .tel .div02{ width: 142px;height: 85px;}   
+    
+    #nav_layer1{display: none;
+			 margin: 120px 0 0 41%;position: fixed; width: 200px;height: 130px; z-index: 2147483647;background: #fff;
+    }
+    #nav_layer3{display: none;
+			 margin: 120px 0 0 55.5%;position: fixed; width: 200px;height: 130px; z-index: 2147483647;background: #fff;
+    }
+    #nav_layer6{display: none;
+			 margin: 120px 0 0 78%;position: fixed; width: 200px;height: 130px; z-index: 2147483647;background: #fff;
+    }
+    
+    .headerf_nav div{width: 100%;height: 60px;margin: 3px 0 0 0;overflow: hidden;background: #fff;color:#7d7d7d;}
+    .headerf_nav div .div1{width: 30%;display: inline-block; float: left; text-align: center; margin-top:0px;}
+    .headerf_nav div:hover div {background: #183078;color:#fff;}
+    .headerf_nav div .div1 .icon {width:100%;height: 100%;margin: 0;}
+    .headerf_nav div .div2{width: 70%;display: inline-block; float: left; text-align: left; margin-top: 0px;font-size: 16px;line-height: 60px;}    
+</style>
+
+<!--引入阿里矢量图地址-->
+<style type="text/css">
+@font-face {
+  font-family: 'iconfont';
+  src: url('/Public/font_333060/iconfont.eot');
+  src: url('/Public/font_333060/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('/Public/font_333060/iconfont.woff') format('woff'),
+  url('/Public/font_333060/iconfont.ttf') format('truetype'),
+  url('/Public/font_333060/iconfont.svg#iconfont') format('svg');
+}
+.iconfont{
+  font-family:"iconfont" !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+</style>
+	
+<div id="headerf">
+    <div class="div1">
+        <a href="/" title="湖南家装领导者">
+	    <img src="/Public/images/logo.png" alt="长沙点石家装" />
+	   <h1 style="text-indent: -9000px;" title="点石家装">点石家装</h1>
+	</a>
+    </div>
+    <div class="div2" style="display:block;"> 
+	<a href="http://dasn.com.cn/"><div id="nav_home">首页</div></a>
+	<a href="http://dasn.com.cn/anli"><div id="nav_anli">装修案例</div></a>
+	<a href="http://dasn.com.cn/shejishi/"><div id="nav_sheji">设计团队</div></a>
+	<a href="http://dasn.com.cn/zhuanti/gongyi/">
+	    <div id="nav_oubiao">
+		欧标工艺
+	    </div>
+	</a>
+	<a href="http://yatai.dasn.com.cn"><div id="nav_yatai">亚太墅装</div></a>
+	<a href="/index.php/home/gongdi/"><div id="nav_dazhai" style="display:none;">点石家装</div></a>
+	<a href="http://www.dasn.com.cn/zhuanti/about/"><div id="nav_aboutus">关于我们</div></a>
+    </div> 
+    <div class="div3" style="display: none;">
+	<div class="tel">
+	    <a target="_blank" href="javascript:void(0)" style="text-decoration:none;">
+		<div class="div01" style="float: left;padding-top: 23px;width: 42px; display: inline-block;">
+		    <img src="/Public/home/images/logo_tel.png" style="border:none;float: right;"></div>
+		<div class="div02" style="padding-top: 0%;display: inline-block;">400-048-0731</div>
+	    </a>
+	</div>
+	<div class="search">
+	    <form target="_blank" id="form_search" action="/index.php/home/other/search">
+		<input type="hidden" name="kwtype" value="0">
+		<input name="keyword" type="text" class="style1 keyword" style="float: left;width: 120px;height: 26px;color: #969393;margin-top: -5px; padding-left: 10px;border: 1px solid #c3c2c2;" value="" placeholder="输入关键词搜索" onfocus="if (value ==&#39;输入关键词搜索&#39;){value =&#39;&#39;}" onblur="if (value ==&#39;&#39;){value=&#39;输入关键词搜索&#39;}">
+		<!--<input type="submit" value="输入关键词搜索" class="style2" title="输入关键词搜索">-->
+		<a href="javascript:go_search();">
+		    <img src="/Public/home/images/logo_search.png" style="border:none;float: left; height:30px;margin-top: -5px;">
+		</a>
+	    </form> 
+	</div>
+    </div>  
+</div> 
+
+<div class="headerf_nav" id="nav_layer1" style="">
+   <a href="/index.php/home/anli/">
+       <div id="nav_layer11" style="">
+	   <div class="div1">
+	       <div class="icon icon-green radius icon-list-fun">
+		   <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe644;</i></div></div>
+	   <div class="div2">装修案例</div>	       
+       </div></a>
+   <a href="/index.php/home/anli/">
+       <div id="nav_layer12" style="">
+	  <div class="div1">
+	       <div class="icon icon-green radius icon-list-fun">
+		   <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe63d;</i></div></div>
+	  <div class="div2">全景VR设计</div>
+       </div></a>
+</div>
+<div class="headerf_nav" id="nav_layer3" style="display:none;">
+   <a href="/zhuanti/gongyi/">
+       <div id="nav_layer31" style=""> 
+	   <div class="div1"> 
+	       <div class="icon icon-green radius icon-list-fun">
+		   <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe673;</i></div></div>
+	   <div class="div2">欧标工艺</div>	       
+       </div></a>
+   <a href="/zhuanti/gongyi/">
+       <div id="nav_layer32" style="">
+	   <div class="div1"> 
+	       <div class="icon icon-green radius icon-list-fun">
+		   <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe641;</i></div></div>
+	   <div class="div2">五免服务</div>	       
+       </div></a>
+   <a href="/zhuanti/gongyi/">
+       <div id="nav_layer33" style="">
+	  <div class="div1"> 
+	       <div class="icon icon-green radius icon-list-fun">
+		   <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe664;</i></div></div>
+	  <div class="div2">工程保障</div>
+       </div></a>
+</div>
+
+<div class="headerf_nav" id="nav_layer6" style="">
+   <a href="/zhuanti/gongyi/">
+       <div id="nav_layer61" style="">
+	   <div class="div1">
+	       <div class="icon icon-green radius icon-list-fun">
+		   <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe611;</i></div></div>
+	   <div class="div2">品牌介绍</div>	       
+       </div></a>
+   <a href="/zhuanti/gongyi/">
+       <div id="nav_layer62" style="">
+	  <div class="div1">
+	       <div class="icon icon-green radius icon-list-fun">
+		   <i style="font-size: 30px;padding-top:0px;margin-top:0px;line-height: 60px;" class="aui-iconfont iconfont">&#xe631;</i></div></div>
+	  <div class="div2">新闻动态</div>
+       </div></a>
+</div>
+
+<div style="width:100%;height:120px;">&nbsp;</div> 
+
+<script> 
+    function go_search(){ 
+	$("#form_search").submit();
+    }
+    $("#headerf .div2 div").hover(function(){ 
+	var id = $(this).attr("id");
+	//alert(id);
+	if(id=="nav_anli1" || id=="nav_oubiao1" || id=="nav_aboutus1"){
+	    if(id=="nav_anli"){
+		$("#nav_layer1").css("display","block");
+		$("#nav_layer11 div").css("background","#183078");	
+		$("#nav_layer11 div").css("color","#fff");		
+	    }else if(id=="nav_oubiao"){
+		$("#nav_layer3").css("display","block");
+		$("#nav_layer31 div").css("background","#183078");	
+		$("#nav_layer31 div").css("color","#fff");
+	    }else if(id=="nav_aboutus"){
+		$("#nav_layer6").css("display","block");
+		$("#nav_layer61 div").css("background","#183078");	
+		$("#nav_layer61 div").css("color","#fff");
+	    }
+	}else{
+	    $("#nav_layer1").css("display","none");
+	    $("#nav_layer3").css("display","none");
+	    $("#nav_layer6").css("display","none");
+	}
+    },function(){});
+    $(".headerf_nav").hover(function(){ },function(){
+	//alert("tts");
+	$("#nav_layer1").css("display","none");
+	$("#nav_layer3").css("display","none");
+	$("#nav_layer6").css("display","none");
+    });
+    //默认子菜单切换
+    $("#nav_layer11").hover(function(){
+		$("#nav_layer11 div").css("background","#183078");	
+		$("#nav_layer11 div").css("color","#fff");	
+    },function(){
+	//alert("ttt");
+	$("#nav_layer11 div").css("background","#fff");	
+	$("#nav_layer11 div").css("color","#7d7d7d");
+    });
+    $("#nav_layer31").hover(function(){
+		$("#nav_layer31 div").css("background","#183078");	
+		$("#nav_layer31 div").css("color","#fff");	
+     },function(){
+	$("#nav_layer31 div").css("background","#fff");	
+	$("#nav_layer31 div").css("color","#7d7d7d");
+    });
+    $("#nav_layer61").hover(function(){
+		$("#nav_layer61 div").css("background","#183078");	
+		$("#nav_layer61 div").css("color","#fff");	
+     },function(){
+	$("#nav_layer61 div").css("background","#fff");	
+	$("#nav_layer61 div").css("color","#7d7d7d");
+    });
+
+</script>

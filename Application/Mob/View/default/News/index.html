@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>资讯新闻</title>
+    <meta name="description" content="资讯新闻" />
+    <meta name="keywords" content="资讯新闻" />
+    <!--<meta name="viewport" id="metaviewport" content="width=320,user-scalable=no" />-->
+    <meta name="viewport" id="viewport" content="width=480,initial-scale=1.0,max-scale=1.0,user-scalable=0" />
+<meta name="MobileOptimized" content="240" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="apple-touch-icon-precomposed" href="/favicon.png" />
+<!--<link rel="stylesheet" href="/public/mob/css/style_olddasn.css" />
+<link href="/public/mob/css/flexslider_oldyatai.css" rel="stylesheet" />-->
+<link rel="stylesheet" href="/public/mob/css/style_dasn.css" />
+<script src="/public/js/jquery.js"></script>
+<script src="/public/js/jquery.flexslider.js"></script>
+<script src="/public/mob/js/common.js" type="text/javascript"></script>
+<!--<script src="/public/mob/js/common_oldyatai.js"></script>-->
+</head>
+<body class="p_list_article p_t_4">
+<?php include ("./Application/Mob/View/default/Common/header.html"); ?> 
+    
+<div id="guize" style="display: none;width:100%;height:100%;background:rgba(0,0,0,.8);position: fixed; z-index: 99999; top: 0; left: 0;text-align: center; ">
+  <!--<p style="margin-top:50%;display:inline-block;font-size:30px;font-family:'微软雅黑';color:#fff;">游戏暂未开始<br>_(:з」∠)_</p>-->  
+    <div id="navt" class="navt" style="display:block;width: 100%; height: 100%;">
+
+	<div id="area00" class="area" style="margin: 15% 0 0 0;">
+	    <img src="/public/mob/images/home/nav.png" style="width:100%;height: 100%;">
+	      <div class="box">
+			    <a href="/index.php/mob/anli" class="hidetonbsp"><div class="div10"></div></a>
+			    <a href="/index.php/mob/shejishi" class="hidetonbsp"><div class="div20"></div></a>
+			    <a href="/index.php/mob/gongdi" class="hidetonbsp"><div class="div30"></div></a> 
+			    <a href="/index.php/mob/zhuanti/gongyi" class="hidetonbsp"><div class="div40"></div></a>
+	    </div>
+	</div>
+	<div class="div_close">
+	    <div>
+		<a href="javascript:close_nav();"><img src="/public/mob/images/tab_close.png"></a>
+	    </div>	
+	</div>
+    </div>
+</div> 
+<script> 
+function show_nav(){ 
+//	alert($("#guize").css("display"));
+    if($("#guize").css("display")=="block"){
+	$("#guize").css("display","none");
+    }else{
+	$("#guize").css("display","block");
+    }
+}
+function close_nav(){
+    $("#guize").css("display","none");
+}
+</script>
+    <div id="main" class="main">
+        <div class="title"><div class="title2"><h1><a href="">资讯新闻</a></h1></div></div>
+        <ul class="ul ul3">
+	    <volist name="lists_data1" id="vo">
+		<li>
+		      <a href="/index.php/mob/news/detail/aid/{$vo.id}">
+			  <div class="thumb">
+				<if condition="$vo['picpath'] neq ''">     
+					<img src="{$vo.picpath}" width="50" height="50" alt="{$vo.dtitle}" />
+				    <else/>      
+					<img src="{$vo.litpic}" width="50" height="50" alt="{$vo.dtitle}" />
+				</if>  
+			  </div>
+			  <h2>{$vo.dtitle}</h2>
+			  <p style=" -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">{$vo['description']}
+			      <span class="count"><i class="style1"></i><i class="style2"></i><i class="style3">07-21</i></span></p>
+		      </a>
+		</li>
+	    </volist>
+<!--            <li>
+                <a href="/news/1289.html">
+                    <div class="thumb"><img src="http://yatai.dasn.com.cn/uploads/allimg/170721/2-1FH109334J38-lp.jpg" width="50" height="50" alt="品质沉淀 匠心筑家｜我的小窝19周年庆" /></div>
+                    <h2>品质沉淀 匠心筑家｜我的小窝19周年庆</h2>
+                    <p>时光荏苒，我的小窝已走过第19个年头。从最初默默无闻，发展成为湖南湖南装修领导者，...<span class="count"><i class="style1"></i><i class="style2"></i><i class="style3">07-21</i></span></p>
+                </a>
+            </li><li>
+                <a href="/news/1266.html">
+                    <div class="thumb"><img src="http://yatai.dasn.com.cn/uploads/allimg/170707/2-1FFH02203L2-lp.jpg" width="50" height="50" alt="初心不改 匠心不忘 | 亚太19周年大庆 巅峰钜惠 感恩中国" /></div>
+                    <h2>初心不改 匠心不忘 | 亚太19周年大庆 巅峰钜惠 感恩中国</h2>
+                    <p>19年品质专注，19载匠心传承 19年时光，感谢支持与信赖 亚太19周年大庆 巅峰钜惠 感恩...<span class="count"><i class="style1"></i><i class="style2"></i><i class="style3">07-07</i></span></p>
+                </a>
+            </li><li>
+                <a href="/news/1239.html">
+                    <div class="thumb"><img src="http://yatai.dasn.com.cn/uploads/allimg/170623/2-1F6231G12c56-lp.jpg" width="50" height="50" alt="亚太19周年大庆│19载品质坚持，以匠心筑尊品！" /></div>
+                    <h2>亚太19周年大庆│19载品质坚持，以匠心筑尊品！</h2>
+                    <p>于亚太而言 19年，只是一个起点 我们将永葆初心 时刻保持探索的热情 用匠心缔造品质 ...<span class="count"><i class="style1"></i><i class="style2"></i><i class="style3">06-23</i></span></p>
+                </a>
+            </li><li>
+                <a href="/news/1187.html">
+                    <div class="thumb"><img src="http://yatai.dasn.com.cn/uploads/allimg/170430/2-1F4300Z22O64-lp.jpg" width="50" height="50" alt="用纯粹和品质 定制您的生活 | 亚太【消费者特权日】盛大启幕" /></div>
+                    <h2>用纯粹和品质 定制您的生活 | 亚太【消费者特权日】盛大启幕</h2>
+                    <p>我们敬畏传承 所以我们用绝美的筑家来演绎生活的灵韵 我们珍视细节 所以我们用锱铢必...<span class="count"><i class="style1"></i><i class="style2"></i><i class="style3">04-30</i></span></p>
+                </a>
+            </li><li>
+                <a href="/news/1168.html">
+                    <div class="thumb"><img src="http://yatai.dasn.com.cn/uploads/allimg/170418/2-1F41Q004024F-lp.jpg" width="50" height="50" alt="我的小窝消费者特权日 | 别墅全案定制亚太特权客户·尊享体验" /></div>
+                    <h2>我的小窝消费者特权日 | 别墅全案定制亚太特权客户·尊享体验</h2>
+                    <p>有一种坚持， 是秉持匠心将品质溶入血液的极致追求; 有一种执着， 是千般打磨万般磨练...<span class="count"><i class="style1"></i><i class="style2"></i><i class="style3">04-18</i></span></p>
+                </a>
+            </li><li>
+                <a href="/news/1154.html">
+                    <div class="thumb"><img src="http://yatai.dasn.com.cn/uploads/allimg/170402/2-1F402095911256-lp.jpg" width="50" height="50" alt="以极致 筑造经典|【别墅全案定制】欧标顶配样板房限量抢定中" /></div>
+                    <h2>以极致 筑造经典|【别墅全案定制】欧标顶配样板房限量抢定中</h2>
+                    <p>经典的背后 是一丝不苟 是努力、是坚持 是坚持努力 每个经典的筑家背后 都凝聚着设计...<span class="count"><i class="style1"></i><i class="style2"></i><i class="style3">04-02</i></span></p>
+                </a>
+            </li><li>
+                <a href="/news/1124.html">
+                    <div class="thumb"><img src="http://yatai.dasn.com.cn/uploads/allimg/170310/2-1F31011343C24-lp.jpg" width="50" height="50" alt="全案定制 首选亚太丨亚太别墅全案定制新品卓越首发" /></div>
+                    <h2>全案定制 首选亚太丨亚太别墅全案定制新品卓越首发</h2>
+                    <p>温暖的家是每个人心之所向，在大宅装修风格如此多样化的今天，传统墅装的产品复杂、透...<span class="count"><i class="style1"></i><i class="style2"></i><i class="style3">03-10</i></span></p>
+                </a>
+            </li><li>
+                <a href="/news/1118.html">
+                    <div class="thumb"><img src="http://yatai.dasn.com.cn/uploads/allimg/170301/2-1F301093132H8-lp.jpg" width="50" height="50" alt="极致墅装 全新首发│亚太【别墅全案定制】新品卓越首发" /></div>
+                    <h2>极致墅装 全新首发│亚太【别墅全案定制】新品卓越首发</h2>
+                    <p>随着人们对生活品质要求的提高，近几年，各种各样的大宅装修风格层出不穷，差异化和个...<span class="count"><i class="style1"></i><i class="style2"></i><i class="style3">03-01</i></span></p>
+                </a>
+            </li><li>
+                <a href="/news/1100.html">
+                    <div class="thumb"><img src="http://yatai.dasn.com.cn/uploads/allimg/170216/2-1F216151Q2321-lp.jpg" width="50" height="50" alt="开启墅装定制私享时代 │亚太【别墅全案定制】新品卓越首发" /></div>
+                    <h2>开启墅装定制私享时代 │亚太【别墅全案定制】新品卓越首发</h2>
+                    <p>别墅是对生活品质的一种追求，别墅私享定制装修是对品质生活的一种要求，墅装私享定制...<span class="count"><i class="style1"></i><i class="style2"></i><i class="style3">02-16</i></span></p>
+                </a>
+            </li><li>
+                <a href="/news/1090.html">
+                    <div class="thumb"><img src="http://yatai.dasn.com.cn/uploads/allimg/170205/2-1F205095045960-lp.jpg" width="50" height="50" alt="新年头彩 新春献礼——我的小窝2017开门红感恩钜惠" /></div>
+                    <h2>新年头彩 新春献礼——我的小窝2017开门红感恩钜惠</h2>
+                    <p>热闹的春节之后，生活又将逐渐回归匆忙，再温暖的怀抱，也要挣脱前行;再温馨的家庭，...<span class="count"><i class="style1"></i><i class="style2"></i><i class="style3">02-05</i></span></p>
+                </a>
+            </li>-->
+        </ul>
+    </div>
+<div class="page_home">
+    {$_page}
+</div>
+	    <script>
+		function pagego(){
+		    var paget = $("#gop").val();
+		    var pagep = decodeURI($("#goval").val());
+//		    alert(pagep+"/"+paget);
+		    if(parseInt(paget)>0){
+			var turl = pagep.replace("[PAGE]",paget);
+			location.href=turl;
+		    }else{
+			alert("请输入有效页码!");
+			return; 
+		    }
+		}
+	    </script> 
+    
+<?php include ("./Application/Mob/View/default/Common/version.html"); ?>  
+<?php include ("./Application/Mob/View/default/Common/footer.html"); ?>  
+
+</body>
+</html>
+<script src="/public/mob/js/footer.js" type="text/javascript"></script>  

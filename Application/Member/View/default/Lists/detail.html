@@ -1,0 +1,86 @@
+<extend name="Base/Common"/>
+
+<block name="body_content"> 
+    <style>
+	.memberdetail .dtitle{   
+	    width: 150px;
+	    display: inline-block;
+	    float: left;
+	    text-align: right;
+	}
+    </style>
+    <div class="mybox_page">
+        <include file="Public/mymenu_box"/>
+        <div class="homepage_box" style="width:770px;">
+            <div class="line_mybox">
+                <div class="my_title">
+                    <h3>会员信息</h3>
+                </div>
+                <div class="my_zuji box_top">  
+		    <form id="person_form" action="__SELF__" method="post">
+			<input type="hidden" name="id" value="{$id}" />
+			<div class="fistinfor memberdetail">
+			    <ul>
+				<li><div class="dtitle">会员账号：</div><div class="dinfo">{$ucentermember.username}</div></li>
+				<li><div class="dtitle">会员手机：</div><div class="dinfo">{$ucentermember.mobile}</div></li>
+				<li><div class="dtitle">会员状态：</div><div class="dinfo">
+				    <if condition="$ucentermember['status'] eq '-3'">删除</if>
+					    <if condition="$ucentermember['status'] eq '-2'">禁止</if>
+					    <if condition="$ucentermember['status'] eq '-1'">暂停</if>
+					    <if condition="$ucentermember['status'] eq '0'">未通过</if>
+					    <if condition="$ucentermember['status'] eq '1'">使用</if>
+					<if condition="$current_user['memberedit'] eq 1">
+					    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:red;">修改为</span>
+					    <select id="status" name="status">
+						<option value="-3" <if condition="$ucentermember['status'] eq '-3'"> selected</if>>删除</option>
+						<option value="-2" <if condition="$ucentermember['status'] eq '-2'"> selected</if>>禁止</option>
+						<option value="-1" <if condition="$ucentermember['status'] eq '-1'"> selected</if>>暂停</option>
+						<option value="0" <if condition="$ucentermember['status'] eq '0'"> selected</if>>未通过</option>
+						<option value="1" <if condition="$ucentermember['status'] eq '1'"> selected</if>>使用</option>
+					    </select>
+					</if>
+				    </div>
+				</li>
+				<li><div class="dtitle">门店：</div><div class="dinfo">{$ucentermember.areaname}</div></li>
+				<li><div class="dtitle">级别：</div><div class="dinfo">{$ucentermember.rankname}</div></li>
+				<li><div class="dtitle">上传下载权限：</div><div class="dinfo">
+				    <if condition="$ucentermember['editlevel'] eq '0'">无</if>
+					    <if condition="$ucentermember['editlevel'] eq '1'">有</if>
+					    <if condition="$current_user['memberedit'] eq 1">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:red;">修改为</span>
+						<select id="editlevel" name="editlevel">
+						    <option value="0" <if condition="$ucentermember['editlevel'] eq '0'"> selected</if>>无</option>
+						    <option value="1" <if condition="$ucentermember['editlevel'] eq '1'"> selected</if>>有</option>
+						</select>
+					    </if>
+
+				    </div></li>
+				<li><div class="dtitle">注册时间：</div><div class="dinfo"><php> echo date("Y-m-d H:i",$ucentermember['reg_time']);</php>&nbsp;</div></li>
+				<li><div class="dtitle">会员分组：</div><div class="dinfo">{$ucentermember.groupname}&nbsp;</div></li>
+
+			    </ul>
+			    
+			    <if condition="$current_user['memberedit'] eq 1">
+				<a href="javascript:member_chg();">
+				    <div style="width: 200px; margin: 0 auto; margin-top: 5%; background: #048a16; color: #fff; text-align: center; border-radius: 5px;">提交修改</div>
+				</a>
+			    </if>
+
+			</div>
+		    </form>
+		    <script>
+			function member_chg(){
+			   // alert('aaa');
+			   $("#person_form").submit();
+			}
+		    </script>
+                    <div class="clear">
+                    </div>
+                </div>
+            </div>  
+        </div>
+
+        <div class="clear">
+        </div>
+    </div>
+</block>

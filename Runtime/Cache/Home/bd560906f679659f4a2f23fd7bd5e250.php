@@ -1,0 +1,270 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的小窝<?php echo ($ftitle); ?></title>
+<meta name="keywords" content="我的小窝<?php echo ($ftitle); ?>" />
+<meta name="description" content="我的小窝<?php echo ($ftitle); ?>" />
+<link rel="stylesheet" href="/Public/home/css/swiper.css"> 
+
+<!--<script src="/Public/home/js/mobile.js" type="text/javascript"></script>-->
+<link href="/Public/home/css/style.css" type="text/css" rel="Stylesheet" />
+<script src="/Public/home/js/jquery.js" type="text/javascript"></script>
+<script src="/Public/home/js/jquery.cookies.js" type="text/javascript"></script> 
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+<link href="/Public/static/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /> 
+ 
+<style>
+
+</style>
+
+<script type="text/javascript">
+$(function () {
+    do_banner1();
+    //alert(getQueryString('fengge')); 
+     
+
+})
+/*0 banner1*/
+function do_banner1(){ 
+    //此类型新闻的图层显示介绍文字
+    $('#banner1 ul li').hover(function(){  
+		 //图片放大
+		//先记录上是哪层div高度 
+		var dValue=$(this).find("div").height(); 
+		 $(this).find("div").css("height",dValue);
+		 
+		var wValue=1.1 * $(this).find("a img").width(); 
+		var hValue=1.1 * $(this).find("a img").height(); 
+		$(this).find("a img").animate({width: wValue, 
+		height: hValue, 
+		left:("-"+(0.1 * $(this).find("a img").width())/2), 
+		top:("-"+(0.1 * $(this).find("a img").height())/2)}, 800);  
+	},function(){ 
+	    //图片缩小
+	    $(this).find("a img").animate({width: "100%", 
+	    height: "100%", 
+	    left:"0px", 
+	    top:"0px"}, 600 ); 
+	});
+}
+
+function getQueryString(name) { 
+var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+var r = window.location.search.substr(1).match(reg); 
+if (r != null) return unescape(r[2]); return null; 
+} 
+
+</script>
+</head>
+<body class="p_list_anli">
+    <?php include ("./Application/Home/View/default/Common/topnav.html"); ?> 
+    <?php include ("./Application/Home/View/default/Common/header.html"); ?> 
+    
+<!--<div id="toppic" style="width:100%;height: auto;margin-top: 0px; background-color: #f5f6f6;"> 
+    <img src="/Public/home/images/banner/banner01.jpg" alt="我的小窝" width="100%"/>
+</div>-->
+<div>  
+    
+    <div id="main" class="main">
+	<div id="position"  style="    width: 1200px;
+    margin: 0 auto;
+    display: block;
+    padding: 0;
+    float: none;margin-bottom: 20px;">
+	    <div class="div1"> 您所在的位置：<a href='/' target="_blank" style="color:#999999;">首页</a>&gt; 
+		<span style="color:#333333;">图片上传</span>
+	    </div>
+	</div> 
+        <div id="abox">  
+	</div>
+	
+	<div id="nbox1"  style="    width: 1200px;
+    margin: 0 auto;
+    display: block;
+    padding: 0;
+    float: none;margin-top: 20px;">			    
+            <div id="newslist" style="display: inline-block;background: #fff;padding-top: 30px;margin-bottom:50px;">
+              
+		<div>
+		    <!--私有权限，必须生成分享的路径，图片有权限过期时间-->
+		    <img src="<?php echo ($oss_img1); ?>"></img>
+		    <!--直接在oss管理后台设置共享读权限--> 
+		</div>
+                    
+		<form id="person_form" action="/index.php/Home/testoss/aliyunoss" method="post">
+			<div class="form-group">
+			    <label for="keyword">封面图<span style="color:#dd8383;">（要求宽高尺寸比列：400*300像素）</span></label>
+			    <br>
+			    <div class="am-u-sm-3" >
+				<label for="content" class="am-u-sm-2 am-form-label">当前使用图(宽高：<?php echo ($anliview_data1['img1'][0]); ?>*<?php echo ($anliview_data1['img1'][1]); ?>)</label>
+				<div class="am-u-sm-2">
+				    <a href="<?php echo ($anliview_data1["picpath"]); ?>" target="_blank"><img src="<?php echo ($anliview_data1["picpath"]); ?>" width="120" /> </a>
+				</div>
+			    </div>
+			   <div class="weui-cell">
+				    <div class="weui-cell__bd weui-cell___primary">
+					    <div class="weui-uploader">
+						    <div class="weui-uploader__hd weui-cell">
+							    <div class="weui-cell__bd weui-cell__primary"></div>
+							    <div class="weui-cell__ft">0/1</div>
+						    </div>
+						    <div class="weui-uploader__bd">
+							    <ul class="weui-uploader__files">
+							    </ul>
+							    <div class="weui-uploader__input-box">
+								    <input class="weui-uploader__input" type="file" accept="image/jpg,image/jpeg,image/png" multiple />
+							    </div>
+						    </div>
+					    </div>
+				    </div>
+			    </div>
+			</div>
+		 </form>
+		    <script>
+			$(function(){
+			    $(".btn-default").click(function(){ 
+				$(".weui-uploader__file").each(function(){$("form").append('<input value="'+$(this).attr("code")+'" type="checkbox" name="img[]" style="display:none;" checked />');});  
+			       $("#person_form").submit();
+			    }) 			    
+			})
+		    </script>
+            </div>
+	    <div class="form-group">
+		<button type="button" class="btn btn-default">提交</button>
+	    </div>	
+	    
+	    <div id="newslist_r" style="">
+
+		  <div style="color: #666666; font-size: 25px;font-family: '微软雅黑'; font-weight: 500;text-align: center;margin: 20px 0 0px 0;">
+			 免费获取装修报价
+		  </div>
+
+		  <div style="margin: 10px 0 5px 8%; width: 92%; height: 40px; line-height: 40px;  display: inline-block;position: relative; float: left;">
+			 <input type="text" placeholder="请输入您的姓名" id="txt_name3" name="txt_name3" style="height: 100%;width: 85%; padding-left: 5%;font-family: '微软雅黑'; font-size: 16px;border: solid 1px #e5e5e5;" />
+		  </div>
+
+		  <div style="margin: 10px 0 5px 8%; width: 92%; height: 40px; line-height: 40px;  display: inline-block;position: relative; float: left;">
+			 <input type="text" placeholder="请输入您的手机号码" id="txt_tel3" name="txt_tel3" style="height: 100%;width: 85%; padding-left: 5%;font-family: '微软雅黑'; font-size: 16px;border: solid 1px #e5e5e5;" />
+		  </div>
+		  <div style="margin: 10px 0 5px 8%; width: 92%; height: 40px; line-height: 40px;  display: inline-block;position: relative; float: left;">
+			 <input class="name" type="text" id="txt_mianji3" name="txt_mianji3" placeholder="请输入您的房屋面积" style="height: 100%; width: 85%; padding-left: 5%;font-family: '微软雅黑';font-size: 16px;border: solid 1px #e5e5e5;"/>
+			 <div style="margin-left:-24px;width: 30px;position: absolute;float: right;font-size: 16px;color:#999999;display: inline-block;height: 46px;line-height: 46px;">㎡</div>
+		  </div>
+
+		  <div id="btn_submit3" style="cursor: pointer; margin: 10px 0 5px 24px;width: 84.5%;height: 42px;line-height: 40px;display: inline-block;background-color: #2E4F89;color: #fff;text-align: center;font-size: 16px;font-family: '微软雅黑';border-radius: 4px;">
+			 获取报价
+		  </div> 
+		  <div style="color:#353637;font-size: 12px;font-family: '微软雅黑';text-align: center;margin: 10px 0 10px 0;">
+			 ※我们会严格保护您的隐私请放心填写
+		  </div>
+	    </div>
+	    
+        </div>  
+	   
+	
+    </div>
+    <!--end main-->
+
+   
+<?php include ("./Application/Home/View/default/Common/bottomnav.html"); ?> 
+<?php include ("./Application/Home/View/default/Common/footer.html"); ?> 
+     
+</body>
+</html>   
+
+
+<script type="text/javascript">
+	    $(function (){
+		// 允许上传的图片类型  
+		var allowTypes = ['image/jpg', 'image/jpeg', 'image/png'];  
+		// 1024KB，也就是 1MB
+		var maxSize = 1024*1024*8;
+		// 图片最大宽度
+		var maxWidth = 640;
+		// 最大上传图片数量
+		var maxCount = 1;
+		var maxCount2 = 1;
+		$('.weui-uploader__input').on('change', function (event){
+		    var files = event.target.files;
+
+		    // 如果没有选中文件，直接返回 
+		    if (files.length==0){return;} 
+
+			    if ($('.weui-uploader__file').length+files.length > maxCount) {$.alert('最多只能上传' + maxCount + '张图片');return;} 
+
+		    for (var i = 0, len = files.length; i < len; i++) {
+			var file = files[i];  
+			var reader = new FileReader();  
+
+			// 如果类型不在允许的类型范围内  
+			if (allowTypes.indexOf(file.type) === -1) {
+					    $.alert("该类型不允许上传");
+			    continue;  
+			}  
+
+			if (file.size > maxSize) {  
+					    $.alert("图片太大，不允许上传");
+			    continue;  
+			}
+
+			reader.onload = function (e) {  
+			    var img = new Image();  
+			    img.onload = function () {  
+				// 不要超出最大宽度  
+				var w = Math.min(maxWidth, img.width);  
+				// 高度按比例计算  
+				var h = img.height * (w / img.width);  
+				var canvas = document.createElement('canvas');  
+				var ctx = canvas.getContext('2d');  
+				// 设置 canvas 的宽度和高度  
+				canvas.width = w;  
+				canvas.height = h;  
+				ctx.drawImage(img, 0, 0, w, h);  
+				var base64 = canvas.toDataURL('image/jpeg');  
+				// 插入到预览区  
+				var $preview = $('<li class="weui-uploader__file weui-uploader__file_status" code='+base64+' style="background-image:url(' + base64 + ')"><div class="weui-uploader__file-content">0%</div></li>');
+				$('.weui-uploader__files').append($preview);
+
+						    $(".weui-uploader__file").dblclick(function(){
+							    $(this).remove();
+							    var num = $('.weui-uploader__file').length;  
+							    $('.weui-cell__ft').text(num + '/' + maxCount);
+						    });
+
+				var num = $('.weui-uploader__file').length;  
+				$('.weui-cell__ft').text(num + '/' + maxCount);
+
+						    // 然后假装在上传，可以post base64格式，也可以构造blob对象上传，也可以用微信JSSDK上传  
+
+				var progress = 0;  
+				function uploading() {  
+				    $preview.find('.weui-uploader__file-content').text(++progress + '%');  
+				    if (progress < 100) {
+					setTimeout(uploading, 30);  
+				    }  
+				    else {
+					// 如果是失败，塞一个失败图标  
+					//$preview.find('.weui-uploader__file-content').html('<i class="weui-icon_warn"></i>');  
+					$preview.removeClass('weui-uploader__file_status').find('.weui-uploader__file-content').remove();
+					$.hideLoading();
+				    }  
+				}
+				$.showLoading("图片上传中...");
+				setTimeout(uploading, 30);  
+			    };  
+
+			    img.src = e.target.result;  
+			};  
+			reader.readAsDataURL(file);
+		    }
+		});  
+	    }); 
+
+</script> 
+ 
+	<!-- body 最后 -->
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script><!--

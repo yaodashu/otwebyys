@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>我的小窝装修案例</title>
+    <meta name="description" content="我的小窝装修案例" />
+    <meta name="keywords" content="我的小窝装修案例" />
+    <meta name="viewport" id="viewport" content="width=480,initial-scale=1.0,max-scale=1.0,user-scalable=0" />
+<meta name="MobileOptimized" content="240" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="apple-touch-icon-precomposed" href="/favicon.png" /> 
+<link rel="stylesheet" href="/public/mob/css/style_dasn.css" />
+<!--<link href="/public/mob/css/flexslider_oldyatai.css" rel="stylesheet" />-->
+<script src="/public/js/jquery.js"></script>
+<script src="/public/js/jquery.flexslider.js"></script>
+<script src="/public/mob/js/common.js" type="text/javascript"></script>
+<!--<script src="/public/mob/js/common_oldyatai.js"></script>-->
+</head>
+<script>
+$(function () {
+     
+    init_param();
+})
+/*1 banner1*/
+function init_param(){
+    var fengge = "{$fengge}";
+    var jushi = "{$jushi}";
+    var shejishi = "{$shejishi}"; 
+//    alert(fengge+";"+jushi+";"+shejishi);
+    if(fengge!="" && fengge!=null && fengge!="null"){   
+	$(".anlisearch_fengge li a").removeClass("current"); 
+	$(".anlisearch_fengge li a[key='"+fengge+"']").addClass("current");
+    }
+    if(jushi!="" && jushi!=null && jushi!="null"){   
+	$(".anlisearch_jushi li a").removeClass("current"); 
+	$(".anlisearch_jushi li a[key='"+jushi+"']").addClass("current");
+    }
+    if(shejishi!="" && shejishi!=null && shejishi!="null"){  
+	$(".anlisearch_shejishi .div_style2 a").removeClass("current");
+	$(".anlisearch_shejishi .div_style3 li a[key='"+shejishi+"']").addClass("current");
+	//异步加载设计师
+	
+    }
+}
+//更新条件重新查询数据
+function query_search(type,id){
+//    alert("type:"+type+";"+id);
+    if(type=='1'){  
+	$(".anlisearch_fengge li a").removeClass("current"); 
+	if(parseInt(id)>0){
+	    $("#fengge"+"_inp").val(id);
+	    $(".anlisearch_fengge li a[key='"+id+"']").addClass("current");
+	}else if(id==0){
+	    $("#fengge"+"_inp").val("");
+	    $(".anlisearch_fengge li a[key='0']").addClass("current");
+	}
+    }
+    if(type=='2'){
+	$(".anlisearch_jushi li a").removeClass("current"); 
+	if(parseInt(id)>0){
+	    $("#jushi"+"_inp").val(id);
+	    $(".anlisearch_jushi li a[key='"+id+"']").addClass("current");
+	}else if(id==0){
+	    $("#jushi"+"_inp").val("");
+	    $(".anlisearch_jushi li a[key='0']").addClass("current");
+	}
+    }
+    if(type=='3'){
+	$(".anlisearch_shejishi .div_style2 a").removeClass("current");
+	$(".anlisearch_shejishi .div_style3 li a").removeClass("current");
+	if(parseInt(id)>0){
+	    $("#shejishi"+"_inp").val(id);
+	    $(".anlisearch_shejishi .div_style3 li a[key='"+id+"']").addClass("current");
+	}else if(id==0){
+	    $("#shejishi"+"_inp").val("");
+	    $(".anlisearch_shejishi .div_style2 a").addClass("current");
+	}	
+    } 
+    if(type=='1' || type=='2' || type=='3'){
+	$("#query1_keyword").val("");
+    }
+    //异步重新查询数据:1风格，2居室；3设计师；5关键词；4加载更多
+    if(type=='1' || type=='2' || type=='3' || type=='5'){
+	page = 1; 
+    } 
+    //20170815修改为直接跳转，分页查询
+    if(true){
+	var turl ="http://"+document.domain+"/index.php/mob/anli/index/"; 
+	var condition="";
+	if($("#fengge"+"_inp").val()!=""){
+	    condition = condition + "fengge/"+$("#fengge_inp").val()+"/";
+	}
+	if($("#jushi"+"_inp").val()!=""){
+	    condition = condition + "jushi/"+$("#jushi_inp").val()+"/";
+	}
+//	if($("#shejishi"+"_inp").val()!=""){
+//	    condition = condition + "shejishi/"+$("#shejishi_inp").val()+"/";
+//	}
+//	if($("#query1_keyword").val()!=""){
+//	    condition = condition + "keyword/"+$("#query1_keyword").val()+"/";
+//	}
+	location.href=turl+condition;
+    }
+    return;  
+    
+}
+</script>
+<body class="p_list_anli"> 
+<?php include ("./Application/Mob/View/default/Common/header.html"); ?>  
+      
+    
+<div id="guize" style="display: none;width:100%;height:100%;background:rgba(0,0,0,.8);position: fixed; z-index: 99999; top: 0; left: 0;text-align: center; ">
+  <!--<p style="margin-top:50%;display:inline-block;font-size:30px;font-family:'微软雅黑';color:#fff;">游戏暂未开始<br>_(:з」∠)_</p>-->  
+    <div id="navt" class="navt" style="display:block;width: 100%; height: 100%;">
+<!--	<ul>
+	    <li class="style1"><a href="{$xinxiliu_anli_url}{$tgurl}">
+		    <div class="div1"><img src="/public/images/anli.png"></div>
+		    <div class="div2">装修案例</div>	        </a></li>
+	    <li class="style2"><a href="{$xinxiliu_baojia_url}{$tgurl}">
+		    <div class="div1"><img src="/public/images/baojia.png"></div>
+		    <div class="div2">设计团队</div>		</a></li>
+	    <li class="style3"><a href="{$xinxiliu_act_url}{$tgurl}">
+		    <div class="div1"><img src="/public/images/youhui.png"></div>
+		    <div class="div2">施工管理</div>		</a></li>
+	    <li class="style4"><a href="{$xinxiliu_wumian_url}{$tgurl}">
+		    <div class="div1"><img src="/public/images/wumian.png"></div>
+		    <div class="div2">别墅工艺</div>		</a></li>
+	    <li class="style5"><a href="{$xinxiliu_gongyi_url}{$tgurl}">
+		    <div class="div1"><img src="/public/images/oubiao.png"></div>
+		    <div class="div2">欧标工艺</div>		</a></li>
+	    <li class="style6"><a href="{$xinxiliu_720_url}{$tgurl2}">
+		    <div class="div1"><img src="/public/images/quanjin.png" style="width: 70%;"></div>
+		    <div class="div2">720°全景</div>		</a></li>
+	    <li class="style7"><a href="{$xinxiliu_about_url}{$tgurl}">
+		    <div class="div1"><img src="/public/images/dianshi.png"></div>
+		    <div class="div2">关于点石</div>		</a></li> 
+	</ul>-->
+
+	<div id="area00" class="area" style="margin: 15% 0 0 0;">
+	    <img src="/public/mob/images/home/nav.png" style="width:100%;height: 100%;">
+	      <div class="box">
+			    <a href="/index.php/mob/anli" class="hidetonbsp"><div class="div10"></div></a>
+			    <a href="/index.php/mob/shejishi" class="hidetonbsp"><div class="div20"></div></a>
+			    <a href="/index.php/mob/gongdi" class="hidetonbsp"><div class="div30"></div></a> 
+			    <a href="/index.php/mob/zhuanti/gongyi" class="hidetonbsp"><div class="div40"></div></a>
+	    </div>
+	</div>
+	<div class="div_close">
+	    <div>
+		<a href="javascript:close_nav();"><img src="/public/mob/images/tab_close.png"></a>
+	    </div>	
+	</div>
+    </div>
+</div> 
+<script> 
+function show_nav(){ 
+//	alert($("#guize").css("display"));
+    if($("#guize").css("display")=="block"){
+	$("#guize").css("display","none");
+    }else{
+	$("#guize").css("display","block");
+    }
+}
+function close_nav(){
+    $("#guize").css("display","none");
+}
+</script>
+    <div id="main" class="main">
+        <div class="title"><div class="title2"><h1>装修案例</h1></div></div>
+        <div id="anlisearch">
+	    <input type='hidden' id='fengge_inp' name='fengge_inp' value='{$fengge}'></input>
+	    <input type='hidden' id='jushi_inp' name='jushi_inp' value='{$jushi}'></input>
+	    <input type='hidden' id='shejishi_inp' name='shejishi_inp' value='{$shejishi}'></input>
+	    
+	    <ul id="anlisearch_fengge" class="anlisearch_fengge">
+		<li class="style1">装修风格</li>
+		<li><a href="javascript:query_search('1',0)" key="0" class="current">全部</a></li>
+		<volist name="anlifengges" id="avo">
+		   <li><a href="javascript:query_search('1',{$avo.evalue})" key="{$avo.evalue}">{$avo.ename}</a></li>
+	       </volist>
+<!--		
+		<li><a href="javascript:query_search('1',500)" key="500">现代简约</a></li>
+		<li><a href="javascript:query_search('1',1000)" key="1000">新中式</a></li>
+		<li><a href="javascript:query_search('1',1500)" key="1500">欧式</a></li>
+		<li><a href="javascript:query_search('1',2000)" key="2000">美式</a></li>
+		<li><a href="javascript:query_search('1',2500)" key="2500">田园</a></li>
+		<li><a href="javascript:query_search('1',3000)" key="3000">地中海</a></li>
+		<li><a href="javascript:query_search('1',3500)" key="3500">巴洛克</a></li>
+		<li><a href="javascript:query_search('1',4000)" key="4000">混搭</a></li>
+		<li><a href="javascript:query_search('1',4500)" key="4500">米兰时尚</a></li>
+		<li><a href="javascript:query_search('1',5500)" key="5500">英伦风格</a></li>
+		<li><a href="javascript:query_search('1',5000)" key="5000">其他</a></li>-->
+	    </ul>
+	    <ul id="anlisearch_jushi" class="anlisearch_jushi">
+		<li class="style1">居室类型</li>
+		<li><a href="javascript:query_search('2',0)" key="0" class="current">全部</a></li>
+		<volist name="jushis" id="jvo">
+		   <li><a href="javascript:query_search('2',{$jvo.evalue})" key="{$jvo.evalue}">{$jvo.ename}</a></li>
+	       </volist>		
+<!--		<li><a href="javascript:query_search('2',500)" key="500">联排</a></li>
+		<li><a href="javascript:query_search('2',3500)" key="3500">双拼</a></li>
+		<li><a href="javascript:query_search('2',1000)" key="1000">别墅</a></li>
+		<li><a href="javascript:query_search('2',1500)" key="1500">自建</a></li>
+		<li><a href="javascript:query_search('2',2000)" key="2000">空中别墅</a></li>
+		<li><a href="javascript:query_search('2',2500)" key="2500">大宅</a></li>
+		<li><a href="javascript:query_search('2',3000)" key="3000">独栋</a></li>-->
+	    </ul>
+        </div>
+        <ul class="ul ul2">
+	    <volist name="lists_anli1" id="vo">
+            <li>
+                <a href="/index.php/mob/anli/detail/aid/{$vo.id}">
+                    <div class="thumb">
+			 <if condition="$vo['picpath'] neq ''"> 
+				<img src="{$vo.picpath}" width="68" height="50" alt="{$vo.dtitle}装修案例" />
+			    <else/>  
+				<img src="{$vo.litpic}" width="68" height="50" alt="{$vo.dtitle}装修案例" />
+			</if>  
+		    </div>
+                    <h2>{$vo.dtitle}</h2>
+                    <p>{$vo.jushiname} {$vo.fenggename}<br />设计师：{$vo.shejishiname}
+			<span class="count"><i class="style1"></i><i class="style2"></i><i class="style3">{$vo.mianji}平米</i></span></p>
+                </a>
+            </li>
+	    </volist>
+	    
+<!--            <li>
+                <a href="/anli/1317.html">
+                    <div class="thumb"><img src="http://yatai.dasn.com.cn/uploads/170806/2-1FP61IS5400.jpg" width="68" height="50" alt="卓越蔚蓝海岸新中式风格装修案例" /></div>
+                    <h2>卓越蔚蓝海岸</h2>
+                    <p>别墅 新中式风格<br />设计师：<span class="count"><i class="style1"></i><i class="style2"></i><i class="style3">260平米</i></span></p>
+                </a>
+            </li>
+	    <li>
+                <a href="/anli/1316.html">
+                    <div class="thumb"><img src="http://yatai.dasn.com.cn/uploads/170806/2-1FP61I635I5.jpg" width="68" height="50" alt="中粮北纬其他风格装修案例" /></div>
+                    <h2>中粮北纬</h2>
+                    <p> 其他风格<br />设计师：<span class="count"><i class="style1"></i><i class="style2"></i><i class="style3">400平米</i></span></p>
+                </a>
+            </li><li>
+                <a href="/anli/1315.html">
+                    <div class="thumb"><img src="http://yatai.dasn.com.cn/uploads/170806/2-1FP61I429D6.jpg" width="68" height="50" alt="保利阆峰美式风格装修案例" /></div>
+                    <h2>保利阆峰</h2>
+                    <p>独栋 美式风格<br />设计师：<span class="count"><i class="style1"></i><i class="style2"></i><i class="style3">500平米</i></span></p>
+                </a>
+            </li><li>
+                <a href="/anli/1314.html">
+                    <div class="thumb"><img src="http://yatai.dasn.com.cn/uploads/170806/2-1FP61G945B9.jpg" width="68" height="50" alt="保利阆峰欧式风格装修案例" /></div>
+                    <h2>保利阆峰</h2>
+                    <p> 欧式风格<br />设计师：<span class="count"><i class="style1"></i><i class="style2"></i><i class="style3">400平米</i></span></p>
+                </a>
+            </li><li>
+                <a href="/anli/1313.html">
+                    <div class="thumb"><img src="http://yatai.dasn.com.cn/uploads/170806/2-1FP6163522637.jpg" width="68" height="50" alt="五矿万境南山新中式风格装修案例" /></div>
+                    <h2>五矿万境南山</h2>
+                    <p>别墅 新中式风格<br />设计师：<span class="count"><i class="style1"></i><i class="style2"></i><i class="style3">350平米</i></span></p>
+                </a>
+            </li><li>
+                <a href="/anli/1312.html">
+                    <div class="thumb"><img src="http://yatai.dasn.com.cn/uploads/170806/2-1FP6163122Q5.jpg" width="68" height="50" alt="自建别墅现代简约风格装修案例" /></div>
+                    <h2>自建别墅</h2>
+                    <p>独栋 现代简约风格<br />设计师：<span class="count"><i class="style1"></i><i class="style2"></i><i class="style3">500平米</i></span></p>
+                </a>
+            </li>-->
+        </ul>	
+    </div>
+
+	<div class="page_home">
+	    {$_page}
+	</div>
+	    <script>
+		function pagego(){
+		    var paget = $("#gop").val();
+		    var pagep = decodeURI($("#goval").val());
+//		    alert(pagep+"/"+paget);
+		    if(parseInt(paget)>0){
+			var turl = pagep.replace("[PAGE]",paget);
+			location.href=turl;
+		    }else{
+			alert("请输入有效页码!");
+			return; 
+		    }
+		}
+	    </script> 
+    
+
+<?php include ("./Application/Mob/View/default/Common/version.html"); ?> 
+
+<?php include ("./Application/Mob/View/default/Common/footer.html"); ?>  
+      
+
+
+</body>
+</html>
+<script src="/public/mob/js/footer.js" type="text/javascript"></script>  

@@ -1,0 +1,28 @@
+<div class="mymenu_box">
+    <div class="box_1">
+        <div class="infor_head_box">
+            <div class="user_photo">
+                <a  href="{:U('Member/User/manageAvatar')}" title="点击修改头像"  online="online">
+                    <img src="{$current_user.avatar128_url}"  width="120"  height="120" alt="chifar" />
+                </a>
+            </div>
+            <dl>
+                <dt>{$current_user.nickname}</dt>
+                <dd>
+                    <a href="{:U('Member/User/info')}" title="帐号设置">个人资料</a>
+                    <a href="{:U('Member/User/changePassword')}" title='修改密码'>修改密码</a>
+                </dd>
+            </dl>
+        </div>
+        <ul>
+            <li <if condition="$menuname eq 'Index' || empty($menuname)"> class="current"</if>><span><em></em><a href="{:U('Member/Index/index')}">中心首页</a></span></li> 
+	    <if condition="$current_user['memberlist'] eq 1">
+		<li <if condition="$menuname eq 'lists'"> class="current"</if>><span><em></em><a href="{:U('Member/Lists/index')}">会员信息</a></span></li> 
+	    </if>
+            <li <if condition="$menuname eq 'sheji'"> class="current"</if>><span><em></em><a href="{:U('Member/Sheji/index')}">我的设计</a></span></li>
+            <!--<li><span><em></em><a href="{:U('Member/Index/myorder')}">服务记录</a></span></li>-->  
+            <li><span><em></em><a href="{:U('Member/User/logoutHome')}">退出登录</a></span></li>
+            <li><span><em></em><a href="{:U('Home/Index/index')}">返回首页</a></span></li>
+        </ul>
+    </div>
+</div>

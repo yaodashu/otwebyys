@@ -1,0 +1,86 @@
+<extend name="Base/Common"/>
+
+<block name="body_content"> 
+    <div class="mybox_page">
+        <include file="Public/mymenu_box"/>
+        <div class="homepage_box" style="width:770px;">
+            <div class="line_mybox">
+                <div class="my_title">
+                    <h3>会员信息</h3>
+                </div>
+                <div class="my_zuji box_top"> 
+  
+		     <div id="memberlist" style="display: inline-block;">
+			<ul>
+			    <li key="{$vo.id}">
+				<div class="div1">昵称</div>
+				<div class="div2">账号</div> 
+				<div class="div3">手机</div>
+				<div class="div4">状态</div>
+				<div class="div5">门店</div>
+				<div class="div6">级别</div>
+				<div class="div7">发布权限</div> 
+				<div class="div8">注册日期</div> 
+				<div class="div9">用户组</div> 
+				<div class="div10">操作</div>
+			    </li>
+				
+			    <volist name="lists" id="vo">
+				<li key="{$vo.id}">
+				    <div class="div1" title="{$vo.nickname}">{$vo.nickname}&nbsp;</div>
+				    <div class="div2" title="{$vo.username}">{$vo.username}&nbsp;</div> 
+				    <div class="div3" title="{$vo.mobile}">{$vo.mobile}&nbsp;</div>
+				    <div class="div4"><if condition="$vo['status'] eq '-3'">删除</if>
+					<if condition="$vo['status'] eq '-2'">禁止</if>
+				    <if condition="$vo['status'] eq '-1'">暂停</if>
+				    <if condition="$vo['status'] eq '0'">未通过</if>
+				    <if condition="$vo['status'] eq '1'">使用
+				    </if>&nbsp;</div> 
+				    <div class="div5" title="{$vo.areaname}">{$vo.areaname}&nbsp;</div>
+				    <div class="div6" title="{$vo.rankname}">{$vo.rankname}&nbsp;</div>
+				    <div class="div7"><if condition="$vo['editlevel'] eq '0'">					    
+					  <span style="background: #AAA;color: #fff;padding: 0 5px;border-radius: 5px;">无</span>					    
+					</if>
+					<if condition="$vo['editlevel'] eq '1'">
+					    <span style="background: #1b961b;color: #fff;padding: 0 5px;border-radius: 5px;">有</span>	
+					</if></div> 
+				    <div class="div8"><php> echo date("Y-m-d",$vo['reg_time']);</php>&nbsp;</div> 
+				    <div class="div9">{$vo.groupname}&nbsp;</div> 
+				    <div class="div10">
+					<if condition="$current_user['memberlist'] eq 1">
+					</if>
+					<a href="{:U('Member/Lists/detail',array('id'=>$vo['id']))}" style="color: #0000FF;" target="_blank">详情/编辑</a>
+					&nbsp;
+				    </div>
+				</li>
+			    </volist> 
+			</ul>
+
+			<div class="page_home">
+			    {$_page}
+			</div>
+			<script>
+			    function pagego(){
+				var paget = $("#gop").val();
+				var pagep = decodeURI($("#goval").val());
+	    //		    alert(pagep+"/"+paget);
+				if(parseInt(paget)>0){
+				    var turl = pagep.replace("[PAGE]",paget);
+				    location.href=turl;
+				}else{
+				    alert("请输入有效页码!");
+				    return; 
+				}
+			    }
+			</script>
+		    </div>
+                    <div class="clear">
+                    </div>
+                </div>
+            </div>  
+        </div>
+
+        <div class="clear">
+        </div>
+    </div>
+</block>
